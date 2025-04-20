@@ -1,0 +1,44 @@
+#此工作流程使用了未经GitHub认证的操作。
+#它们由第三方提供，并受
+#单独的服务条款、隐私政策和支持
+#文档。
+#此工作流将使用Gradle构建一个包，然后在创建一个版本时将其发布到GitHub包
+#有关更多信息，请参见:https://github . com/actions/setup-Java/blob/main/docs/advanced-usage . MD # Publishing-using-grad le
+
+名字: 梯度包
+
+在:
+释放；排放；发布:
+类型: [创造]
+
+工作:
+建设:
+
+连续运行: Ubuntu-最新版
+许可:
+内容: 阅读
+包装: 写
+
+步伐:
+    - 使用: 动作/签出@v4
+    - 名字: 建立JDK 17号
+使用: 操作/设置-java@v4
+随着:
+java版本: '17'
+分布: 特穆林
+服务器id: 开源代码库pom.xml的distribution management/repository/id字段值
+设置-路径: ${{github.workspace}} settings.xml文件的位置
+
+    - 名字: 设置梯度
+使用: gradle/actions/setup-gradle @ af1da 67850 ed 9 a4 cedd 57 bfd 976089 DD 991 e 2582# 4 . 0 . 0版
+
+    - 名字: 与Gradle一起构建
+奔跑: 。/gradlew版本
+
+    #用户名和令牌需要对应于中使用的凭据环境变量
+    build.gradle的发布部分
+    - 名字: 发布到GitHub包
+奔跑: 。/gradlew publish
+包封/包围（动词envelop的简写）:
+用户名: ${{github.actor}}
+代币: ${{秘密。GITHUB_TOKEN}}
