@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.moredecorativeblocks.more_decorative_blocks.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "more_decorative_blocks.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
