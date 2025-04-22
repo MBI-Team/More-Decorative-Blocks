@@ -22,11 +22,12 @@ modId = "${mod_id}" #mandatory
 # The version number of the mod
 version = "${mod_version}" #mandatory
 # A display name for the mod
-displayName = "${mod_name}" #mandatory
+displayName = "More_Decorative_Blocks" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
 # A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL = "https://github.com/danhuangsu3677661491/More-Decorative-Blocks"
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="more_decorative_blocks.png" #optional
+logoFile= "more_decorative_blocks.png" #optional
 # A text field displayed in the mod UI
 #credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
