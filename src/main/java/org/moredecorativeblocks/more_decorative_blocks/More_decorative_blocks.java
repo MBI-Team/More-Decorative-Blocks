@@ -45,9 +45,9 @@ public class More_decorative_blocks {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     // Creates a new Block with the id "more_decorative_blocks:MDB_block", combining the namespace and path
-    public static final RegistryObject<Block> MDB_BLOCK = BLOCKS.register("MDB_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
     // Creates a new BlockItem with the id "more_decorative_blocks:MDB_block", combining the namespace and path
-    public static final RegistryObject<Item> MDB_BLOCK_ITEM = ITEMS.register("MDB_block", () -> new BlockItem(MDB_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MDB_BLOCK_ITEM = ITEMS.register("mdb_block", () -> new BlockItem(MDB_BLOCK.get(), new Item.Properties()));
 
     // Creates a creative tab with the id "more_decorative_blocks:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
