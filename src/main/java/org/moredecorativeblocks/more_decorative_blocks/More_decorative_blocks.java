@@ -49,14 +49,14 @@ public class More_decorative_blocks {
     // Creates a new BlockItem with the id "more_decorative_blocks:MDB_block", combining the namespace and path
     public static final RegistryObject<Item> MDB_BLOCK_ITEM = ITEMS.register("mdb_block", () -> new BlockItem(MDB_BLOCK.get(), new Item.Properties()));
 
-    public static final RegistryObject<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> WATER_BOOK = BLOCKS.register("water_book", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
-    public static final RegistryObject<Item> FIRE_BOOK_ITEM = ITEMS.register("fire_book", () -> new BlockItem(FIRE_BOOK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WATER_BOOK_ITEM = ITEMS.register("water_book", () -> new BlockItem(WATER_BOOK.get(), new Item.Properties()));
 
     // Creates a creative tab with the id "more_decorative_blocks:mdb_tab" for the example item, that is placed after the combat tab
-    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("mdb_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
+    public static final RegistryObject<CreativeModeTab> MDB_TAB = CREATIVE_MODE_TABS.register("mdb_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(MDB_BLOCK_ITEM.get());
-        output.accept(FIRE_BOOK_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
+        output.accept(WATER_BOOK_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
 
     public More_decorative_blocks() {
