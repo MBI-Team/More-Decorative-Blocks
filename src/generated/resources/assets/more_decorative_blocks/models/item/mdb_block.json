@@ -1,3 +1,30 @@
 {
-	"parent": "more_decorative_blocks:block/mdb_block"
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "more_decorative_blocks:block/mdb_block",
+		"particle": "more_decorative_blocks:block/mdb_block"
+	},
+	"elements": [
+		{
+			"from": [6, 6, 6],
+			"to": [10, 10, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 8.15385, 8], "texture": "#0"},
+				"east": {"uv": [0, 0, 8.15385, 8], "texture": "#0"},
+				"south": {"uv": [0, 0, 8.15385, 8], "texture": "#0"},
+				"west": {"uv": [0, 0, 8.15385, 8], "texture": "#0"},
+				"up": {"uv": [16, 8, 8, 0], "texture": "#0"},
+				"down": {"uv": [16, 0, 8, 8], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"scale": [4, 4, 4]
+		},
+		"fixed": {
+			"scale": [4, 4, 4]
+		}
+	}
 }
