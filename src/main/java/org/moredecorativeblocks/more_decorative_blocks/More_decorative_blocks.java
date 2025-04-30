@@ -1,9 +1,10 @@
 package org.moredecorativeblocks.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +34,7 @@ import org.slf4j.Logger;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(More_decorative_blocks.MODID)
 public class More_decorative_blocks {
+    public static final Codec<More_decorative_blocks> CODEC = Codec.unit(More_decorative_blocks::new);
 
     // Define mod id in a common place for everything to reference
     public static final String MODID = "more_decorative_blocks";
@@ -56,7 +59,6 @@ public class More_decorative_blocks {
     public static final RegistryObject<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
     public static final RegistryObject<Item> FIRE_BOOK_ITEM = ITEMS.register("fire_book", () -> new BlockItem(FIRE_BOOK.get(), new Item.Properties()));
-
     // Creates a creative tab with the id "more_decorative_blocks:mdb_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> MDB_TAB = CREATIVE_MODE_TABS.register("mdb_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(MDB_BLOCK_ITEM.get());
@@ -64,62 +66,76 @@ public class More_decorative_blocks {
         output.accept(FIRE_BOOK_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
 
-    public More_decorative_blocks() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
-
-        // Register the Deferred Register to the mod event bus so blocks get registered
-        BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
-        ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
-        CREATIVE_MODE_TABS.register(modEventBus);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
-    }
-
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(MDB_BLOCK_ITEM);
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-
+    @Mod.EventBusSubscriber(modid = More_decorative_blocks.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    public static class TooltipHandler {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        public static void onItemTooltip(ItemTooltipEvent event) {
+            if (event.getItemStack().getItem() == More_decorative_blocks.FIRE_BOOK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
+            } else if (event.getItemStack().getItem() == More_decorative_blocks.WATER_BOOK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
+            } else if (event.getItemStack().getItem() == More_decorative_blocks.MDB_BLOCK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
+            }
+        }
+
+        public void More_decorative_blocks() {
+            IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+            // Register the commonSetup method for modloading
+            modEventBus.addListener(this::commonSetup);
+
+            // Register the Deferred Register to the mod event bus so blocks get registered
+            BLOCKS.register(modEventBus);
+            // Register the Deferred Register to the mod event bus so items get registered
+            ITEMS.register(modEventBus);
+            // Register the Deferred Register to the mod event bus so tabs get registered
+            CREATIVE_MODE_TABS.register(modEventBus);
+
+            // Register ourselves for server and other game events we are interested in
+            MinecraftForge.EVENT_BUS.register(this);
+
+            // Register the item to a creative tab
+            modEventBus.addListener(this::addCreative);
+
+            // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
+            ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        }
+
+        private void commonSetup(final FMLCommonSetupEvent event) {
+            // Some common setup code
+            LOGGER.info("HELLO FROM COMMON SETUP");
+            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
+            if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
+            LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
+
+            Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        }
+
+        // Add the example block item to the building blocks tab
+        private void addCreative(BuildCreativeModeTabContentsEvent event) {
+            if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(MDB_BLOCK_ITEM);
+        }
+
+        // You can use SubscribeEvent and let the Event Bus discover methods to call
+        @SubscribeEvent
+        public void onServerStarting(ServerStartingEvent event) {
+            // Do something when the server starts
+            LOGGER.info("HELLO from server starting");
+        }
+
+        // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+        @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+        public static class ClientModEvents {
+
+            @SubscribeEvent
+            public static void onClientSetup(FMLClientSetupEvent event) {
+                // Some client setup code
+                LOGGER.info("HELLO FROM CLIENT SETUP");
+                LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            }
         }
     }
 }

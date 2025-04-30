@@ -1,8 +1,9 @@
 {
   "creativetab.more_decorative_blocks.mdb_tab":  "更多装饰方块",
   "block.more_decorative_blocks.mdb_block":  "“更多装饰方块”标志方块",
-  "block.more_decorative_blocks.water_book":  "水系书",
-  "block.more_decorative_blocks.water_book.tooltip": "一本蓝色的书",
-  "block.more_decorative_blocks.fire_book": "火系书",
-  "block.more_decorative_blocks.fire_book.tooltip": "一本红色的书"
+  "tooltip.more_decorative_blocks.mdb_block.tooltip": "模组的标志方块",
+  "block.more_decorative_blocks.water_book":  "水之书",
+  "tooltip.more_decorative_blocks.water_book.tooltip": "§9水做的书§r",
+  "block.more_decorative_blocks.fire_book": "火之书",
+  "tooltip.more_decorative_blocks.fire_book.tooltip": "§6岩浆做的书§r"
 }
