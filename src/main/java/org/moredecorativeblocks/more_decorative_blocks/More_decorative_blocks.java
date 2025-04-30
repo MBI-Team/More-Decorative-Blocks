@@ -26,8 +26,10 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
@@ -66,20 +68,7 @@ public class More_decorative_blocks {
         output.accept(FIRE_BOOK_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
 
-    @Mod.EventBusSubscriber(modid = More_decorative_blocks.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-    public static class TooltipHandler {
-        @SubscribeEvent
-        public static void onItemTooltip(ItemTooltipEvent event) {
-            if (event.getItemStack().getItem() == More_decorative_blocks.FIRE_BOOK_ITEM.get()) {
-                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
-            } else if (event.getItemStack().getItem() == More_decorative_blocks.WATER_BOOK_ITEM.get()) {
-                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
-            } else if (event.getItemStack().getItem() == More_decorative_blocks.MDB_BLOCK_ITEM.get()) {
-                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
-            }
-        }
-
-        public void More_decorative_blocks() {
+        public More_decorative_blocks() {
             IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
             // Register the commonSetup method for modloading
@@ -133,8 +122,24 @@ public class More_decorative_blocks {
             @SubscribeEvent
             public static void onClientSetup(FMLClientSetupEvent event) {
                 // Some client setup code
+                if (FMLEnvironment.dist  == Dist.CLIENT) {
+                    LOGGER.info("MINECRAFT  NAME >> {}", Minecraft.getInstance().getUser().getName());
+                }
                 LOGGER.info("HELLO FROM CLIENT SETUP");
                 LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            }
+        }
+
+    @Mod.EventBusSubscriber(modid = More_decorative_blocks.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    public static class TooltipHandler {
+        @SubscribeEvent
+        public static void onItemTooltip(ItemTooltipEvent event) {
+            if (event.getItemStack().getItem() == More_decorative_blocks.FIRE_BOOK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
+            } else if (event.getItemStack().getItem() == More_decorative_blocks.WATER_BOOK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
+            } else if (event.getItemStack().getItem() == More_decorative_blocks.MDB_BLOCK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
             }
         }
     }
