@@ -2,5 +2,7 @@
   "creativetab.more_decorative_blocks.mdb_tab":  "More Decorative Blocks",
   "block.more_decorative_blocks.mdb_block":  "[More Decorative Blocks] Emblem Block",
   "block.more_decorative_blocks.water_book":  "Water Book",
-  "block.more_decorative_blocks.fire_book":  "Fire Book"
+  "block.more_decorative_blocks.water_book.tooltip":  "A blue book",
+  "block.more_decorative_blocks.fire_book":  "Fire Book",
+  "block.more_decorative_blocks.fire_book.tooltip":  "A red book"
 }
