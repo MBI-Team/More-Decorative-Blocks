@@ -3,15 +3,23 @@ package org.moredecorativeblocks.more_decorative_blocks;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,14 +34,22 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
+
+import javax.annotation.Nullable;
+
+import static net.minecraft.world.item.Items.WOODEN_PICKAXE;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(More_decorative_blocks.MODID)
 public class More_decorative_blocks {
+
     public static final Codec<More_decorative_blocks> CODEC = Codec.unit(More_decorative_blocks::new);
 
     // Define mod id in a common place for everything to reference
@@ -48,15 +64,39 @@ public class More_decorative_blocks {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     // Creates a new Block with the id "more_decorative_blocks:MDB_block", combining the namespace and path
-    public static final RegistryObject<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> MDB_BLOCK = BLOCKS.register("mdb_block",  () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(5.0f)  // 硬度参数（可选）
+                    .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
+                    .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+                    .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
+            )
+    );
     // Creates a new BlockItem with the id "more_decorative_blocks:MDB_block", combining the namespace and path
     public static final RegistryObject<Item> MDB_BLOCK_ITEM = ITEMS.register("mdb_block", () -> new BlockItem(MDB_BLOCK.get(), new Item.Properties()));
 
-    public static final RegistryObject<Block> WATER_BOOK = BLOCKS.register("water_book", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> WATER_BOOK = BLOCKS.register("water_book",  () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(3.0f)  // 硬度参数（可选）
+                    .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
+                    .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+                    .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
+            )
+    );
 
     public static final RegistryObject<Item> WATER_BOOK_ITEM = ITEMS.register("water_book", () -> new BlockItem(WATER_BOOK.get(), new Item.Properties()));
 
-    public static final RegistryObject<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
+    public static final RegistryObject<Block> FIRE_BOOK = BLOCKS.register("fire_book",  () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(3.0f)  // 硬度参数（可选）
+                    .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
+                    .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+                    .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
+            )
+    );
 
     public static final RegistryObject<Item> FIRE_BOOK_ITEM = ITEMS.register("fire_book", () -> new BlockItem(FIRE_BOOK.get(), new Item.Properties()));
     // Creates a creative tab with the id "more_decorative_blocks:mdb_tab" for the example item, that is placed after the combat tab
@@ -66,20 +106,7 @@ public class More_decorative_blocks {
         output.accept(FIRE_BOOK_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
 
-    @Mod.EventBusSubscriber(modid = More_decorative_blocks.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-    public static class TooltipHandler {
-        @SubscribeEvent
-        public static void onItemTooltip(ItemTooltipEvent event) {
-            if (event.getItemStack().getItem() == More_decorative_blocks.FIRE_BOOK_ITEM.get()) {
-                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
-            } else if (event.getItemStack().getItem() == More_decorative_blocks.WATER_BOOK_ITEM.get()) {
-                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
-            } else if (event.getItemStack().getItem() == More_decorative_blocks.MDB_BLOCK_ITEM.get()) {
-                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
-            }
-        }
-
-        public void More_decorative_blocks() {
+        public More_decorative_blocks() {
             IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
             // Register the commonSetup method for modloading
@@ -133,8 +160,24 @@ public class More_decorative_blocks {
             @SubscribeEvent
             public static void onClientSetup(FMLClientSetupEvent event) {
                 // Some client setup code
+                if (FMLEnvironment.dist  == Dist.CLIENT) {
+                    LOGGER.info("MINECRAFT  NAME >> {}", Minecraft.getInstance().getUser().getName());
+                }
                 LOGGER.info("HELLO FROM CLIENT SETUP");
                 LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            }
+        }
+
+    @Mod.EventBusSubscriber(modid = More_decorative_blocks.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    public static class TooltipHandler {
+        @SubscribeEvent
+        public static void onItemTooltip(ItemTooltipEvent event) {
+            if (event.getItemStack().getItem() == More_decorative_blocks.FIRE_BOOK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
+            } else if (event.getItemStack().getItem() == More_decorative_blocks.WATER_BOOK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
+            } else if (event.getItemStack().getItem() == More_decorative_blocks.MDB_BLOCK_ITEM.get()) {
+                event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
             }
         }
     }
