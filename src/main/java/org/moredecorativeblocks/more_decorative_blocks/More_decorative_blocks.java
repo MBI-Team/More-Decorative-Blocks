@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.moredecorativeblocks;
+package org.moredecorativeblocks.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -33,10 +33,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(Moredecorativeblocks.MODID)
-public class Moredecorativeblocks {
+@Mod(More_decorative_blocks.MODID)
+public class More_decorative_blocks {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "assets/moredecorativeblocks";
+    public static final String MODID = "more_decorative_blocks";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "moredecorativeblocks" namespace
@@ -47,7 +47,13 @@ public class Moredecorativeblocks {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     // Creates a new Block with the id "moredecorativeblocks:example_block", combining the namespace and path
-    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.registerSimpleBlock("mdb_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
+    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.registerSimpleBlock("mdb_block", BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(2.5f)  // 硬度参数（可选）
+                    .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
+                    .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+                    .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
+    );
     // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
     public static final DeferredItem<BlockItem> MDB_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("mdb_block", MDB_BLOCK);
 
@@ -61,7 +67,7 @@ public class Moredecorativeblocks {
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public Moredecorativeblocks(IEventBus modEventBus, ModContainer modContainer) {
+    public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
