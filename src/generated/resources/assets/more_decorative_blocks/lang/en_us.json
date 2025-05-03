@@ -1,5 +1,5 @@
 {
-  "itemGroup.moredecorativeblocks": "More Decorative Blocks",
-  "block.moredecorativeblocks.mdb_block": "Example Block",
-  "item.moredecorativeblocks.mdb_item": "Example Item"
+  "itemGroup.more_decorative_blocks": "More Decorative Blocks",
+  "block.more_decorative_blocks.mdb_block": "Example Block",
+  "item.more_decorative_blocks.mdb_block": "Example Item"
 }
