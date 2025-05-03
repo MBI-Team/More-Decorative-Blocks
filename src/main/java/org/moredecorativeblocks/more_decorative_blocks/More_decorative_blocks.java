@@ -30,6 +30,9 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.bus.api.EventPriority;
+
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -138,6 +141,16 @@ public class More_decorative_blocks {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        }
+    }
+    @SubscribeEvent(priority = EventPriority.NORMAL)
+    public static void onItemTooltip(ItemTooltipEvent event) {
+        if (event.getItemStack().getItem()  == More_decorative_blocks.FIRE_BOOK_ITEM.get())  {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
+        } else if (event.getItemStack().getItem()  == More_decorative_blocks.WATER_BOOK_ITEM.get())  {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
+        } else if (event.getItemStack().getItem()  == More_decorative_blocks.MDB_BLOCK_ITEM.get())  {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
         }
     }
 }
