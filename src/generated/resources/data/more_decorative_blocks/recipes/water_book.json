@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:water_bucket" },
+    { "item": "minecraft:book" ,
+  ],
+  "result": {
+    "item": "more_decorative_blocks:water_book",
+    "count": 1
+  }
+}
