@@ -57,9 +57,29 @@ public class More_decorative_blocks {
     // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
     public static final DeferredItem<BlockItem> MDB_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("mdb_block", MDB_BLOCK);
 
+    public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.registerSimpleBlock("water_book", BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .strength(1.0f)  // 硬度参数（可选）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
+    );
+    // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
+    public static final DeferredItem<BlockItem> WATER_BOOK_ITEM = ITEMS.registerSimpleBlockItem("water_book", WATER_BOOK);
+
+    public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.registerSimpleBlock("fire_book", BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .strength(1.0f)  // 硬度参数（可选）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
+    );
+    // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
+    public static final DeferredItem<BlockItem> FIRE_BOOK_ITEM = ITEMS.registerSimpleBlockItem("fire_book", FIRE_BOOK);
+
     // Creates a creative tab with the id "moredecorativeblocks:example_tab" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(MDB_BLOCK_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+        output.accept(MDB_BLOCK_ITEM.get());
+        output.accept(WATER_BOOK_ITEM.get());
+        output.accept(FIRE_BOOK_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
     }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
