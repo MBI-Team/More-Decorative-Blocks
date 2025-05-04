@@ -52,7 +52,8 @@ public class More_decorative_blocks {
     // Creates a new Block with the id "moredecorativeblocks:example_block", combining the namespace and path
     public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.registerSimpleBlock("mdb_block", BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
-                    .strength(2.5f)  // 硬度参数（可选）
+                    .strength(2.5f,10.0f)  // 硬度参数（可选）
+                    .destroyTime(1.5f)
                     .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
                     .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
                     .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
@@ -62,7 +63,8 @@ public class More_decorative_blocks {
 
     public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.registerSimpleBlock("water_book", BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
-            .strength(1.0f)  // 硬度参数（可选）
+            .strength(1.0f,0.5f)  // 硬度参数（可选）
+            .destroyTime(1.0f)
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
     );
@@ -71,7 +73,8 @@ public class More_decorative_blocks {
 
     public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.registerSimpleBlock("fire_book", BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
-            .strength(1.0f)  // 硬度参数（可选）
+            .strength(1.0f,0.5f)  // 硬度参数（可选）
+            .destroyTime(1.0f)
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
     );
