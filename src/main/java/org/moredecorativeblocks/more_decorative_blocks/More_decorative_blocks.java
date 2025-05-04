@@ -144,7 +144,7 @@ public class More_decorative_blocks {
         }
     }
     @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void onItemTooltip(ItemTooltipEvent event) {
+    public void onItemTooltip(ItemTooltipEvent event) {
         if (event.getItemStack().getItem()  == More_decorative_blocks.FIRE_BOOK_ITEM.get())  {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
         } else if (event.getItemStack().getItem()  == More_decorative_blocks.WATER_BOOK_ITEM.get())  {
