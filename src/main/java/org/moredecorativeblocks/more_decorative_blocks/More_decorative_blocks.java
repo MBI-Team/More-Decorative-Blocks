@@ -33,74 +33,27 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.bus.api.EventPriority;
 
+import org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry;
+import org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabRegistry;
+import org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry;
+import org.moredecorativeblocks.more_decorative_blocks.registry.TooltipRegistry;
 import org.slf4j.Logger;
 
+import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.MDB_BLOCK_ITEM;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(More_decorative_blocks.MODID)
+@Mod(org.moredecorativeblocks.more_decorative_blocks.More_decorative_blocks.MODID)
 public class More_decorative_blocks {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "more_decorative_blocks";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "moredecorativeblocks" namespace
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "moredecorativeblocks" namespace
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "moredecorativeblocks" namespace
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
-
-    // Creates a new Block with the id "moredecorativeblocks:example_block", combining the namespace and path
-    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.registerSimpleBlock("mdb_block", BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
-                    .strength(2.5f,10.0f)  // 硬度参数（可选）
-                    .destroyTime(1.5f)
-                    .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
-                    .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
-                    .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
-    );
-    // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> MDB_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("mdb_block", MDB_BLOCK);
-
-    public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.registerSimpleBlock("water_book", BlockBehaviour.Properties.of()
-            .mapColor(MapColor.STONE)
-            .strength(1.0f,0.5f)  // 硬度参数（可选）
-            .destroyTime(1.0f)
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
-            .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
-    );
-    // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> WATER_BOOK_ITEM = ITEMS.registerSimpleBlockItem("water_book", WATER_BOOK);
-
-    public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.registerSimpleBlock("fire_book", BlockBehaviour.Properties.of()
-            .mapColor(MapColor.STONE)
-            .strength(1.0f,0.5f)  // 硬度参数（可选）
-            .destroyTime(1.0f)
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
-            .isRedstoneConductor((state, level, pos) -> true)  // 设置为不透明方块
-    );
-    // Creates a new BlockItem with the id "moredecorativeblocks:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> FIRE_BOOK_ITEM = ITEMS.registerSimpleBlockItem("fire_book", FIRE_BOOK);
-
-    // Creates a creative tab with the id "moredecorativeblocks:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(MDB_BLOCK_ITEM.get());
-        output.accept(WATER_BOOK_ITEM.get());
-        output.accept(FIRE_BOOK_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
-    }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register the Deferred Register to the mod event bus so blocks get registered
-        BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
-        ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
-        CREATIVE_MODE_TABS.register(modEventBus);
-
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Moredecorativeblocks) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -111,6 +64,9 @@ public class More_decorative_blocks {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ItemRegistry.ITEMS.register(modEventBus);
+        BlockRegistry.BLOCKS.register(modEventBus);
+        CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -144,16 +100,6 @@ public class More_decorative_blocks {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
-    }
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public void onItemTooltip(ItemTooltipEvent event) {
-        if (event.getItemStack().getItem()  == More_decorative_blocks.FIRE_BOOK_ITEM.get())  {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
-        } else if (event.getItemStack().getItem()  == More_decorative_blocks.WATER_BOOK_ITEM.get())  {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
-        } else if (event.getItemStack().getItem()  == More_decorative_blocks.MDB_BLOCK_ITEM.get())  {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
         }
     }
 }

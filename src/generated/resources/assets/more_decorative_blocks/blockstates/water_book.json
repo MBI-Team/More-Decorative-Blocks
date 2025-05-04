@@ -1,5 +1,17 @@
 {
   "variants": {
-    "": { "model": "more_decorative_blocks:block/water_book" }
+    "axis=x": {
+      "model": "more_decorative_blocks:block/water_book",
+      "y": 90,
+      "uvlock": true
+    },
+    "axis=z": {
+      "model": "more_decorative_blocks:block/water_book",
+      "y": 0
+    },
+    "axis=y": {
+      "model": "more_decorative_blocks:block/water_book",
+      "x": 0
+    }
   }
 }
