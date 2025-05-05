@@ -37,7 +37,6 @@ import org.slf4j.Logger;
 
 import static org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry.*;
 
-@Mod(org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.MODID)
 public class ItemRegistry {
     public static final String MODID = "more_decorative_blocks";
 
@@ -49,14 +48,4 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> FIRE_BOOK_ITEM = ITEMS.registerSimpleBlockItem("fire_book", FIRE_BOOK);
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public void onItemTooltip(ItemTooltipEvent event) {
-        if (event.getItemStack().getItem()  == org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.FIRE_BOOK_ITEM.get())  {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
-        } else if (event.getItemStack().getItem()  == org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.WATER_BOOK_ITEM.get())  {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
-        } else if (event.getItemStack().getItem()  == org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.MDB_BLOCK_ITEM.get())  {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
-        }
-    }
 }

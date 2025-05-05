@@ -40,7 +40,6 @@ import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegis
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabRegistry.MODID)
 public class CreativeModeTabRegistry {
     public static final String MODID = "more_decorative_blocks";
 

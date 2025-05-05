@@ -1,17 +1,21 @@
 {
   "variants": {
-    "axis=x": {
+    "facing=north": {
       "model": "more_decorative_blocks:block/water_book",
-      "y": 90,
-      "uvlock": true
+      "y": 180
     },
-    "axis=z": {
+    "facing=south": {
       "model": "more_decorative_blocks:block/water_book",
       "y": 0
     },
-    "axis=y": {
+    "facing=east": {
       "model": "more_decorative_blocks:block/water_book",
-      "x": 0
-    }
+      "y": 270
+    },
+    "facing=west": {
+      "model": "more_decorative_blocks:block/water_book",
+      "y": 90
+    },
+    "": {"model": "more_decorative_blocks:block/water_book"}
   }
 }

@@ -13,24 +13,24 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
 public class water_book extends Block{
+    public static final DirectionProperty FACING =
+            DirectionProperty.create("facing",
+                    Direction.Plane.HORIZONTAL);
+
     public water_book() {
         super(BlockBehaviour.Properties.of()
                 // 发光等级
                 .mapColor(MapColor.STONE)
                 .lightLevel(state -> 8)
                 .strength(1.0f,0.5f)  // 硬度参数（可选）
-                .destroyTime(1.0f)
                 .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
-                .isRedstoneConductor((state, level, pos) -> true)
         );
+        this.registerDefaultState(
+                this.stateDefinition.any().setValue(FACING,
+                        Direction.NORTH));
     }
 
-    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
-    public water_book(BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {

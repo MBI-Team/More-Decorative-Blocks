@@ -36,6 +36,7 @@ import net.neoforged.bus.api.EventPriority;
 import org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry;
+import org.moredecorativeblocks.more_decorative_blocks.registry.TooltipRegistry;
 import org.slf4j.Logger;
 
 import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.MDB_BLOCK_ITEM;
@@ -66,6 +67,7 @@ public class More_decorative_blocks {
         ItemRegistry.ITEMS.register(modEventBus);
         BlockRegistry.BLOCKS.register(modEventBus);
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
+        NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

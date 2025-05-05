@@ -18,7 +18,6 @@ import net.minecraft.world.level.material.MapColor;;
 public class mdb_block extends Block{
     public mdb_block() {
         super(BlockBehaviour.Properties.of()
-                    // 发光等级
                 .mapColor(MapColor.STONE)
                 .sound(SoundType.NETHERITE_BLOCK) // 新型金属声效
                 .lightLevel(state -> 8)
