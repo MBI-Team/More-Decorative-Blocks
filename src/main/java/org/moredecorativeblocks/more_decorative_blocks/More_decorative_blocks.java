@@ -34,6 +34,8 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final String mod_version = "1.0-neoforge-pre-2";
+
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {
@@ -57,7 +59,15 @@ public class More_decorative_blocks {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
+        LOGGER.info("___________________________________________");
+        LOGGER.info("         More Blocks and Item Team         ");
+        LOGGER.info("|===========|  |===========|  |===========|");
+        LOGGER.info("| |  ||   | |  ||         ||  ||         ||");
+        LOGGER.info("| |  ||   | |  ||         ||  |===========|");
+        LOGGER.info("| |  ||   | |  ||         ||  ||         //");
+        LOGGER.info("| |  ||   | |  ||_________||  ||________|| ");
+        LOGGER.info("|_|  ||   |_|  |__________/   |__________/ ");
+        LOGGER.info("-------version"+mod_version+"--------------");
 
         if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
 
@@ -75,7 +85,15 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("___________________________________________");
+        LOGGER.info("         More Blocks and Item Team         ");
+        LOGGER.info("|===========|  |===========|  |===========|");
+        LOGGER.info("| |  ||   | |  ||         ||  ||         ||");
+        LOGGER.info("| |  ||   | |  ||         ||  |===========|");
+        LOGGER.info("| |  ||   | |  ||         ||  ||         //");
+        LOGGER.info("| |  ||   | |  ||_________||  ||________|| ");
+        LOGGER.info("|_|  ||   |_|  |__________/   |__________/ ");
+        LOGGER.info("-------version"+mod_version+"--------------");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -84,8 +102,16 @@ public class More_decorative_blocks {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            LOGGER.info("___________________________________________");
+            LOGGER.info("         More Blocks and Item Team         ");
+            LOGGER.info("|===========|  |===========|  |===========|");
+            LOGGER.info("| |  ||   | |  ||         ||  ||         ||");
+            LOGGER.info("| |  ||   | |  ||         ||  |===========|");
+            LOGGER.info("| |  ||   | |  ||         ||  ||         //");
+            LOGGER.info("| |  ||   | |  ||_________||  ||________|| ");
+            LOGGER.info("|_|  ||   |_|  |__________/   |__________/ ");
+            LOGGER.info("-------version"+mod_version+"--------------");
         }
     }
 }

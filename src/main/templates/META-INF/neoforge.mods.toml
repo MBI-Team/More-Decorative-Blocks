@@ -9,11 +9,9 @@ displayURL = "https://github.com/danhuangsu3677661491/More-Decorative-Blocks"
 logoFile= "more_decorative_blocks.png"
 credits = "MBITeam"
 authors = "danhuangsu, Kush_Shul, Catchin' Z's, z.h"
-description = '''
-More Decorative Blocks is a Minecraft mod that to add more decorative blocks in the Minecraft.
+description = '''More Decorative Blocks is a Minecraft mod that to add more decorative blocks in the Minecraft.
 You can use more blocks of it to build better building.
-We hope they can help you to build the building.
-'''
+We hope they can help you to build the building.'''
 [[dependencies."more_decorative_blocks"]]
 modId = "neoforge"
 mandatory = true
