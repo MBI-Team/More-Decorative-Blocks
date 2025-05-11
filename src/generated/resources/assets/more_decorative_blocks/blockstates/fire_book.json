@@ -15,7 +15,6 @@
     "facing=west": {
       "model": "more_decorative_blocks:block/fire_book",
       "y": 90
-    },
-    "": {"model": "more_decorative_blocks:block/fire_book"}
+    }
   }
 }

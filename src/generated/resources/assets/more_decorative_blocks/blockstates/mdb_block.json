@@ -1,5 +1,20 @@
 {
   "variants": {
-    "": { "model": "more_decorative_blocks:block/mdb_block" }
+    "facing=north": {
+      "model": "more_decorative_blocks:block/mdb_block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "more_decorative_blocks:block/mdb_block",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "more_decorative_blocks:block/mdb_block",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "more_decorative_blocks:block/mdb_block",
+      "y": 90
+    }
   }
 }
