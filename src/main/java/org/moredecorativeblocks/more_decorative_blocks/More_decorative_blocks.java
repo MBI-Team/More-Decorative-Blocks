@@ -55,8 +55,8 @@ public class More_decorative_blocks {
 
     public static void startOutput() {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("                                                                    ");
-        LOGGER.info("                                                                    ");
+        LOGGER.info("              Copyright More Blocks and Items Team                  ");
+        LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("    ...     ..      ..            ....               ...     ..     ");
         LOGGER.info("  x*8888x.:*8888: -“888:      .xH888888Hx.        .=*8888x <”?88h.  ");
         LOGGER.info(" X   48888X `8888H  8888    .H8888888888888:     X>  '8888H> '8888  ");
@@ -76,8 +76,8 @@ public class More_decorative_blocks {
         } else {
             LOGGER.info("You are use stable release,don't worried.                       ");
         }
-        LOGGER.info("                                                                    ");
-        LOGGER.info("                                                                    ");
+        LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        LOGGER.info("                          Thank you                                 ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
     }
 
