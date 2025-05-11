@@ -28,7 +28,7 @@ public class More_decorative_blocks {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "more_decorative_blocks";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final String mod_version = "1.0-neoforge-pre-2";
 
@@ -53,17 +53,17 @@ public class More_decorative_blocks {
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
 
-    private static void startOutput() {
-        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+    public static void startOutput() {
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
         LOGGER.info("§9 |     More Blocks and Item Team     | §r");
         LOGGER.info("§9 |§b█▀▀▀█▀▀▀█  █▀▀▀▀▀▀▀▄  █▀▀▀▀▀▀▀▄§9|");
         LOGGER.info("§9 |§b█   █   █  █       █  █▄▄▄▄▄▄▄█§9|");
         LOGGER.info("§9 |§b█   █   █  █       █  █       █§9|");
         LOGGER.info("§9 |§b█   █   █  █▄▄▄▄▄▄▄▀  █▄▄▄▄▄▄▄▀§9|");
-        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
         LOGGER.info("§9 |§r version:" + mod_version + "§9|");
         LOGGER.info("§9 |§r modid:" + MODID + "§9|");
-        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
         if (mod_version.contains("pre")) {
             LOGGER.warn("Be careful,you are use pre-release,it's not stable.");
         } else {
