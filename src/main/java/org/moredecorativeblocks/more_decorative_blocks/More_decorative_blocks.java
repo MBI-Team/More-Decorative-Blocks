@@ -54,16 +54,16 @@ public class More_decorative_blocks {
     }
 
     public static void startOutput() {
-        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
         LOGGER.info("§9 |     More Blocks and Item Team     | §r");
         LOGGER.info("§9 |§b█▀▀▀█▀▀▀█  █▀▀▀▀▀▀▀▄  █▀▀▀▀▀▀▀▄§9|");
         LOGGER.info("§9 |§b█   █   █  █       █  █▄▄▄▄▄▄▄█§9|");
         LOGGER.info("§9 |§b█   █   █  █       █  █       █§9|");
         LOGGER.info("§9 |§b█   █   █  █▄▄▄▄▄▄▄▀  █▄▄▄▄▄▄▄▀§9|");
-        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
         LOGGER.info("§9 |§r version:" + mod_version + "§9|");
         LOGGER.info("§9 |§r modid:" + MODID + "§9|");
-        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
         if (mod_version.contains("pre")) {
             LOGGER.warn("Be careful,you are use pre-release,it's not stable.");
         } else {
