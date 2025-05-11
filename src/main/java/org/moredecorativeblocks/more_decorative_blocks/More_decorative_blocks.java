@@ -1,7 +1,6 @@
 package org.moredecorativeblocks.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -17,7 +16,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-
 import org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry;
@@ -59,15 +57,15 @@ public class More_decorative_blocks {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        LOGGER.info("___________________________________________");
-        LOGGER.info("         More Blocks and Item Team         ");
-        LOGGER.info("|===========|  |===========|  |===========|");
-        LOGGER.info("| |  ||   | |  ||         ||  ||         ||");
-        LOGGER.info("| |  ||   | |  ||         ||  |===========|");
-        LOGGER.info("| |  ||   | |  ||         ||  ||         //");
-        LOGGER.info("| |  ||   | |  ||_________||  ||________|| ");
-        LOGGER.info("|_|  ||   |_|  |__________/   |__________/ ");
-        LOGGER.info("-------version"+mod_version+"--------------");
+        LOGGER.info("§9___________________________________________§r");
+        LOGGER.info("§9         More Blocks and Item Team         §r");
+        LOGGER.info("§9|===========|  |===========|  |===========|§r");
+        LOGGER.info("§9| |  ||   | |  ||         ||  ||         ||§r");
+        LOGGER.info("§9| |  ||   | |  ||         ||  |===========|§r");
+        LOGGER.info("§9| |  ||   | |  ||         ||  ||         //§r");
+        LOGGER.info("§9| |  ||   | |  ||_________||  ||________|| §r");
+        LOGGER.info("§9|_|  ||   |_|  |__________/   |__________/ §r");
+        LOGGER.info("§9-------§rversion" + mod_version + "§9--------------§r");
 
         if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
 
@@ -85,15 +83,15 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
-        LOGGER.info("___________________________________________");
-        LOGGER.info("         More Blocks and Item Team         ");
-        LOGGER.info("|===========|  |===========|  |===========|");
-        LOGGER.info("| |  ||   | |  ||         ||  ||         ||");
-        LOGGER.info("| |  ||   | |  ||         ||  |===========|");
-        LOGGER.info("| |  ||   | |  ||         ||  ||         //");
-        LOGGER.info("| |  ||   | |  ||_________||  ||________|| ");
-        LOGGER.info("|_|  ||   |_|  |__________/   |__________/ ");
-        LOGGER.info("-------version"+mod_version+"--------------");
+        LOGGER.info("§9___________________________________________§r");
+        LOGGER.info("§9         More Blocks and Item Team         §r");
+        LOGGER.info("§9|===========|  |===========|  |===========|§r");
+        LOGGER.info("§9| |  ||   | |  ||         ||  ||         ||§r");
+        LOGGER.info("§9| |  ||   | |  ||         ||  |===========|§r");
+        LOGGER.info("§9| |  ||   | |  ||         ||  ||         //§r");
+        LOGGER.info("§9| |  ||   | |  ||_________||  ||________|| §r");
+        LOGGER.info("§9|_|  ||   |_|  |__________/   |__________/ §r");
+        LOGGER.info("§9-------§rversion" + mod_version + "§9--------------§r");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -102,16 +100,15 @@ public class More_decorative_blocks {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             // Some client setup code
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-            LOGGER.info("___________________________________________");
-            LOGGER.info("         More Blocks and Item Team         ");
-            LOGGER.info("|===========|  |===========|  |===========|");
-            LOGGER.info("| |  ||   | |  ||         ||  ||         ||");
-            LOGGER.info("| |  ||   | |  ||         ||  |===========|");
-            LOGGER.info("| |  ||   | |  ||         ||  ||         //");
-            LOGGER.info("| |  ||   | |  ||_________||  ||________|| ");
-            LOGGER.info("|_|  ||   |_|  |__________/   |__________/ ");
-            LOGGER.info("-------version"+mod_version+"--------------");
+            LOGGER.info("§9___________________________________________§r");
+            LOGGER.info("§9         More Blocks and Item Team         §r");
+            LOGGER.info("§9|===========|  |===========|  |===========|§r");
+            LOGGER.info("§9| |  ||   | |  ||         ||  ||         ||§r");
+            LOGGER.info("§9| |  ||   | |  ||         ||  |===========|§r");
+            LOGGER.info("§9| |  ||   | |  ||         ||  ||         //§r");
+            LOGGER.info("§9| |  ||   | |  ||_________||  ||________|| §r");
+            LOGGER.info("§9|_|  ||   |_|  |__________/   |__________/ §r");
+            LOGGER.info("§9-------§rversion" + mod_version + "§9--------------§r");
         }
     }
 }
