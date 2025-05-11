@@ -1,0 +1,531 @@
+commit 81c5fe6106726cfc893aa5eaa16d74519dd42b6b (HEAD -> NeoForge1.21, origin/NeoForge1.21)
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 23:41:24 2025 +0800
+
+    optimize the info
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 97936a4eeb81e80a151b4337d88ec7e6020f2ca7
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 23:10:50 2025 +0800
+
+    optimize the info
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 0f75845cb9d0e0fc1bd677eeeadb4146f8392df3
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 22:59:49 2025 +0800
+
+    optimize the info
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 4f8c9f45cd1dba9a0d32260c858ec48f12cc704f
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 22:43:36 2025 +0800
+
+    optimize the info
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 17db22667b643aaac6382fa4bf9454cff31d088c
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 15:42:28 2025 +0800
+
+    Update en_us.json and More_decorative_blocks.java and README.md
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 8fd3384c524f03b6f9103fcbb2d0263da296eb20
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 12:32:19 2025 +0800
+
+    add BlockFacing.java
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 05b0508826bed0a22f1ea9a1c39a8e8d676ac717
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 11 12:31:49 2025 +0800
+
+    add BlockFacing.java
+
+    Signed-off-by: 蛋黄酥danhuangsu <3677661491@qq.com>
+
+commit 8ca373de9cf6bdf1b6f3a7d2cab09c19c8765255
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 10 15:22:15 2025 +0800
+
+    Create info message
+
+commit 2764d2bd4b68352162a25243b7c86bede6a6e6e6
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 10 13:50:55 2025 +0800
+
+    clean all import
+
+commit 75ec505501715c8e11c844826cda80cdadc405c8
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon May 5 12:24:18 2025 +0800
+
+    Decoupled four registry classes from the main class and implemented three distinct block classes with modified block states.
+
+commit 5216b6a0c5f2ba020af0c8965ef49ce8889e7339
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon May 5 12:23:37 2025 +0800
+
+    Decoupled four registry classes from the main class and implemented three distinct block classes with modified block states.
+
+commit b677a8f9ae9f0fb27fcf60f2df2d1b3c919cf40d
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon May 5 08:46:25 2025 +0800
+
+    Decoupled four registry classes from the main class and implemented three distinct block classes with modified block states.
+
+commit 12815ab616f0779e86f711860086a4cd089e9f91
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon May 5 00:04:37 2025 +0800
+
+    Decoupled four registry classes from the main class and implemented three distinct block classes with modified block states.
+
+commit 9b8eeff01b86c7e48f383c4907d60305ea4d7222
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 10:53:13 2025 +0800
+
+    Update language packed
+
+commit d0af282e434067bba10d24321e538d85fecdd305
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 10:42:25 2025 +0800
+
+    Update language packed
+
+commit 1f3f853c386d813595352d1dfd1ff4530e304b7f
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 10:23:00 2025 +0800
+
+    add loot_tables
+
+commit b535934c47bbfc768457438f753e111378702bd5
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 09:59:46 2025 +0800
+
+    Update version
+
+commit 453a3a23a5e429f33d086d03b2c0d4ef09b4f317 (tag: neoforge)
+Merge: 4cc2279 65451c6
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 08:12:10 2025 +0800
+
+    Merge remote-tracking branch 'origin/master' into NeoForge1.21
+
+    # Conflicts:
+    #       gradle.properties
+    #       src/generated/resources/assets/more_decorative_blocks/lang/en_us.json
+    #       src/generated/resources/assets/more_decorative_blocks/lang/zh_cn.json
+    #       src/main/java/org/moredecorativeblocks/more_decorative_blocks/More_decorative_blocks.java
+
+commit 4cc22795a70fe414000d6e45837074536c43bf0a
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 08:06:02 2025 +0800
+
+    Update NeoForge1.21 from master(Forge1.21)
+
+commit 3995c30d6e6d43c3fe3ff099c48d824892392a76
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 00:30:07 2025 +0800
+
+    Update NeoForge1.21 from master(Forge1.21)
+
+commit 6c9d9b1bca4a32c1269af8caeaa0ed1b35a49b52
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 00:21:00 2025 +0800
+
+    Update NeoForge1.21 from master(Forge1.21)
+
+commit ec27382d1d9104651f70c521571f1817a52525fc
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 00:10:08 2025 +0800
+
+    Update master branch tp NeoForge1.21
+
+commit 916b1c36d70a1f31d5ce2bd1e054d76426d4981c
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun May 4 00:04:10 2025 +0800
+
+    none
+
+commit dae6b27ab20ceaa27a6fcfe6045ba490f5c1736e
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 23:56:39 2025 +0800
+
+    none
+
+commit 7e25eff53703c016ce1c8b38819277b6ca5b8fb8
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 23:54:15 2025 +0800
+
+    none
+
+commit 2921c8cc2c2b494a3dbad3ec2eac63a6d7d30e3c
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 16:35:54 2025 +0800
+
+    none
+
+commit 3daa6337bbed869715273582f55fac119a3335d3
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 15:43:04 2025 +0800
+
+    none
+
+commit 65451c6f25600d2d6d00e0d5a00c09f799041457
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 15:31:34 2025 +0800
+
+    none
+
+commit 040992eb0d3b12aa7210e54cc38a490134626599
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 15:26:28 2025 +0800
+
+    none
+
+commit d82ed14fd821c80bc37923ed16496bd804a97d64
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 15:23:30 2025 +0800
+
+    none
+
+commit 11e30cb47489c400dca70f06b1a575d8a6ed5522
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 15:20:51 2025 +0800
+
+    none
+
+commit e0467b0da3c510cf7e15ab192aa1d45b2fac5996
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 15:12:10 2025 +0800
+
+    Update block strength and ready to create recipes
+
+commit aa32660b2143b692a703d83abee8fce69b1ef52d
+Author: danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 13:15:47 2025 +0800
+
+    Create README.md
+
+commit f8d299f76a3826f4686fc6cf21ada72b4b501731
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 12:49:24 2025 +0800
+
+    Update mod version
+
+commit 69a16eeb33cf4ce4f6c603cdc5f5dee7e1b3aad9
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 12:44:17 2025 +0800
+
+    Update mod version
+
+commit edaff3307b1495611d143bc6b0c3e30e9454ed61
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 12:32:07 2025 +0800
+
+    Update mod authors
+
+commit dc5ef28d810bfe843858b4a65845ac423e774337
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 12:26:08 2025 +0800
+
+    Change the CreativeTab language packed
+
+commit 0c22c9335d80c9c366f06dc2879f8a4063d2954a
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 12:18:27 2025 +0800
+
+    Change the CreativeTab language packed
+
+commit be31dbdf53b6f651e6de24df0b0680e8d5407aaf
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 03:41:19 2025 +0800
+
+    First can load version
+
+commit 67a41f709ec2f41c13e24dac28aa278653fc0000
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 02:43:40 2025 +0800
+
+    Create mdb_block
+
+commit 25fe6e65cfd49892145752e8e0e8b1568d933f06
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 02:42:36 2025 +0800
+
+    Create mdb_block
+
+commit 67accf01cbcf01095b9a7c97c42b696fee86ce9a
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 02:28:31 2025 +0800
+
+    Create NeoForge1.21 support
+
+commit 95f10216fa750a8d1369f2be5d9b1476f37d5558
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat May 3 02:26:39 2025 +0800
+
+    Create NeoForge1.21 support
+
+commit 2888226644a1b7a77c35cd1d5f524c95b2536c04
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 04:15:41 2025 +0800
+
+    update pre-8
+
+commit 568c254ed7f07d0213aa13410671014ed7b00854
+Merge: 8ac3222 69a6953
+Author: danhuangsu3677661491 <3677661491@qq.com>
+Date:   Thu May 1 04:06:37 2025 +0800
+
+    Merge pull request #2 from MBI-Team/pre-neoforge
+
+    pre-neoforge
+
+commit 69a6953548fcaa0cb82bcdf8ad452c48806fb8a8
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 03:57:38 2025 +0800
+
+    do it better
+
+commit e4d15455f85c9cf36b52d8c8818ec626a9cbe93f
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 03:17:36 2025 +0800
+
+    add the tooltips and their language packet.
+
+commit 8ac3222c6881388ad0775bc7a6a56df7314562a7
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 02:48:15 2025 +0800
+
+    add the tooltips and their language packet.
+
+commit 27764990dda54e6b0be4162c22961c7886a11d0c
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 02:12:29 2025 +0800
+
+    none
+
+commit 72ad8ebdeee4ac25afbdb9ad5d85c9f354d7db19
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 01:14:30 2025 +0800
+
+    Create fire_book
+
+commit 2843065b8930d370410ca3a37a945d9410d78a3c
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 00:31:51 2025 +0800
+
+    Create fire_book
+
+commit 229f72de1e13c387081503e1aa91dd2641a53cca
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Thu May 1 00:26:44 2025 +0800
+
+    Create fire_book
+
+commit 9dee63307318eb583e7831712e90981a5b695bfb
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun Apr 27 00:51:02 2025 +0800
+
+    Create fire_book
+
+commit b388c58db100c7ca2986ae82f14376b73adbb1df
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun Apr 27 00:42:46 2025 +0800
+
+    Create fire_book
+
+commit 2e6d1124217689c43740516e04b03c06c6ffd199
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun Apr 27 00:42:28 2025 +0800
+
+    Create fire_book
+
+commit ceb11022751c50342affb51f2e6e166365477025
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat Apr 26 23:31:59 2025 +0800
+
+    Create water_book
+
+commit b335a1137f3a42de9a6a1f04997fa8d2ec8c36dc
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat Apr 26 23:21:08 2025 +0800
+
+    Create water_book
+
+commit 3ae39996bb8cddb8707861bfbc0788bbab042512
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat Apr 26 23:15:05 2025 +0800
+
+    Create water_book
+
+commit 7cbbbe759c136826b828b569a147e4c982ef7b31
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat Apr 26 23:14:00 2025 +0800
+
+    Create water_book
+
+commit 58781d4be090f2fb111492be0a13ef7c07a6643f
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat Apr 26 23:12:33 2025 +0800
+
+    Create water_book
+
+commit c0c497560c2395c23f42ae75ba1030f129fe74f8
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sat Apr 26 22:10:35 2025 +0800
+
+    Update mbd_block's texture
+
+commit 70fdda907b115ca5bc5a12c6a0f4af1d50fa4312
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Wed Apr 23 07:52:29 2025 +0800
+
+    Add MDB_Block's model and texture
+
+commit ab025ca1614f9f7e6d23d8dc1dab76ebf34a3b0e
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:55:09 2025 +0800
+
+    Add MDB_Block's model and texture
+
+commit 97b45ae041999d2e2742aa72491763f5dfa9c7cc
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:54:18 2025 +0800
+
+    Add MDB_Block's model and texture
+
+commit 916567673f46bcc348d3600b6572d6e7760fa509
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:43:19 2025 +0800
+
+    Add MDB_Block's model and texture
+
+commit 41a6d7f4685bb6d4b30e35ef406e2789c625ea5d
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:35:27 2025 +0800
+
+    Add MDB_Block's model and texture
+
+commit f2f756b2225601b945423403bbded3fd4c3fe4b5
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:26:03 2025 +0800
+
+    Add MDB_Block's model and texture
+
+commit 87d76f2a9f0be998833a6eb27a031bf5e1df8481
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:10:34 2025 +0800
+
+    Add MDB_Block
+
+commit ccc25b33502043466ed55f4b4006a5641da98700
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 22:00:22 2025 +0800
+
+    Add MDB_Block
+
+commit 0cc2591ba2db93e7726e9c0c1fe4cbb8733683bf
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 21:54:01 2025 +0800
+
+    Add MDB_Block
+
+commit 8ec8eca6bb40fdf7061147b3a09e0403e13740dd
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 21:42:57 2025 +0800
+
+    Add MDB_Block
+
+commit 6fd742482c1714f01544b7b1fb7ac06a7d3c97ef
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 21:42:19 2025 +0800
+
+    Update the mod's information
+
+commit e461dcdcb85abfc2c6fa500aff9ea44c5ba494a0
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 21:34:26 2025 +0800
+
+    Update the mod's information
+
+commit 7ce045816ea6688fb119f3ace1e85463e0de97c9
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 20:43:51 2025 +0800
+
+    Update the mod's information
+
+commit f9c2f43be3e3e33c57557949f86647ba4ce427e9
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 20:07:08 2025 +0800
+
+    Change the mod informations
+    更改模组信息
+
+commit a5d2c608b577582abef98560fdd53fccfe9c0b3a
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 20:00:41 2025 +0800
+
+    Change the mod informations
+    更改模组信息
+
+commit b14e978fb801914b58bf5280e9090684bfc600bd
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 19:51:55 2025 +0800
+
+    Change the mod informations
+    更改模组信息
+
+commit c0fabdea4b0fa008d71319f6009a145dd02b6793
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Tue Apr 22 12:27:41 2025 +0800
+
+    更改gradle.properties
+
+commit 65d9651eb1ffaeeabc8ff7b308015112864c11d8
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon Apr 21 22:16:59 2025 +0800
+
+    修改导致崩溃的项目，发布了pre1版本
+
+commit 0be4a8a5accf66eae9e7886e3acdf13dbede411a
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon Apr 21 20:49:55 2025 +0800
+
+    删除.mixins.json
+
+commit b2ca47ebac814a4c422074b2d338242f51bbf679
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon Apr 21 20:02:26 2025 +0800
+
+    修改.mixins.json
+
+commit 1c1199be3c2dbdb6b874e1a0979db7582fa8b361
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Mon Apr 21 19:10:42 2025 +0800
+
+    修改.mixins.json
+
+commit 98a98af36a9b735712120eef41d5c4d11565ec35
+Author: danhuangsu3677661491 <3677661491@qq.com>
+Date:   Sun Apr 20 21:48:05 2025 +0800
+
+    Create gradle-publish.yml
+
+commit ea633c44a7ac6781c4d7d0435b7ca78789542a0c
+Author: 蛋黄酥danhuangsu <3677661491@qq.com>
+Date:   Sun Apr 20 14:54:59 2025 +0800
+
+    first
+(END)
