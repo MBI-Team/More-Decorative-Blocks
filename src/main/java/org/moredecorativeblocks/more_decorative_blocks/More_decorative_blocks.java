@@ -55,7 +55,7 @@ public class More_decorative_blocks {
 
     public static void startOutput() {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("              Copyright More Blocks and Items Team                  ");
+        LOGGER.info("                Copyright More Blocks and Items Team                ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("    ...     ..      ..            ....               ...     ..     ");
         LOGGER.info("  x*8888x.:*8888: -“888:      .xH888888Hx.        .=*8888x <”?88h.  ");
@@ -77,7 +77,7 @@ public class More_decorative_blocks {
             LOGGER.info("You are use stable release,don't worried.                       ");
         }
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("                          Thank you                                 ");
+        LOGGER.info("                             Thankyou                               ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
     }
 
