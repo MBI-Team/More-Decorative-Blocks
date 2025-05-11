@@ -1,9 +1,7 @@
 package org.moredecorativeblocks.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -55,23 +53,27 @@ public class More_decorative_blocks {
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
 
+    private static void startOutput() {
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9 |     More Blocks and Item Team     | §r");
+        LOGGER.info("§9 |§b█▀▀▀█▀▀▀█  █▀▀▀▀▀▀▀▄  █▀▀▀▀▀▀▀▄§9|");
+        LOGGER.info("§9 |§b█   █   █  █       █  █▄▄▄▄▄▄▄█§9|");
+        LOGGER.info("§9 |§b█   █   █  █       █  █       █§9|");
+        LOGGER.info("§9 |§b█   █   █  █▄▄▄▄▄▄▄▀  █▄▄▄▄▄▄▄▀§9|");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        LOGGER.info("§9 |§r version:" + mod_version + "§9|");
+        LOGGER.info("§9 |§r modid:" + MODID + "§9|");
+        LOGGER.info("§9▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰§r");
+        if (mod_version.contains("pre")) {
+            LOGGER.warn("Be careful,you are use pre-release,it's not stable.");
+        } else {
+            LOGGER.info("You are use stable release,don't worried.");
+        }
+    }
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        LOGGER.info("§9___________________________________________§r");
-        LOGGER.info("§9         More Blocks and Item Team         §r");
-        LOGGER.info("§9|===========|  |===========|  |===========|§r");
-        LOGGER.info("§9| |  ||   | |  ||         ||  ||         ||§r");
-        LOGGER.info("§9| |  ||   | |  ||         ||  |===========|§r");
-        LOGGER.info("§9| |  ||   | |  ||         ||  ||         //§r");
-        LOGGER.info("§9| |  ||   | |  ||_________||  ||________|| §r");
-        LOGGER.info("§9|_|  ||   |_|  |__________/   |__________/ §r");
-        LOGGER.info("§9-------§rversion" + mod_version + "§9--------------§r");
-
-        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        startOutput();
     }
 
     // Add the example block item to the building blocks tab
@@ -79,19 +81,11 @@ public class More_decorative_blocks {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(MDB_BLOCK_ITEM);
     }
 
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("§9___________________________________________§r");
-        LOGGER.info("§9         More Blocks and Item Team         §r");
-        LOGGER.info("§9|===========|  |===========|  |===========|§r");
-        LOGGER.info("§9| |  ||   | |  ||         ||  ||         ||§r");
-        LOGGER.info("§9| |  ||   | |  ||         ||  |===========|§r");
-        LOGGER.info("§9| |  ||   | |  ||         ||  ||         //§r");
-        LOGGER.info("§9| |  ||   | |  ||_________||  ||________|| §r");
-        LOGGER.info("§9|_|  ||   |_|  |__________/   |__________/ §r");
-        LOGGER.info("§9-------§rversion" + mod_version + "§9--------------§r");
+        startOutput();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -99,16 +93,7 @@ public class More_decorative_blocks {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("§9___________________________________________§r");
-            LOGGER.info("§9         More Blocks and Item Team         §r");
-            LOGGER.info("§9|===========|  |===========|  |===========|§r");
-            LOGGER.info("§9| |  ||   | |  ||         ||  ||         ||§r");
-            LOGGER.info("§9| |  ||   | |  ||         ||  |===========|§r");
-            LOGGER.info("§9| |  ||   | |  ||         ||  ||         //§r");
-            LOGGER.info("§9| |  ||   | |  ||_________||  ||________|| §r");
-            LOGGER.info("§9|_|  ||   |_|  |__________/   |__________/ §r");
-            LOGGER.info("§9-------§rversion" + mod_version + "§9--------------§r");
+            startOutput();
         }
     }
 }

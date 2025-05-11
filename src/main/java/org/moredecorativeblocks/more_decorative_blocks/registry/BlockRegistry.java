@@ -39,4 +39,5 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
+
 }
