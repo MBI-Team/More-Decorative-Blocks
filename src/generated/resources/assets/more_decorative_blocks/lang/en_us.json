@@ -7,6 +7,6 @@
   "block.more_decorative_blocks.fire_book":  "Fire Book",
   "line3": "----------------------------Tooltip---------------------------------------",
   "tooltip.more_decorative_blocks.mdb_block.tooltip": "The emblem block of the mod",
-  "tooltip.more_decorative_blocks.water_book.tooltip":  "§9Use water to make it§r",
-  "tooltip.more_decorative_blocks.fire_book.tooltip":  "§6Use lava to make it§r"
+  "tooltip.more_decorative_blocks.water_book.tooltip": "§9Make with water§r",
+  "tooltip.more_decorative_blocks.fire_book.tooltip": "§6Make with lava§r"
 }
