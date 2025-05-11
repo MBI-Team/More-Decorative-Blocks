@@ -1,34 +1,23 @@
 package org.moredecorativeblocks.more_decorative_blocks.block;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
-public class water_book extends Block{
-    public static final DirectionProperty FACING =
-            DirectionProperty.create("facing",
-                    Direction.Plane.HORIZONTAL);
-
-    public water_book() {
-        super(BlockBehaviour.Properties.of()
-                // 发光等级
-                .mapColor(MapColor.STONE)
-                .lightLevel(state -> 8)
-                .strength(1.0f,0.5f)  // 硬度参数（可选）
-                .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
-        );
+public class BlockFacing extends Block {
+    public BlockFacing(Properties prop) {
+        super(prop);
         this.registerDefaultState(
                 this.stateDefinition.any().setValue(FACING,
                         Direction.NORTH));
     }
 
+    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 
     @Override
