@@ -1,14 +1,14 @@
 modLoader = "javafml"
-loaderVersion = "${loader_version_range}"
-license = "${mod_license}"
+loaderVersion = "[4,)"
+license = "MIT"
 [[mods]]
 modId = "more_decorative_blocks"
-version = "${mod_version}"
+version = "1.0-neoforge-pre-3"
 displayName = "More_Decorative_Blocks"
-displayURL = "https://github.com/danhuangsu3677661491/More-Decorative-Blocks"
+displayURL = "https://github.com/MBI-Team/More-Decorative-Blocks"
 logoFile= "more_decorative_blocks.png"
 credits = "MBI-Team"
-authors = "danhuangsu, Kush_Shul, Catchin' Z's, z.h"
+authors = "danhuangsu, Kush_Shul, Catchin' Z's, z.h, Voyagerstar, huangyihao"
 description = '''More Decorative Blocks is a Minecraft mod that to add more decorative blocks in the Minecraft.
 You can use more blocks of it to build better building.
 We hope they can help you to build the building.'''
