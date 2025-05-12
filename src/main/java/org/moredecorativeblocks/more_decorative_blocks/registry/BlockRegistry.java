@@ -19,7 +19,6 @@ public class BlockRegistry {
             .sound(SoundType.NETHERITE_BLOCK) // 新型金属声效
             .lightLevel(state -> 8)
             .strength(2.5f,10.0f)  // 硬度参数（可选）
-            .destroyTime(1.5f)
             .requiresCorrectToolForDrops()  // 需要正确工具采集（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .isRedstoneConductor((state, level, pos) -> true)
@@ -36,6 +35,13 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .lightLevel(state -> 8)
             .strength(1.0f,0.5f)  // 硬度参数（可选）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+    ));
+
+    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new BlockFacing(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .lightLevel(state -> 1)
+            .strength(2.0f, 8f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
