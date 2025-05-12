@@ -19,5 +19,6 @@ public class CreativeModeTabRegistry {
         output.accept(MDB_BLOCK_ITEM.get());
         output.accept(WATER_BOOK_ITEM.get());
         output.accept(FIRE_BOOK_ITEM.get());
+        output.accept(SEAT_STONE_ITEM.get());
     }).build());
 }
