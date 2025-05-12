@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "decoration",
+  "group": "fire_book",
   "key": {
     "#": {
       "item": "minecraft:book"
