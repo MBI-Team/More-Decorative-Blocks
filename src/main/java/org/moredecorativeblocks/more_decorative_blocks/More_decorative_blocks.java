@@ -31,7 +31,6 @@ public class More_decorative_blocks {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final String mod_version = "1.0-neoforge-pre-2";
-
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {

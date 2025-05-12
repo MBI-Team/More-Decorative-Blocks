@@ -4,18 +4,15 @@
   "key": {
     "#": {
       "item": "minecraft:stone"
-    },
-    "*": {
-      "item": "minecraft:black_dye"
     }
   },
   "pattern": [
     "###",
-    "#*#",
+    "###",
     "###"
   ],
   "result": {
     "count": 1,
-    "id": "more_decorative_blocks:mdb_block"
+    "id": "more_decorative_blocks:seat_stone"
   }
 }

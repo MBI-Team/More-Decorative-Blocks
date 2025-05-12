@@ -1,11 +1,26 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    { "item": "minecraft:water_bucket" },
-    { "item": "minecraft:book" }
+  "type": "minecraft:crafting_shaped",
+  "category": "decoration",
+  "key": {
+    "#": {
+      "item": "minecraft:book"
+    },
+    "X": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
   ],
   "result": {
-    "item": "more_decorative_blocks:water_book",
-    "count": 1
-  }
+    "count": 8,
+    "id": "more_decorative_blocks:water_book"
+  },
+  "leftovers": [
+    {
+      "item": "minecraft:bucket"
+    }
+  ]
 }
