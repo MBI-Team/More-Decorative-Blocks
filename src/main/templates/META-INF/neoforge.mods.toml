@@ -3,7 +3,7 @@ loaderVersion = "[4,)"
 license = "MIT"
 [[mods]]
 modId = "more_decorative_blocks"
-version = "1.0-neoforge-pre-3"
+version = "1.0.0"
 displayName = "More_Decorative_Blocks"
 displayURL = "https://github.com/MBI-Team/More-Decorative-Blocks"
 logoFile= "more_decorative_blocks.png"
