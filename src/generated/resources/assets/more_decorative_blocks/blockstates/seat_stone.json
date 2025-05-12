@@ -1,21 +1,5 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "more_decorative_blocks:block/seat_stone/seat_stone_e",
-      "y": 270
-    },
-    "facing=south": {
-      "model": "more_decorative_blocks:block/seat_stone/seat_stone_e",
-      "y": 90
-    },
-    "facing=east": {
-      "model": "more_decorative_blocks:block/seat_stone/seat_stone_e",
-      "y": 0
-    },
-    "facing=west": {
-      "model": "more_decorative_blocks:block/seat_stone/seat_stone_e",
-      "y": 180
-    },
     "facing=up": {
       "model": "more_decorative_blocks:block/seat_stone/seat_stone_u",
       "y": 0
@@ -23,6 +7,22 @@
     "facing=down": {
       "model": "more_decorative_blocks:block/seat_stone/seat_stone",
       "y": 0
+    },
+    "facing=north": {
+      "model": "more_decorative_blocks:block/seat_stone/seat_stone_w",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "more_decorative_blocks:block/seat_stone/seat_stone_w",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "more_decorative_blocks:block/seat_stone/seat_stone_w",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "more_decorative_blocks:block/seat_stone/seat_stone_w",
+      "y": 90
     }
   }
 }
