@@ -2,19 +2,27 @@
   "variants": {
     "facing=north": {
       "model": "more_decorative_blocks:block/seat_stone",
-      "y": 180
+      "z": -90
     },
     "facing=south": {
       "model": "more_decorative_blocks:block/seat_stone",
-      "y": 0
+      "z": 90
     },
     "facing=east": {
       "model": "more_decorative_blocks:block/seat_stone",
-      "y": 270
+      "x": 90
     },
     "facing=west": {
       "model": "more_decorative_blocks:block/seat_stone",
-      "y": 90
+      "x": -90
+    },
+    "facing=up": {
+      "model": "more_decorative_blocks:block/seat_stone",
+      "x": 0
+    },
+    "facing=down": {
+      "model": "more_decorative_blocks:block/seat_stone",
+      "x": 180
     }
   }
 }
