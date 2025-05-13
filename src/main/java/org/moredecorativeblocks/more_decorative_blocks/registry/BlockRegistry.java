@@ -51,7 +51,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.COPPER)
             .lightLevel(state -> 10)
-            .strength(1.0f, 0.5f)  // 硬度参数（可选）
+            .strength(0.1f, 0.1f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
