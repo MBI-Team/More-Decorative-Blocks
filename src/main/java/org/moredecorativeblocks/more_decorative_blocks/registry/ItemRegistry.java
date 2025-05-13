@@ -19,4 +19,6 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> SEAT_STONE_ITEM = ITEMS.registerSimpleBlockItem("seat_stone", SEAT_STONE);
 
+    public static final DeferredItem<BlockItem> TABLET_ITEM = ITEMS.registerSimpleBlockItem("tablet", TABLET);
+
 }

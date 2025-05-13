@@ -13,6 +13,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabRegistry;
@@ -30,7 +31,7 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final String mod_version = "1.0-neoforge-pre-2";
+    public static final String mod_version = "1.0.0-neoforge-pre-3";
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {
@@ -78,6 +79,10 @@ public class More_decorative_blocks {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+    }
+
+    @SubscribeEvent
+    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

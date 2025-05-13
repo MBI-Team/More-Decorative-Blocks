@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "more_decorative_blocks:block/tablet",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "more_decorative_blocks:block/tablet",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "more_decorative_blocks:block/tablet",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "more_decorative_blocks:block/tablet",
+      "y": 90
+    }
+  }
+}

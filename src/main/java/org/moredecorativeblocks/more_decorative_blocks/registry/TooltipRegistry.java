@@ -17,6 +17,8 @@ public class TooltipRegistry {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
         } else if (event.getItemStack().getItem() == ItemRegistry.MDB_BLOCK_ITEM.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.seat_stone.tooltip"));
+        } else if (event.getItemStack().getItem() == ItemRegistry.TABLET_ITEM.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.tablet.tooltip"));
         }
     }
 }

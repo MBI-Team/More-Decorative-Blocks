@@ -6,9 +6,11 @@
   "block.more_decorative_blocks.water_book": "水之书",
   "block.more_decorative_blocks.fire_book": "火之书",
   "block.more_decorative_blocks.seat_stone": "石墩子",
+  "block.more_decorative_blocks.tablet": "平板电脑",
   "line3": "----------------------------工具标签---------------------------------------",
   "tooltip.more_decorative_blocks.mdb_block.tooltip": "模组的标志方块",
   "tooltip.more_decorative_blocks.water_book.tooltip": "§9水做的书§r",
   "tooltip.more_decorative_blocks.fire_book.tooltip": "§6岩浆做的书§r",
-  "tooltip.more_decorative_blocks.seat_stone.tooltip": "你可以挡住门"
+  "tooltip.more_decorative_blocks.seat_stone.tooltip": "你可以挡住门",
+  "tooltip.more_decorative_blocks.tablet.tooltip": "它是个平板电脑"
 }
