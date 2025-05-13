@@ -1,17 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "category": "redstone",
   "key": {
     "#": {
       "item": "minecraft:glass"
     },
     "X": {
-      "item": "minecraft:iron"
+      "item": "minecraft:iron_ingot"
+    },
+    "*": {
+      "item": "minecraft:redstone"
     }
   },
   "pattern": [
     "###",
-    "XXX",
+    "X*X",
     "XXX"
   ],
   "result": {
