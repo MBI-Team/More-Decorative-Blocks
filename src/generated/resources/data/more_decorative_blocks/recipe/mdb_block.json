@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "minecraft:stone"
+      "item": "minecraft:quartz"
     },
     "*": {
       "item": "minecraft:black_dye"
