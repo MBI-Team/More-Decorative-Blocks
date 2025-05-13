@@ -2,19 +2,19 @@
   "variants": {
     "facing=north": {
       "model": "more_decorative_blocks:block/tablet",
-      "y": 180
+      "y": 90
     },
     "facing=south": {
       "model": "more_decorative_blocks:block/tablet",
-      "y": 0
+      "y": 270
     },
     "facing=east": {
       "model": "more_decorative_blocks:block/tablet",
-      "y": 270
+      "y": 180
     },
     "facing=west": {
       "model": "more_decorative_blocks:block/tablet",
-      "y": 90
+      "y": 0
     }
   }
 }
