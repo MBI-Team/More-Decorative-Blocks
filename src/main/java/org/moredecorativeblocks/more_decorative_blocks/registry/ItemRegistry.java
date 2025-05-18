@@ -21,4 +21,5 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> TABLET_ITEM = ITEMS.registerSimpleBlockItem("tablet", TABLET);
 
+    public static final DeferredItem<BlockItem> AC_ITEM = ITEMS.registerSimpleBlockItem("air_conditioner", AC);
 }

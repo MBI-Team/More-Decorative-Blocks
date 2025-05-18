@@ -55,5 +55,11 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-
+    public static final DeferredBlock<Block> AC = BLOCKS.register("air_conditioner", () -> new BasicBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.COPPER)
+            .lightLevel(state -> 7)
+            .strength(1f, 1f)  // 硬度参数（可选）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+    ));
 }

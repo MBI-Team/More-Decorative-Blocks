@@ -7,10 +7,12 @@
   "block.more_decorative_blocks.fire_book":  "Fire Book",
   "block.more_decorative_blocks.seat_stone": "Seat Stone",
   "block.more_decorative_blocks.tablet": "Tablet",
+  "block.more_decorative_blocks.ac": "Air-Conditioner",
   "line3": "----------------------------Tooltip---------------------------------------",
   "tooltip.more_decorative_blocks.mdb_block.tooltip": "The emblem block of the mod",
   "tooltip.more_decorative_blocks.water_book.tooltip": "§9Make with water§r",
   "tooltip.more_decorative_blocks.fire_book.tooltip": "§6Make with lava§r",
   "tooltip.more_decorative_blocks.seat_stone.tooltip": "You can block the door",
-  "tooltip.more_decorative_blocks.tablet.tooltip": "It's a tablet"
+  "tooltip.more_decorative_blocks.tablet.tooltip": "It's a tablet",
+  "tooltip.more_decorative_blocks.ac.tooltip": "It can make air cold"
 }

@@ -21,5 +21,6 @@ public class CreativeModeTabRegistry {
         output.accept(FIRE_BOOK_ITEM.get());
         output.accept(SEAT_STONE_ITEM.get());
         output.accept(TABLET_ITEM.get());
+        output.accept(AC_ITEM.get());
     }).build());
 }
