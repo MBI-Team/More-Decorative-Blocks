@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "X": {
+      "item": "minecraft:cobblestone"
+    },
+    "*": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "X*#",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "more_decorative_blocks:air_conditioner"
+  }
+}
