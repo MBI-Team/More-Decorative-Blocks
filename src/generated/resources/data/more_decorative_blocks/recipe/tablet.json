@@ -10,11 +10,14 @@
     },
     "*": {
       "item": "minecraft:redstone"
+    },
+    "A": {
+      "item": "minecraft:copper_ingot"
     }
   },
   "pattern": [
     "###",
-    "X*X",
+    "A*A",
     "XXX"
   ],
   "result": {
