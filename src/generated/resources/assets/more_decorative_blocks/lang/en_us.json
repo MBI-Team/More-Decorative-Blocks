@@ -1,6 +1,8 @@
 {
-  "line1": "-----------------------------Mod name-------------------------------------",
-  "itemGroup.more_decorative_blocks":  "More Decorative Blocks",
+  "line1": "-----------------------------Item Group-------------------------------------",
+  "itemGroup.more_decorative_blocks_building": "More Decorative Blocks Building",
+  "itemGroup.more_decorative_blocks_decorative": "More Decorative Blocks Decorative",
+  "itemGroup.more_decorative_blocks_redstone": "More Decorative Blocks Redstone",
   "line2": "------------------------------Block---------------------------------------",
   "block.more_decorative_blocks.mdb_block":  "[More Decorative Blocks] Emblem Block",
   "block.more_decorative_blocks.water_book":  "Water Book",

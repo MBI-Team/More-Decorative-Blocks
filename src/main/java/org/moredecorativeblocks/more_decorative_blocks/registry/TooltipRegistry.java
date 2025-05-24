@@ -20,7 +20,7 @@ public class TooltipRegistry {
         } else if (event.getItemStack().getItem() == ItemRegistry.TABLET_ITEM.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.tablet.tooltip"));
         } else if (event.getItemStack().getItem() == ItemRegistry.AC_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.ac.tooltip"));
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.air_conditioner.tooltip"));
         }
     }
 }

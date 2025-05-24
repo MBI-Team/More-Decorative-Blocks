@@ -1,7 +1,6 @@
 package org.moredecorativeblocks.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,8 +19,6 @@ import org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabR
 import org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.TooltipRegistry;
 import org.slf4j.Logger;
-
-import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.MDB_BLOCK_ITEM;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(org.moredecorativeblocks.more_decorative_blocks.More_decorative_blocks.MODID)
@@ -48,7 +45,7 @@ public class More_decorative_blocks {
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         ItemRegistry.ITEMS.register(modEventBus);
-        BlockRegistry.BLOCKS.register(modEventBus);
+        BlockRegistry.BLOCKS.register(modEventBus); 
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
@@ -92,7 +89,6 @@ public class More_decorative_blocks {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(MDB_BLOCK_ITEM);
     }
 
 
@@ -110,4 +106,5 @@ public class More_decorative_blocks {
             startOutput();
         }
     }
+
 }
