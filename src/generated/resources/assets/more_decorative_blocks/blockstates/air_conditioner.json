@@ -1,19 +1,35 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,powered=false": {
       "model": "more_decorative_blocks:block/air_conditioner/air_conditioner",
       "y": 90
     },
-    "facing=south": {
+    "facing=south,powered=false": {
       "model": "more_decorative_blocks:block/air_conditioner/air_conditioner",
       "y": 270
     },
-    "facing=east": {
+    "facing=east,powered=false": {
       "model": "more_decorative_blocks:block/air_conditioner/air_conditioner",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,powered=false": {
       "model": "more_decorative_blocks:block/air_conditioner/air_conditioner",
+      "y": 0
+    },
+    "facing=north,powered=true": {
+      "model": "more_decorative_blocks:block/air_conditioner/air_conditioner_open",
+      "y": 90
+    },
+    "facing=south,powered=true": {
+      "model": "more_decorative_blocks:block/air_conditioner/air_conditioner_open",
+      "y": 270
+    },
+    "facing=east,powered=true": {
+      "model": "more_decorative_blocks:block/air_conditioner/air_conditioner_open",
+      "y": 180
+    },
+    "facing=west,powered=true": {
+      "model": "more_decorative_blocks:block/air_conditioner/air_conditioner_open",
       "y": 0
     }
   }

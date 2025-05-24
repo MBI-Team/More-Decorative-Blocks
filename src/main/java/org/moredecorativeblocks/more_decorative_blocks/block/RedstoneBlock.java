@@ -1,24 +1,31 @@
 package org.moredecorativeblocks.more_decorative_blocks.block;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
-public class BasicBlock extends Block {
-    public BasicBlock(Properties prop) {
+public class RedstoneBlock extends Block {
+    public static final BooleanProperty POWERED = BooleanProperty.create("powered");
+    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
+
+    public RedstoneBlock(Properties prop) {
         super(prop);
         this.registerDefaultState(
                 this.stateDefinition.any().setValue(FACING,
                         Direction.NORTH));
+        this.registerDefaultState(
+                this.stateDefinition.any().setValue(POWERED,
+                        false));
+
     }
-
-    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
-
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -28,6 +35,7 @@ public class BasicBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(POWERED);
     }
 
     @Override
@@ -41,4 +49,11 @@ public class BasicBlock extends Block {
     }
 
 
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean isMoving) {
+        boolean hasSignal = level.hasNeighborSignal(pos);
+        if (hasSignal != state.getValue(POWERED)) {
+            level.setBlock(pos, state.setValue(POWERED, hasSignal), Block.UPDATE_ALL);
+        }
+    }
 }
