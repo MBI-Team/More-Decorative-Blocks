@@ -6,7 +6,7 @@
       "item": "minecraft:glass"
     },
     "X": {
-      "item": "minecraft:cobblestone"
+      "item": "minecraft:quartz"
     },
     "*": {
       "item": "minecraft:redstone"
