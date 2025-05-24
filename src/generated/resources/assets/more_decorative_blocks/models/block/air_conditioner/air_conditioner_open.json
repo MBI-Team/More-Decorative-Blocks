@@ -5,12 +5,12 @@
 		64
 	],
 	"textures": {
-		"0": "more_decorative_blocks:block/air_conditioner/air_conditioner_screen",
+		"0": "more_decorative_blocks:block/air_conditioner/air_conditioner_screen_on",
 		"1": "more_decorative_blocks:block/air_conditioner/air_conditioner_base",
 		"2": "more_decorative_blocks:block/air_conditioner/air_conditioner_windout",
 		"3": "more_decorative_blocks:block/air_conditioner/air_conditioner_aircold",
 		"4": "more_decorative_blocks:block/air_conditioner/air_conditioner_airin",
-		"particle": "more_decorative_blocks:block/air_conditioner/air_conditioner_screen"
+		"particle": "more_decorative_blocks:block/air_conditioner/air_conditioner_screen_on"
 	},
 	"elements": [
 		{
