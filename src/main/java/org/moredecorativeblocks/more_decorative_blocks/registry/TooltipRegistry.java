@@ -21,6 +21,14 @@ public class TooltipRegistry {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.tablet.tooltip"));
         } else if (event.getItemStack().getItem() == ItemRegistry.AC_ITEM.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.air_conditioner.tooltip"));
+        } else if (event.getItemStack().getItem() == ItemRegistry.IRON_CUPBOARD_ITEM.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.iron_cupboard.tooltip"));
+        } else if (event.getItemStack().getItem() == ItemRegistry.WOOD_CUPBOARD_ITEM.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.wood_cupboard.tooltip"));
+        } else if (event.getItemStack().getItem() == ItemRegistry.GLASS_CUP_ITEM.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.glass_cup.tooltip"));
+        } else if (event.getItemStack().getItem() == ItemRegistry.CLOSESTOOL_ITEM.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.stool.tooltip"));
         }
     }
 }

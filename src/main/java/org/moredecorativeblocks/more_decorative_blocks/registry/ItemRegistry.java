@@ -22,4 +22,12 @@ public class ItemRegistry {
     public static final DeferredItem<BlockItem> TABLET_ITEM = ITEMS.registerSimpleBlockItem("tablet", TABLET);
 
     public static final DeferredItem<BlockItem> AC_ITEM = ITEMS.registerSimpleBlockItem("air_conditioner", AC);
+
+    public static final DeferredItem<BlockItem> IRON_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("iron_cupboard", IRON_CUPBOARD);
+
+    public static final DeferredItem<BlockItem> WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("wood_cupboard", WOOD_CUPBOARD);
+
+    public static final DeferredItem<BlockItem> GLASS_CUP_ITEM = ITEMS.registerSimpleBlockItem("glass_cup", GLASS_CUP);
+
+    public static final DeferredItem<BlockItem> CLOSESTOOL_ITEM = ITEMS.registerSimpleBlockItem("closestool", CLOSESTOOL);
 }

@@ -10,11 +10,19 @@
   "block.more_decorative_blocks.seat_stone": "石墩子",
   "block.more_decorative_blocks.tablet": "平板电脑",
   "block.more_decorative_blocks.air_conditioner": "空调",
+  "block.more_decorative_blocks.iron_cupboard": "铁橱柜",
+  "block.more_decorative_blocks.wood_cupboard": "木橱柜",
+  "block.more_decorative_blocks.glass_cup": "玻璃杯",
+  "block.more_decorative_blocks.stool": "马桶",
   "line3": "----------------------------工具标签---------------------------------------",
   "tooltip.more_decorative_blocks.mdb_block.tooltip": "模组的标志方块",
   "tooltip.more_decorative_blocks.water_book.tooltip": "§9水做的书§r",
   "tooltip.more_decorative_blocks.fire_book.tooltip": "§6岩浆做的书§r",
   "tooltip.more_decorative_blocks.seat_stone.tooltip": "你可以挡住门",
   "tooltip.more_decorative_blocks.tablet.tooltip": "它是个平板电脑",
-  "tooltip.more_decorative_blocks.air_conditioner.tooltip": "它可以制冷"
+  "tooltip.more_decorative_blocks.air_conditioner.tooltip": "它可以制冷",
+  "tooltip.more_decorative_blocks.iron_cupboard.tooltip": "用铁做的橱柜",
+  "tooltip.more_decorative_blocks.wood_cupboard.tooltip": "用木头做的橱柜",
+  "tooltip.more_decorative_blocks.glass_cup.tooltip": "一个玻璃瓶，你可以把它放在方块上",
+  "tooltip.more_decorative_blocks.stool.tooltip": "你想上厕所吗？"
 }

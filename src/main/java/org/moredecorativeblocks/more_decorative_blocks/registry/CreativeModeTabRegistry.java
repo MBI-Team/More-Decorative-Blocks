@@ -23,10 +23,15 @@ public class CreativeModeTabRegistry {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_DECORATIVE_TAB = CREATIVE_MODE_TABS.register("mdb_decorative_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_decorative")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> WATER_BOOK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(WATER_BOOK_ITEM.get());
         output.accept(FIRE_BOOK_ITEM.get());
+        output.accept(GLASS_CUP_ITEM.get());
+        output.accept(IRON_CUPBOARD_ITEM.get());
+        output.accept(WOOD_CUPBOARD_ITEM.get());
+        output.accept(TABLET_ITEM.get());
     }).build());
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_REDSTONE_TAB = CREATIVE_MODE_TABS.register("mdb_redstone_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_redstone")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> TABLET_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(TABLET_ITEM.get());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_REDSTONE_TAB = CREATIVE_MODE_TABS.register("mdb_redstone_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_redstone")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> AC_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
+
         output.accept(AC_ITEM.get());
+        output.accept(CLOSESTOOL_ITEM.get());
     }).build());
 }
