@@ -1,19 +1,19 @@
 {
   "variants": {
     "facing=north,powered=false": {
-      "model": "more_decorative_blocks:block/closestool/stool",
+      "model": "more_decorative_blocks:block/closestool/closestool",
       "y": 90
     },
     "facing=south,powered=false": {
-      "model": "more_decorative_blocks:block/closestool/stool",
+      "model": "more_decorative_blocks:block/closestool/closestool",
       "y": 270
     },
     "facing=east,powered=false": {
-      "model": "more_decorative_blocks:block/closestool/stool",
+      "model": "more_decorative_blocks:block/closestool/closestool",
       "y": 180
     },
     "facing=west,powered=false": {
-      "model": "more_decorative_blocks:block/closestool/stool",
+      "model": "more_decorative_blocks:block/closestool/closestool",
       "y": 0
     },
     "facing=north,powered=true": {

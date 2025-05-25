@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.moredecorativeblocks.more_decorative_blocks.block.BasicBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.RedstoneBlock;
+import org.moredecorativeblocks.more_decorative_blocks.block.RightClinkBlock;
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -30,6 +31,7 @@ public class BlockRegistry {
             .lightLevel(state -> 8)
             .strength(1.0f,0.5f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .dynamicShape()
     ));
 
     public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new BasicBlock(BlockBehaviour.Properties.of()
@@ -38,6 +40,7 @@ public class BlockRegistry {
             .lightLevel(state -> 8)
             .strength(1.0f,0.5f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .dynamicShape()
     ));
 
     public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new BasicBlock(BlockBehaviour.Properties.of()
@@ -48,12 +51,13 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> TABLET = BLOCKS.register("tablet", () -> new RedstoneBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> TABLET = BLOCKS.register("tablet", () -> new RightClinkBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.METAL)
             .lightLevel(state -> 10)
             .strength(0.1f, 0.1f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .dynamicShape()
     ));
 
     public static final DeferredBlock<Block> AC = BLOCKS.register("air_conditioner", () -> new RedstoneBlock(BlockBehaviour.Properties.of()
@@ -62,6 +66,7 @@ public class BlockRegistry {
             .lightLevel(state -> 7)
             .strength(1f, 1f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .dynamicShape()
     ));
 
     public static final DeferredBlock<Block> IRON_CUPBOARD = BLOCKS.register("iron_cupboard", () -> new BasicBlock(BlockBehaviour.Properties.of()
