@@ -7,6 +7,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.moredecorativeblocks.more_decorative_blocks.block.BasicBlock;
+import org.moredecorativeblocks.more_decorative_blocks.block.RCAndRSBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.RedstoneBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.RightClinkBlock;
 
@@ -93,7 +94,7 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("stool", () -> new RedstoneBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("closestool", () -> new RCAndRSBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)

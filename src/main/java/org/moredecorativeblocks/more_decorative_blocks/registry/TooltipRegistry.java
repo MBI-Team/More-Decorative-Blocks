@@ -28,7 +28,7 @@ public class TooltipRegistry {
         } else if (event.getItemStack().getItem() == ItemRegistry.GLASS_CUP_ITEM.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.glass_cup.tooltip"));
         } else if (event.getItemStack().getItem() == ItemRegistry.CLOSESTOOL_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.stool.tooltip"));
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.closestool.tooltip"));
         }
     }
 }

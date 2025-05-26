@@ -13,7 +13,7 @@
   "block.more_decorative_blocks.iron_cupboard": "Iron Cupboard",
   "block.more_decorative_blocks.wood_cupboard": "Wood Cupboard",
   "block.more_decorative_blocks.glass_cup": "Glass Cup",
-  "block.more_decorative_blocks.stool": "Stool",
+  "block.more_decorative_blocks.closestool": "Close Stool",
   "line3": "----------------------------Tooltip---------------------------------------",
   "tooltip.more_decorative_blocks.mdb_block.tooltip": "The emblem block of the mod",
   "tooltip.more_decorative_blocks.water_book.tooltip": "§9Make with water§r",
@@ -24,5 +24,5 @@
   "tooltip.more_decorative_blocks.iron_cupboard.tooltip": "A cupboard make with iron",
   "tooltip.more_decorative_blocks.wood_cupboard.tooltip": "A cupboard make with wood",
   "tooltip.more_decorative_blocks.glass_cup.tooltip": "It's a glass cup,you can put it on the blocks",
-  "tooltip.more_decorative_blocks.stool.tooltip": "Do you wants to go to the toilet?"
+  "tooltip.more_decorative_blocks.closestool.tooltip": "Do you wants to go to the toilet?"
 }
