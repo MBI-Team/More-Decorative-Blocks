@@ -6,7 +6,7 @@
 	],
 	"textures": {
 		"1": "more_decorative_blocks:block/tablet/tablet_keyboard",
-		"particle": "more_decorative_blocks:item/tablet/tablet"
+		"particle": "more_decorative_blocks:block/tablet/tablet"
 	},
 	"elements": [
 		{
