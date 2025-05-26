@@ -3,8 +3,9 @@ package org.moredecorativeblocks.more_decorative_blocks.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class RightClinkBlock extends Block {
     public static final BooleanProperty OPEN = BooleanProperty.create("open");
@@ -50,8 +52,8 @@ public class RightClinkBlock extends Block {
         return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos,
-                                 Player player, InteractionHand hand, BlockHitResult hit) {
+    @Override
+    protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
         if (!level.isClientSide) {
             if (state.getValue(OPEN)) {
                 BlockState newState = state.setValue(OPEN, false);
@@ -61,8 +63,7 @@ public class RightClinkBlock extends Block {
                 level.setBlock(pos, newState, 1, 2);
             }
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.SUCCESS;
     }
-
 
 }
