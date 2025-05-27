@@ -26,7 +26,7 @@ public class BlockRegistry {
             .isRedstoneConductor((state, level, pos) -> true)
     ));
 
-    public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.register("water_book", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.register("water_book", () -> new RightClinkBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
@@ -35,7 +35,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new RightClinkBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
