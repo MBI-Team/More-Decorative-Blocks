@@ -6,9 +6,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.moredecorativeblocks.more_decorative_blocks.block.AC;
 import org.moredecorativeblocks.more_decorative_blocks.block.BasicBlock;
-import org.moredecorativeblocks.more_decorative_blocks.block.RCAndRSBlock;
-import org.moredecorativeblocks.more_decorative_blocks.block.RedstoneBlock;
+import org.moredecorativeblocks.more_decorative_blocks.block.RightClinkAndRedstoneBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.RightClinkBlock;
 
 
@@ -61,7 +61,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> AC = BLOCKS.register("air_conditioner", () -> new RedstoneBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> AC = BLOCKS.register("air_conditioner", () -> new AC(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.METAL)
             .lightLevel(state -> 7)
@@ -94,7 +94,7 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("closestool", () -> new RCAndRSBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("closestool", () -> new RightClinkAndRedstoneBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)
