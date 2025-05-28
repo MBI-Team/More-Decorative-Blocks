@@ -10,6 +10,9 @@ import org.jetbrains.annotations.NotNull;
 
 import static net.minecraft.core.Direction.*;
 
+/**
+ * Extends from {@link RedstoneBlock} and extends {@link Block}
+ */
 public class AC extends RedstoneBlock {
     public AC(Properties prop) {
         super(prop);

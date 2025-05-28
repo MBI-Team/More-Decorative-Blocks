@@ -67,7 +67,7 @@ public class More_decorative_blocks {
         LOGGER.info(" .8888Xf.888x:!    X888X.:   X88888888hx. ..!    :”^“88888h.    '!  ");
         LOGGER.info(":“”888“:~”888“     `888*”   !   “*888888888”     ^    ”88888hx.+“   ");
         LOGGER.info("    “~'    ”~        ”“            ^“***”`              ^“**”       ");
-        LOGGER.info("version:" + mod_version);
+        LOGGER.info("version:{}", mod_version);
         LOGGER.info("modid:" + MODID);
         if (mod_version.contains("pre")) {
             LOGGER.warn("Be careful,you are use pre-release,it's not stable.             ");
