@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.moredecorativeblocks.more_decorative_blocks.block.basic.RedstoneBlock;
 
 import static net.minecraft.core.Direction.*;
 

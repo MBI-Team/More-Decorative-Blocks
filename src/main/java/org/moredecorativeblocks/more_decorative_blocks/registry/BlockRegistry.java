@@ -7,9 +7,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.moredecorativeblocks.more_decorative_blocks.block.AC;
-import org.moredecorativeblocks.more_decorative_blocks.block.BasicBlock;
-import org.moredecorativeblocks.more_decorative_blocks.block.RightClinkAndRedstoneBlock;
-import org.moredecorativeblocks.more_decorative_blocks.block.RightClinkBlock;
+import org.moredecorativeblocks.more_decorative_blocks.block.basic.NormalBlock;
+import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
+import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkBlock;
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -17,7 +17,7 @@ public class BlockRegistry {
     public static final String MODID = "more_decorative_blocks";
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
-    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 8)
@@ -44,7 +44,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)
@@ -70,7 +70,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> IRON_CUPBOARD = BLOCKS.register("iron_cupboard", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> IRON_CUPBOARD = BLOCKS.register("iron_cupboard", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.METAL)
             .lightLevel(state -> 1)
@@ -78,7 +78,7 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> WOOD_CUPBOARD = BLOCKS.register("wood_cupboard", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> WOOD_CUPBOARD = BLOCKS.register("wood_cupboard", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 1)
@@ -86,7 +86,7 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> GLASS_CUP = BLOCKS.register("glass_cup", () -> new BasicBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> GLASS_CUP = BLOCKS.register("glass_cup", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.GLASS)
             .lightLevel(state -> 1)

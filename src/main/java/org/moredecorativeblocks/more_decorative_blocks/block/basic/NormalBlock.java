@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks.block;
+package org.moredecorativeblocks.more_decorative_blocks.block.basic;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import org.jetbrains.annotations.NotNull;
 
-public class BasicBlock extends Block {
-    public BasicBlock(Properties prop) {
+public class NormalBlock extends Block {
+    public NormalBlock(Properties prop) {
         super(prop);
         this.registerDefaultState(
                 this.stateDefinition.any().setValue(FACING,
