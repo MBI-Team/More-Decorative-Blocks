@@ -1,9 +1,5 @@
 {
   "credit": "Made with Blockbench",
-  "texture_size": [
-    128,
-    128
-  ],
   "textures": {
     "0": "more_decorative_blocks:block/closestool/closestool",
     "1": "more_decorative_blocks:block/closestool/water",
@@ -3873,7 +3869,7 @@
       ],
       "rotation": {
         "angle": 0,
-        "axis": "y",
+        "axis": "x",
         "origin": [
           8,
           15.5,
@@ -3954,7 +3950,7 @@
       ],
       "rotation": {
         "angle": 0,
-        "axis": "y",
+        "axis": "x",
         "origin": [
           8,
           15.5,
@@ -4035,7 +4031,7 @@
       ],
       "rotation": {
         "angle": 0,
-        "axis": "y",
+        "axis": "x",
         "origin": [
           8,
           15.5,
@@ -4107,20 +4103,20 @@
       "name": "water",
       "from": [
         6,
-        12,
+        13,
         5
       ],
       "to": [
         10,
-        13,
+        14,
         10
       ],
       "rotation": {
         "angle": 0,
         "axis": "y",
         "origin": [
-          6,
-          12,
+          7,
+          13,
           6
         ]
       },
@@ -4128,54 +4124,56 @@
         "north": {
           "uv": [
             0,
-            0,
-            0.5,
-            0.125
+            6,
+            4,
+            7
           ],
           "texture": "#1"
         },
         "east": {
           "uv": [
             0,
-            0,
-            0.625,
-            0.125
+            5,
+            1,
+            0
           ],
+          "rotation": 90,
           "texture": "#1"
         },
         "south": {
           "uv": [
-            0,
-            0,
-            0.5,
-            0.125
+            4,
+            6,
+            8,
+            7
           ],
           "texture": "#1"
         },
         "west": {
           "uv": [
+            5,
             0,
-            0,
-            0.625,
-            0.125
+            6,
+            5
           ],
+          "rotation": 90,
           "texture": "#1"
         },
         "up": {
           "uv": [
-            0,
-            0,
-            0.5,
-            0.625
+            5,
+            5,
+            1,
+            0
           ],
           "texture": "#1"
         },
         "down": {
           "uv": [
+            10,
             0,
-            0,
-            0.5,
-            0.625
+            6,
+            5
           ],
           "texture": "#1"
         }
