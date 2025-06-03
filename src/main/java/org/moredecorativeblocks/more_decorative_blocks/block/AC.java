@@ -19,6 +19,7 @@ public class AC extends RedstoneBlock {
         super(prop);
     }
 
+    /* Add Shape*/
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
                                         @NotNull BlockPos pos, @NotNull CollisionContext context) {
