@@ -1,6 +1,7 @@
 package org.moredecorativeblocks.more_decorative_blocks.registry;
 
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -30,4 +31,6 @@ public class ItemRegistry {
     public static final DeferredItem<BlockItem> GLASS_CUP_ITEM = ITEMS.registerSimpleBlockItem("glass_cup", GLASS_CUP);
 
     public static final DeferredItem<BlockItem> CLOSESTOOL_ITEM = ITEMS.registerSimpleBlockItem("closestool", CLOSESTOOL);
+
+    public static final DeferredItem<Item> IRON_STICK = ITEMS.registerItem("iron_stick", Item::new, new Item.Properties());
 }

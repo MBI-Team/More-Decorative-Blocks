@@ -7,6 +7,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.moredecorativeblocks.more_decorative_blocks.block.AC;
+import org.moredecorativeblocks.more_decorative_blocks.block.Cupboard;
 import org.moredecorativeblocks.more_decorative_blocks.block.basic.NormalBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkBlock;
@@ -70,7 +71,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> IRON_CUPBOARD = BLOCKS.register("iron_cupboard", () -> new NormalBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> IRON_CUPBOARD = BLOCKS.register("iron_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.METAL)
             .lightLevel(state -> 1)
@@ -78,7 +79,7 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> WOOD_CUPBOARD = BLOCKS.register("wood_cupboard", () -> new NormalBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> WOOD_CUPBOARD = BLOCKS.register("wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 1)
