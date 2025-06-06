@@ -79,17 +79,9 @@ public class BlockRegistry {
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
-    public static final DeferredBlock<Block> WOOD_CUPBOARD = BLOCKS.register("wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> OAK_WOOD_CUPBOARD = BLOCKS.register("oak_wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.WOOD)
-            .lightLevel(state -> 1)
-            .strength(1f, 1f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
-    ));
-
-    public static final DeferredBlock<Block> GLASS_CUP = BLOCKS.register("glass_cup", () -> new NormalBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.STONE)
-            .sound(SoundType.GLASS)
             .lightLevel(state -> 1)
             .strength(1f, 1f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）

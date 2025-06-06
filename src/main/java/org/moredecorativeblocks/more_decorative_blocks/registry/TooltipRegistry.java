@@ -25,9 +25,9 @@ public class TooltipRegistry {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.air_conditioner.tooltip"));
         } else if (event.getItemStack().getItem() == IRON_CUPBOARD_ITEM.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.iron_cupboard.tooltip"));
-        } else if (event.getItemStack().getItem() == WOOD_CUPBOARD_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.wood_cupboard.tooltip"));
-        } else if (event.getItemStack().getItem() == GLASS_CUP_ITEM.get()) {
+        } else if (event.getItemStack().getItem() == OAK_WOOD_CUPBOARD_ITEM.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.oak_wood_cupboard.tooltip"));
+        } else if (event.getItemStack().getItem() == GLASS_CUP.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.glass_cup.tooltip"));
         } else if (event.getItemStack().getItem() == CLOSESTOOL_ITEM.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.closestool.tooltip"));

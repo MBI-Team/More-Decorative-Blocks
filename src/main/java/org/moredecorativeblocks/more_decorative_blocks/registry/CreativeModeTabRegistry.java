@@ -23,9 +23,9 @@ public class CreativeModeTabRegistry {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_DECORATIVE_TAB = CREATIVE_MODE_TABS.register("mdb_decorative_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_decorative")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> WATER_BOOK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(WATER_BOOK_ITEM.get());
         output.accept(FIRE_BOOK_ITEM.get());
-        output.accept(GLASS_CUP_ITEM.get());
+        output.accept(GLASS_CUP.get());
         output.accept(IRON_CUPBOARD_ITEM.get());
-        output.accept(WOOD_CUPBOARD_ITEM.get());
+        output.accept(OAK_WOOD_CUPBOARD_ITEM.get());
         output.accept(TABLET_ITEM.get());
     }).build());
 
