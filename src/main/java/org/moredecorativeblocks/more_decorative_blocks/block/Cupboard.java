@@ -12,7 +12,7 @@ import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkBlo
 import static net.minecraft.core.Direction.*;
 
 /**
- * Extends from {@link RightClinkBlock} and extends {@link Block}
+ * Extends from {@link RightClinkBlock} and it extends {@link Block}
  */
 public class Cupboard extends RightClinkBlock {
     public Cupboard(Properties prop) {

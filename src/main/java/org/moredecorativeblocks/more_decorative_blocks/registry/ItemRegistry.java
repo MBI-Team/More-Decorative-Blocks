@@ -26,11 +26,14 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> IRON_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("iron_cupboard", IRON_CUPBOARD);
 
-    public static final DeferredItem<BlockItem> OAK_WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("wood_cupboard", OAK_WOOD_CUPBOARD);
+    public static final DeferredItem<BlockItem> OAK_WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("oak_wood_cupboard", OAK_WOOD_CUPBOARD);
 
-    public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerItem("glass_cup", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerSimpleItem("glass_cup", new Item.Properties()
+            .setNoRepair()
+            .stacksTo(16)
+    );
 
     public static final DeferredItem<BlockItem> CLOSESTOOL_ITEM = ITEMS.registerSimpleBlockItem("closestool", CLOSESTOOL);
 
-    public static final DeferredItem<Item> IRON_STICK = ITEMS.registerItem("iron_stick", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> IRON_STICK = ITEMS.registerSimpleItem("iron_stick", new Item.Properties());
 }

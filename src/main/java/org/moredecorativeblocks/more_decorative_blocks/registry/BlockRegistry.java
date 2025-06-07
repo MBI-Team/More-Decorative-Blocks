@@ -8,7 +8,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.moredecorativeblocks.more_decorative_blocks.block.AC;
 import org.moredecorativeblocks.more_decorative_blocks.block.Cupboard;
-import org.moredecorativeblocks.more_decorative_blocks.block.basic.NormalBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
 import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkBlock;
 
@@ -18,7 +17,7 @@ public class BlockRegistry {
     public static final String MODID = "more_decorative_blocks";
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
-    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new Block(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 8)
@@ -45,7 +44,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new NormalBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new Block(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)

@@ -12,7 +12,7 @@ import org.moredecorativeblocks.more_decorative_blocks.block.basic.RedstoneBlock
 import static net.minecraft.core.Direction.*;
 
 /**
- * Extends from {@link RedstoneBlock} and extends {@link Block}
+ * Extends from {@link RedstoneBlock} and it extends {@link Block}
  */
 public class AC extends RedstoneBlock {
     public AC(Properties prop) {

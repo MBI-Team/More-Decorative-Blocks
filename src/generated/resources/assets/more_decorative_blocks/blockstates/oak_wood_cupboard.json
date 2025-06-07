@@ -1,19 +1,19 @@
 {
   "variants": {
     "facing=north": {
-      "model": "more_decorative_blocks:block/wood_cupboard",
+      "model": "more_decorative_blocks:block/cupboard/cupboard_close",
       "y": 180
     },
     "facing=south": {
-      "model": "more_decorative_blocks:block/wood_cupboard",
+      "model": "more_decorative_blocks:block/cupboard/cupboard_close",
       "y": 0
     },
     "facing=east": {
-      "model": "more_decorative_blocks:block/wood_cupboard",
+      "model": "more_decorative_blocks:block/cupboard/cupboard_close",
       "y": 270
     },
     "facing=west": {
-      "model": "more_decorative_blocks:block/wood_cupboard",
+      "model": "more_decorative_blocks:block/cupboard/cupboard_close",
       "y": 90
     }
   }

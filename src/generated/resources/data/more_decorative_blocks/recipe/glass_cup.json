@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "items",
+  "group": "fire_book",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "more_decorative_blocks:glass_cup"
+  }
+}

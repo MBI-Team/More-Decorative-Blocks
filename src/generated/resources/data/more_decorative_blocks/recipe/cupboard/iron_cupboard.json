@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
+  "category": "decoration",
   "key": {
-    "#": {
+    "X": {
       "item": "minecraft:iron_block"
     },
-    "X": {
+    "#": {
       "item": "minecraft:glass"
     },
     "*": {
@@ -22,6 +22,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "more_decorative_blocks:air_conditioner"
+    "id": "more_decorative_blocks:iron_cupboard"
   }
 }

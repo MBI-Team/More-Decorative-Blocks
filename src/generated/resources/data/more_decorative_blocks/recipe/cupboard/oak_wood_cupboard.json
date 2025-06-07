@@ -2,26 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "decoration",
   "key": {
+    "X": {
+      "item": "minecraft:oak_log"
+    },
     "#": {
       "item": "minecraft:glass"
     },
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
     "*": {
-      "item": "minecraft:redstone"
+      "item": "minecraft:stick"
     },
-    "A": {
-      "item": "minecraft:copper_ingot"
+    "?": {
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [
-    "###",
-    "A*A",
+    "???",
+    "*#*",
     "XXX"
   ],
   "result": {
     "count": 1,
-    "id": "more_decorative_blocks:tablet"
+    "id": "more_decorative_blocks:oak_wood_cupboard"
   }
 }
