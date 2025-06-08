@@ -4,6 +4,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.moredecorativeblocks.more_decorative_blocks.item.GlassCup;
 
 import static org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry.*;
 
@@ -28,7 +29,7 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> OAK_WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("oak_wood_cupboard", OAK_WOOD_CUPBOARD);
 
-    public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerSimpleItem("glass_cup", new Item.Properties()
+    public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerItem("glass_cup", GlassCup::new, new Item.Properties()
             .setNoRepair()
             .stacksTo(16)
     );
