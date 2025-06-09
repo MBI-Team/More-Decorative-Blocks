@@ -24,12 +24,12 @@ public class GlassCup extends Item {
     }
 
     void shrink(int shrink, ItemStack stack, Player player, InteractionHand hand) {
-        stack.shrink(1);  // ⭐关键代码：物品数量减1
+        stack.shrink(shrink);  // ⭐关键代码：物品数量减1
 
         if (stack.isEmpty()) {
             player.setItemInHand(hand, ItemStack.EMPTY);
         }
-        gcn += 1;
+        gcn += shrink;
     }
 
     @Override
@@ -44,21 +44,26 @@ public class GlassCup extends Item {
 
 
         // 检测是否为自定义物品
-        if (stack.getItem() == GLASS_CUP.get()) {
+        if (stack.getItem() == GLASS_CUP.get() && stack.getCount() >= 1) {
             if (player != null && !player.level().isClientSide) {
-                if (clickedBlock == IRON_CUPBOARD.get()) {
+                if (player.getAbilities().instabuild) {
+                    shrink(0, stack, player, hand);
+                } else if (clickedBlock == IRON_CUPBOARD.get()) {
                     shrink(1, stack, player, hand);
                 } else if (clickedBlock == OAK_WOOD_CUPBOARD.get()) {
                     shrink(1, stack, player, hand);
                 }
-                if (gcn == 12) {
+                if (gcn == 17) {
                     gcn = 0;
-                    shrink(-12, stack, player, hand);
+                    shrink(-16, stack, player, hand);
                 }
             }
+        } else if (stack.isEmpty()) {
+            gcn -= 1;
+            shrink(-1, stack, player, hand);
         }
 
 
-        return super.useOn(context);  // 默认行为
+        return InteractionResult.FAIL;
     }
 }

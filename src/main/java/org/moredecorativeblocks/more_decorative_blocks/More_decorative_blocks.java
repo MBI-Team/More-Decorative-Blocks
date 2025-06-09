@@ -32,7 +32,7 @@ public class More_decorative_blocks {
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {
+    public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) throws InterruptedException {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in.
@@ -45,8 +45,10 @@ public class More_decorative_blocks {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        BlockRegistry.BLOCKS.register(modEventBus);
+        Thread.sleep(2000);
         ItemRegistry.ITEMS.register(modEventBus);
-        BlockRegistry.BLOCKS.register(modEventBus); 
+        Thread.sleep(2000);
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
