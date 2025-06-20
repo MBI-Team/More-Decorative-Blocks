@@ -55,6 +55,8 @@ public class Cupboard extends Block {
     @Override
     protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
         ItemStack mainHandItem = player.getMainHandItem();
+
+
         if (!level.isClientSide) {
             if (mainHandItem.is(GLASS_CUP)) {
                 if (gcn < 17) {
@@ -66,10 +68,12 @@ public class Cupboard extends Block {
                     BlockState newState = state.setValue(GLASS_CUP_NUM, gcn);
                     level.setBlock(pos, newState, 1, 2);
                 }
+                return ItemInteractionResult.SUCCESS;
             } else if (mainHandItem.isEmpty()) {
                 gcn -= 1;
                 BlockState newState = state.setValue(GLASS_CUP_NUM, gcn);
                 level.setBlock(pos, newState, 1, 2);
+                return ItemInteractionResult.SUCCESS;
             }
         }
         return ItemInteractionResult.SUCCESS;
@@ -88,6 +92,7 @@ public class Cupboard extends Block {
     public @NotNull BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
+
 
     /* Add Shape*/
     @Override

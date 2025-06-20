@@ -1,5 +1,5 @@
 {
-  "credit": "Made with Blockbench",
+  "credit": "Made by MBITeam",
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "more_decorative_blocks:item/iron_stick"

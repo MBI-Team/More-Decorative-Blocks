@@ -17,7 +17,6 @@ import static org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegi
 import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.GLASS_CUP;
 
 public class GlassCup extends Item {
-    static int gcn = 0;
 
     public GlassCup(Properties prop) {
         super(prop);
@@ -29,7 +28,6 @@ public class GlassCup extends Item {
         if (stack.isEmpty()) {
             player.setItemInHand(hand, ItemStack.EMPTY);
         }
-        gcn += shrink;
     }
 
     @Override
@@ -42,28 +40,28 @@ public class GlassCup extends Item {
         ItemStack stack = context.getItemInHand();
         InteractionHand hand = context.getHand();
 
+        if (player != null && player.isShiftKeyDown()) {
+            return InteractionResult.PASS;
+        }
 
         // 检测是否为自定义物品
         if (stack.getItem() == GLASS_CUP.get() && stack.getCount() >= 1) {
             if (player != null && !player.level().isClientSide) {
-                if (player.getAbilities().instabuild) {
-                    shrink(0, stack, player, hand);
-                } else if (clickedBlock == IRON_CUPBOARD.get()) {
+                if (clickedBlock == IRON_CUPBOARD.get()) {
                     shrink(1, stack, player, hand);
                 } else if (clickedBlock == OAK_WOOD_CUPBOARD.get()) {
                     shrink(1, stack, player, hand);
                 }
-                if (gcn == 17) {
-                    gcn = 0;
-                    shrink(-16, stack, player, hand);
-                }
             }
+            return InteractionResult.SUCCESS;
         } else if (stack.isEmpty()) {
-            gcn -= 1;
-            shrink(-1, stack, player, hand);
+            if (clickedBlock == IRON_CUPBOARD.get()) {
+                shrink(-1, stack, player, hand);
+            } else if (clickedBlock == OAK_WOOD_CUPBOARD.get()) {
+                shrink(-1, stack, player, hand);
+            }
+            return InteractionResult.SUCCESS;
         }
-
-
-        return InteractionResult.FAIL;
+        return InteractionResult.SUCCESS;
     }
 }
