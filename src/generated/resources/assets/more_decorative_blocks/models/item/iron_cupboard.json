@@ -1185,32 +1185,6 @@
 				8,
 				9
 			]
-		},
-		{
-			"name": "glass_right",
-			"origin": [
-				8,
-				8,
-				8
-			],
-			"color": 0,
-			"children": [
-				10,
-				11
-			]
-		},
-		{
-			"name": "glass_left",
-			"origin": [
-				8,
-				8,
-				8
-			],
-			"color": 0,
-			"children": [
-				12,
-				13
-			]
 		}
 	]
 }

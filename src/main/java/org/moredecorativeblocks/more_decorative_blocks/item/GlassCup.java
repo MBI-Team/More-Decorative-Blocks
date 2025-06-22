@@ -40,10 +40,6 @@ public class GlassCup extends Item {
         ItemStack stack = context.getItemInHand();
         InteractionHand hand = context.getHand();
 
-        if (player != null && player.isShiftKeyDown()) {
-            return InteractionResult.PASS;
-        }
-
         // 检测是否为自定义物品
         if (stack.getItem() == GLASS_CUP.get() && stack.getCount() >= 1) {
             if (player != null && !player.level().isClientSide) {
@@ -53,14 +49,6 @@ public class GlassCup extends Item {
                     shrink(1, stack, player, hand);
                 }
             }
-            return InteractionResult.SUCCESS;
-        } else if (stack.isEmpty()) {
-            if (clickedBlock == IRON_CUPBOARD.get()) {
-                shrink(-1, stack, player, hand);
-            } else if (clickedBlock == OAK_WOOD_CUPBOARD.get()) {
-                shrink(-1, stack, player, hand);
-            }
-            return InteractionResult.SUCCESS;
         }
         return InteractionResult.SUCCESS;
     }

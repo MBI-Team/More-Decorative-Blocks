@@ -76,7 +76,6 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 1)
             .strength(2f, 2f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
     public static final DeferredBlock<Block> OAK_WOOD_CUPBOARD = BLOCKS.register("oak_wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
@@ -84,7 +83,6 @@ public class BlockRegistry {
             .sound(SoundType.WOOD)
             .lightLevel(state -> 1)
             .strength(1f, 1f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
     public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("closestool", () -> new RightClinkAndRedstoneBlock(BlockBehaviour.Properties.of()

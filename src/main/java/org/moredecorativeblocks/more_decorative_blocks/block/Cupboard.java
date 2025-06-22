@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -30,8 +31,7 @@ import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegis
  * Extends from {@link RightClinkBlock} and it extends {@link Block}
  */
 public class Cupboard extends Block {
-    static int gcn = 0;
-    public static final IntegerProperty GLASS_CUP_NUM = IntegerProperty.create("gcn", gcn, 17);
+    public static final IntegerProperty GLASS_CUP_NUM = IntegerProperty.create("gcn", 0, 17);
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
     public Cupboard(Properties prop) {
         super(prop);
@@ -59,22 +59,10 @@ public class Cupboard extends Block {
 
         if (!level.isClientSide) {
             if (mainHandItem.is(GLASS_CUP)) {
-                if (gcn < 17) {
-                    gcn += 1;
-                    BlockState newState = state.setValue(GLASS_CUP_NUM, gcn);
-                    level.setBlock(pos, newState, 1, 2);
-                } else {
-                    gcn = 0;
-                    BlockState newState = state.setValue(GLASS_CUP_NUM, gcn);
-                    level.setBlock(pos, newState, 1, 2);
-                }
-                return ItemInteractionResult.SUCCESS;
-            } else if (mainHandItem.isEmpty()) {
-                gcn -= 1;
-                BlockState newState = state.setValue(GLASS_CUP_NUM, gcn);
+                BlockState newState = state.setValue(GLASS_CUP_NUM, state.getValue(GLASS_CUP_NUM) + 1);
                 level.setBlock(pos, newState, 1, 2);
-                return ItemInteractionResult.SUCCESS;
             }
+            return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.SUCCESS;
     }
@@ -93,8 +81,11 @@ public class Cupboard extends Block {
         return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
 
+    @Override
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
+        return RenderShape.MODEL;
+    }
 
-    /* Add Shape*/
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
                                         @NotNull BlockPos pos, @NotNull CollisionContext context) {
@@ -109,4 +100,5 @@ public class Cupboard extends Block {
         }
         return getShape(state, level, pos, context);
     }
+
 }

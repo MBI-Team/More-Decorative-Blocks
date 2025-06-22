@@ -28,7 +28,7 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static String mod_version = "1.0.0-neoforge-pre-5";
+    public static String mod_version = "1.0.0-neoforge-alpha-1";
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -73,8 +73,12 @@ public class More_decorative_blocks {
         LOGGER.info("modid:" + MODID);
         if (mod_version.contains("pre")) {
             LOGGER.warn("Be careful,you are use pre-release,it's not stable.             ");
-        } else {
+        } else if (mod_version.contains("stable")) {
             LOGGER.warn("You are use stable release,don't worried for game crash.                       ");
+        } else if (mod_version.contains("alpha") || mod_version.contains("beta")) {
+            LOGGER.warn("Be careful,you are use test release,maybe the game will crash.               ");
+        } else {
+            LOGGER.warn("Your release is our recommend.");
         }
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("             All right ©More Blocks and Items Team 2025             ");

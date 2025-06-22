@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "more_decorative_blocks:wood_cupboard"
+          "name": "more_decorative_blocks:oak_wood_cupboard"
         }
       ],
       "conditions": [
