@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "minecraft:bucket"
+    },
+    "X": {
+      "item": "minecraft:quartz"
+    },
+    "*": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "  *",
+    "X #",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "more_decorative_blocks:closestool"
+  }
+}

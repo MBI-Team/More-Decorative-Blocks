@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "items",
-  "group": "fire_book",
   "ingredients": [
     {
       "item": "minecraft:glass_bottle"

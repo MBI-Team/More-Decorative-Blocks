@@ -7,8 +7,7 @@
 	],
 	"textures": {
 		"1": "more_decorative_blocks:item/cupboard/oak_wood_body",
-		"2": "more_decorative_blocks:item/cupboard/oak_wood_top",
-		"particle": "more_decorative_blocks:item/cupboard/glass"
+		"2": "more_decorative_blocks:item/cupboard/oak_wood_top"
 	},
 	"elements": [
 		{
@@ -811,19 +810,19 @@
 		},
 		"gui": {
 			"rotation": [
-				19,
-				52,
+				45,
+				135,
 				0
 			],
 			"translation": [
-				-2.25,
 				-2,
+				-2.75,
 				0
 			],
 			"scale": [
-				0.3,
-				0.3,
-				0.3
+				0.35,
+				0.35,
+				0.35
 			]
 		},
 		"fixed": {

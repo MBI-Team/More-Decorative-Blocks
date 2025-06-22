@@ -1,4 +1,5 @@
 {
+  "format_version": "1.21.6",
 	"credit": "Made by MBITeam",
   "texture_size": [
     32,
@@ -292,12 +293,12 @@
 		},
 		"gui": {
           "rotation": [
-            44,
-            74,
+            45,
+            135,
             0
           ],
           "translation": [
-            0.25,
+            -0.25,
             3.25,
             0
           ],

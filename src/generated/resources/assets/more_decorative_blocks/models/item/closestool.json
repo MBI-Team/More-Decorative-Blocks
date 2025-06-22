@@ -1,4 +1,5 @@
 {
+  "format_version": "1.21.6",
   "credit": "Made by MBITeam",
   "texture_size": [
     128,
@@ -4095,7 +4096,7 @@
     "thirdperson_righthand": {
       "rotation": [
         0,
-        180,
+        -180,
         0
       ],
       "scale": [
@@ -4107,7 +4108,7 @@
     "thirdperson_lefthand": {
       "rotation": [
         0,
-        180,
+        -180,
         0
       ],
       "scale": [
@@ -4139,25 +4140,25 @@
     },
     "gui": {
       "rotation": [
-        16,
-        16,
+        30,
+        45,
         0
       ],
       "translation": [
-        0,
-        -1,
+        0.25,
+        -1.25,
         0
       ],
       "scale": [
-        0.7,
-        0.7,
-        0.7
+        0.65,
+        0.65,
+        0.65
       ]
     },
     "head": {
       "rotation": [
         0,
-        180,
+        -180,
         0
       ],
       "translation": [
@@ -4174,7 +4175,7 @@
     "fixed": {
       "rotation": [
         0,
-        180,
+        -180,
         0
       ],
       "translation": [
