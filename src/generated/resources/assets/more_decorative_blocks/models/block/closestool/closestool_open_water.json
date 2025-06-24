@@ -4257,5 +4257,20 @@
       ]
     },
     53
+  ] ,
+  "animations" : {
+    "open_animation" : "animation.closestool_open.open"
+  } ,
+  "animation_controllers" : [
+    {
+      "initial_state" : "default" ,
+      "states" : {
+        "default" : {
+          "animations" : [
+            "open_animation"
+          ]
+        }
+      }
+    }
   ]
 }

@@ -54,17 +54,25 @@ public class Cupboard extends Block {
 
     @Override
     protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
-        ItemStack mainHandItem = player.getMainHandItem();
-
-
-        if (!level.isClientSide) {
-            if (mainHandItem.is(GLASS_CUP)) {
-                BlockState newState = state.setValue(GLASS_CUP_NUM, state.getValue(GLASS_CUP_NUM) + 1);
-                level.setBlock(pos, newState, 1, 2);
+        // 检查物品是否是玻璃杯
+        if (itemStack.getItem() == GLASS_CUP.get()) {
+            int current = state.getValue(GLASS_CUP_NUM);
+            // 检查是否达到上限
+            if (current < 16) {
+                if (!level.isClientSide) {
+                    // 更新方块状态
+                    BlockState newState = state.setValue(GLASS_CUP_NUM, current + 1);
+                    level.setBlock(pos, newState, Block.UPDATE_ALL);
+                    // 如果不是创造模式，减少物品数量
+                    if (!player.isCreative()) {
+                        itemStack.shrink(1);
+                    }
+                }
+                // 返回成功
+                return ItemInteractionResult.SUCCESS;
             }
-            return ItemInteractionResult.SUCCESS;
         }
-        return ItemInteractionResult.SUCCESS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
