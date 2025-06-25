@@ -2,5 +2,9 @@
 	"parent" : "minecraft:block/cube_all" ,
 	"textures": {
 		"all" : "more_decorative_blocks:item/mdb_block"
-	}
+	} ,
+	"texture_size" : [
+		256 ,
+		256
+	]
 }
