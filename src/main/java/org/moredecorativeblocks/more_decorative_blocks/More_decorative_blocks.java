@@ -28,7 +28,7 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static String mod_version = "1.0.0-neoforge-alpha-1";
+    public static String mod_version = "1.0.0-neoforge-stable";
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -57,18 +57,10 @@ public class More_decorative_blocks {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("                Copyright More Blocks and Items Team                ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("    ...     ..      ..            ....               ...     ..     ");
-        LOGGER.info("  x*8888x.:*8888: -“888:      .xH888888Hx.        .=*8888x <”?88h.  ");
-        LOGGER.info(" X   48888X `8888H  8888    .H8888888888888:     X>  '8888H> '8888  ");
-        LOGGER.info("X8x.  8888X  8888X  !888>   888*“”“?“”*88888X   '88h. `8888   8888  ");
-        LOGGER.info("X8888 X8888  88888   “*8%- 'f     d8x.   ^%88k  '8888 '8888    ”88> ");
-        LOGGER.info("'*888!X8888> X8888  xH8>   '>    <88888X   '?8   `888 '8888.xH888x. ");
-        LOGGER.info(" `?8 `8888  X888X X888>    `:..:`888888>    8>    X” :88*~  `*8888> ");
-        LOGGER.info(" -^  '888“  X888  8888>           `”*88     X   ~“   !“`      ”888> ");
-        LOGGER.info("   dx '88~x. !88~  8888>      .xHHhx..“      !    .H8888h.      ?88 ");
-        LOGGER.info(" .8888Xf.888x:!    X888X.:   X88888888hx. ..!    :”^“88888h.    '!  ");
-        LOGGER.info(":“”888“:~”888“     `888*”   !   “*888888888”     ^    ”88888hx.+“   ");
-        LOGGER.info("    “~'    ”~        ”“            ^“***”`              ^“**”       ");
+        LOGGER.info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
+        LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
+        LOGGER.info("                █    █    █ █       █    █");
+        LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀ ▄▄▄█▄▄▄");
         LOGGER.info("version:{}", mod_version);
         LOGGER.info("modid:" + MODID);
         if (mod_version.contains("pre")) {
