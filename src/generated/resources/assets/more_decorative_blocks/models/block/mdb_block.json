@@ -1,5 +1,5 @@
 {
-	"parent" : "minecraft:block/cube_all" ,
+	"parents" : "" ,
 	"textures": {
 		"all" : "more_decorative_blocks:block/mdb_block"
 	}
