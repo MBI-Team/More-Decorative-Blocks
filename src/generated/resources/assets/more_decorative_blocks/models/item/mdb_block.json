@@ -1,10 +1,95 @@
 {
-	"parent" : "minecraft:block/cube_all" ,
+	"format_version" : "1.21.6" ,
+	"credit" : "Made by MBITeam" ,
+	"texture_size" : [
+		64 ,
+		64
+	] ,
 	"textures": {
 		"all" : "more_decorative_blocks:item/mdb_block"
 	} ,
-	"texture_size" : [
-		256 ,
-		256
-	]
+	"elements" : [
+		{
+			"from" : [
+				0 ,
+				0 ,
+				0
+			] ,
+			"to" : [
+				16 ,
+				16 ,
+				16
+			] ,
+			"faces" : {
+				"north" : {
+					"uv" : [
+						0 ,
+						0 ,
+						4 ,
+						4
+					] ,
+					"texture" : "#all"
+				} ,
+				"east" : {
+					"uv" : [
+						4 ,
+						0 ,
+						8 ,
+						4
+					] ,
+					"texture" : "#all"
+				} ,
+				"south" : {
+					"uv" : [
+						0 ,
+						4 ,
+						4 ,
+						8
+					] ,
+					"texture" : "#all"
+				} ,
+				"west" : {
+					"uv" : [
+						4 ,
+						4 ,
+						8 ,
+						8
+					] ,
+					"texture" : "#all"
+				} ,
+				"up" : {
+					"uv" : [
+						8 ,
+						0 ,
+						12 ,
+						4
+					] ,
+					"texture" : "#all"
+				} ,
+				"down" : {
+					"uv" : [
+						0 ,
+						8 ,
+						4 ,
+						12
+					] ,
+					"texture" : "#all"
+				}
+			}
+		}
+	] ,
+	"display" : {
+		"gui" : {
+			"rotation" : [
+				30 ,
+				45 ,
+				0
+			] ,
+			"scale" : [
+				0.65 ,
+				0.65 ,
+				0.65
+			]
+		}
+	}
 }
