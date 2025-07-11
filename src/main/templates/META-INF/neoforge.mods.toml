@@ -24,3 +24,9 @@ mandatory = true
 versionRange = "[1.21.0,1.22)"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies."more_decorative_blocks"]]
+modId = "more_useful_ores"
+mandatory = true
+versionRange = "[1.0)"
+ordering = "NONE"
+side = "BOTH"
