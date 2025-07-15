@@ -1,6 +1,6 @@
 {
 	"parent" : "minecraft:block/cube_all" ,
 	"textures" : {
-		"all" : "more_decorative_blocks:block/asphalt_road"
+		"all" : "more_decorative_blocks:item/road/asphalt_road"
 	}
 }

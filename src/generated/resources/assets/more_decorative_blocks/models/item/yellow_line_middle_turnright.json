@@ -2,18 +2,18 @@
 	"format_version" : "1.21.6" ,
 	"credit" : "Made with Blockbench" ,
 	"textures" : {
-		"0" : "more_decorative_blocks:block/road/white_line" ,
-		"particle" : "more_decorative_blocks:block/road/white_line"
+		"0" : "more_decorative_blocks:item/road/yellow_line" ,
+		"particle" : "more_decorative_blocks:item/road/yellow_line"
 	} ,
 	"elements" : [
 		{
 			"from" : [
-				12 ,
+				0 ,
 				0 ,
 				7
 			] ,
 			"to" : [
-				16 ,
+				7 ,
 				0.1 ,
 				9
 			] ,
@@ -21,9 +21,9 @@
 				"angle" : 0 ,
 				"axis" : "y" ,
 				"origin" : [
+					8 ,
 					0 ,
-					0 ,
-					7
+					8
 				]
 			} ,
 			"faces" : {
@@ -70,6 +70,7 @@
 						16 ,
 						2
 					] ,
+					"rotation" : 180 ,
 					"texture" : "#0"
 				} ,
 				"down" : {
@@ -79,18 +80,19 @@
 						16 ,
 						2
 					] ,
+					"rotation" : 180 ,
 					"texture" : "#0"
 				}
 			}
 		} ,
 		{
 			"from" : [
-				6 ,
+				7 ,
 				0 ,
-				7
+				0
 			] ,
 			"to" : [
-				10 ,
+				9 ,
 				0.1 ,
 				9
 			] ,
@@ -98,9 +100,9 @@
 				"angle" : 0 ,
 				"axis" : "y" ,
 				"origin" : [
-					-6 ,
+					8 ,
 					0 ,
-					7
+					8
 				]
 			} ,
 			"faces" : {
@@ -108,7 +110,7 @@
 					"uv" : [
 						0 ,
 						0 ,
-						16 ,
+						2 ,
 						0.1
 					] ,
 					"texture" : "#0"
@@ -117,7 +119,7 @@
 					"uv" : [
 						0 ,
 						0 ,
-						2 ,
+						16 ,
 						0.1
 					] ,
 					"texture" : "#0"
@@ -126,7 +128,7 @@
 					"uv" : [
 						0 ,
 						0 ,
-						16 ,
+						2 ,
 						0.1
 					] ,
 					"texture" : "#0"
@@ -135,7 +137,7 @@
 					"uv" : [
 						0 ,
 						0 ,
-						2 ,
+						16 ,
 						0.1
 					] ,
 					"texture" : "#0"
@@ -147,6 +149,7 @@
 						16 ,
 						2
 					] ,
+					"rotation" : 90 ,
 					"texture" : "#0"
 				} ,
 				"down" : {
@@ -156,83 +159,7 @@
 						16 ,
 						2
 					] ,
-					"texture" : "#0"
-				}
-			}
-		} ,
-		{
-			"from" : [
-				0 ,
-				0 ,
-				7
-			] ,
-			"to" : [
-				4 ,
-				0.1 ,
-				9
-			] ,
-			"rotation" : {
-				"angle" : 0 ,
-				"axis" : "y" ,
-				"origin" : [
-					-12 ,
-					0 ,
-					7
-				]
-			} ,
-			"faces" : {
-				"north" : {
-					"uv" : [
-						0 ,
-						0 ,
-						16 ,
-						0.1
-					] ,
-					"texture" : "#0"
-				} ,
-				"east" : {
-					"uv" : [
-						0 ,
-						0 ,
-						2 ,
-						0.1
-					] ,
-					"texture" : "#0"
-				} ,
-				"south" : {
-					"uv" : [
-						0 ,
-						0 ,
-						16 ,
-						0.1
-					] ,
-					"texture" : "#0"
-				} ,
-				"west" : {
-					"uv" : [
-						0 ,
-						0 ,
-						2 ,
-						0.1
-					] ,
-					"texture" : "#0"
-				} ,
-				"up" : {
-					"uv" : [
-						0 ,
-						0 ,
-						16 ,
-						2
-					] ,
-					"texture" : "#0"
-				} ,
-				"down" : {
-					"uv" : [
-						0 ,
-						0 ,
-						16 ,
-						2
-					] ,
+					"rotation" : 270 ,
 					"texture" : "#0"
 				}
 			}
@@ -242,7 +169,7 @@
 		"gui" : {
 			"rotation" : [
 				90 ,
-				0 ,
+				-180 ,
 				0
 			]
 		}

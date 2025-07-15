@@ -2,8 +2,8 @@
 	"format_version" : "1.21.6" ,
 	"credit" : "Made with Blockbench" ,
 	"textures" : {
-		"0" : "more_decorative_blocks:block/road/yellow_line" ,
-		"particle" : "more_decorative_blocks:block/road/yellow_line"
+		"0" : "more_decorative_blocks:item/road/yellow_line" ,
+		"particle" : "more_decorative_blocks:item/road/yellow_line"
 	} ,
 	"elements" : [
 		{

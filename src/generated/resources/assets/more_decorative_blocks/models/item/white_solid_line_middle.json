@@ -2,21 +2,30 @@
 	"format_version" : "1.21.6" ,
 	"credit" : "Made with Blockbench" ,
 	"textures" : {
-		"0" : "more_decorative_blocks:block/road/yellow_line" ,
-		"particle" : "more_decorative_blocks:block/road/yellow_line"
+		"0" : "more_decorative_blocks:item/road/white_line" ,
+		"particle" : "more_decorative_blocks:item/road/white_line"
 	} ,
 	"elements" : [
 		{
 			"from" : [
 				0 ,
 				0 ,
-				0
+				7
 			] ,
 			"to" : [
 				16 ,
 				0.1 ,
-				2
+				9
 			] ,
+			"rotation" : {
+				"angle" : 0 ,
+				"axis" : "y" ,
+				"origin" : [
+					0 ,
+					0 ,
+					7
+				]
+			} ,
 			"faces" : {
 				"north" : {
 					"uv" : [
