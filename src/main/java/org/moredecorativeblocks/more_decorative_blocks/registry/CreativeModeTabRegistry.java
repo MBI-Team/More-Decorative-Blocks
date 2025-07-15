@@ -37,4 +37,24 @@ public class CreativeModeTabRegistry {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_MATERIAL_TAB = CREATIVE_MODE_TABS.register("mdb_material_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_material")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> IRON_STICK.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(IRON_STICK.get());
     }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_ROAD_TAB = CREATIVE_MODE_TABS.register("mdb_road_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_road")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ASPHALT_ROAD_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
+        output.accept(ASPHALT_ROAD_ITEM.get());
+        output.accept(WSL_ITEM.get());
+        output.accept(WSLM_ITEM.get());
+        output.accept(WDL_ITEM.get());
+        output.accept(WDLM_ITEM.get());
+        output.accept(WLTL_ITEM.get());
+        output.accept(WLTR_ITEM.get());
+        output.accept(WLMTL_ITEM.get());
+        output.accept(WLMTR_ITEM.get());
+        output.accept(YSL_ITEM.get());
+        output.accept(YSLM_ITEM.get());
+        output.accept(YDL_ITEM.get());
+        output.accept(YDLM_ITEM.get());
+        output.accept(YLTL_ITEM.get());
+        output.accept(YLTR_ITEM.get());
+        output.accept(YLMTL_ITEM.get());
+        output.accept(YLMTR_ITEM.get());
+    }).build());
 }
