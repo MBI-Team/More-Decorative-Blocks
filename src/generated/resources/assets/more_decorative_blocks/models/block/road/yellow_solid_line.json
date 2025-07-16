@@ -1,0 +1,87 @@
+{
+	"format_version" : "1.21.6" ,
+	"credit" : "Made with Blockbench" ,
+	"textures" : {
+		"0" : "more_decorative_blocks:block/road/yellow_line" ,
+		"particle" : "more_decorative_blocks:block/road/yellow_line"
+	} ,
+	"elements" : [
+		{
+			"from" : [
+				0 ,
+				0 ,
+				0
+			] ,
+			"to" : [
+				16 ,
+				0.1 ,
+				2
+			] ,
+			"faces" : {
+				"north" : {
+					"uv" : [
+						0 ,
+						0 ,
+						16 ,
+						0.1
+					] ,
+					"texture" : "#0"
+				} ,
+				"east" : {
+					"uv" : [
+						0 ,
+						0 ,
+						2 ,
+						0.1
+					] ,
+					"texture" : "#0"
+				} ,
+				"south" : {
+					"uv" : [
+						0 ,
+						0 ,
+						16 ,
+						0.1
+					] ,
+					"texture" : "#0"
+				} ,
+				"west" : {
+					"uv" : [
+						0 ,
+						0 ,
+						2 ,
+						0.1
+					] ,
+					"texture" : "#0"
+				} ,
+				"up" : {
+					"uv" : [
+						0 ,
+						0 ,
+						16 ,
+						2
+					] ,
+					"texture" : "#0"
+				} ,
+				"down" : {
+					"uv" : [
+						0 ,
+						0 ,
+						16 ,
+						2
+					] ,
+					"texture" : "#0"
+				}
+			}
+		}
+	] ,
+	"display" : {
+		"gui" : {
+			"rotation" : [
+				90 ,
+				0 ,
+				0
+			]
+		}
+	}
+}

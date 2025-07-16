@@ -1,0 +1,20 @@
+{
+	"variants" : {
+		"facing=north" : {
+			"model" : "more_decorative_blocks:block/road/yellow_line_turnright" ,
+			"y" : 0
+		} ,
+		"facing=south" : {
+			"model" : "more_decorative_blocks:block/road/yellow_line_turnright" ,
+			"y" : 180
+		} ,
+		"facing=east" : {
+			"model" : "more_decorative_blocks:block/road/yellow_line_turnright" ,
+			"y" : 90
+		} ,
+		"facing=west" : {
+			"model" : "more_decorative_blocks:block/road/yellow_line_turnright" ,
+			"y" : 270
+		}
+	}
+}
