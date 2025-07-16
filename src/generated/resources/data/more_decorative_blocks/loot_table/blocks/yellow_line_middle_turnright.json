@@ -1,0 +1,19 @@
+{
+	"type" : "minecraft:block" ,
+	"pools" : [
+		{
+			"rolls" : 1 ,
+			"entries" : [
+				{
+					"type" : "minecraft:item" ,
+					"name" : "more_decorative_blocks:yellow_line_middle_turnright"
+				}
+			] ,
+			"conditions" : [
+				{
+					"condition" : "minecraft:survives_explosion"
+				}
+			]
+		}
+	]
+}
