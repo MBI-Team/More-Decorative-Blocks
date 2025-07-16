@@ -1,5 +1,8 @@
 package org.moredecorativeblocks.more_decorative_blocks.registry;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -29,9 +32,19 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> OAK_WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("oak_wood_cupboard", OAK_WOOD_CUPBOARD);
 
-    public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerItem("glass_cup", GlassCup::new, new Item.Properties()
+    public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerItem("glass_cup", GlassCup::new, new GlassCup.Properties()
             .setNoRepair()
             .stacksTo(16)
+    );
+
+    public static final DeferredItem<Item> STOOL = ITEMS.registerItem("stool", Item::new, new Item.Properties()
+            .setNoRepair()
+            .food(new FoodProperties.Builder()
+                    .nutrition(1)
+                    .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 300, 5, true, true), 1f)
+                    .alwaysEdible()
+                    .saturationModifier(1f)
+                    .build())
     );
 
     public static final DeferredItem<BlockItem> CLOSESTOOL_ITEM = ITEMS.registerSimpleBlockItem("closestool", CLOSESTOOL);

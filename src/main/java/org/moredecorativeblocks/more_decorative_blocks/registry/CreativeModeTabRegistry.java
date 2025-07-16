@@ -36,6 +36,7 @@ public class CreativeModeTabRegistry {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_MATERIAL_TAB = CREATIVE_MODE_TABS.register("mdb_material_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_material")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> IRON_STICK.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(IRON_STICK.get());
+        output.accept(STOOL.get());
     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_ROAD_TAB = CREATIVE_MODE_TABS.register("mdb_road_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_road")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ASPHALT_ROAD_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
