@@ -1,0 +1,13 @@
+{
+	"type" : "minecraft:crafting_shapeless" ,
+	"category" : "items" ,
+	"ingredients" : [
+		{
+			"item" : "more_decorative_blocks:white_solid_line"
+		}
+	] ,
+	"result" : {
+		"count" : 1 ,
+		"id" : "more_decorative_blocks:white_solid_line_middle"
+	}
+}

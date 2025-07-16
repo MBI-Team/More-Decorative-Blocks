@@ -1,0 +1,14 @@
+{
+	"type" : "minecraft:crafting_shapeless" ,
+	"category" : "items" ,
+	"group" : "ydlm" ,
+	"ingredients" : [
+		{
+			"item" : "more_decorative_blocks:yellow_solid_line_middle"
+		}
+	] ,
+	"result" : {
+		"count" : 2 ,
+		"id" : "more_decorative_blocks:yellow_dashed_line_middle"
+	}
+}

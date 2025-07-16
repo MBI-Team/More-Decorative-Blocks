@@ -1,0 +1,19 @@
+{
+	"type" : "minecraft:crafting_shaped" ,
+	"category" : "misc" ,
+	"group" : "wltr" ,
+	"key" : {
+		"*" : {
+			"item" : "more_decorative_blocks:white_solid_line_middle"
+		}
+	} ,
+	"pattern" : [
+		"   " ,
+		" **" ,
+		"   "
+	] ,
+	"result" : {
+		"count" : 1 ,
+		"id" : "more_decorative_blocks:white_line_turnright"
+	}
+}

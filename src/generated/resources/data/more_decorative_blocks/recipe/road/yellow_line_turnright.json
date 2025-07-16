@@ -1,0 +1,19 @@
+{
+	"type" : "minecraft:crafting_shaped" ,
+	"category" : "misc" ,
+	"group" : "yltr" ,
+	"key" : {
+		"*" : {
+			"item" : "more_decorative_blocks:yellow_solid_line"
+		}
+	} ,
+	"pattern" : [
+		"   " ,
+		" **" ,
+		"   "
+	] ,
+	"result" : {
+		"count" : 1 ,
+		"id" : "more_decorative_blocks:yellow_line_turnright"
+	}
+}

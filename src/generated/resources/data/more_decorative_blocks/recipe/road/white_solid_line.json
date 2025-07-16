@@ -1,0 +1,19 @@
+{
+	"type" : "minecraft:crafting_shapeless" ,
+	"category" : "items" ,
+	"ingredients" : [
+		{
+			"item" : "minecraft:water_bucket" ,
+			"remainder" : {
+				"item" : "minecraft:bucket"
+			}
+		} ,
+		{
+			"item" : "minecraft:white_dye"
+		}
+	] ,
+	"result" : {
+		"count" : 1 ,
+		"id" : "more_decorative_blocks:white_solid_line"
+	}
+}
