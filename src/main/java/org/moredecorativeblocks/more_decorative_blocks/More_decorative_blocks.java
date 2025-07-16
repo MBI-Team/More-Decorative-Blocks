@@ -28,7 +28,7 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static String mod_version = "1.0.0-neoforge-stable";
+    public static String mod_version = "1.0.0-neoforge-alpha";
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -46,9 +46,9 @@ public class More_decorative_blocks {
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         BlockRegistry.BLOCKS.register(modEventBus);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         ItemRegistry.ITEMS.register(modEventBus);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
