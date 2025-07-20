@@ -15,12 +15,12 @@ We hope they can help you to build the building.'''
 [[dependencies."more_decorative_blocks"]]
 modId = "neoforge"
 mandatory = true
-versionRange = "[21,)"
+versionRange = "[21,22)"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies."more_decorative_blocks"]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.21.0,1.22)"
+versionRange = "[1.21,1.22)"
 ordering = "NONE"
 side = "BOTH"

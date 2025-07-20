@@ -18,6 +18,25 @@ base {
     archivesName = mod_id
 }
 
+def modVersion = mod_version // 将变量提取到局部变量中
+
+processResources {
+    inputs.property "mod_version", modVersion
+
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand([
+                mod_version: modVersion
+        ])
+    }
+
+    filesMatching("org/moredecorativeblocks/more_decorative_blocks/More_decorative_blocks.java") {
+        expand([
+                mod_version: modVersion
+        ])
+    }
+}
+
+
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {

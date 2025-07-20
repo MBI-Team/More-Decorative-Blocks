@@ -20,6 +20,8 @@ import org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry;
 import org.moredecorativeblocks.more_decorative_blocks.registry.TooltipRegistry;
 import org.slf4j.Logger;
 
+import java.io.IOException;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(org.moredecorativeblocks.more_decorative_blocks.More_decorative_blocks.MODID)
 public class More_decorative_blocks {
@@ -28,7 +30,7 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static String mod_version = "1.0.0-neoforge-alpha-2";
+    public static String mod_version = "${mod_version}";
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -61,20 +63,37 @@ public class More_decorative_blocks {
         LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
         LOGGER.info("                █    █    █ █       █    █");
         LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀ ▄▄▄█▄▄▄");
-        LOGGER.info("version:{}", mod_version);
         LOGGER.info("modid:" + MODID);
-        if (mod_version.contains("pre")) {
-            LOGGER.warn("Be careful,you are use pre-release,it's not stable.             ");
-        } else if (mod_version.contains("stable")) {
-            LOGGER.warn("You are use stable release,don't worried for game crash.                       ");
-        } else if (mod_version.contains("alpha") || mod_version.contains("beta")) {
-            LOGGER.warn("Be careful,you are use test release,maybe the game will crash.               ");
-        } else {
-            LOGGER.warn("Your release is our recommend.");
+        if (mod_version.contains("pre") || mod_version.contains("alpha") || mod_version.contains("beta") || mod_version.contains("preview")) {
+            LOGGER.warn("Be careful,you are use test version,it's not stable.");
+        } else if (mod_version.contains("stable") || mod_version.contains("release") || mod_version.contains("final")) {
+            LOGGER.warn("The stable release,don't worried for game crash.");
+        } else if (mod_version.contains("dev") || mod_version.contains("snapshot")) {
+            LOGGER.warn("The internal testing version.");
+        } else if (mod_version.contains("rc")) {
+            LOGGER.warn("The release candidate version.");
         }
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+    }
+
+    public static void checkVersion() {
+        new Thread(() -> {
+            try {
+                String latestVersion = VersionChecker.getLatestVersion();
+                LOGGER.info("Current version: {}, Latest version: {}", mod_version, latestVersion);
+
+                if (!mod_version.contains(latestVersion)) {
+                    LOGGER.warn("There is a new version available: {}!", latestVersion);
+                    LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
+                } else {
+                    LOGGER.info("You are using the latest version.");
+                }
+            } catch (IOException e) {
+                LOGGER.warn("Failed to check for updates: {}", e.getMessage());
+            }
+        }).start();
     }
 
     @SubscribeEvent
@@ -95,6 +114,7 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         startOutput();
+        checkVersion();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -103,6 +123,7 @@ public class More_decorative_blocks {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             startOutput();
+            checkVersion();
         }
     }
 
