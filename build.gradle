@@ -20,21 +20,23 @@ base {
 
 def modVersion = mod_version // 将变量提取到局部变量中
 
-processResources {
-    inputs.property "mod_version", modVersion
-
-    filesMatching("META-INF/neoforge.mods.toml") {
-        expand([
-                mod_version: modVersion
-        ])
-    }
-
-    filesMatching("org/moredecorativeblocks/more_decorative_blocks/More_decorative_blocks.java") {
-        expand([
-                mod_version: modVersion
-        ])
-    }
+// 定义一个任务，用于复制并替换 Java 源文件中的变量
+tasks.register("processJavaResources", Copy) {
+    from("src/main/java")
+    into("build/generated/sources/java")
+    expand([
+            mod_version: mod_version
+    ])
 }
+
+// 设置源集，只使用生成的 Java 文件
+sourceSets.main.java {
+    srcDirs = []
+    srcDir "build/generated/sources/java"
+}
+
+// 确保在编译前执行 processJavaResources
+compileJava.dependsOn processJavaResources
 
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)

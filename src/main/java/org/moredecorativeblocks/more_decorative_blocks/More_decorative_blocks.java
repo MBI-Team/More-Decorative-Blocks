@@ -64,7 +64,7 @@ public class More_decorative_blocks {
         LOGGER.info("                █    █    █ █       █    █");
         LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀ ▄▄▄█▄▄▄");
         LOGGER.info("modid:" + MODID);
-        if (mod_version.contains("pre") || mod_version.contains("alpha") || mod_version.contains("beta") || mod_version.contains("preview")) {
+        if (mod_version.contains("pre") || mod_version.contains("alpha") || mod_version.contains("beta") || mod_version.contains("preview") || mod_version.contains("nightly")) {
             LOGGER.warn("Be careful,you are use test version,it's not stable.");
         } else if (mod_version.contains("stable") || mod_version.contains("release") || mod_version.contains("final")) {
             LOGGER.warn("The stable release,don't worried for game crash.");
