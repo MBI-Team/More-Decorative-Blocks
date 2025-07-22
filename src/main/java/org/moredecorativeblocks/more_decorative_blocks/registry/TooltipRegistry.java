@@ -1,38 +1,41 @@
 package org.moredecorativeblocks.more_decorative_blocks.registry;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.*;
 
 public class TooltipRegistry {
 
+    public static void RegistryBlockItemTooltip(ItemTooltipEvent event, DeferredItem<BlockItem> target, String lang) {
+        if (event.getItemStack().getItem() == target.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks." + lang + ".tooltip"));
+        }
+    }
+
+    public static void RegistryItemTooltip(ItemTooltipEvent event, DeferredItem<Item> target, String lang) {
+        if (event.getItemStack().getItem() == target.get()) {
+            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks." + lang + ".tooltip"));
+        }
+    }
+
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void onItemTooltip(ItemTooltipEvent event) {
-        if (event.getItemStack().getItem() == FIRE_BOOK_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.fire_book.tooltip"));
-        } else if (event.getItemStack().getItem() == WATER_BOOK_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.water_book.tooltip"));
-        } else if (event.getItemStack().getItem() == MDB_BLOCK_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.mdb_block.tooltip"));
-        } else if (event.getItemStack().getItem() == SEAT_STONE_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.seat_stone.tooltip"));
-        } else if (event.getItemStack().getItem() == TABLET_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.tablet.tooltip"));
-        } else if (event.getItemStack().getItem() == AC_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.air_conditioner.tooltip"));
-        } else if (event.getItemStack().getItem() == IRON_CUPBOARD_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.iron_cupboard.tooltip"));
-        } else if (event.getItemStack().getItem() == OAK_WOOD_CUPBOARD_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.oak_wood_cupboard.tooltip"));
-        } else if (event.getItemStack().getItem() == GLASS_CUP.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.glass_cup.tooltip"));
-        } else if (event.getItemStack().getItem() == CLOSESTOOL_ITEM.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.closestool.tooltip"));
-        } else if (event.getItemStack().getItem() == STOOL.get()) {
-            event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks.stool.tooltip"));
-        }
+        RegistryBlockItemTooltip(event, FIRE_BOOK_ITEM, "fire_book");
+        RegistryBlockItemTooltip(event, WATER_BOOK_ITEM, "water_book");
+        RegistryBlockItemTooltip(event, MDB_BLOCK_ITEM, "mdb_block");
+        RegistryBlockItemTooltip(event, SEAT_STONE_ITEM, "seat_stone");
+        RegistryBlockItemTooltip(event, TABLET_ITEM, "tablet");
+        RegistryBlockItemTooltip(event, AC_ITEM, "air_conditioner");
+        RegistryBlockItemTooltip(event, IRON_CUPBOARD_ITEM, "iron_cupboard");
+        RegistryBlockItemTooltip(event, OAK_WOOD_CUPBOARD_ITEM, "oak_wood_cupboard");
+        RegistryBlockItemTooltip(event, CLOSESTOOL_ITEM, "closestool");
+        RegistryItemTooltip(event, GLASS_CUP, "glass_cup");
+        RegistryItemTooltip(event, STOOL, "stool");
     }
 }

@@ -18,6 +18,7 @@ public class CreativeModeTabRegistry {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_BUILDING_TAB = CREATIVE_MODE_TABS.register("mdb_building_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_building")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> MDB_BLOCK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(MDB_BLOCK_ITEM.get());
         output.accept(SEAT_STONE_ITEM.get());
+        output.accept(ASPHALT_ROAD_ITEM.get());
     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_DECORATIVE_TAB = CREATIVE_MODE_TABS.register("mdb_decorative_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_decorative")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> WATER_BOOK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
