@@ -5,9 +5,6 @@
     "X": {
       "item": "minecraft:iron_block"
     },
-    "#": {
-      "item": "minecraft:glass"
-    },
     "*": {
       "item": "more_decorative_blocks:iron_stick"
     },
@@ -17,7 +14,7 @@
   },
   "pattern": [
     "???",
-    "*#*",
+    "* *" ,
     "XXX"
   ],
   "result": {

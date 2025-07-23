@@ -32,6 +32,8 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> OAK_WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("oak_wood_cupboard", OAK_WOOD_CUPBOARD);
 
+    public static final DeferredItem<BlockItem> ACACIA_WOOD_CUPBOARD_ITEM = ITEMS.registerSimpleBlockItem("acacia_wood_cupboard", ACACIA_WOOD_CUPBOARD);
+
     public static final DeferredItem<Item> GLASS_CUP = ITEMS.registerItem("glass_cup", GlassCup::new, new GlassCup.Properties()
             .setNoRepair()
             .stacksTo(16)

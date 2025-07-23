@@ -5,9 +5,6 @@
     "X": {
       "item": "minecraft:oak_log"
     },
-    "#": {
-      "item": "minecraft:glass"
-    },
     "*": {
       "item": "minecraft:stick"
     },
@@ -17,7 +14,7 @@
   },
   "pattern": [
     "???",
-    "*#*",
+    "* *" ,
     "XXX"
   ],
   "result": {

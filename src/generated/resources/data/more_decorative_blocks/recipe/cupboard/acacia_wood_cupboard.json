@@ -1,0 +1,24 @@
+{
+	"type" : "minecraft:crafting_shaped" ,
+	"category" : "decoration" ,
+	"key" : {
+		"X" : {
+			"item" : "minecraft:acacia_log"
+		} ,
+		"*" : {
+			"item" : "minecraft:stick"
+		} ,
+		"?" : {
+			"item" : "minecraft:acacia_planks"
+		}
+	} ,
+	"pattern" : [
+		"???" ,
+		"* *" ,
+		"XXX"
+	] ,
+	"result" : {
+		"count" : 1 ,
+		"id" : "more_decorative_blocks:acacia_wood_cupboard"
+	}
+}

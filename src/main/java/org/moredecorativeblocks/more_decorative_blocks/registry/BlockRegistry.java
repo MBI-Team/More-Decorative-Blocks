@@ -87,6 +87,13 @@ public class BlockRegistry {
             .strength(1f, 1f)  // 硬度参数（可选）
     ));
 
+    public static final DeferredBlock<Block> ACACIA_WOOD_CUPBOARD = BLOCKS.register("acacia_wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.WOOD)
+            .lightLevel(state -> 1)
+            .strength(1f, 1f)  // 硬度参数（可选）
+    ));
+
     public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("closestool", () -> new RightClinkAndRedstoneBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)

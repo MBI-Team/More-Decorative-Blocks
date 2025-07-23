@@ -27,6 +27,7 @@ public class CreativeModeTabRegistry {
         output.accept(GLASS_CUP.get());
         output.accept(IRON_CUPBOARD_ITEM.get());
         output.accept(OAK_WOOD_CUPBOARD_ITEM.get());
+        output.accept(ACACIA_WOOD_CUPBOARD_ITEM.get());
         output.accept(TABLET_ITEM.get());
     }).build());
 
