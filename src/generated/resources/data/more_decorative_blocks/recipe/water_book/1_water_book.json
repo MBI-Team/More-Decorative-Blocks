@@ -13,5 +13,32 @@
   "result": {
     "count": 1,
     "id": "more_decorative_blocks:water_book"
+  } ,
+  "leftovers" : [
+    {
+      "item" : "minecraft:bucket"
+    }
+  ] ,
+  "advancement" : {
+    "criteria" : {
+      "has_water" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:water_bucket"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:1_water_book"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
   }
 }

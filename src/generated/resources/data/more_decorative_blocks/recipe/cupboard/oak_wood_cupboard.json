@@ -20,5 +20,27 @@
   "result": {
     "count": 1,
     "id": "more_decorative_blocks:oak_wood_cupboard"
+  } ,
+  "advancement" : {
+    "criteria" : {
+      "has_log" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:oak_log"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:oak_wood_cupboard"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
   }
 }

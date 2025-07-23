@@ -23,5 +23,27 @@
     {
       "item": "minecraft:bucket"
     }
-  ]
+  ] ,
+  "advancement" : {
+    "criteria" : {
+      "has_water" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:water_bucket"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:8_water_book"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
+  }
 }

@@ -13,5 +13,32 @@
   "result": {
     "count": 1,
     "id": "more_decorative_blocks:fire_book"
+  } ,
+  "leftovers" : [
+    {
+      "item" : "minecraft:bucket"
+    }
+  ] ,
+  "advancement" : {
+    "criteria" : {
+      "has_lava" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:lava_bucket"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:1_fire_book"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
   }
 }

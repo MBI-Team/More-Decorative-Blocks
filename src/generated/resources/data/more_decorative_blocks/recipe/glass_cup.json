@@ -9,5 +9,27 @@
   "result": {
     "count": 1,
     "id": "more_decorative_blocks:glass_cup"
+  } ,
+  "advancement" : {
+    "criteria" : {
+      "has_glass" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:glass"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:glass_cup"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
   }
 }

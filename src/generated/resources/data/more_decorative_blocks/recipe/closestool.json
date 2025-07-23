@@ -20,5 +20,27 @@
   "result": {
     "count": 1,
     "id": "more_decorative_blocks:closestool"
+  } ,
+  "advancement" : {
+    "criteria" : {
+      "has_redstone" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:redstone"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:closestool"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
   }
 }

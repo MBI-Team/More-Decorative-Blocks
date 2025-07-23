@@ -13,5 +13,27 @@
   "result": {
     "count": 4,
     "id": "more_decorative_blocks:iron_stick"
+  } ,
+  "advancement" : {
+    "criteria" : {
+      "has_iron" : {
+        "trigger" : "minecraft:inventory_changed" ,
+        "conditions" : {
+          "items" : [
+            {
+              "items" : [
+                "minecraft:iron_ingot"
+              ]
+            }
+          ]
+        }
+      }
+    } ,
+    "rewards" : {
+      "recipes" : [
+        "more_decorative_blocks:iron_stick"
+      ]
+    } ,
+    "parent" : "minecraft:recipes/root"
   }
 }
