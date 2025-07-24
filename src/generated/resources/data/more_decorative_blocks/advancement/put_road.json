@@ -16,7 +16,7 @@
 	} ,
 	"parent" : "more_decorative_blocks:start_road" ,
 	"criteria" : {
-		"mdb_block" : {
+		"asphalt_road" : {
 			"trigger" : "minecraft:placed_block" ,
 			"conditions" : {
 				"location" : [
