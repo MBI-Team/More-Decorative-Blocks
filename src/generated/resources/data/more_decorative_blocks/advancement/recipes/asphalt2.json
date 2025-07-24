@@ -1,12 +1,12 @@
 {
 	"criteria" : {
-		"has_coal" : {
+		"has_charcoal" : {
 			"trigger" : "minecraft:inventory_changed" ,
 			"conditions" : {
 				"items" : [
 					{
 						"items" : [
-							"minecraft:coal"
+							"minecraft:charcoal"
 						]
 					}
 				]
@@ -15,6 +15,8 @@
 	} ,
 	"rewards" : {
 		"recipes" : [
+			"more_decorative_blocks:asphalt2" ,
+			"more_decorative_blocks:asphalt4" ,
 			"more_decorative_blocks:road/asphalt_road"
 		]
 	} ,

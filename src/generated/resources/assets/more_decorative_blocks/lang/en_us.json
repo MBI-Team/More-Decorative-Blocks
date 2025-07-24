@@ -37,6 +37,7 @@
   "item.more_decorative_blocks.iron_stick": "Iron Stick",
   "item.more_decorative_blocks.glass_cup": "Glass Cup",
   "item.more_decorative_blocks.stool" : "Stool" ,
+  "item.more_decorative_blocks.asphalt" : "Asphalt" ,
   "line4": "----------------------------Tooltip---------------------------------------",
   "tooltip.more_decorative_blocks.mdb_block.tooltip": "The emblem block of the mod",
   "tooltip.more_decorative_blocks.water_book.tooltip": "§9Make with water§r",
@@ -48,5 +49,14 @@
   "tooltip.more_decorative_blocks.oak_wood_cupboard.tooltip": "A cupboard make with oak wood",
   "tooltip.more_decorative_blocks.glass_cup.tooltip": "It's a glass cup,you can put it in the cupboard",
   "tooltip.more_decorative_blocks.closestool.tooltip" : "Do you wants to go to the toilet?" ,
-  "tooltip.more_decorative_blocks.stool.tooltip" : "It's not taste bad,isn't is?"
+  "tooltip.more_decorative_blocks.stool.tooltip" : "It's not taste bad,isn't is?" ,
+  "line5" : "--------------------------Advancement-------------------------------------" ,
+  "advancements.more_decorative_blocks.root.title" : "More Decorative Blocks" ,
+  "advancements.more_decorative_blocks.root.description" : "Explore more blocks" ,
+  "advancements.more_decorative_blocks.start_road.title" : "Start to build road" ,
+  "advancements.more_decorative_blocks.start_road.description" : "Get an asphalt" ,
+  "advancements.more_decorative_blocks.mdb.title" : "Thank you for ad" ,
+  "advancements.more_decorative_blocks.mdb.description" : "Put Mdb Block" ,
+  "advancements.more_decorative_blocks.put_road.title" : "It looks rough" ,
+  "advancements.more_decorative_blocks.put_road.description" : "Put Asphalt Road"
 }

@@ -1,0 +1,35 @@
+{
+	"display" : {
+		"icon" : {
+			"id" : "more_decorative_blocks:mdb_block"
+		} ,
+		"title" : {
+			"translate" : "advancements.more_decorative_blocks.mdb.title"
+		} ,
+		"description" : {
+			"translate" : "advancements.more_decorative_blocks.mdb.description"
+		} ,
+		"frame" : "task" ,
+		"show_toast" : true ,
+		"announce_to_chat" : true ,
+		"hidden" : false
+	} ,
+	"parent" : "more_decorative_blocks:root" ,
+	"criteria" : {
+		"mdb_block" : {
+			"trigger" : "minecraft:placed_block" ,
+			"conditions" : {
+				"location" : [
+					{
+						"block" : "more_decorative_blocks:mdb_block"
+					}
+				]
+			}
+		}
+	} ,
+	"requirements" : [
+		[
+			"mdb_block"
+		]
+	]
+}

@@ -1,13 +1,18 @@
 {
-	"type" : "minecraft:crafting_shapeless" ,
+	"type" : "minecraft:crafting_shaped" ,
 	"category" : "building" ,
-	"ingredients" : [
-		{
-			"item" : "minecraft:coal_block"
+	"key" : {
+		"*" : {
+			"item" : "more_decorative_blocks:asphalt"
 		}
+	} ,
+	"pattern" : [
+		"***" ,
+		"***" ,
+		"***"
 	] ,
 	"result" : {
-		"count" : 2 ,
+		"count" : 1 ,
 		"id" : "more_decorative_blocks:asphalt_road"
 	}
 }

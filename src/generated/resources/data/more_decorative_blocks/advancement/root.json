@@ -1,0 +1,28 @@
+{
+	"display" : {
+		"icon" : {
+			"id" : "more_decorative_blocks:mdb_block"
+		} ,
+		"title" : {
+			"translate" : "advancements.more_decorative_blocks.root.title"
+		} ,
+		"description" : {
+			"translate" : "advancements.more_decorative_blocks.root.description"
+		} ,
+		"background" : "more_decorative_blocks:textures/block/mdb.png" ,
+		"frame" : "task" ,
+		"show_toast" : false ,
+		"announce_to_chat" : false ,
+		"hidden" : false
+	} ,
+	"criteria" : {
+		"tick" : {
+			"trigger" : "minecraft:tick"
+		}
+	} ,
+	"requirements" : [
+		[
+			"tick"
+		]
+	]
+}

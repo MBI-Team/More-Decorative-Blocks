@@ -86,4 +86,9 @@ public class ItemRegistry {
     public static final DeferredItem<BlockItem> YLMTL_ITEM = ITEMS.registerSimpleBlockItem("yellow_line_middle_turnleft", YELLOW_LINE_MIDDLE_TURNLEFT);
 
     public static final DeferredItem<BlockItem> YLMTR_ITEM = ITEMS.registerSimpleBlockItem("yellow_line_middle_turnright", YELLOW_LINE_MIDDLE_TURNRIGHT);
+
+    public static final DeferredItem<Item> ASPHALT = ITEMS.registerItem("asphalt", Item::new, new Item.Properties()
+            .setNoRepair()
+            .stacksTo(64)
+    );
 }

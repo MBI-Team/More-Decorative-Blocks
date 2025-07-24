@@ -1,0 +1,11 @@
+{
+	"type" : "minecraft:smelting" ,
+	"ingredient" : {
+		"item" : "minecraft:charcoal"
+	} ,
+	"result" : {
+		"id" : "more_decorative_blocks:asphalt"
+	} ,
+	"experience" : 0.5 ,
+	"cookingtime" : 200
+}

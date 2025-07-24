@@ -1,0 +1,25 @@
+{
+	"criteria" : {
+		"has_coal" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:coal"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:asphalt" ,
+			"more_decorative_blocks:asphalt3" ,
+			"more_decorative_blocks:road/asphalt_road" ,
+			"more_decorative_blocks:road/asphalt_road2"
+		]
+	} ,
+	"parent" : "minecraft:recipes/root"
+}

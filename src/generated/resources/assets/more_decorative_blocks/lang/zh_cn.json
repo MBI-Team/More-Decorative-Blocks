@@ -37,6 +37,7 @@
 	"item.more_decorative_blocks.iron_stick" : "铁棒" ,
 	"item.more_decorative_blocks.glass_cup" : "玻璃杯" ,
 	"item.more_decorative_blocks.stool" : "答辩" ,
+	"item.more_decorative_blocks.asphalt" : "沥青" ,
 	"line4" : "----------------------------工具标签---------------------------------------" ,
 	"tooltip.more_decorative_blocks.mdb_block.tooltip" : "模组的标志方块" ,
 	"tooltip.more_decorative_blocks.water_book.tooltip" : "§9水做的书§r" ,
@@ -48,5 +49,14 @@
 	"tooltip.more_decorative_blocks.oak_wood_cupboard.tooltip" : "用橡木做的橱柜" ,
 	"tooltip.more_decorative_blocks.glass_cup.tooltip" : "一个玻璃瓶，你可以把它放在橱柜里" ,
 	"tooltip.more_decorative_blocks.closestool.tooltip" : "你想上厕所吗？" ,
-	"tooltip.more_decorative_blocks.stool.tooltip" : "也不是这么难吃，不是吗？"
+	"tooltip.more_decorative_blocks.stool.tooltip" : "也不是这么难吃，不是吗？" ,
+	"line5" : "--------------------------进度-------------------------------------" ,
+	"advancements.more_decorative_blocks.root.title" : "更多装饰方块" ,
+	"advancements.more_decorative_blocks.root.description" : "探索更多方块" ,
+	"advancements.more_decorative_blocks.start_road.title" : "筑路旅途" ,
+	"advancements.more_decorative_blocks.start_road.description" : "获得沥青" ,
+	"advancements.more_decorative_blocks.mdb.title" : "感谢帮打广告" ,
+	"advancements.more_decorative_blocks.mdb.description" : "放置一块“更多装饰方块”标志方块" ,
+	"advancements.more_decorative_blocks.put_road.title" : "看起来很粗糙" ,
+	"advancements.more_decorative_blocks.put_road.description" : "放置一块沥青路"
 }

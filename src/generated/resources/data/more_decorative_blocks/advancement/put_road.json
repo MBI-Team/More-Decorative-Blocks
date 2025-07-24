@@ -1,0 +1,35 @@
+{
+	"display" : {
+		"icon" : {
+			"id" : "more_decorative_blocks:asphalt_road"
+		} ,
+		"title" : {
+			"translate" : "advancements.more_decorative_blocks.put_road.title"
+		} ,
+		"description" : {
+			"translate" : "advancements.more_decorative_blocks.put_road.description"
+		} ,
+		"frame" : "task" ,
+		"show_toast" : true ,
+		"announce_to_chat" : true ,
+		"hidden" : false
+	} ,
+	"parent" : "more_decorative_blocks:start_road" ,
+	"criteria" : {
+		"mdb_block" : {
+			"trigger" : "minecraft:placed_block" ,
+			"conditions" : {
+				"location" : [
+					{
+						"block" : "more_decorative_blocks:asphalt_road"
+					}
+				]
+			}
+		}
+	} ,
+	"requirements" : [
+		[
+			"asphalt_road"
+		]
+	]
+}
