@@ -1,0 +1,23 @@
+{
+	"parent" : "minecraft:recipes/root" ,
+	"criteria" : {
+		"has_lava" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:lava_bucket"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:fire_book/8_fire_book" ,
+			"more_decorative_blocks:fire_book/1_fire_book"
+		]
+	}
+}

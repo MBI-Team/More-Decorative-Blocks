@@ -1,0 +1,23 @@
+{
+	"parent" : "minecraft:recipes/root" ,
+	"criteria" : {
+		"has_water" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:water_bucket"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:water_book/8_water_book" ,
+			"more_decorative_blocks:water_book/1_water_book"
+		]
+	}
+}

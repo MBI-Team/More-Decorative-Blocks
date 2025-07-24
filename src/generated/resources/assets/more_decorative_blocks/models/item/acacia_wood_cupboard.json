@@ -8,7 +8,7 @@
 	"textures" : {
 		"1" : "more_decorative_blocks:item/cupboard/acacia_wood_body" ,
 		"2" : "more_decorative_blocks:item/cupboard/acacia_wood_top" ,
-		"particle" : "item:block/cupboard/acacia_wood_body"
+		"particle" : "more_decorative_blocks:item/cupboard/acacia_wood_body"
 	} ,
 	"elements" : [
 		{

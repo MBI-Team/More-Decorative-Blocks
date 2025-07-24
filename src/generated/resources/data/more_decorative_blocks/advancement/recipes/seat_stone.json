@@ -1,0 +1,22 @@
+{
+	"criteria" : {
+		"has_cobblestone" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:cobblestone"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:seat_stone"
+		]
+	} ,
+	"parent" : "minecraft:recipes/root"
+}

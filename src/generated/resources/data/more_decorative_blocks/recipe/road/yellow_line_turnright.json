@@ -15,27 +15,5 @@
 	"result" : {
 		"count" : 1 ,
 		"id" : "more_decorative_blocks:yellow_line_turnright"
-	} ,
-	"advancement" : {
-		"criteria" : {
-			"has_road" : {
-				"trigger" : "minecraft:inventory_changed" ,
-				"conditions" : {
-					"items" : [
-						{
-							"items" : [
-								"more_decorative_blocks:asphalt_road"
-							]
-						}
-					]
-				}
-			}
-		} ,
-		"rewards" : {
-			"recipes" : [
-				"more_decorative_blocks:yellow_line_turnright"
-			]
-		} ,
-		"parent" : "minecraft:recipes/root"
 	}
 }

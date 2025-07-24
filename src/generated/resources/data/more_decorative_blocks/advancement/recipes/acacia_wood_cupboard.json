@@ -1,0 +1,22 @@
+{
+	"criteria" : {
+		"has_log" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:acacia_log"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:cupboard/acacia_wood_cupboard"
+		]
+	} ,
+	"parent" : "minecraft:recipes/root"
+}

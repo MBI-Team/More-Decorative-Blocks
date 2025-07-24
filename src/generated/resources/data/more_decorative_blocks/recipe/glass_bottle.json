@@ -1,14 +1,13 @@
 {
 	"type" : "minecraft:crafting_shapeless" ,
 	"category" : "items" ,
-	"group" : "ydlm" ,
 	"ingredients" : [
 		{
-			"item" : "more_decorative_blocks:yellow_dashed_line"
+			"item" : "more_decorative_blocks:glass_cup"
 		}
 	] ,
 	"result" : {
 		"count" : 1 ,
-		"id" : "more_decorative_blocks:yellow_dashed_line_middle"
+		"id" : "minecraft:glass_bottle"
 	}
 }

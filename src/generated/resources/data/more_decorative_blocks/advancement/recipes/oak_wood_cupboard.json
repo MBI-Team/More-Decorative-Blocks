@@ -1,0 +1,22 @@
+{
+	"parent" : "minecraft:recipes/root" ,
+	"criteria" : {
+		"has_log" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:oak_log"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:cupboard/oak_wood_cupboard"
+		]
+	}
+}

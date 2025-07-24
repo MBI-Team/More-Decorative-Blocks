@@ -1,0 +1,22 @@
+{
+	"criteria" : {
+		"has_dye" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"minecraft:black_dye"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:mdb_block"
+		]
+	} ,
+	"parent" : "minecraft:recipes/root"
+}

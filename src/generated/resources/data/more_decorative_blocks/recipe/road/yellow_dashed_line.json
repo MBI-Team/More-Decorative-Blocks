@@ -9,27 +9,5 @@
 	"result" : {
 		"count" : 2 ,
 		"id" : "more_decorative_blocks:yellow_dashed_line"
-	} ,
-	"advancement" : {
-		"criteria" : {
-			"has_road" : {
-				"trigger" : "minecraft:inventory_changed" ,
-				"conditions" : {
-					"items" : [
-						{
-							"items" : [
-								"more_decorative_blocks:asphalt_road"
-							]
-						}
-					]
-				}
-			}
-		} ,
-		"rewards" : {
-			"recipes" : [
-				"more_decorative_blocks:yellow_dashed_line"
-			]
-		} ,
-		"parent" : "minecraft:recipes/root"
 	}
 }

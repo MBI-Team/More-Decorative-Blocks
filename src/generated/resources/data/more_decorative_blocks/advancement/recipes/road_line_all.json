@@ -1,0 +1,47 @@
+{
+	"parent" : "minecraft:recipes/root" ,
+	"criteria" : {
+		"has_road" : {
+			"trigger" : "minecraft:inventory_changed" ,
+			"conditions" : {
+				"items" : [
+					{
+						"items" : [
+							"more_decorative_blocks:asphalt_road"
+						]
+					}
+				]
+			}
+		}
+	} ,
+	"rewards" : {
+		"recipes" : [
+			"more_decorative_blocks:road/white_solid_line" ,
+			"more_decorative_blocks:road/white_solid_line_middle" ,
+			"more_decorative_blocks:road/white_dashed_line" ,
+			"more_decorative_blocks:road/white_dashed_line_middle" ,
+			"more_decorative_blocks:road/white_dashed_line_middle2" ,
+			"more_decorative_blocks:road/white_line_turnleft" ,
+			"more_decorative_blocks:road/white_line_turnleft2" ,
+			"more_decorative_blocks:road/white_line_turnright" ,
+			"more_decorative_blocks:road/white_line_turnright2" ,
+			"more_decorative_blocks:road/white_line_middle_turnleft" ,
+			"more_decorative_blocks:road/white_line_middle_turnleft2" ,
+			"more_decorative_blocks:road/white_line_middle_turnright" ,
+			"more_decorative_blocks:road/white_line_middle_turnright2" ,
+			"more_decorative_blocks:road/yellow_solid_line" ,
+			"more_decorative_blocks:road/yellow_solid_line_middle" ,
+			"more_decorative_blocks:road/yellow_dashed_line" ,
+			"more_decorative_blocks:road/yellow_dashed_line_middle" ,
+			"more_decorative_blocks:road/yellow_dashed_line_middle2" ,
+			"more_decorative_blocks:road/yellow_line_turnleft" ,
+			"more_decorative_blocks:road/yellow_line_turnleft2" ,
+			"more_decorative_blocks:road/yellow_line_turnright" ,
+			"more_decorative_blocks:road/yellow_line_turnright2" ,
+			"more_decorative_blocks:road/yellow_line_middle_turnleft" ,
+			"more_decorative_blocks:road/yellow_line_middle_turnleft2" ,
+			"more_decorative_blocks:road/yellow_line_middle_turnright" ,
+			"more_decorative_blocks:road/yellow_line_middle_turnright2"
+		]
+	}
+}
