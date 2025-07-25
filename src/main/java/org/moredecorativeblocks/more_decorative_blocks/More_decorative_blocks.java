@@ -87,11 +87,32 @@ public class More_decorative_blocks {
         new Thread(() -> {
             try {
                 String latestVersion = VersionChecker.getLatestVersion();
-                LOGGER.info("Current version: {}, Latest version: {}", mod_version, latestVersion);
+                LOGGER.info("Current version: {}, The latest version in Github: {}", mod_version, latestVersion);
+                LOGGER.info("Your major version: {}, The latest major version in Github: {}", mod_version.charAt(0), latestVersion.charAt(0));
+                LOGGER.info("Your minor version: {}, The latest minor version in Github: {}", mod_version.charAt(2), latestVersion.charAt(2));
+                LOGGER.info("Your patch version: {}, The latest patch version in Github: {}", mod_version.charAt(4), latestVersion.charAt(4));
 
                 if (!mod_version.contains(latestVersion)) {
-                    LOGGER.warn("There is a new version available: {}!", latestVersion);
-                    LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
+                    if (mod_version.charAt(0) < latestVersion.charAt(0)) {
+                        LOGGER.warn("There is a new version available: {}!", latestVersion);
+                        LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
+                    } else if (mod_version.charAt(0) == latestVersion.charAt(0)) {
+                        if (mod_version.charAt(2) < latestVersion.charAt(2)) {
+                            LOGGER.warn("There is a new version available: {}!", latestVersion);
+                            LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
+                        } else if (mod_version.charAt(2) == latestVersion.charAt(2)) {
+                            if (mod_version.charAt(4) < latestVersion.charAt(4)) {
+                                LOGGER.warn("There is a new version available: {}!", latestVersion);
+                                LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
+                            } else {
+                                LOGGER.info("You are using the latest version.");
+                            }
+                        } else {
+                            LOGGER.info("You are using the latest version.");
+                        }
+                    } else {
+                        LOGGER.info("You are using the latest version.");
+                    }
                 } else {
                     LOGGER.info("You are using the latest version.");
                 }
@@ -107,7 +128,6 @@ public class More_decorative_blocks {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        startOutput();
     }
 
     // Add the example block item to the building blocks tab

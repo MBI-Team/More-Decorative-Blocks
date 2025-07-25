@@ -1,20 +1,84 @@
 {
   "variants": {
-    "facing=north": {
+	  "facing=north,gcn=0" : {
       "model": "more_decorative_blocks:block/cupboard/iron/iron_cupboard_0",
       "y": 90
     },
-    "facing=south": {
+	  "facing=south,gcn=0" : {
       "model": "more_decorative_blocks:block/cupboard/iron/iron_cupboard_0",
       "y": 270
     },
-    "facing=east": {
+	  "facing=east,gcn=0" : {
       "model": "more_decorative_blocks:block/cupboard/iron/iron_cupboard_0",
       "y": 180
     },
-    "facing=west": {
+	  "facing=west,gcn=0" : {
       "model": "more_decorative_blocks:block/cupboard/iron/iron_cupboard_0",
       "y": 0
+	  } ,
+	  "facing=north,gcn=1" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_1" ,
+		  "y" : 90
+	  } ,
+	  "facing=south,gcn=1" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_1" ,
+		  "y" : 270
+	  } ,
+	  "facing=east,gcn=1" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_1" ,
+		  "y" : 180
+	  } ,
+	  "facing=west,gcn=1" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_1" ,
+		  "y" : 0
+	  } ,
+	  "facing=north,gcn=2" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_2" ,
+		  "y" : 90
+	  } ,
+	  "facing=south,gcn=2" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_2" ,
+		  "y" : 270
+	  } ,
+	  "facing=east,gcn=2" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_2" ,
+		  "y" : 180
+	  } ,
+	  "facing=west,gcn=2" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_2" ,
+		  "y" : 0
+	  } ,
+	  "facing=north,gcn=3" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_3" ,
+		  "y" : 90
+	  } ,
+	  "facing=south,gcn=3" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_3" ,
+		  "y" : 270
+	  } ,
+	  "facing=east,gcn=3" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_3" ,
+		  "y" : 180
+	  } ,
+	  "facing=west,gcn=3" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_3" ,
+		  "y" : 0
+	  } ,
+	  "facing=north,gcn=4" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_4" ,
+		  "y" : 90
+	  } ,
+	  "facing=south,gcn=4" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_4" ,
+		  "y" : 270
+	  } ,
+	  "facing=east,gcn=4" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_4" ,
+		  "y" : 180
+	  } ,
+	  "facing=west,gcn=4" : {
+		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_4" ,
+		  "y" : 0
     }
   }
 }

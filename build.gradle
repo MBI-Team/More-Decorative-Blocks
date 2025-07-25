@@ -29,10 +29,9 @@ tasks.register("processJavaResources", Copy) {
     ])
 }
 
-// 设置源集，只使用生成的 Java 文件
+// 设置源集，只使用生成的 Java 文件进行编译
 sourceSets.main.java {
-    srcDirs = []
-    srcDir "build/generated/sources/java"
+    srcDirs = ["build/generated/sources/java"]
 }
 
 // 确保在编译前执行 processJavaResources

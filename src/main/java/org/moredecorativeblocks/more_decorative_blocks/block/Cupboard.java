@@ -31,7 +31,7 @@ import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegis
  * Extends from {@link RightClinkBlock} and it extends {@link Block}
  */
 public class Cupboard extends Block {
-    public static final IntegerProperty GLASS_CUP_NUM = IntegerProperty.create("gcn", 0, 17);
+    public static final IntegerProperty GLASS_CUP_NUM = IntegerProperty.create("gcn", 0, 4);
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
     public Cupboard(Properties prop) {
         super(prop);
@@ -58,7 +58,7 @@ public class Cupboard extends Block {
         if (itemStack.getItem() == GLASS_CUP.get()) {
             int current = state.getValue(GLASS_CUP_NUM);
             // 检查是否达到上限
-            if (current < 16) {
+            if (current < 4) {
                 if (!level.isClientSide) {
                     // 更新方块状态
                     BlockState newState = state.setValue(GLASS_CUP_NUM, current + 1);

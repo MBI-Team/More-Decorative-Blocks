@@ -1,19 +1,127 @@
 {
-	"type" : "minecraft:block" ,
-	"pools" : [
-		{
-			"rolls" : 1 ,
-			"entries" : [
-				{
-					"type" : "minecraft:item" ,
-					"name" : "more_decorative_blocks:acacia_wood_cupboard"
-				}
-			]
-		}
-	] ,
-	"conditions" : [
-		{
-			"condition" : "minecraft:survives_explosion"
-		}
-	]
+  "type" : "minecraft:block" ,
+  "pools" : [
+    {
+      "rolls" : 1 ,
+      "entries" : [
+        {
+          "type" : "minecraft:item" ,
+          "name" : "more_decorative_blocks:acacia_wood_cupboard"
+        }
+      ] ,
+      "conditions" : [
+        {
+          "condition" : "minecraft:survives_explosion"
+        }
+      ]
+    } ,
+    {
+      "rolls" : 1 ,
+      "entries" : [
+        {
+          "type" : "minecraft:item" ,
+          "name" : "more_decorative_blocks:glass_cup" ,
+          "functions" : [
+            {
+              "function" : "minecraft:set_count" ,
+              "count" : 1
+            }
+          ]
+        }
+      ] ,
+      "conditions" : [
+        {
+          "condition" : "minecraft:survives_explosion"
+        } ,
+        {
+          "condition" : "minecraft:block_state_property" ,
+          "block" : "more_decorative_blocks:acacia_wood_cupboard" ,
+          "properties" : {
+            "gcn" : "1"
+          }
+        }
+      ]
+    } ,
+    {
+      "rolls" : 1 ,
+      "entries" : [
+        {
+          "type" : "minecraft:item" ,
+          "name" : "more_decorative_blocks:glass_cup" ,
+          "functions" : [
+            {
+              "function" : "minecraft:set_count" ,
+              "count" : 2
+            }
+          ]
+        }
+      ] ,
+      "conditions" : [
+        {
+          "condition" : "minecraft:survives_explosion"
+        } ,
+        {
+          "condition" : "minecraft:block_state_property" ,
+          "block" : "more_decorative_blocks:acacia_wood_cupboard" ,
+          "properties" : {
+            "gcn" : "2"
+          }
+        }
+      ]
+    } ,
+    {
+      "rolls" : 1 ,
+      "entries" : [
+        {
+          "type" : "minecraft:item" ,
+          "name" : "more_decorative_blocks:glass_cup" ,
+          "functions" : [
+            {
+              "function" : "minecraft:set_count" ,
+              "count" : 3
+            }
+          ]
+        }
+      ] ,
+      "conditions" : [
+        {
+          "condition" : "minecraft:survives_explosion"
+        } ,
+        {
+          "condition" : "minecraft:block_state_property" ,
+          "block" : "more_decorative_blocks:acacia_wood_cupboard" ,
+          "properties" : {
+            "gcn" : "3"
+          }
+        }
+      ]
+    } ,
+    {
+      "rolls" : 1 ,
+      "entries" : [
+        {
+          "type" : "minecraft:item" ,
+          "name" : "more_decorative_blocks:glass_cup" ,
+          "functions" : [
+            {
+              "function" : "minecraft:set_count" ,
+              "count" : 4
+            }
+          ]
+        }
+      ] ,
+      "conditions" : [
+        {
+          "condition" : "minecraft:survives_explosion"
+        } ,
+        {
+          "condition" : "minecraft:block_state_property" ,
+          "block" : "more_decorative_blocks:acacia_wood_cupboard" ,
+          "properties" : {
+            "gcn" : "4"
+          }
+        }
+      ]
+    }
+  ]
 }
