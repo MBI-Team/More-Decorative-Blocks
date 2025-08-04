@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks;
+package org.more_blocks_and_items_team.more_decorative_blocks;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -7,7 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry;
 
 import java.util.List;
 import java.util.Set;

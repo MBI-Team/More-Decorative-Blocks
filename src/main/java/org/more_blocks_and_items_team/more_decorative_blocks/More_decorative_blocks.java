@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks;
+package org.more_blocks_and_items_team.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
@@ -14,23 +14,35 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry;
-import org.moredecorativeblocks.more_decorative_blocks.registry.CreativeModeTabRegistry;
-import org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry;
-import org.moredecorativeblocks.more_decorative_blocks.registry.TooltipRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.registry.CreativeModeTabRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.registry.TooltipRegistry;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.util.Properties;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(org.moredecorativeblocks.more_decorative_blocks.More_decorative_blocks.MODID)
+@Mod(More_decorative_blocks.MODID)
 public class More_decorative_blocks {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "more_decorative_blocks";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static String mod_version = "${mod_version}";
+    public static String mod_version = loadVersion(); // 从配置文件加载版本号
+
+    private static String loadVersion() {
+        try {
+            Properties props = new Properties();
+            props.load(More_decorative_blocks.class.getResourceAsStream("/system.properties"));
+            return props.getProperty("mod.version", "unknown");
+        } catch (Exception e) {
+            LOGGER.error("Failed to load version from system.properties", e);
+            return "unknown";
+        }
+    }
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.

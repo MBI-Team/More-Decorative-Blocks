@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks.registry;
+package org.more_blocks_and_items_team.more_decorative_blocks.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -7,7 +7,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry.*;
 
 
 public class CreativeModeTabRegistry {

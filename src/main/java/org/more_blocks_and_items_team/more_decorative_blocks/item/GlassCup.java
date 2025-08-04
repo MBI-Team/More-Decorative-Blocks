@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks.item;
+package org.more_blocks_and_items_team.more_decorative_blocks.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import static org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry.IRON_CUPBOARD;
-import static org.moredecorativeblocks.more_decorative_blocks.registry.BlockRegistry.OAK_WOOD_CUPBOARD;
+import static org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry.IRON_CUPBOARD;
+import static org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry.OAK_WOOD_CUPBOARD;
 
 public class GlassCup extends Item {
 

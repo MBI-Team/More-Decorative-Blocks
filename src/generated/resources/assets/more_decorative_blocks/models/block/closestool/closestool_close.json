@@ -4169,20 +4169,5 @@
 				52
 			]
 		}
-	] ,
-	"animations" : {
-		"close_animation" : "animation.closestool_close.close"
-	} ,
-	"animation_controllers" : [
-		{
-			"initial_state" : "default" ,
-			"states" : {
-				"default" : {
-					"animations" : [
-						"close_animation"
-					]
-				}
-			}
-		}
 	]
 }

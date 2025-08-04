@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks.registry;
+package org.more_blocks_and_items_team.more_decorative_blocks.registry;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
@@ -8,7 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-import static org.moredecorativeblocks.more_decorative_blocks.registry.ItemRegistry.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry.*;
 
 public class TooltipRegistry {
 

@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks;
+package org.more_blocks_and_items_team.more_decorative_blocks;
 
 import com.mojang.logging.LogUtils;
 import org.apache.logging.log4j.Logger;

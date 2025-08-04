@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks.registry;
+package org.more_blocks_and_items_team.more_decorative_blocks.registry;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -6,13 +6,13 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.moredecorativeblocks.more_decorative_blocks.block.AC;
-import org.moredecorativeblocks.more_decorative_blocks.block.Cupboard;
-import org.moredecorativeblocks.more_decorative_blocks.block.RoadLine;
-import org.moredecorativeblocks.more_decorative_blocks.block.Tablet;
-import org.moredecorativeblocks.more_decorative_blocks.block.basic.NormalBlock;
-import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
-import org.moredecorativeblocks.more_decorative_blocks.block.basic.RightClinkBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.AC;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.Cupboard;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.RoadLine;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.Tablet;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.NormalBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkBlock;
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file

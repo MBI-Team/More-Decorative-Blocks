@@ -1,4 +1,4 @@
-package org.moredecorativeblocks.more_decorative_blocks.block;
+package org.more_blocks_and_items_team.more_decorative_blocks.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import org.moredecorativeblocks.more_decorative_blocks.block.basic.NormalBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.NormalBlock;
 
 public class RoadLine extends NormalBlock {
     public RoadLine(Properties prop) {
