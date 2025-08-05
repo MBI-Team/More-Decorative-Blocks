@@ -14,8 +14,8 @@ public class Config {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.BooleanValue ENABLE_VERSION_CHECKER;
-    private static final ModConfigSpec.IntValue HEIGHT_OF_SEAT_STONE;
+    public static final ModConfigSpec.BooleanValue ENABLE_VERSION_CHECKER;
+    public static final ModConfigSpec.IntValue HEIGHT_OF_SEAT_STONE;
 
     // 公共静态变量，用于在代码中访问配置值
     public static boolean enableVersionChecker;
@@ -49,7 +49,7 @@ public class Config {
     }
 
 
-    // 当配置加载或重新加载时调用此方法
+    // 当配置加载调用此方法
     @SubscribeEvent
     public static void onLoad(ModConfigEvent.Loading event) {
         if (event.getConfig().getModId().equals(More_decorative_blocks.MODID)) {
