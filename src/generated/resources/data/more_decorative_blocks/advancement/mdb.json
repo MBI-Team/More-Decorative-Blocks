@@ -21,6 +21,7 @@
 			"conditions" : {
 				"location" : [
 					{
+						"condition" : "minecraft:block_state_property" ,
 						"block" : "more_decorative_blocks:mdb_block"
 					}
 				]

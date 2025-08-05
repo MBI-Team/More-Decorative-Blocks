@@ -58,5 +58,8 @@
 	"advancements.more_decorative_blocks.mdb.title" : "感谢帮打广告" ,
 	"advancements.more_decorative_blocks.mdb.description" : "放置一块“更多装饰方块”标志方块" ,
 	"advancements.more_decorative_blocks.put_road.title" : "看起来很粗糙" ,
-	"advancements.more_decorative_blocks.put_road.description" : "放置一块沥青路"
+	"advancements.more_decorative_blocks.put_road.description" : "放置一块沥青路" ,
+	"line6" : "--------------------------配置-------------------------------------" ,
+	"config.more_decorative_blocks.enable_version_checker.comment" : "启用版本检查器" ,
+	"config.more_decorative_blocks.height_of_seat_stone.comment" : "石墩子的高度"
 }

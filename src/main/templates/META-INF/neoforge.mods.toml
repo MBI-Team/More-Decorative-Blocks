@@ -10,6 +10,10 @@ logoFile= "more_decorative_blocks.png"
 credits = "MBI-Team"
 authors = "${mod_authors}"
 description = "${mod_description}"
+[[mods.config]]
+modId = "${mod_id}"
+displayName = "More Decorative Blocks"
+configPath = "more_decorative_blocks-common.toml"
 [[dependencies."${mod_id}"]]
 modId = "neoforge"
 mandatory = true

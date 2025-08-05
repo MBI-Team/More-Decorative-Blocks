@@ -1,14 +1,12 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
-import com.mojang.logging.LogUtils;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
+import org.slf4j.Logger;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import static org.mockito.Mockito.*;
 
@@ -17,21 +15,67 @@ import static org.mockito.Mockito.*;
  */
 public class MoreDecorativeBlocksStartOutputTest {
 
-    private MockedStatic<LogUtils> mockedLogUtils;
     private Logger mockLogger;
 
     @BeforeEach
-    public void setUp() {
-        // Mock LogUtils.getLogger()
-        mockedLogUtils = Mockito.mockStatic(LogUtils.class);
+    public void setUp() throws Exception {
+        // 创建mock logger
         mockLogger = mock(Logger.class);
-        mockedLogUtils.when(LogUtils::getLogger).thenReturn(mockLogger);
+
+        // 使用反射替换LOGGER字段
+        Field loggerField = More_decorative_blocks.class.getDeclaredField("LOGGER");
+        loggerField.setAccessible(true);
+
+        // 在Java 17+中，我们需要使用特殊的技巧来修改static final字段
+        try {
+            // 尝试使用modifiers字段的方式（在旧版本Java中有效）
+            Field modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            modifiersField.setInt(loggerField, loggerField.getModifiers() & ~java.lang.reflect.Modifier.FINAL);
+            loggerField.set(null, mockLogger);
+        } catch (Exception e) {
+            // 在Java 17+中，尝试使用Unsafe来修改final字段
+            try {
+                // 获取Unsafe实例
+                Class<?> unsafeClass = Class.forName("sun.misc.Unsafe");
+                Field unsafeField = unsafeClass.getDeclaredField("theUnsafe");
+                unsafeField.setAccessible(true);
+                Object unsafe = unsafeField.get(null);
+
+                // 计算字段偏移量并修改字段值
+                Method staticFieldOffset = unsafeClass.getMethod("staticFieldOffset", Field.class);
+                Method putObject = unsafeClass.getMethod("putObject", Object.class, long.class, Object.class);
+
+                long offset = (long) staticFieldOffset.invoke(unsafe, loggerField);
+                putObject.invoke(unsafe, More_decorative_blocks.class, offset, mockLogger);
+            } catch (Exception ex) {
+                // 如果Unsafe也不行，尝试另一种方法
+                try {
+                    // 使用ReflectionFactory创建新的字段
+                    Class<?> reflectionFactoryClass = Class.forName("jdk.internal.reflect.ReflectionFactory");
+                    Method getReflectionFactory = reflectionFactoryClass.getDeclaredMethod("getReflectionFactory");
+                    Object reflectionFactory = getReflectionFactory.invoke(null);
+
+                    Field[] fields = More_decorative_blocks.class.getDeclaredFields();
+                    for (int i = 0; i < fields.length; i++) {
+                        if ("LOGGER".equals(fields[i].getName())) {
+                            fields[i].setAccessible(true);
+                            fields[i].set(null, mockLogger);
+                            break;
+                        }
+                    }
+                } catch (Exception exc) {
+                    // 最后一种方法：直接通过字段设置（某些JVM可能允许）
+                    loggerField.set(null, mockLogger);
+                }
+            }
+        }
     }
 
     @AfterEach
-    public void tearDown() {
-        // 关闭静态mock以避免影响其他测试
-        mockedLogUtils.close();
+    public void tearDown() throws Exception {
+        // 由于我们无法可靠地恢复final字段，这里不进行特殊处理
+        // 每次测试运行时都会创建新的mock对象
     }
 
     /**
@@ -54,8 +98,8 @@ public class MoreDecorativeBlocksStartOutputTest {
         // 调用测试方法
         More_decorative_blocks.startOutput();
 
-        // 验证日志输出
-        verify(mockLogger, times(1)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        // 验证日志输出 - 注意某些消息会多次出现
+        verify(mockLogger, times(4)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         verify(mockLogger, times(1)).info("                Copyright More Blocks and Items Team                ");
         verify(mockLogger, times(1)).info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
         verify(mockLogger, times(1)).info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
@@ -77,8 +121,8 @@ public class MoreDecorativeBlocksStartOutputTest {
         // 调用测试方法
         More_decorative_blocks.startOutput();
 
-        // 验证日志输出
-        verify(mockLogger, times(1)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        // 验证日志输出 - 注意某些消息会多次出现
+        verify(mockLogger, times(4)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         verify(mockLogger, times(1)).info("                Copyright More Blocks and Items Team                ");
         verify(mockLogger, times(1)).info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
         verify(mockLogger, times(1)).info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
@@ -100,8 +144,8 @@ public class MoreDecorativeBlocksStartOutputTest {
         // 调用测试方法
         More_decorative_blocks.startOutput();
 
-        // 验证日志输出
-        verify(mockLogger, times(1)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        // 验证日志输出 - 注意某些消息会多次出现
+        verify(mockLogger, times(4)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         verify(mockLogger, times(1)).info("                Copyright More Blocks and Items Team                ");
         verify(mockLogger, times(1)).info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
         verify(mockLogger, times(1)).info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
@@ -123,8 +167,8 @@ public class MoreDecorativeBlocksStartOutputTest {
         // 调用测试方法
         More_decorative_blocks.startOutput();
 
-        // 验证日志输出
-        verify(mockLogger, times(1)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        // 验证日志输出 - 注意某些消息会多次出现
+        verify(mockLogger, times(4)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         verify(mockLogger, times(1)).info("                Copyright More Blocks and Items Team                ");
         verify(mockLogger, times(1)).info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
         verify(mockLogger, times(1)).info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
@@ -146,8 +190,8 @@ public class MoreDecorativeBlocksStartOutputTest {
         // 调用测试方法
         More_decorative_blocks.startOutput();
 
-        // 验证日志输出
-        verify(mockLogger, times(1)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        // 验证日志输出 - 注意某些消息会多次出现
+        verify(mockLogger, times(4)).info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         verify(mockLogger, times(1)).info("                Copyright More Blocks and Items Team                ");
         verify(mockLogger, times(1)).info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
         verify(mockLogger, times(1)).info("                █    █    █ █▄▄▄▄▄▄▄▀    █");

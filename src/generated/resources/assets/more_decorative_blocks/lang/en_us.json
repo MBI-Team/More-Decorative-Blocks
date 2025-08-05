@@ -58,5 +58,8 @@
   "advancements.more_decorative_blocks.mdb.title" : "Thank you for ad" ,
   "advancements.more_decorative_blocks.mdb.description" : "Put Mdb Block" ,
   "advancements.more_decorative_blocks.put_road.title" : "It looks rough" ,
-  "advancements.more_decorative_blocks.put_road.description" : "Put Asphalt Road"
+  "advancements.more_decorative_blocks.put_road.description" : "Put Asphalt Road" ,
+  "line6" : "--------------------------Config-------------------------------------" ,
+  "config.more_decorative_blocks.enable_version_checker.comment" : "Enable Version Checker" ,
+  "config.more_decorative_blocks.height_of_seat_stone.comment" : "Height of Seat Stone"
 }

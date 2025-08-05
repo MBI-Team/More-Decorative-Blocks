@@ -6,10 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.AC;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.Cupboard;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.RoadLine;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.Tablet;
+import org.more_blocks_and_items_team.more_decorative_blocks.block.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.NormalBlock;
 import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
 import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkBlock;
@@ -47,7 +44,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new NormalBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> SEAT_STONE = BLOCKS.register("seat_stone", () -> new SeatStone(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)

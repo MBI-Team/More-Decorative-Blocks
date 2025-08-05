@@ -21,7 +21,9 @@ import org.more_blocks_and_items_team.more_decorative_blocks.registry.TooltipReg
 import org.slf4j.Logger;
 
 import java.io.IOException;
-import java.util.Properties;
+
+import static org.more_blocks_and_items_team.more_decorative_blocks.Config.enableVersionChecker;
+import static org.more_blocks_and_items_team.more_decorative_blocks.Config.loadVersion;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(More_decorative_blocks.MODID)
@@ -33,44 +35,32 @@ public class More_decorative_blocks {
 
     public static String mod_version = loadVersion(); // 从配置文件加载版本号
 
-    private static String loadVersion() {
-        try {
-            Properties props = new Properties();
-            props.load(More_decorative_blocks.class.getResourceAsStream("/system.properties"));
-            return props.getProperty("mod.version", "unknown");
-        } catch (Exception e) {
-            LOGGER.error("Failed to load version from system.properties", e);
-            return "unknown";
-        }
-    }
-
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) throws InterruptedException {
-        LOGGER.info("[Init]Starting init {}...", MODID);
+        LOGGER.info("[Mod Init]Starting init {}...", MODID);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (Moredecorativeblocks) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
+        // Register our mod's ModConfigSpec
+        LOGGER.info("[Mod Init]Load configs...");
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        LOGGER.info("[Init]Registering blocks...");
+
+        LOGGER.info("[Mod Init]Registering blocks...");
         BlockRegistry.BLOCKS.register(modEventBus);
         Thread.sleep(5000);
-        LOGGER.info("[Init]Registering items...");
+        LOGGER.info("[Mod Init]Registering items...");
         ItemRegistry.ITEMS.register(modEventBus);
         Thread.sleep(5000);
-        LOGGER.info("[Init]Registering creative mode tabs...");
+        LOGGER.info("[Mod Init]Registering creative mode tabs...");
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
-        LOGGER.info("[Init]Registering tooltips...");
+        LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
+
 
     public static void startOutput() {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
@@ -151,7 +141,9 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         startOutput();
-        checkVersion();
+        if (enableVersionChecker) {
+            checkVersion();
+        }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -160,7 +152,9 @@ public class More_decorative_blocks {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             startOutput();
-            checkVersion();
+            if (enableVersionChecker) {
+                checkVersion();
+            }
         }
     }
 
