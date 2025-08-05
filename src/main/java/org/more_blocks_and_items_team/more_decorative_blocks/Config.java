@@ -14,12 +14,14 @@ public class Config {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    public static final ModConfigSpec SPEC = BUILDER.build();
     private static final ModConfigSpec.BooleanValue ENABLE_VERSION_CHECKER;
     private static final ModConfigSpec.IntValue HEIGHT_OF_SEAT_STONE;
+
     // 公共静态变量，用于在代码中访问配置值
     public static boolean enableVersionChecker;
     public static int heightOfSeatStone;
+
+    public static final ModConfigSpec SPEC; // 声明但不在这里初始化
 
     static {
         ENABLE_VERSION_CHECKER = BUILDER
@@ -29,6 +31,9 @@ public class Config {
         HEIGHT_OF_SEAT_STONE = BUILDER
                 .comment("config.more_decorative_blocks.height_of_seat_stone.comment")
                 .defineInRange("heightOfSeatStone", 24, 16, 32);
+
+        // 确保在所有配置项定义后再构建SPEC
+        SPEC = BUILDER.build();
     }
 
     public static String loadVersion() {
@@ -42,6 +47,7 @@ public class Config {
             return "unknown";
         }
     }
+
 
     // 当配置加载或重新加载时调用此方法
     @SubscribeEvent

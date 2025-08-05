@@ -10,10 +10,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.registry.CreativeModeTabRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry;
@@ -49,6 +51,11 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Load configs...");
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
+        // Register config screen
+        LOGGER.info("[Mod Init]Load config screen");
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, lastScreen) ->
+                new ConfigScreen(lastScreen, Config.SPEC));
+
         LOGGER.info("[Mod Init]Registering blocks...");
         BlockRegistry.BLOCKS.register(modEventBus);
         Thread.sleep(5000);
@@ -60,7 +67,6 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
-
 
     public static void startOutput() {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
