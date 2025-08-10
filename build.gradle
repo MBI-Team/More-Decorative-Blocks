@@ -53,11 +53,12 @@ processResources {
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description: mod_description,
+            license        : license
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/neoforge.mods.toml', 'system.properties']) {
+    filesMatching(['META-INF/neoforge.mods.toml', 'GradleInit.properties']) {
         expand replaceProperties
     }
 

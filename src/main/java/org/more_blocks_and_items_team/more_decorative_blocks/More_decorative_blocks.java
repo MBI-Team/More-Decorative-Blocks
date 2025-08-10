@@ -24,8 +24,7 @@ import org.slf4j.Logger;
 
 import java.io.IOException;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.Config.enableVersionChecker;
-import static org.more_blocks_and_items_team.more_decorative_blocks.Config.loadVersion;
+import static org.more_blocks_and_items_team.more_decorative_blocks.Config.*;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(More_decorative_blocks.MODID)
@@ -35,7 +34,9 @@ public class More_decorative_blocks {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static String mod_version = loadVersion(); // 从配置文件加载版本号
+    public static String mod_version = loadVersion();// 从配置文件加载版本号
+
+    public static String licence = getLicence();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -89,6 +90,8 @@ public class More_decorative_blocks {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        LOGGER.info("                                                                    ");
+        LOGGER.info(licence);
     }
 
     public static void checkVersion() {
