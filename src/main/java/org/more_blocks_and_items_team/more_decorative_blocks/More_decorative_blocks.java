@@ -16,10 +16,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.CreativeModeTabRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.TooltipRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.worldgen.ModWorldGenProvider;
 import org.more_blocks_and_items_team.more_decorative_blocks.tools.VersionChecker;
 
@@ -69,6 +66,7 @@ public class More_decorative_blocks {
         Thread.sleep(5000);
         LOGGER.info("[Mod Init]Registering creative mode tabs...");
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
+        CMTRInitOutput.init();
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
     }
