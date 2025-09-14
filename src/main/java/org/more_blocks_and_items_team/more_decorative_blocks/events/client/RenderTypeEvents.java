@@ -13,10 +13,9 @@ public class RenderTypeEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // 为所有橱柜方块设置cutout渲染类型
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.OAK_WOOD_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
-            net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.IRON_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.ACACIA_WOOD_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
+            net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.IRON_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
         });
     }
 }
