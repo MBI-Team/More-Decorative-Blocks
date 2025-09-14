@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.registry;
+package org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -6,15 +6,16 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.*;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.NormalBlock;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkAndRedstoneBlock;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.*;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.NormalBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkAndRedstoneBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkBlock;
+
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 public class BlockRegistry {
-    public static final String MODID = "more_decorative_blocks";
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
     public static final DeferredBlock<Block> MDB_BLOCK = BLOCKS.register("mdb_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -233,5 +234,19 @@ public class BlockRegistry {
             .lightLevel(state -> 3)
             .strength(0.5f, 10f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+    ));
+
+    // 铝矿石方块
+    public static final DeferredBlock<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore", () -> new Block(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .strength(3.0f, 3.0f)
+    ));
+
+    // 深层铝矿石方块
+    public static final DeferredBlock<Block> DEEPSLATE_ALUMINUM_ORE = BLOCKS.register("deepslate_aluminum_ore", () -> new Block(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.DEEPSLATE)
+            .sound(SoundType.DEEPSLATE)
+            .strength(4.5f, 3.0f)
     ));
 }

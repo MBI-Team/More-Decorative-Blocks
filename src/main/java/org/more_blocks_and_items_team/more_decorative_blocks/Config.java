@@ -7,9 +7,10 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.Properties;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.More_decorative_blocks.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
 
-@EventBusSubscriber(modid = More_decorative_blocks.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Config {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
@@ -36,18 +37,6 @@ public class Config {
         SPEC = BUILDER.build();
     }
 
-    public static String loadVersion() {
-        LOGGER.info("[VersionChecker]Loading version from GradleInit.properties");
-        try {
-            Properties props = new Properties();
-            props.load(More_decorative_blocks.class.getResourceAsStream("/GradleInit.properties"));
-            return props.getProperty("mod.version", "unknown");
-        } catch (Exception e) {
-            LOGGER.error("[VersionChecker]Failed to load version from GradleInit.properties", e);
-            return "unknown";
-        }
-    }
-
     public static String getLicence() {
         LOGGER.info("[Mod Init]Getting license......");
         try {
@@ -64,7 +53,7 @@ public class Config {
     // 当配置加载调用此方法
     @SubscribeEvent
     public static void onLoad(ModConfigEvent.Loading event) {
-        if (event.getConfig().getModId().equals(More_decorative_blocks.MODID)) {
+        if (event.getConfig().getModId().equals(MODID)) {
             enableVersionChecker = ENABLE_VERSION_CHECKER.get();
             heightOfSeatStone = HEIGHT_OF_SEAT_STONE.get();
             LOGGER.info("[Init]Config load!: enableVersionChecker={}, heightOfSeatStone={}", enableVersionChecker, heightOfSeatStone);
@@ -73,7 +62,7 @@ public class Config {
 
     @SubscribeEvent
     public static void onReload(ModConfigEvent.Reloading event) {
-        if (event.getConfig().getModId().equals(More_decorative_blocks.MODID)) {
+        if (event.getConfig().getModId().equals(MODID)) {
             enableVersionChecker = ENABLE_VERSION_CHECKER.get();
             heightOfSeatStone = HEIGHT_OF_SEAT_STONE.get();
             LOGGER.info("[Init]Config reload!: enableVersionChecker={}, heightOfSeatStone={}", enableVersionChecker, heightOfSeatStone);

@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks;
+package org.more_blocks_and_items_team.more_decorative_blocks.tools;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,13 +30,13 @@ public class VersionChecker {
 
         // 提取版本号（假设返回的是 JSON，如 {"tag_name":"v1.0.0"}）
         String jsonResponse = response.toString();
-        String version = extractValue(jsonResponse, "\"tag_name\"\\s*:\\s*\"([^\"]+)\"");
+        String version = extractValue(jsonResponse);
 
         return version != null ? version : "unknown";
     }
 
-    private static String extractValue(String json, String regex) {
-        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
+    private static String extractValue(String json) {
+        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\"tag_name\"\\s*:\\s*\"([^\"]+)\"");
         java.util.regex.Matcher matcher = pattern.matcher(json);
         if (matcher.find()) {
             return matcher.group(1);

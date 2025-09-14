@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.block;
+package org.more_blocks_and_items_team.more_decorative_blocks.objects.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,10 +22,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import org.more_blocks_and_items_team.more_decorative_blocks.block.basic.RightClinkBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkBlock;
 
 import static net.minecraft.core.Direction.*;
-import static org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry.GLASS_CUP;
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.GLASS_CUP;
 
 /**
  * Extends from {@link RightClinkBlock} and it extends {@link Block}

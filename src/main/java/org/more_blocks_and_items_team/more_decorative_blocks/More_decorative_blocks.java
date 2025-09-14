@@ -1,6 +1,5 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
-import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,27 +11,29 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
-import org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.registry.CreativeModeTabRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.registry.TooltipRegistry;
-import org.slf4j.Logger;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.CreativeModeTabRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.TooltipRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.worldgen.ModWorldGenProvider;
+import org.more_blocks_and_items_team.more_decorative_blocks.tools.VersionChecker;
 
 import java.io.IOException;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.Config.*;
-
+import static org.more_blocks_and_items_team.more_decorative_blocks.Config.enableVersionChecker;
+import static org.more_blocks_and_items_team.more_decorative_blocks.Config.getLicence;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.loadVersion;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(More_decorative_blocks.MODID)
+@Mod(MODID)
 public class More_decorative_blocks {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "more_decorative_blocks";
-    // Directly reference a slf4j logger
-    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static String mod_version = loadVersion();// 从配置文件加载版本号
 
@@ -44,6 +45,9 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Starting init {}...", MODID);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        // Register the data generation method
+        modEventBus.addListener(this::gatherData);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -67,6 +71,16 @@ public class More_decorative_blocks {
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
+    }
+
+    private void gatherData(final GatherDataEvent event) {
+        LOGGER.info("[Data Gen] Starting data generation");
+        var generator = event.getGenerator();
+        var packOutput = generator.getPackOutput();
+        var lookupProvider = event.getLookupProvider();
+
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
+        LOGGER.info("[Data Gen] Added ModWorldGenProvider to data generator");
     }
 
     public static void startOutput() {

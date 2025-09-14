@@ -1,0 +1,18 @@
+{
+	"type" : "minecraft:crafting_shaped" ,
+	"category" : "building" ,
+	"key" : {
+		"I" : {
+			"item" : "more_decorative_blocks:aluminum_ingot"
+		}
+	} ,
+	"pattern" : [
+		"III" ,
+		"III" ,
+		"III"
+	] ,
+	"result" : {
+		"count" : 1 ,
+		"id" : "more_decorative_blocks:aluminum_block"
+	}
+}

@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.registry;
+package org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -7,13 +7,12 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.more_blocks_and_items_team.more_decorative_blocks.item.GlassCup;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.item.GlassCup;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
 
 public class ItemRegistry {
-    public static final String MODID = "more_decorative_blocks";
-
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
     public static final DeferredItem<BlockItem> MDB_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("mdb_block", MDB_BLOCK);

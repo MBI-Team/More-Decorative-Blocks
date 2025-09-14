@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.block.basic;
+package org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

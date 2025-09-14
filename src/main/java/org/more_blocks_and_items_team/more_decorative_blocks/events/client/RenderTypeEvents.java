@@ -6,7 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
-import org.more_blocks_and_items_team.more_decorative_blocks.registry.BlockRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry;
 
 @EventBusSubscriber(modid = "more_decorative_blocks", bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RenderTypeEvents {

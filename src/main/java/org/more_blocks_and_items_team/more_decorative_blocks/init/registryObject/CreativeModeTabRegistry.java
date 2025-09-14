@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.registry;
+package org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -7,11 +7,11 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.registry.ItemRegistry.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
 
 
 public class CreativeModeTabRegistry {
-    public static final String MODID = "more_decorative_blocks";
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
