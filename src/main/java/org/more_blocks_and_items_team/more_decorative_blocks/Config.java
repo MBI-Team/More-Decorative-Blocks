@@ -5,8 +5,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.Properties;
-
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
 
@@ -35,18 +33,6 @@ public class Config {
 
         // 确保在所有配置项定义后再构建SPEC
         SPEC = BUILDER.build();
-    }
-
-    public static String getLicence() {
-        LOGGER.info("[Mod Init]Getting license......");
-        try {
-            Properties props = new Properties();
-            props.load(More_decorative_blocks.class.getResourceAsStream("/GradleInit.properties"));
-            return props.getProperty("license", "unknown");
-        } catch (Exception e) {
-            LOGGER.error("[Init]Failed to get license", e);
-            return "unknown";
-        }
     }
 
 

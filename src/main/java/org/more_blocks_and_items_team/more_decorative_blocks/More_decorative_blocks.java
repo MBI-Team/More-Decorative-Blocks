@@ -19,18 +19,16 @@ import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModFeature
 
 import java.io.IOException;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.Config.getLicence;
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.loadVersion;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.mod_version;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MODID)
 public class More_decorative_blocks {
     // Define mod id in a common place for everything to reference
 
-    public static String mod_version = loadVersion();// 从配置文件加载版本号
+    // 从配置文件加载版本号
 
-    public static String licence = getLicence();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.

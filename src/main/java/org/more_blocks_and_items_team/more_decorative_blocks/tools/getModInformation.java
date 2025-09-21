@@ -20,4 +20,19 @@ public class getModInformation {
             return "unknown";
         }
     }
+
+    public static String mod_version = loadVersion();
+    public static String licence = getLicence();
+
+    public static String getLicence() {
+        LOGGER.info("[Mod Init]Getting license......");
+        try {
+            Properties props = new Properties();
+            props.load(More_decorative_blocks.class.getResourceAsStream("/GradleInit.properties"));
+            return props.getProperty("license", "unknown");
+        } catch (Exception e) {
+            LOGGER.error("[Init]Failed to get license", e);
+            return "unknown";
+        }
+    }
 }
