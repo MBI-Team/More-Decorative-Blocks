@@ -235,18 +235,4 @@ public class BlockRegistry {
             .strength(0.5f, 10f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
-
-    // 铝矿石方块
-    public static final DeferredBlock<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore", () -> new Block(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.STONE)
-            .sound(SoundType.STONE)
-            .strength(3.0f, 3.0f)
-    ));
-
-    // 深层铝矿石方块
-    public static final DeferredBlock<Block> DEEPSLATE_ALUMINUM_ORE = BLOCKS.register("deepslate_aluminum_ore", () -> new Block(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.DEEPSLATE)
-            .sound(SoundType.DEEPSLATE)
-            .strength(4.5f, 3.0f)
-    ));
 }

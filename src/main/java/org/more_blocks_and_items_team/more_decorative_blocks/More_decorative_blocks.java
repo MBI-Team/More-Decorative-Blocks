@@ -1,13 +1,10 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
@@ -17,12 +14,11 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.worldgen.ModWorldGenProvider;
 import org.more_blocks_and_items_team.more_decorative_blocks.tools.VersionChecker;
+import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModFeatures;
 
 import java.io.IOException;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.Config.enableVersionChecker;
 import static org.more_blocks_and_items_team.more_decorative_blocks.Config.getLicence;
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
@@ -69,6 +65,18 @@ public class More_decorative_blocks {
         CMTRInitOutput.init();
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
+
+        // Register fluids
+        LOGGER.info("[Mod Init]Registering fluid types...");
+        FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
+        LOGGER.info("[Mod Init]Registering fluids...");
+        FluidRegistry.FLUIDS.register(modEventBus);
+        FluidRegistry.BLOCKS.register(modEventBus);
+        FluidRegistry.ITEMS.register(modEventBus);
+
+        // Register world generation features
+        LOGGER.info("[Mod Init]Registering world generation features...");
+        ModFeatures.FEATURES.register(modEventBus);
     }
 
     private void gatherData(final GatherDataEvent event) {
@@ -77,7 +85,6 @@ public class More_decorative_blocks {
         var packOutput = generator.getPackOutput();
         var lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
         LOGGER.info("[Data Gen] Added ModWorldGenProvider to data generator");
     }
 
@@ -101,9 +108,6 @@ public class More_decorative_blocks {
         }
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
-        LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("                                                                    ");
-        LOGGER.info(licence);
     }
 
     public static void checkVersion() {
@@ -145,38 +149,30 @@ public class More_decorative_blocks {
         }).start();
     }
 
-    @SubscribeEvent
-    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-    }
-
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
+        LOGGER.info("[Mod Init]Common setup completed");
+        startOutput();
+        checkVersion();
     }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-    }
 
+    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+        // Do something when the server starts
+        LOGGER.info("HELLO from server starting");
         startOutput();
-        if (enableVersionChecker) {
-            checkVersion();
-        }
+        checkVersion();
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            startOutput();
-            if (enableVersionChecker) {
-                checkVersion();
-            }
-        }
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onPlayerInteract(PlayerInteractEvent.RightClickBlock event) {
+        LOGGER.info("[Event Test]Player right clicked block at {}", event.getPos().toShortString());
     }
-
 }
