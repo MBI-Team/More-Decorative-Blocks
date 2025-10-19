@@ -35,7 +35,7 @@ public class ModWorldGenEvents {
 
         event.register(Registries.PLACED_FEATURE, helper -> {
             // 注册放置的特征
-            // 先注册配置特征，再在放置特征中引用它
+            // 我们暂时不在此处注册，而是在数据生成中处理
         });
     }
 

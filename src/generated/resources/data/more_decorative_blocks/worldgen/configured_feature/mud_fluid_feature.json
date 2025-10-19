@@ -1,3 +1,4 @@
 {
-	"type" : "more_decorative_blocks:mud_fluid_feature"
+	"type" : "more_decorative_blocks:mud_fluid_feature" ,
+	"config" : { }
 }
