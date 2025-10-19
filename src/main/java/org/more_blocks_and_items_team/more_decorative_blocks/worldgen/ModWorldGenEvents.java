@@ -63,7 +63,7 @@ public class ModWorldGenEvents {
         Holder<ConfiguredFeature<?, ?>> mudFluidFeatureHolder = configuredFeatures.getOrThrow(MUD_FLUID_FEATURE_KEY);
 
         // 泥浆流体生成频率（平均每几个区块生成一次）
-        final int MUD_FLUID_GENERATION_RATE = 4;
+        final int MUD_FLUID_GENERATION_RATE = 5;
 
         // 注册放置特征，使其在世界中生成
         context.register(MUD_FLUID_PLACED_FEATURE_KEY,
