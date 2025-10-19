@@ -5,6 +5,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -35,7 +36,21 @@ public class ModWorldGenEvents {
 
         event.register(Registries.PLACED_FEATURE, helper -> {
             // 注册放置的特征
-            // 我们暂时不在此处注册，而是在数据生成中处理
+            // 我们需要先注册配置的特征，然后再注册放置的特征
+            // 由于无法直接从helper获取registry，我们采用另一种方法注册放置特征
+            final int MUD_FLUID_GENERATION_RATE = 4;
+
+            helper.register(MUD_FLUID_PLACED_FEATURE_KEY,
+                    new PlacedFeature(
+                            Holder.direct(new ConfiguredFeature<>(ModFeatures.MUD_FLUID_FEATURE.get(), NoneFeatureConfiguration.INSTANCE)),
+                            List.of(
+                                    RarityFilter.onAverageOnceEvery(MUD_FLUID_GENERATION_RATE), // 平均每4个区块生成一次
+                                    InSquarePlacement.spread(), // 在区块内随机分布
+                                    HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE), // 在地表生成
+                                    BiomeFilter.biome() // 只在合适的生物群系生成
+                            )
+                    )
+            );
         });
     }
 
@@ -47,19 +62,23 @@ public class ModWorldGenEvents {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> mudFluidFeatureHolder = configuredFeatures.getOrThrow(MUD_FLUID_FEATURE_KEY);
 
+        // 泥浆流体生成频率（平均每几个区块生成一次）
+        final int MUD_FLUID_GENERATION_RATE = 4;
+
         // 注册放置特征，使其在世界中生成
         context.register(MUD_FLUID_PLACED_FEATURE_KEY,
                 new PlacedFeature(mudFluidFeatureHolder,
                         List.of(
-                                RarityFilter.onAverageOnceEvery(4), // 平均每4个区块生成一次
+                                RarityFilter.onAverageOnceEvery(MUD_FLUID_GENERATION_RATE), // 平均每4个区块生成一次
                                 InSquarePlacement.spread(), // 在区块内随机分布
-                                HeightmapPlacement.onHeightmap(net.minecraft.world.level.levelgen.Heightmap.Types.WORLD_SURFACE), // 在地表生成
+                                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE), // 在地表生成
                                 BiomeFilter.biome() // 只在合适的生物群系生成
                         )
                 )
         );
     }
 
+    @SuppressWarnings("unchecked")
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
             BootstrapContext<ConfiguredFeature<?, ?>> context,
             F feature

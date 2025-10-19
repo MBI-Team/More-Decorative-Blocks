@@ -1,5 +1,11 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -10,12 +16,14 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.tools.VersionChecker;
 import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModFeatures;
+import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModWorldGenProvider;
 
 import java.io.IOException;
 
@@ -73,6 +81,9 @@ public class More_decorative_blocks {
         // Register world generation features
         LOGGER.info("[Mod Init]Registering world generation features...");
         ModFeatures.FEATURES.register(modEventBus);
+
+        // Register command event
+        NeoForge.EVENT_BUS.register(this);
     }
 
     private void gatherData(final GatherDataEvent event) {
@@ -82,6 +93,7 @@ public class More_decorative_blocks {
         var lookupProvider = event.getLookupProvider();
 
         LOGGER.info("[Data Gen] Added ModWorldGenProvider to data generator");
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
     }
 
     public static void startOutput() {
@@ -170,5 +182,23 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onPlayerInteract(PlayerInteractEvent.RightClickBlock event) {
         LOGGER.info("[Event Test]Player right clicked block at {}", event.getPos().toShortString());
+    }
+
+    // Register commands
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+        dispatcher.register(Commands.literal("testmud")
+                .requires(source -> source.hasPermission(2))
+                .executes(this::testMudGeneration)
+        );
+    }
+
+    private int testMudGeneration(CommandContext<CommandSourceStack> context) {
+        CommandSourceStack source = context.getSource();
+        BlockPos pos = BlockPos.containing(source.getPosition()).below();
+        source.getLevel().setBlock(pos, FluidRegistry.MUD_BLOCK.get().defaultBlockState(), 3);
+        source.sendSuccess(() -> Component.literal("Placed mud at " + pos), true);
+        return 1;
     }
 }
