@@ -1,0 +1,19 @@
+{
+	"feature" : "more_decorative_blocks:mud_fluid_feature" ,
+	"placement" : [
+		{
+			"type" : "minecraft:rarity_filter" ,
+			"chance" : 4
+		} ,
+		{
+			"type" : "minecraft:in_square"
+		} ,
+		{
+			"type" : "minecraft:heightmap" ,
+			"heightmap" : "WORLD_SURFACE"
+		} ,
+		{
+			"type" : "minecraft:biome"
+		}
+	]
+}

@@ -20,20 +20,18 @@ import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModFeature
 import java.io.IOException;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.mod_version;
+import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.*;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MODID)
 public class More_decorative_blocks {
-    // Define mod id in a common place for everything to reference
-
-    // 从配置文件加载版本号
 
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) throws InterruptedException {
         LOGGER.info("[Mod Init]Starting init {}...", MODID);
+        LOGGER.info("[Mod Init]{}", licence);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 

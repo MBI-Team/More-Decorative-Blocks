@@ -30,10 +30,12 @@ public class ModWorldGenEvents {
     public static void registerWorldGenFeatures(RegisterEvent event) {
         event.register(Registries.CONFIGURED_FEATURE, helper -> {
             // 注册配置的特征
+            helper.register(MUD_FLUID_FEATURE_KEY, new ConfiguredFeature<>(ModFeatures.MUD_FLUID_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         });
 
         event.register(Registries.PLACED_FEATURE, helper -> {
             // 注册放置的特征
+            // 先注册配置特征，再在放置特征中引用它
         });
     }
 
