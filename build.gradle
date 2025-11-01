@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 plugins {
     id 'java'
     id 'net.neoforged.gradle.userdev' version '7.0.142'
@@ -9,10 +11,79 @@ java {
     }
 }
 
+def getGitCommitHash() {
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-parse', '--short', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    } catch (Exception e) {
+        println("Git Failed,please check git" + e)
+        // 如果 Git 不可用或者发生错误，返回随机哈希作为备选方案
+        return generateRandomHash()
+    }
+}
+
+/**
+ * 生成一个8位随机哈希字符串
+ * 格式为：字母-数字-字母-数字-字母-数字-字母-数字
+ *
+ * @return 8位随机哈希字符串
+ */
+def static generateRandomHash() {
+    def letters = "abcdefghijklmnopqrstuvwxyz"
+    def digits = "0123456789"
+    def hash = ""
+
+    // 第一位：字母
+    hash += letters.charAt((int) (Math.random() * letters.length()))
+    // 第二位：数字
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+    // 第三位：字母
+    hash += letters.charAt((int) (Math.random() * letters.length()))
+    // 第四位：数字
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+    // 第五位：字母
+    hash += letters.charAt((int) (Math.random() * letters.length()))
+    // 第六位：数字
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+    // 第七位：字母
+    hash += letters.charAt((int) (Math.random() * letters.length()))
+    // 第八位：数字
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+
+    return hash
+}
+
+def static generateRandomHash2() {
+    def digits = "0123456789"
+    def hash = ""
+
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+    hash += digits.charAt((int) (Math.random() * digits.length()))
+
+    return hash
+}
+
+/**
+ * 检测当前年月日的方法
+ *
+ * @return 当前日期字符串，格式为 yyyyMMdd
+ */
+def static getCurrentDate() {
+    def date = new Date()
+    def dateFormat = new SimpleDateFormat("yyyyMMdd")
+    return dateFormat.format(date)
+}
+
 // 从 gradle.properties 加载属性
 def mod_id = project.mod_id
 def mod_name = project.mod_name
-def mod_version = project.mod_version
+def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
 def neo_version = project.neo_version
 
@@ -119,17 +190,17 @@ jar {
 
     manifest {
         attributes([
-                'Specification-Title'   : project.mod_name,
-                'Specification-Vendor'  : project.mod_authors,
-                'Specification-Version' : project.mod_version,
-                'Implementation-Title'  : project.mod_name,
-                'Implementation-Version': project.mod_version,
-                'Implementation-Vendor' : project.mod_authors,
+                'Specification-Title'   : mod_name,
+                'Specification-Vendor'  : mod_authors,
+                'Specification-Version' : mod_version,
+                'Implementation-Title'  : mod_name,
+                'Implementation-Version': mod_version,
+                'Implementation-Vendor' : mod_authors,
         ])
     }
 
-    archiveBaseName = project.mod_id
-    archiveVersion = project.mod_version
+    archiveBaseName = mod_id
+    archiveVersion = mod_version
 }
 
 // 确保测试可以访问主类路径
