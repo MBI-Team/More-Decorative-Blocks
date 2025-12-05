@@ -2,6 +2,12 @@ pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
+        // 添加阿里云镜像源以提高在中国大陆的下载速度
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url = 'https://maven.aliyun.com/repository/google' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        // 添加华为云镜像作为备用源
+        maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
         maven { url = 'https://maven.neoforged.net/releases' }
     }
 }
