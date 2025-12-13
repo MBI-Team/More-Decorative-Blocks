@@ -31,4 +31,13 @@ public class MudFluidType extends FluidType {
             }
         });
     }
+    
+    // 添加getter方法，以便在initializeClient方法之外也能访问纹理
+    public ResourceLocation getStillTexture() {
+        return stillTexture;
+    }
+    
+    public ResourceLocation getFlowingTexture() {
+        return flowingTexture;
+    }
 }
