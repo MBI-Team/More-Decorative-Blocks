@@ -18,8 +18,8 @@ public class RoadLine extends NormalBlock {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
                                         @NotNull BlockPos pos, @NotNull CollisionContext context) {
-        // 设置为无碰撞箱
-        return Block.box(0, 0, 0, 0, 0, 0);
+        // 设置可见形状，让玩家可以看到并选中标记线
+        return Block.box(0, 0, 0, 16, 1, 16);
     }
 
     @Override

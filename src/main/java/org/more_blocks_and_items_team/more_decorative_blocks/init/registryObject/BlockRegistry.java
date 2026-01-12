@@ -263,4 +263,25 @@ public class BlockRegistry {
             .lightLevel(state -> 0)
             .strength(2.0f, 6.0f)  // 硬度参数（可选）
     ));
+
+    public static final DeferredBlock<Block> LIGHT_BLUE_TILE = BLOCKS.register("light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> CRACKED_LIGHT_BLUE_TILE = BLOCKS.register("cracked_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> CHIPPED_LIGHT_BLUE_TILE = BLOCKS.register("chipped_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
 }

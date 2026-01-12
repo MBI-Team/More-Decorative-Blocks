@@ -70,4 +70,10 @@ public class CreativeModeTabRegistry {
         output.accept(GRAVEL_ITEM.get());
         output.accept(COBBLESTONE_ITEM.get());
     }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_BRICK_TAB = CREATIVE_MODE_TABS.register("mdb_brick_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_brick")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> LIGHT_BLUE_TILE_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
+        output.accept(LIGHT_BLUE_TILE_ITEM.get());
+        output.accept(CRACKED_LIGHT_BLUE_TILE_ITEM.get());
+        output.accept(CHIPPED_LIGHT_BLUE_TILE_ITEM.get());
+    }).build());
 }
