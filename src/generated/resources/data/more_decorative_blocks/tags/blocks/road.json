@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "more_decorative_blocks:asphalt_road",
+    "more_decorative_blocks:white_solid_line",
+    "more_decorative_blocks:white_solid_line_middle",
+    "more_decorative_blocks:white_dashed_line",
+    "more_decorative_blocks:white_dashed_line_middle",
+    "more_decorative_blocks:white_line_turnleft",
+    "more_decorative_blocks:white_line_turnright",
+    "more_decorative_blocks:white_line_middle_turnleft",
+    "more_decorative_blocks:white_line_middle_turnright",
+    "more_decorative_blocks:yellow_solid_line",
+    "more_decorative_blocks:yellow_solid_line_middle",
+    "more_decorative_blocks:yellow_dashed_line",
+    "more_decorative_blocks:yellow_dashed_line_middle",
+    "more_decorative_blocks:yellow_line_turnleft",
+    "more_decorative_blocks:yellow_line_turnright",
+    "more_decorative_blocks:yellow_line_middle_turnleft",
+    "more_decorative_blocks:yellow_line_middle_turnright"
+  ]
+}

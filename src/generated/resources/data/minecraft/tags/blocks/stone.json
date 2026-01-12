@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "more_decorative_blocks:mdb_block",
+    "more_decorative_blocks:seat_stone",
+    "more_decorative_blocks:asphalt_road",
+    "more_decorative_blocks:limestone"
+  ]
+}

@@ -235,4 +235,32 @@ public class BlockRegistry {
             .strength(0.5f, 10f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
+
+    public static final DeferredBlock<Block> LIMESTONE = BLOCKS.register("limestone", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> SHALE = BLOCKS.register("shale", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> GRAVEL = BLOCKS.register("gravel", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.GRAVEL)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> COBBLESTONE = BLOCKS.register("cobblestone", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(2.0f, 6.0f)  // 硬度参数（可选）
+    ));
 }

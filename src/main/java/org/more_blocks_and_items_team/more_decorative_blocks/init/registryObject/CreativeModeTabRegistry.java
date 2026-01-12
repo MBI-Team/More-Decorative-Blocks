@@ -63,4 +63,11 @@ public class CreativeModeTabRegistry {
         output.accept(YLMTL_ITEM.get());
         output.accept(YLMTR_ITEM.get());
     }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_ROCK_TAB = CREATIVE_MODE_TABS.register("mdb_rock_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_rock")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> LIMESTONE_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
+        output.accept(LIMESTONE_ITEM.get());
+        output.accept(SHALE_ITEM.get());
+        output.accept(GRAVEL_ITEM.get());
+        output.accept(COBBLESTONE_ITEM.get());
+    }).build());
 }

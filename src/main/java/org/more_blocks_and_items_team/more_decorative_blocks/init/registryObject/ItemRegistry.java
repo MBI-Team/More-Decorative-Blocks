@@ -86,6 +86,14 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> YLMTR_ITEM = ITEMS.registerSimpleBlockItem("yellow_line_middle_turnright", YELLOW_LINE_MIDDLE_TURNRIGHT);
 
+    public static final DeferredItem<BlockItem> LIMESTONE_ITEM = ITEMS.registerSimpleBlockItem("limestone", LIMESTONE);
+
+    public static final DeferredItem<BlockItem> SHALE_ITEM = ITEMS.registerSimpleBlockItem("shale", SHALE);
+
+    public static final DeferredItem<BlockItem> GRAVEL_ITEM = ITEMS.registerSimpleBlockItem("gravel", GRAVEL);
+
+    public static final DeferredItem<BlockItem> COBBLESTONE_ITEM = ITEMS.registerSimpleBlockItem("cobblestone", COBBLESTONE);
+
     public static final DeferredItem<Item> ASPHALT = ITEMS.registerItem("asphalt", Item::new, new Item.Properties()
             .setNoRepair()
             .stacksTo(64)
