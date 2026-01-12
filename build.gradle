@@ -5,6 +5,15 @@ plugins {
     id 'net.neoforged.gradle.userdev' version '7.0.142'
 }
 
+// 解决 ASM 版本冲突问题 - 强制所有 ASM 库使用相同版本
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.group == 'org.ow2.asm' && details.requested.name.startsWith('asm-')) {
+            details.useVersion '9.7'
+        }
+    }
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
@@ -85,7 +94,7 @@ def mod_id = project.mod_id
 def mod_name = project.mod_name
 def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
-def neo_version = project.neo_version
+def neo_version = "21.1.115"
 
 subsystems {
     parchment {
