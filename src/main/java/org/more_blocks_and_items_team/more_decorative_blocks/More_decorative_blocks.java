@@ -4,7 +4,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -115,7 +114,7 @@ public class More_decorative_blocks {
                             LOGGER.info("You are using the latest version.");
                         }
                     } else {
-                        LOGGER.info("You are using the latest version.");
+                        LOGGER.info("You are using the test version.");
                     }
                 } else {
                     LOGGER.info("You are using the latest version.");
@@ -157,17 +156,16 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
-        dispatcher.register(Commands.literal("testmud")
+        dispatcher.register(Commands.literal("mdbversion")
                 .requires(source -> source.hasPermission(2))
-                .executes(this::testMudGeneration)
+                .executes(this::MDBVersionCMD)
         );
     }
 
-    private int testMudGeneration(CommandContext<CommandSourceStack> context) {
-        CommandSourceStack source = context.getSource();
-        BlockPos pos = BlockPos.containing(source.getPosition()).below();
-        source.getLevel().setBlock(pos, FluidRegistry.MUD_BLOCK.get().defaultBlockState(), 3);
-        source.sendSuccess(() -> Component.literal("Placed mud at " + pos), true);
+    private int MDBVersionCMD(CommandContext<CommandSourceStack> context) {
+        source.sendSuccess(() -> Component.literal("---More Decorative Blocks---"), true);
+        source.sendSuccess(() -> Component.literal("Your current version: " + mod_version), true);
+        source.sendSuccess(() -> Component.literal("All Right Reserved ©More Blocks And Items Team"), true);
         return 1;
     }
 }
