@@ -319,4 +319,34 @@ public class BlockRegistry {
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
     ));
+
+    // 浅色木地板和地砖
+    public static final DeferredBlock<Block> LIGHT_WOOD_PLANK = BLOCKS.register("light_wood_plank", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.WOOD)
+            .sound(SoundType.WOOD)
+            .lightLevel(state -> 0)
+            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> LIGHT_WOOD_TILE = BLOCKS.register("light_wood_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.WOOD)
+            .sound(SoundType.WOOD)
+            .lightLevel(state -> 0)
+            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    // 深色木地板和地砖
+    public static final DeferredBlock<Block> DARK_WOOD_PLANK = BLOCKS.register("dark_wood_plank", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.WOOD)
+            .sound(SoundType.WOOD)
+            .lightLevel(state -> 0)
+            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> DARK_WOOD_TILE = BLOCKS.register("dark_wood_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.WOOD)
+            .sound(SoundType.WOOD)
+            .lightLevel(state -> 0)
+            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+    ));
 }
