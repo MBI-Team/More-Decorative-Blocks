@@ -5,8 +5,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.getModInformation.MODID;
 
 @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Config {

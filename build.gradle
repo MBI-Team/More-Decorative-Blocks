@@ -16,9 +16,24 @@ configurations.all {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)  // 使用Java 17以获得更好的兼容性
     }
 }
+
+// 设置系统属性以解决SSL连接问题 - 在项目评估早期就设置
+System.setProperty("javax.net.ssl.trustStore", "")
+System.setProperty("javax.net.ssl.trustStoreType", "JKS")
+System.setProperty("javax.net.ssl.trustStorePassword", "changeit")
+System.setProperty("javax.net.ssl.keyStore", "")
+System.setProperty("javax.net.ssl.keyStoreType", "JKS")
+System.setProperty("javax.net.ssl.keyStorePassword", "changeit")
+System.setProperty("com.sun.net.useExclusiveBind", "false")
+System.setProperty("jdk.tls.client.protocols", "TLSv1,TLSv1.1,TLSv1.2,TLSv1.3")
+System.setProperty("com.ibm.jsse2.overrideDefaultTLS", "true")
+System.setProperty("com.sun.security.enableAIAcaIssuers", "true")
+System.setProperty("com.sun.security.enableCRLDP", "true")
+System.setProperty("com.oracle.security.useSubjectDN", "true")
+System.setProperty("jsse.enableSNIExtension", "false") // 禁用SNI扩展以解决某些SSL连接问题
 
 def getGitCommitHash() {
     try {
@@ -66,6 +81,11 @@ def static generateRandomHash() {
     return hash
 }
 
+/**
+ * 生成一个4位随机数字字符串
+ *
+ * @return 4位随机数字字符串
+ */
 def static generateRandomHash2() {
     def digits = "0123456789"
     def hash = ""
@@ -138,13 +158,45 @@ subsystems {
 
 // 添加仓库配置以解决依赖下载问题
 repositories {
+    // 添加更多镜像源以增加成功率
+    maven { 
+        url = 'https://maven.minecraftforge.net/'
+        metadataSources { 
+            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
+        }
+    }
+    maven { 
+        url = 'https://maven.neoforged.net/releases' 
+        metadataSources { 
+            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
+        }
+    }
     // 使用阿里云镜像源以提高在中国大陆的下载速度
-    maven { url = 'https://maven.aliyun.com/repository/public' }
-    maven { url = 'https://maven.aliyun.com/repository/google' }
-    maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { 
+        url = 'https://maven.aliyun.com/repository/public' 
+        metadataSources { 
+            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
+        }
+    }
+    maven { 
+        url = 'https://maven.aliyun.com/repository/google' 
+        metadataSources { 
+            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
+        }
+    }
+    maven { 
+        url = 'https://maven.aliyun.com/repository/gradle-plugin' 
+        metadataSources { 
+            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
+        }
+    }
     // 使用华为云镜像作为 NeoForge 的备用镜像源
-    maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
-    maven { url = 'https://maven.neoforged.net/releases' }
+    maven { 
+        url = 'https://repo.huaweicloud.com/repository/maven/' 
+        metadataSources { 
+            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
+        }
+    }
     mavenCentral()
     mavenLocal()
 }

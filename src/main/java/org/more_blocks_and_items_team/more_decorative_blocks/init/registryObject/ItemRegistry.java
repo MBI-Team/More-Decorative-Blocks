@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.item.GlassCup;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry.*;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.getModInformation.MODID;
 
 public class ItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);

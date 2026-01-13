@@ -9,7 +9,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.*;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 public class TooltipRegistry {
 

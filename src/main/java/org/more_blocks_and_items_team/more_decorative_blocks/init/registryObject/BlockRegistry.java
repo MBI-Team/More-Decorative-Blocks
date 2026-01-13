@@ -9,9 +9,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.NormalBlock;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkAndRedstoneBlock;
-import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkBlock;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.MODID;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.getModInformation.MODID;
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file

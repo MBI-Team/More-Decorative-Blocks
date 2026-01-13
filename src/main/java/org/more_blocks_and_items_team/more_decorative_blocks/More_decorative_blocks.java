@@ -21,14 +21,14 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
-import org.more_blocks_and_items_team.more_decorative_blocks.tools.VersionChecker;
+import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionChecker;
 import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModFeatures;
 import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModWorldGenProvider;
 
 import java.io.IOException;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.getModInformation.*;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.getModInformation.*;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MODID)

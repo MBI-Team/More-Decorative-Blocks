@@ -1,10 +1,10 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.tools;
+package org.more_blocks_and_items_team.more_decorative_blocks.utils;
 
 import org.more_blocks_and_items_team.more_decorative_blocks.More_decorative_blocks;
 
 import java.util.Properties;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 public class getModInformation {
     public static final String MODID = "more_decorative_blocks";

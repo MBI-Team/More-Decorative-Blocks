@@ -1,4 +1,4 @@
-package org.more_blocks_and_items_team.more_decorative_blocks.tools;
+package org.more_blocks_and_items_team.more_decorative_blocks.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.CreativeModeTabRegistry.*;
-import static org.more_blocks_and_items_team.more_decorative_blocks.tools.LOGGER.LOGGER;
+import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 public class CMTRInitOutput {
     public static void init() {
