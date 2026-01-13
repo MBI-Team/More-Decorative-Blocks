@@ -11,11 +11,11 @@
 			"entries" : [
 				{
 					"type" : "minecraft:item" ,
-					"name" : "more_decorative_blocks:aluminum_block"
+					"name" : "more_decorative_blocks:cracked_white_tile"
 				}
 			] ,
 			"rolls" : 1.0
 		}
 	] ,
-	"random_sequence" : "more_decorative_blocks:blocks/aluminum_block"
+	"random_sequence" : "more_decorative_blocks:blocks/cracked_white_tile"
 }
