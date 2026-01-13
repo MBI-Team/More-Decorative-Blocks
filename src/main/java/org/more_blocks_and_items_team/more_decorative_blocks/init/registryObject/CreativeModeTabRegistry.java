@@ -75,5 +75,10 @@ public class CreativeModeTabRegistry {
         output.accept(LIGHT_BLUE_TILE_ITEM.get());
         output.accept(CRACKED_LIGHT_BLUE_TILE_ITEM.get());
         output.accept(CHIPPED_LIGHT_BLUE_TILE_ITEM.get());
+        output.accept(WHITE_TILE_ITEM.get());
+        output.accept(CRACKED_WHITE_TILE_ITEM.get());
+        output.accept(CHIPPED_WHITE_TILE_ITEM.get());
+        output.accept(STEEL_PLATE_RIVETED_ITEM.get());
+        output.accept(STEEL_BLOCK_ITEM.get());
     }).build());
 }

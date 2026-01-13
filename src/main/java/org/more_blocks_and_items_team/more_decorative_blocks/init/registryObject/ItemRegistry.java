@@ -100,6 +100,16 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> CHIPPED_LIGHT_BLUE_TILE_ITEM = ITEMS.registerSimpleBlockItem("chipped_light_blue_tile", CHIPPED_LIGHT_BLUE_TILE);
 
+    public static final DeferredItem<BlockItem> STEEL_PLATE_RIVETED_ITEM = ITEMS.registerSimpleBlockItem("steel_plate_riveted", STEEL_PLATE_RIVETED);
+
+    public static final DeferredItem<BlockItem> STEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("steel_block", STEEL_BLOCK);
+
+    public static final DeferredItem<BlockItem> WHITE_TILE_ITEM = ITEMS.registerSimpleBlockItem("white_tile", WHITE_TILE);
+
+    public static final DeferredItem<BlockItem> CRACKED_WHITE_TILE_ITEM = ITEMS.registerSimpleBlockItem("cracked_white_tile", CRACKED_WHITE_TILE);
+
+    public static final DeferredItem<BlockItem> CHIPPED_WHITE_TILE_ITEM = ITEMS.registerSimpleBlockItem("chipped_white_tile", CHIPPED_WHITE_TILE);
+
     public static final DeferredItem<Item> ASPHALT = ITEMS.registerItem("asphalt", Item::new, new Item.Properties()
             .setNoRepair()
             .stacksTo(64)

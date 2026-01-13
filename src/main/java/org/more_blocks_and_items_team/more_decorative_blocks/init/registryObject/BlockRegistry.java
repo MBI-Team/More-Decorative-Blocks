@@ -27,7 +27,7 @@ public class BlockRegistry {
             .isRedstoneConductor((state, level, pos) -> true)
     ));
 
-    public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.register("water_book", () -> new RightClinkBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> WATER_BOOK = BLOCKS.register("water_book", () -> new WaterBook(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
@@ -36,7 +36,7 @@ public class BlockRegistry {
             .dynamicShape()
     ));
 
-    public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new RightClinkBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> FIRE_BOOK = BLOCKS.register("fire_book", () -> new FireBook(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
@@ -280,6 +280,41 @@ public class BlockRegistry {
 
     public static final DeferredBlock<Block> CHIPPED_LIGHT_BLUE_TILE = BLOCKS.register("chipped_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> STEEL_PLATE_RIVETED = BLOCKS.register("steel_plate_riveted", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .sound(SoundType.METAL)
+            .lightLevel(state -> 0)
+            .strength(5.0f, 6.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .sound(SoundType.METAL)
+            .lightLevel(state -> 0)
+            .strength(5.0f, 6.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> WHITE_TILE = BLOCKS.register("white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> CRACKED_WHITE_TILE = BLOCKS.register("cracked_white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    public static final DeferredBlock<Block> CHIPPED_WHITE_TILE = BLOCKS.register("chipped_white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
