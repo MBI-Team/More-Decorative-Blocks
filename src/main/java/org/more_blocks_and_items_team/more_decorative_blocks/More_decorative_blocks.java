@@ -14,7 +14,6 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -22,8 +21,6 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionChecker;
-import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModFeatures;
-import org.more_blocks_and_items_team.more_decorative_blocks.worldgen.ModWorldGenProvider;
 
 import java.io.IOException;
 
@@ -42,9 +39,6 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]{}", licence);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register the data generation method
-        modEventBus.addListener(this::gatherData);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -70,30 +64,8 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
 
-        // Register fluids
-        LOGGER.info("[Mod Init]Registering fluid types...");
-        FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
-        LOGGER.info("[Mod Init]Registering fluids...");
-        FluidRegistry.FLUIDS.register(modEventBus);
-        FluidRegistry.BLOCKS.register(modEventBus);
-        FluidRegistry.ITEMS.register(modEventBus);
-
-        // Register world generation features
-        LOGGER.info("[Mod Init]Registering world generation features...");
-        ModFeatures.FEATURES.register(modEventBus);
-
         // Register command event
         NeoForge.EVENT_BUS.register(this);
-    }
-
-    private void gatherData(final GatherDataEvent event) {
-        LOGGER.info("[Data Gen] Starting data generation");
-        var generator = event.getGenerator();
-        var packOutput = generator.getPackOutput();
-        var lookupProvider = event.getLookupProvider();
-
-        LOGGER.info("[Data Gen] Added ModWorldGenProvider to data generator");
-        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
     }
 
     public static void startOutput() {
@@ -123,9 +95,6 @@ public class More_decorative_blocks {
             try {
                 String latestVersion = VersionChecker.getLatestVersion();
                 LOGGER.info("Current version: {}, The latest version in Github: {}", mod_version, latestVersion);
-                LOGGER.info("Your major version: {}, The latest major version in Github: {}", mod_version.charAt(0), latestVersion.charAt(0));
-                LOGGER.info("Your minor version: {}, The latest minor version in Github: {}", mod_version.charAt(2), latestVersion.charAt(2));
-                LOGGER.info("Your patch version: {}, The latest patch version in Github: {}", mod_version.charAt(4), latestVersion.charAt(4));
 
                 if (!mod_version.contains(latestVersion)) {
                     if (mod_version.charAt(0) < latestVersion.charAt(0)) {
