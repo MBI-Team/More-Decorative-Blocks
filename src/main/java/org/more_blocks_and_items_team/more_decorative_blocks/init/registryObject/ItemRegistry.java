@@ -78,6 +78,14 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> CHIPPED_WHITE_TILE_ITEM = ITEMS.registerSimpleBlockItem("chipped_white_tile", CHIPPED_WHITE_TILE);
 
+    // 浅色木地板和地砖物品
+    public static final DeferredItem<BlockItem> LIGHT_WOOD_PLANK_ITEM = ITEMS.registerSimpleBlockItem("light_wood_plank", LIGHT_WOOD_PLANK);
+    public static final DeferredItem<BlockItem> LIGHT_WOOD_TILE_ITEM = ITEMS.registerSimpleBlockItem("light_wood_tile", LIGHT_WOOD_TILE);
+
+    // 深色木地板和地砖物品
+    public static final DeferredItem<BlockItem> DARK_WOOD_PLANK_ITEM = ITEMS.registerSimpleBlockItem("dark_wood_plank", DARK_WOOD_PLANK);
+    public static final DeferredItem<BlockItem> DARK_WOOD_TILE_ITEM = ITEMS.registerSimpleBlockItem("dark_wood_tile", DARK_WOOD_TILE);
+
     public static final DeferredItem<Item> ASPHALT = ITEMS.registerItem("asphalt", Item::new, new Item.Properties()
             .setNoRepair()
             .stacksTo(64)
