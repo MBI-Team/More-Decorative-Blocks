@@ -18,18 +18,38 @@ public class Tablet extends RightClinkBlock {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
                                         @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return getCollisionShape(state, level, pos, context);
+    }
+
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level,
+                                               @NotNull BlockPos pos, @NotNull CollisionContext context) {
         Direction facing = state.getValue(FACING);
-        // Tablet collision box is consistent regardless of open/closed state
-        // Just needs to be rotated based on facing direction
-        switch (facing) {
-            case NORTH:
-            case SOUTH:
-                return Block.box(0, 0, 0, 14, 1, 16);
-            case EAST:
-            case WEST:
-                return Block.box(0, 0, 0, 16, 1, 14);
-            default:
-                return Block.box(0, 0, 0, 14, 1, 16);
+        // Tablet collision box depends on open/closed state and facing direction
+        if (state.getValue(OPEN)) {
+            // Open tablet - larger collision box for the screen
+            switch (facing) {
+                case NORTH:
+                case SOUTH:
+                    return Block.box(0, 0, 0, 14, 1, 16);
+                case EAST:
+                case WEST:
+                    return Block.box(0, 0, 0, 16, 1, 14);
+                default:
+                    return Block.box(0, 0, 0, 14, 1, 16);
+            }
+        } else {
+            // Closed tablet - smaller collision box
+            switch (facing) {
+                case NORTH:
+                case SOUTH:
+                    return Block.box(1, 0, 1, 13, 1, 15);
+                case EAST:
+                case WEST:
+                    return Block.box(1, 0, 1, 15, 1, 13);
+                default:
+                    return Block.box(1, 0, 1, 13, 1, 15);
+            }
         }
     }
 }
