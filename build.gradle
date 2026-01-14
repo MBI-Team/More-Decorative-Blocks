@@ -16,7 +16,7 @@ configurations.all {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)  // 使用Java 17以获得更好的兼容性
+        languageVersion = JavaLanguageVersion.of(17)  // 使用Java 17以获得更好的兼容性
     }
 }
 
