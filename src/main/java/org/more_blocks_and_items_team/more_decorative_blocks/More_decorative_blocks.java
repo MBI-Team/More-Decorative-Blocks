@@ -35,7 +35,6 @@ public class More_decorative_blocks {
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) throws InterruptedException {
         LOGGER.info("[Mod Init]Starting init {}...", MODID);
-        LOGGER.info("[Mod Init]{}", licence);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
