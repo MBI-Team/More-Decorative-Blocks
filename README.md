@@ -1,5 +1,11 @@
-# More Decorative Blocks
-更多装饰性方块
+<div align="center">
+  <h1>More Decorative Blocks</h1>
+
+[![GitHub](https://img.shields.io/badge/GitHub-repo-blue?style=flat-square&logo=github)](https://github.com/MBI-Team/More-Decorative-Blocks)
+[![QQ Group](https://img.shields.io/badge/QQ-gray?style=flat-square&logo=qq&logoColor=ffffff)](https://qm.qq.com/q/1Bc2saAlbG)
+[![Discord](https://img.shields.io/badge/Discord-gray?style=flat-square&logo=discord)](https://discord.gg/vSMWtAc5)
+[![Bilibili](https://img.shields.io/badge/Bilibili-gray?style=flat-square&logo=bilibili)](https://space.bilibili.com/3546894607322044)
+</div>
 
 ## 模组简介
 ### Introduction
@@ -13,6 +19,17 @@ More Decorative Blocks is a Minecraft mod that adds more decorative blocks to th
 
 - Minecraft Forge 1.21 (51.0.33)
 - Minecraft NeoForge 1.21 (21.0.167)
+
+## 构建版本
+
+### Build Versions
+
+- Java 17 +
+- Gradle 9.0.0 +
+
+#### 如果你想自己构建模组，建议使用以上配置
+
+#### If you want to build the mod by yourself, it is recommended to use the above configuration
 
 ## 功能特性
 ### Features
@@ -33,19 +50,19 @@ More Decorative Blocks is a Minecraft mod that adds more decorative blocks to th
 ### Installation Instructions
 
 1. 确保已安装 Minecraft Forge 或 NeoForge 1.21
-2. 下载 More Decorative Blocks 模组文件
+2. 下载 More Decorative Blocks 模组文件 (或自己构建？)
 3. 将模组文件放入 Minecraft 的 mods 文件夹中
 4. 启动游戏，在创意模式中找到并使用新方块
 
 1. Make sure Minecraft Forge or NeoForge 1.21 is installed
-2. Download the More Decorative Blocks mod file
+2. Download the More Decorative Blocks mod file (Or build by yourself?)
 3. Place the mod file into Minecraft's mods folder
 4. Start the game and find the new blocks in creative mode
 
 ## 使用说明
 ### Usage
 
-- 在创意模式下，新方块位于砖块标签页和其他相关标签页中
+- 在创造模式下，新方块位于砖块标签页和其他相关标签页中
 - 部分方块（如火之书、水之书、平板电脑）可以右键点击打开/关闭
 - 所有方块都支持正常的破坏和放置机制
 

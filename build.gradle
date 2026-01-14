@@ -16,7 +16,7 @@ configurations.all {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)  // 使用Java 17以获得更好的兼容性
+        languageVersion = JavaLanguageVersion.of(21)  // 使用Java 17以获得更好的兼容性
     }
 }
 
@@ -114,7 +114,7 @@ def mod_id = project.mod_id
 def mod_name = project.mod_name
 def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
-def neo_version = "21.1.115"
+def neo_version = project.neo_version
 
 subsystems {
     parchment {
