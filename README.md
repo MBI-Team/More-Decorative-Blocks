@@ -25,7 +25,7 @@ More Decorative Blocks is a Minecraft mod that adds more decorative blocks to th
 ### Build Versions
 
 - Java 17 +
-- Gradle 9.0.0 +
+- Gradle 8.10 +
 
 #### 如果你想自己构建模组，建议使用以上配置
 
