@@ -111,3 +111,5 @@ If you have any questions or suggestions, please feel free to provide feedback t
 感谢您使用 More Decorative Blocks 模组！
 
 Thank you for using More Decorative Blocks mod!
+
+&copy; 2026 More Blocks and Items Team All Rights Reserved.
