@@ -1,10 +1,12 @@
 <div align="center">
   <h1>More Decorative Blocks</h1>
 
-[![GitHub](https://img.shields.io/badge/GitHub-repo-blue?style=flat-square&logo=github)](https://github.com/MBI-Team/More-Decorative-Blocks)
-[![QQ Group](https://img.shields.io/badge/QQ-gray?style=flat-square&logo=qq&logoColor=ffffff)](https://qm.qq.com/q/1Bc2saAlbG)
-[![Discord](https://img.shields.io/badge/Discord-gray?style=flat-square&logo=discord)](https://discord.gg/vSMWtAc5)
-[![Bilibili](https://img.shields.io/badge/Bilibili-gray?style=flat-square&logo=bilibili)](https://space.bilibili.com/3546894607322044)
+  ![more_decorative_blocks.png](more_decorative_blocks.png)
+
+  [![GitHub](https://img.shields.io/badge/GitHub-repo-blue?style=flat-square&logo=github)](https://github.com/MBI-Team/More-Decorative-Blocks)
+  [![QQ Group](https://img.shields.io/badge/QQ-gray?style=flat-square&logo=qq&logoColor=ffffff)](https://qm.qq.com/q/1Bc2saAlbG)
+  [![Discord](https://img.shields.io/badge/Discord-gray?style=flat-square&logo=discord)](https://discord.gg/vSMWtAc5)
+  [![Bilibili](https://img.shields.io/badge/Bilibili-gray?style=flat-square&logo=bilibili)](https://space.bilibili.com/3546894607322044)
 </div>
 
 ## 模组简介
