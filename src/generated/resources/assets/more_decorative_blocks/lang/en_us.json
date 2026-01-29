@@ -64,7 +64,7 @@
   "advancements.more_decorative_blocks.get_glass_cup.title" : "Item exchange?" ,
   "advancements.more_decorative_blocks.get_glass_cup.description" : "Get a Glass Cup from Vanilla Glass Cup" ,
   "line6" : "--------------------------Config-------------------------------------" ,
-  "config.more_decorative_blocks.title" : "More Decorative Blocks Configs" ,
+  "config.more_decorative_blocks.title" : "More Decorative Blocks Configs(Work after reborn game)" ,
   "config.more_decorative_blocks.enable_version_checker" : "Enable Version Checker" ,
   "config.more_decorative_blocks.height_of_seat_stone" : "Height of Seat Stone"
 }

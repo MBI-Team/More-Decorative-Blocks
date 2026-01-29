@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class VersionChecker {
-    private static final String GITHUB_API_URL = "https://api.github.com/repos/MBI-Team/More-Decorative-Blocks/releases/latest";
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.GITHUB_API_URL;
 
+public class VersionChecker {
     public static String getLatestVersion() throws IOException {
         URL url = new URL(GITHUB_API_URL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();

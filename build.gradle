@@ -239,6 +239,7 @@ processResources {
             mod_version            : mod_version,
             mod_authors            : mod_authors,
             mod_description: mod_description,
+            github_api_url : github_api_url,
     ]
     inputs.properties replaceProperties
 

@@ -7,9 +7,9 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.FluidRegistry.MUD_BUCKET;
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.*;
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.getModInformation.MODID;
 
 
 public class CreativeModeTabRegistry {

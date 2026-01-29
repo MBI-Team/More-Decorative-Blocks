@@ -65,6 +65,6 @@
 	"advancements.more_decorative_blocks.get_glass_cup.description" : "通过原版玻璃瓶获得玻璃杯" ,
 	"line6" : "--------------------------配置-------------------------------------" ,
 	"config.more_decorative_blocks.title" : "更多装饰方块配置" ,
-	"config.more_decorative_blocks.enable_version_checker" : "启用版本检查器" ,
+	"config.more_decorative_blocks.enable_version_checker" : "启用版本检查器(重启游戏后生效)" ,
 	"config.more_decorative_blocks.height_of_seat_stone" : "石墩子的高度"
 }

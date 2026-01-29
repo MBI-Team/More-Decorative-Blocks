@@ -23,8 +23,9 @@ import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionChecke
 
 import java.io.IOException;
 
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
+import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.mod_version;
 import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.getModInformation.*;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MODID)
