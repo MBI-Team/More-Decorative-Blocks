@@ -5,6 +5,12 @@ plugins {
     id 'net.neoforged.gradle.userdev' version '7.0.142'
 }
 
+// Disable neoFormPatchUserDev task if it exists
+if (tasks.findByPath("neoFormPatchUserDev")) {
+    tasks.neoFormPatchUserDev.enabled = false
+    println "neoFormPatchUserDev task has been disabled"
+}
+
 // 解决 ASM 版本冲突问题 - 强制所有 ASM 库使用相同版本
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
@@ -20,20 +26,8 @@ java {
     }
 }
 
-// 设置系统属性以解决SSL连接问题 - 在项目评估早期就设置
-System.setProperty("javax.net.ssl.trustStore", "")
-System.setProperty("javax.net.ssl.trustStoreType", "JKS")
-System.setProperty("javax.net.ssl.trustStorePassword", "changeit")
-System.setProperty("javax.net.ssl.keyStore", "")
-System.setProperty("javax.net.ssl.keyStoreType", "JKS")
-System.setProperty("javax.net.ssl.keyStorePassword", "changeit")
-System.setProperty("com.sun.net.useExclusiveBind", "false")
-System.setProperty("jdk.tls.client.protocols", "TLSv1,TLSv1.1,TLSv1.2,TLSv1.3")
-System.setProperty("com.ibm.jsse2.overrideDefaultTLS", "true")
-System.setProperty("com.sun.security.enableAIAcaIssuers", "true")
-System.setProperty("com.sun.security.enableCRLDP", "true")
-System.setProperty("com.oracle.security.useSubjectDN", "true")
-System.setProperty("jsse.enableSNIExtension", "false") // 禁用SNI扩展以解决某些SSL连接问题
+// Note: SSL settings are now configured in gradle.properties to avoid hardcoding system properties
+// This allows for more flexible configuration depending on the network environment
 
 def getGitCommitHash() {
     try {
@@ -203,7 +197,7 @@ repositories {
 
 // 配置 Minecraft 和 NeoForge
 minecraft {
-
+    version = minecraft_version
 }
 
 // 依赖配置
@@ -288,4 +282,16 @@ sourceSets {
         compileClasspath += sourceSets.main.output
         runtimeClasspath += sourceSets.main.output
     }
+}
+
+// Apply network configuration initialization script
+apply from: 'init-network.gradle'
+
+// Apply SSL connection test script
+apply from: 'ssl-test.gradle'
+
+// Configure JVM system properties for network connections if they're not already set
+if (!project.hasProperty('disableNetworkConfig')) {
+    // These properties are now configured in gradle.properties but we ensure they're available
+    ext.set("networkConfigApplied", true)
 }

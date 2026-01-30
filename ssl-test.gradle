@@ -1,0 +1,60 @@
+// SSL Connection Test Task
+// This task helps verify SSL connectivity and certificate validation
+
+task testSSLConnection {
+    doLast {
+        println "Testing SSL connection to common repositories..."
+
+        try {
+            // Test connection to Maven Central
+            def url = new URL('https://repo1.maven.org/maven2/net/neoforged/neoforge/maven-metadata.xml')
+            def connection = url.openConnection()
+            connection.setRequestMethod("GET")
+            connection.setConnectTimeout(10000) // 10 seconds
+            connection.setReadTimeout(10000) // 10 seconds
+
+            def responseCode = connection.getResponseCode()
+            println "Maven Central connection: ${responseCode}"
+
+            if (responseCode == 200) {
+                println "✓ Successfully connected to Maven Central"
+            } else {
+                println "! Unexpected response from Maven Central: ${responseCode}"
+            }
+        } catch (Exception e) {
+            println "✗ Failed to connect to Maven Central: ${e.message}"
+        }
+
+        try {
+            // Test connection to NeoForged
+            def url = new URL('https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml')
+            def connection = url.openConnection()
+            connection.setRequestMethod("GET")
+            connection.setConnectTimeout(10000) // 10 seconds
+            connection.setReadTimeout(10000) // 10 seconds
+
+            def responseCode = connection.getResponseCode()
+            println "NeoForged Maven connection: ${responseCode}"
+
+            if (responseCode == 200) {
+                println "✓ Successfully connected to NeoForged Maven"
+            } else {
+                println "! Unexpected response from NeoForged Maven: ${responseCode}"
+            }
+        } catch (Exception e) {
+            println "✗ Failed to connect to NeoForged Maven: ${e.message}"
+        }
+
+        // Print current SSL/TLS settings
+        println ""
+        println "Current SSL/TLS settings:"
+        println "  jdk.tls.client.protocols: ${System.getProperty('jdk.tls.client.protocols', 'default')}"
+        println "  javax.net.ssl.trustStore: ${System.getProperty('javax.net.ssl.trustStore', 'default')}"
+        println "  http.connectionTimeout: ${System.getProperty('http.connectionTimeout', 'default')}"
+        println "  https.connectionTimeout: ${System.getProperty('https.connectionTimeout', 'default')}"
+        println "  com.sun.net.useExclusiveBind: ${System.getProperty('com.sun.net.useExclusiveBind', 'default')}"
+    }
+}
+
+// Make this task always run (not cached)
+testSSLConnection.outputs.upToDateWhen { false }

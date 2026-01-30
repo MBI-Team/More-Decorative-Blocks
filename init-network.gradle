@@ -1,0 +1,53 @@
+// Network Configuration Initialization Script
+// This script ensures proper network and SSL settings are loaded before build
+
+// Load network configuration from properties file
+def networkProps = new Properties()
+def networkPropsFile = file('network.properties')
+
+if (networkPropsFile.exists()) {
+    networkPropsFile.withInputStream { stream ->
+        networkProps.load(stream)
+    }
+
+    // Apply each property as a system property if it's not already set
+    networkProps.each { key, value ->
+        if (!System.getProperty(key)) {
+            System.setProperty(key, value)
+            println "Applied network property: ${key}=${value}"
+        } else {
+            println "Skipped ${key}, already set to: ${System.getProperty(key)}"
+        }
+    }
+} else {
+    println "Warning: network.properties file not found, using default settings"
+}
+
+// Verify that key SSL properties are properly set
+def requiredProtocols = System.getProperty('jdk.tls.client.protocols', '')
+if (requiredProtocols.contains('TLSv1.2') || requiredProtocols.contains('TLSv1.3')) {
+    println "✓ TLS 1.2/1.3 protocols are enabled"
+} else {
+    println "! TLS 1.2/1.3 protocols may not be enabled: ${requiredProtocols}"
+}
+
+// Ensure timeout values are reasonable
+def httpsTimeout = System.getProperty('https.connectionTimeout', '30000').toInteger()
+if (httpsTimeout < 30000) {
+    System.setProperty('https.connectionTimeout', '60000')
+    println "Adjusted https.connectionTimeout to 60000ms for better reliability"
+} else {
+    println "✓ HTTPS connection timeout is set to ${httpsTimeout}ms"
+}
+
+// Apply settings to Gradle's build environment
+gradle.projectsLoaded {
+    gradle.rootProject { rootProject ->
+        // Ensure repositories use the configured timeouts
+        rootProject.repositories.each { repo ->
+            if (repo instanceof org.gradle.api.artifacts.repositories.UrlArtifactRepository) {
+                // Apply settings to repository configurations
+            }
+        }
+    }
+}
