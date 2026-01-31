@@ -109,8 +109,8 @@ def mod_name = project.mod_name
 def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
 def neo_version = project.neo_version
-def mapping_minecraft_version = project.neogradle.subsystems.parchment.minecraftVersion
-def mapping_version = neogradle.subsystems.parchment.mappingsVersion
+def mapping_minecraft_version = project.getProperty("neogradle.subsystems.parchment.minecraftVersion")
+def mapping_version = project.getProperty("neogradle.subsystems.parchment.mappingsVersion")
 
 subsystems {
     parchment {
