@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat
 
 plugins {
     id 'java'
-    id 'net.neoforged.gradle.userdev' version '7.0.142'
+    id 'net.neoforged.gradle.userdev' version '7.1.20'
 }
 
 // Disable neoFormPatchUserDev task if it exists
@@ -22,7 +22,7 @@ configurations.all {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)  // 使用Java 17以获得更好的兼容性
+        languageVersion = JavaLanguageVersion.of(21)  // 使用Java 正确以获得更好的NG兼容性
     }
 }
 
