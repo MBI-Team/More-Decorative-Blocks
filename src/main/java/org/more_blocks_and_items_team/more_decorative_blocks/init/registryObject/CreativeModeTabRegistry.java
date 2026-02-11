@@ -8,7 +8,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
-import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.FluidRegistry.MUD_BUCKET;
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.*;
 
 
@@ -41,7 +40,6 @@ public class CreativeModeTabRegistry {
         output.accept(IRON_STICK.get());
         output.accept(ASPHALT.get());
         output.accept(STOOL.get());
-        output.accept(MUD_BUCKET.get());
     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_ROAD_TAB = CREATIVE_MODE_TABS.register("mdb_road_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_road")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ASPHALT_ROAD_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {

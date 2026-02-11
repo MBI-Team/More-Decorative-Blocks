@@ -163,9 +163,9 @@ public class More_decorative_blocks {
     }
 
     private int MDBVersionCMD(CommandContext<CommandSourceStack> context) {
-        source.sendSuccess(() -> Component.literal("---More Decorative Blocks---"), true);
-        source.sendSuccess(() -> Component.literal("Your current version: " + mod_version), true);
-        source.sendSuccess(() -> Component.literal("All Right Reserved ©More Blocks And Items Team"), true);
+        context.getSource().sendSuccess(() -> Component.literal("---More Decorative Blocks---"), true);
+        context.getSource().sendSuccess(() -> Component.literal("Your current version: " + mod_version), true);
+        context.getSource().sendSuccess(() -> Component.literal("All Right Reserved ©More Blocks And Items Team"), true);
         return 1;
     }
 }

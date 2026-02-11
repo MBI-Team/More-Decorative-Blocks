@@ -20,14 +20,14 @@ More Decorative Blocks is a Minecraft mod that adds more decorative blocks to th
 ### Supported Versions
 
 - Minecraft Forge 1.21 (51.0.33)
-- Minecraft NeoForge 1.21 (21.0.167)
+- Minecraft NeoForge 1.21 (21.0.167+)
 
 ## 构建版本
 
 ### Build Versions
 
-- Java 17 +
-- Gradle 8.10 +
+- Java 21 +
+- Gradle 8.14 +
 
 #### 如果你想自己构建模组，建议使用以上配置
 
