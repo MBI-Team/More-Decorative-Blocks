@@ -79,6 +79,7 @@
 	  "facing=west,gcn=4" : {
 		  "model" : "more_decorative_blocks:block/cupboard/iron/iron_cupboard_4" ,
 		  "y" : 0
-    }
+	  } ,
+	  "render_type" : "cutout"
   }
 }
