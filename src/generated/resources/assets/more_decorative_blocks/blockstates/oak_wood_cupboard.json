@@ -79,7 +79,6 @@
 	  "facing=west,gcn=4" : {
 		  "model" : "more_decorative_blocks:block/cupboard/oak_wood/oak_wood_cupboard_4" ,
 		  "y" : 0
-	  } ,
-	  "render_type" : "cutout"
+	  }
   }
 }

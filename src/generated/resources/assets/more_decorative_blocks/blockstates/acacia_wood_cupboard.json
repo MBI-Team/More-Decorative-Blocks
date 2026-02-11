@@ -79,7 +79,6 @@
 		"facing=west,gcn=4" : {
 			"model" : "more_decorative_blocks:block/cupboard/acacia_wood/acacia_wood_cupboard_4" ,
 			"y" : 0
-		} ,
-		"render_type" : "cutout"
+		}
 	}
 }

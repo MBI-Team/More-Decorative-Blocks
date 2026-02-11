@@ -1,6 +1,7 @@
 {
 	"format_version" : "1.21.6" ,
 	"credit" : "Made by MBITeam" ,
+	"render_type" : "cutout" ,
 	"texture_size" : [
 		128 ,
 		128

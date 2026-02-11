@@ -108,5 +108,4 @@ public class Cupboard extends Block {
         }
         return getShape(state, level, pos, context);
     }
-
 }
