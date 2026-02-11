@@ -1,10 +1,8 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -18,6 +16,7 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
+import org.more_blocks_and_items_team.more_decorative_blocks.events.common.commandExecutes;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionChecker;
 
@@ -158,14 +157,7 @@ public class More_decorative_blocks {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
         dispatcher.register(Commands.literal("mdbversion")
                 .requires(source -> source.hasPermission(2))
-                .executes(this::MDBVersionCMD)
+                .executes(commandExecutes::MDBVersionCMD)
         );
-    }
-
-    private int MDBVersionCMD(CommandContext<CommandSourceStack> context) {
-        context.getSource().sendSuccess(() -> Component.literal("---More Decorative Blocks---"), true);
-        context.getSource().sendSuccess(() -> Component.literal("Your current version: " + mod_version), true);
-        context.getSource().sendSuccess(() -> Component.literal("All Right Reserved ©More Blocks And Items Team"), true);
-        return 1;
     }
 }
