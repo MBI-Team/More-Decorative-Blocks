@@ -9,21 +9,18 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.*;
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 public class TooltipRegistry {
 
     public static void RegistryBlockItemTooltip(ItemTooltipEvent event, DeferredItem<BlockItem> target, String lang) {
         if (event.getItemStack().getItem() == target.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks." + lang + ".tooltip"));
-            LOGGER.info("[Mod Init][Tooltip]Added tooltip lang {} for {}", lang, target.getId());
         }
     }
 
     public static void RegistryItemTooltip(ItemTooltipEvent event, DeferredItem<Item> target, String lang) {
         if (event.getItemStack().getItem() == target.get()) {
             event.getToolTip().add(Component.translatable("tooltip.more_decorative_blocks." + lang + ".tooltip"));
-            LOGGER.info("[Mod Init][Tooltip]Added tooltip lang {} for {}", lang, target.getId());
         }
     }
 
