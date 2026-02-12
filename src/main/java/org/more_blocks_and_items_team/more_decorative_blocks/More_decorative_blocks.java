@@ -72,11 +72,13 @@ public class More_decorative_blocks {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("                Copyright More Blocks and Items Team                ");
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀");
-        LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀    █");
-        LOGGER.info("                █    █    █ █       █    █");
-        LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀ ▄▄▄█▄▄▄");
-        LOGGER.info("modid:" + MODID);
+        LOGGER.info("                █▀▀▀▀█▀▀▀▀█ █▀▀▀▀▀▀▀▄ ▀▀▀█▀▀▀                       ");
+        LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀    █                          ");
+        LOGGER.info("                █    █    █ █       █    █                          ");
+        LOGGER.info("                █    █    █ █▄▄▄▄▄▄▄▀ ▄▄▄█▄▄▄                       ");
+        LOGGER.info("                 modid:" + MODID);
+        LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+        LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
         if (mod_version.contains("pre") || mod_version.contains("alpha") || mod_version.contains("beta") || mod_version.contains("preview") || mod_version.contains("nightly")) {
             LOGGER.warn("Be careful,you are use test version,it's not stable.");
         } else if (mod_version.contains("stable") || mod_version.contains("release") || mod_version.contains("final")) {
@@ -86,8 +88,6 @@ public class More_decorative_blocks {
         } else if (mod_version.contains("rc")) {
             LOGGER.warn("The release candidate version.");
         }
-        LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-        LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
     }
 
     public static void checkVersion() {
