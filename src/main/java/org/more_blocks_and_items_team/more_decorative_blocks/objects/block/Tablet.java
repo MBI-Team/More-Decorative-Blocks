@@ -30,19 +30,19 @@ public class Tablet extends RightClinkBlock {
             return switch (facing) {
                 case DOWN -> null;
                 case UP -> null;
-                case NORTH -> Block.box(0, 0, 2, 16, 2, 16);
-                case SOUTH -> Block.box(0, 0, 0, 16, 2, 14);
-                case WEST -> Block.box(2, 0, 0, 16, 2, 16);
+                case NORTH -> Block.box(0, 0, 0, 16, 2, 14);
+                case SOUTH -> Block.box(0, 0, 2, 16, 2, 16);
                 case EAST -> Block.box(0, 0, 0, 14, 2, 16);
+                case WEST -> Block.box(2, 0, 0, 16, 2, 16);
             };
         } else {
             return switch (facing) {
                 case DOWN -> null;
                 case UP -> null;
-                case NORTH -> Block.box(0, 0, 2, 16, 1, 16);
-                case SOUTH -> Block.box(0, 0, 0, 16, 1, 14);
-                case WEST -> Block.box(2, 0, 0, 16, 1, 16);
-                case EAST -> Block.box(0, 0, 0, 14, 1, 16);
+                case NORTH -> Block.box(0, 0, 0, 16, 1, 14);
+                case SOUTH -> Block.box(0, 0, 2, 16, 1, 16);
+                case EAST -> Block.box(2, 0, 0, 16, 1, 16);
+                case WEST -> Block.box(0, 0, 0, 16, 1, 16);
             };
         }
     }

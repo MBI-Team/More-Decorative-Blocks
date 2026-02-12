@@ -66,5 +66,16 @@
   "line6" : "--------------------------Config-------------------------------------" ,
   "config.more_decorative_blocks.title" : "More Decorative Blocks Configs(Work after reborn game)" ,
   "config.more_decorative_blocks.enable_version_checker" : "Enable Version Checker" ,
-  "config.more_decorative_blocks.height_of_seat_stone" : "Height of Seat Stone"
+  "config.more_decorative_blocks.height_of_seat_stone" : "Height of Seat Stone" ,
+  "line7" : "--------------------------Version Check Screen------------------------" ,
+  "screen.more_decorative_blocks.version_check.title" : "New Version Available!" ,
+  "screen.more_decorative_blocks.version_check.current_version" : "Current Version: %s" ,
+  "screen.more_decorative_blocks.version_check.latest_version" : "Latest Version: %s" ,
+  "screen.more_decorative_blocks.version_check.description" : "A new version of More Decorative Blocks is available!" ,
+  "screen.more_decorative_blocks.version_check.update_button" : "Update Now" ,
+  "screen.more_decorative_blocks.version_check.remind_later" : "Remind Later" ,
+  "screen.more_decorative_blocks.version_check.error_title" : "Version Check Failed" ,
+  "screen.more_decorative_blocks.version_check.error_message" : "Failed to check for updates" ,
+  "screen.more_decorative_blocks.version_check.error_suggestion" : "Please check your network connection" ,
+  "screen.more_decorative_blocks.version_check.error_confirm" : "OK"
 }

@@ -3,6 +3,7 @@ package org.more_blocks_and_items_team.more_decorative_blocks;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -15,13 +16,14 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ClientVersionCheckHandler;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.common.commandExecutes;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.CreativeModeTabRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.TooltipRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionChecker;
+import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionCheckUtils;
 
 import java.io.IOException;
 
@@ -64,6 +66,10 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
 
+        // Register client event handler
+        LOGGER.info("[Mod Init]Registering client version check handler...");
+        NeoForge.EVENT_BUS.register(ClientVersionCheckHandler.class);
+
         // Register command event
         NeoForge.EVENT_BUS.register(this);
     }
@@ -80,20 +86,20 @@ public class More_decorative_blocks {
         LOGGER.info("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
         LOGGER.info("             All right ©More Blocks and Items Team 2025             ");
         if (mod_version.contains("pre") || mod_version.contains("alpha") || mod_version.contains("beta") || mod_version.contains("preview") || mod_version.contains("nightly")) {
-            LOGGER.warn("Be careful,you are use test version,it's not stable.");
+            LOGGER.warn("Be careful,you are using the  test version,it's not stable.");
         } else if (mod_version.contains("stable") || mod_version.contains("release") || mod_version.contains("final")) {
-            LOGGER.warn("The stable release,don't worried for game crash.");
+            LOGGER.warn("You are using the stable release,don't worried for game crash.");
         } else if (mod_version.contains("dev") || mod_version.contains("snapshot")) {
-            LOGGER.warn("The internal testing version.");
+            LOGGER.warn("You are using the internal testing version.");
         } else if (mod_version.contains("rc")) {
-            LOGGER.warn("The release candidate version.");
+            LOGGER.warn("You are using the release candidate version.");
         }
     }
 
     public static void checkVersion() {
         new Thread(() -> {
             try {
-                String latestVersion = VersionChecker.getLatestVersion();
+                String latestVersion = VersionCheckUtils.getLatestVersion();
                 LOGGER.info("Current version: {}, The latest version in Github: {}", mod_version, latestVersion);
 
                 if (!mod_version.contains(latestVersion)) {
@@ -115,7 +121,7 @@ public class More_decorative_blocks {
                             LOGGER.info("You are using the latest version.");
                         }
                     } else {
-                        LOGGER.info("You are using the test version.");
+                        LOGGER.info("You are using the test version.(or build by yourself?)");
                     }
                 } else {
                     LOGGER.info("You are using the latest version.");
@@ -156,9 +162,34 @@ public class More_decorative_blocks {
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+
+        // 版本信息命令
         dispatcher.register(Commands.literal("mdbversion")
                 .requires(source -> source.hasPermission(2))
                 .executes(commandExecutes::MDBVersionCMD)
+        );
+
+        // 测试版本检查命令
+        dispatcher.register(Commands.literal("testversioncheck")
+                .requires(source -> source.hasPermission(2))
+                .executes(context -> {
+                    // 重置检查状态以便测试
+                    org.more_blocks_and_items_team.more_decorative_blocks.events.client.ClientVersionCheckHandler.resetCheckStatus();
+                    context.getSource().sendSuccess(() -> Component.literal("版本检查状态已重置，将在下次登录时检查版本"), false);
+                    return 1;
+                })
+        );
+
+        // 测试更新界面命令
+        dispatcher.register(Commands.literal("testversionui")
+                .requires(source -> source.hasPermission(2))
+                .executes(commandExecutes::testVersionUICMD)
+        );
+
+        // 测试错误界面命令
+        dispatcher.register(Commands.literal("testerrorui")
+                .requires(source -> source.hasPermission(2))
+                .executes(commandExecutes::testErrorUICMD)
         );
     }
 }
