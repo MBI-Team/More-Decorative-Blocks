@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat
 plugins {
     id 'java'
     id 'net.neoforged.gradle.userdev' version '7.1.20'
+    id 'maven-publish'
 }
 
 // 解决 ASM 版本冲突问题 - 强制所有 ASM 库使用相同版本
@@ -99,6 +100,7 @@ def static getCurrentDate() {
 
 // 从 gradle.properties 加载属性
 def mod_id = project.mod_id
+def mod_group_id = project.mod_group_id
 def mod_name = project.mod_name
 def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
@@ -228,6 +230,29 @@ sourceSets {
     test {
         compileClasspath += sourceSets.main.output
         runtimeClasspath += sourceSets.main.output
+    }
+}
+
+// 配置发布到 GitHub Packages
+publishing {
+    publications {
+        register("gpr", MavenPublication.class) {
+            groupId = mod_group_id
+            artifactId = mod_id
+            version = mod_version
+
+            artifact(jar)
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/MBI-Team/More-Decorative-Blocks")
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
+        }
     }
 }
 
