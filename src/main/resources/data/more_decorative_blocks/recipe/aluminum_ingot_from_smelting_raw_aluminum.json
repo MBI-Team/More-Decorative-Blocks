@@ -1,0 +1,11 @@
+{
+	"type" : "minecraft:smelting" ,
+	"ingredient" : {
+		"item" : "more_decorative_blocks:raw_aluminum"
+	} ,
+	"result" : {
+		"id" : "more_decorative_blocks:aluminum_ingot"
+	} ,
+	"experience" : 0.7 ,
+	"cookingtime" : 200
+}

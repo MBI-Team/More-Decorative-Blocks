@@ -31,6 +31,10 @@ public class CreativeModeTabRegistry {
         output.accept(SHALE_ITEM.get());
         output.accept(GRAVEL_ITEM.get());
         output.accept(COBBLESTONE_ITEM.get());
+        output.accept(LIGHT_WOOD_PLANK_ITEM.get());
+        output.accept(LIGHT_WOOD_TILE_ITEM.get());
+        output.accept(DARK_WOOD_PLANK_ITEM.get());
+        output.accept(DARK_WOOD_TILE_ITEM.get());
     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MDB_DECORATIVE_TAB = CREATIVE_MODE_TABS.register("mdb_decorative_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.more_decorative_blocks_decorative")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> WATER_BOOK_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
@@ -52,5 +56,12 @@ public class CreativeModeTabRegistry {
         output.accept(IRON_STICK.get());
         output.accept(ASPHALT.get());
         output.accept(STOOL.get());
+        // 铝矿物相关物品
+        output.accept(ALUMINUM_ORE_ITEM.get());
+        output.accept(DEEPSLATE_ALUMINUM_ORE_ITEM.get());
+        output.accept(RAW_ALUMINUM.get());
+        output.accept(RAW_ALUMINUM_BLOCK_ITEM.get());
+        output.accept(ALUMINUM_INGOT.get());
+        output.accept(ALUMINUM_BLOCK_ITEM.get());
     }).build());
 }

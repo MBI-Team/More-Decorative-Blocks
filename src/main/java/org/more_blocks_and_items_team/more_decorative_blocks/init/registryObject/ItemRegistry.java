@@ -90,4 +90,13 @@ public class ItemRegistry {
             .setNoRepair()
             .stacksTo(64)
     );
+
+    // 铝矿物相关物品
+    public static final DeferredItem<BlockItem> ALUMINUM_ORE_ITEM = ITEMS.registerSimpleBlockItem("aluminum_ore", ALUMINUM_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_ALUMINUM_ORE_ITEM = ITEMS.registerSimpleBlockItem("deepslate_aluminum_ore", DEEPSLATE_ALUMINUM_ORE);
+    public static final DeferredItem<BlockItem> RAW_ALUMINUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("raw_aluminum_block", RAW_ALUMINUM_BLOCK);
+    public static final DeferredItem<BlockItem> ALUMINUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("aluminum_block", ALUMINUM_BLOCK);
+
+    public static final DeferredItem<Item> RAW_ALUMINUM = ITEMS.registerSimpleItem("raw_aluminum", new Item.Properties());
+    public static final DeferredItem<Item> ALUMINUM_INGOT = ITEMS.registerSimpleItem("aluminum_ingot", new Item.Properties());
 }

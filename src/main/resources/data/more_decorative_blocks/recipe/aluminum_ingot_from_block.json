@@ -1,0 +1,12 @@
+{
+	"type" : "minecraft:crafting_shapeless" ,
+	"ingredients" : [
+		{
+			"item" : "more_decorative_blocks:aluminum_block"
+		}
+	] ,
+	"result" : {
+		"id" : "more_decorative_blocks:aluminum_ingot" ,
+		"count" : 9
+	}
+}

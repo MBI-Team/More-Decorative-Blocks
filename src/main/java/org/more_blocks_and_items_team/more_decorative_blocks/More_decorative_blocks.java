@@ -155,7 +155,6 @@ public class More_decorative_blocks {
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onPlayerInteract(PlayerInteractEvent.RightClickBlock event) {
-        LOGGER.info("[Event Test]Player right clicked block at {}", event.getPos().toShortString());
     }
 
     // Register commands

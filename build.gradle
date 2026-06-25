@@ -6,13 +6,15 @@ plugins {
 }
 
 // Disable neoFormPatchUserDev task if it exists
-if (tasks.findByPath("neoFormPatchUserDev")) {
-    tasks.neoFormPatchUserDev.enabled = false
-    println "neoFormPatchUserDev task has been disabled"
+tasks.configureEach {
+    if (name == "neoFormPatchUserDev") {
+        enabled = false
+        println "neoFormPatchUserDev task has been disabled"
+    }
 }
 
 // 解决 ASM 版本冲突问题 - 强制所有 ASM 库使用相同版本
-configurations.all {
+configurations.configureEach {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         if (details.requested.group == 'org.ow2.asm' && details.requested.name.startsWith('asm-')) {
             details.useVersion '9.7'
@@ -32,7 +34,7 @@ java {
 def getGitCommitHash() {
     try {
         def stdout = new ByteArrayOutputStream()
-        exec {
+        providers.exec {
             commandLine 'git', 'rev-parse', '--short', 'HEAD'
             standardOutput = stdout
         }
@@ -109,89 +111,32 @@ def mod_name = project.mod_name
 def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
 def neo_version = project.neo_version
-def mapping_minecraft_version = project.getProperty("neogradle.subsystems.parchment.minecraftVersion")
-def mapping_version = project.getProperty("neogradle.subsystems.parchment.mappingsVersion")
 
-subsystems {
-    parchment {
-        // The Minecraft version for which the Parchment mappings were created.
-        // This does not necessarily need to match the Minecraft version your mod targets
-        // Defaults to the value of Gradle property neogradle.subsystems.parchment.minecraftVersion
-        minecraftVersion = mapping_minecraft_version
-
-        // The version of Parchment mappings to apply.
-        // See https://parchmentmc.org/docs/getting-started for a list.
-        // Defaults to the value of Gradle property neogradle.subsystems.parchment.mappingsVersion
-        mappingsVersion = mapping_version
-
-        // Overrides the full Maven coordinate of the Parchment artifact to use
-        // This is computed from the minecraftVersion and mappingsVersion properties by default.
-        // If you set this property explicitly, minecraftVersion and mappingsVersion will be ignored.
-        // The built-in default value can also be overridden using the Gradle property neogradle.subsystems.parchment.parchmentArtifact
-        // parchmentArtifact = "org.parchmentmc.data:parchment-$minecraftVersion:$mappingsVersion:checked@zip"
-
-        // Overrides the full Maven coordinate of the tool used to apply the Parchment mappings
-        // See https://github.com/neoforged/JavaSourceTransformer
-        // The built-in default value can also be overridden using the Gradle property neogradle.subsystems.parchment.toolArtifact
-        // toolArtifact = "net.neoforged.jst:jst-cli-bundle:1.0.30"
-
-        // The string that parameters are prefixed with when they conflict with other names inside the method.
-        // Defaults to `p_`. You can set this property to an empty string to disable conflict resolution,
-        // for example, when you use the checked version of parchment, which already includes prefixes.
-        // conflictPrefix = ''
-
-        // Set this to false if you don't want the https://maven.parchmentmc.org/ repository to be added automatically when
-        // applying Parchment mappings is enabled
-        // The built-in default value can also be overridden using the Gradle property neogradle.subsystems.parchment.addRepository
-        // addRepository = true
-
-        // Can be used to explicitly disable this subsystem. By default, it will be enabled automatically as soon
-        // as parchmentArtifact or minecraftVersion and mappingsVersion are set.
-        // The built-in default value can also be overridden using the Gradle property neogradle.subsystems.parchment.enabled
-        // enabled = true
-    }
-}
+// Parchment 映射配置（通过 gradle.properties 自动应用）
+// 无需在此处显式配置，neoforged 插件会自动读取 neogradle.subsystems.parchment.* 属性
 
 // 添加仓库配置以解决依赖下载问题
 repositories {
     // 添加更多镜像源以增加成功率
     maven { 
         url = 'https://maven.minecraftforge.net/'
-        metadataSources { 
-            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
-        }
     }
     maven { 
         url = 'https://maven.neoforged.net/releases' 
-        metadataSources { 
-            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
-        }
     }
     // 使用阿里云镜像源以提高在中国大陆的下载速度
     maven { 
         url = 'https://maven.aliyun.com/repository/public' 
-        metadataSources { 
-            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
-        }
     }
     maven { 
         url = 'https://maven.aliyun.com/repository/google' 
-        metadataSources { 
-            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
-        }
     }
     maven { 
         url = 'https://maven.aliyun.com/repository/gradle-plugin' 
-        metadataSources { 
-            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
-        }
     }
     // 使用华为云镜像作为 NeoForge 的备用镜像源
     maven { 
         url = 'https://repo.huaweicloud.com/repository/maven/' 
-        metadataSources { 
-            mavenPom(); artifact(); ignoreGradleMetadataRedirection() 
-        }
     }
     mavenCentral()
     mavenLocal()
@@ -247,6 +192,14 @@ processResources {
     from('src/generated/resources') {
         include 'assets/**'
         include 'data/**'
+    }
+}
+
+// 为 IntelliJ IDEA 提供额外的资源配置
+idea {
+    module {
+        // 确保资源目录被正确识别
+        inheritOutputDirs = true
     }
 }
 

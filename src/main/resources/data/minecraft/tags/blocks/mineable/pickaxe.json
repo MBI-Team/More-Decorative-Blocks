@@ -1,0 +1,22 @@
+{
+	"values" : [
+		"more_decorative_blocks:mdb_block" ,
+		"more_decorative_blocks:seat_stone" ,
+		"more_decorative_blocks:asphalt_road" ,
+		"more_decorative_blocks:limestone" ,
+		"more_decorative_blocks:shale" ,
+		"more_decorative_blocks:cobblestone" ,
+		"more_decorative_blocks:light_blue_tile" ,
+		"more_decorative_blocks:cracked_light_blue_tile" ,
+		"more_decorative_blocks:chipped_light_blue_tile" ,
+		"more_decorative_blocks:white_tile" ,
+		"more_decorative_blocks:cracked_white_tile" ,
+		"more_decorative_blocks:chipped_white_tile" ,
+		"more_decorative_blocks:steel_plate_riveted" ,
+		"more_decorative_blocks:steel_block" ,
+		"more_decorative_blocks:aluminum_ore" ,
+		"more_decorative_blocks:deepslate_aluminum_ore" ,
+		"more_decorative_blocks:raw_aluminum_block" ,
+		"more_decorative_blocks:aluminum_block"
+	]
+}

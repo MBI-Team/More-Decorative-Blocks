@@ -22,6 +22,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 8)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .isRedstoneConductor((state, level, pos) -> true)
     ));
@@ -49,6 +50,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)
             .strength(1.5f, 3f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
@@ -104,6 +106,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(3f, 10f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
@@ -112,6 +115,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> SHALE = BLOCKS.register("shale", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -119,6 +123,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> GRAVEL = BLOCKS.register("gravel", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -133,6 +138,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(2.0f, 6.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> LIGHT_BLUE_TILE = BLOCKS.register("light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -140,6 +146,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> CRACKED_LIGHT_BLUE_TILE = BLOCKS.register("cracked_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -147,6 +154,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> CHIPPED_LIGHT_BLUE_TILE = BLOCKS.register("chipped_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -154,6 +162,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> STEEL_PLATE_RIVETED = BLOCKS.register("steel_plate_riveted", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -161,6 +170,7 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
             .strength(5.0f, 6.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -168,6 +178,7 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
             .strength(5.0f, 6.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> WHITE_TILE = BLOCKS.register("white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -175,6 +186,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> CRACKED_WHITE_TILE = BLOCKS.register("cracked_white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -182,6 +194,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     public static final DeferredBlock<Block> CHIPPED_WHITE_TILE = BLOCKS.register("chipped_white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -189,6 +202,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
     // 浅色木地板和地砖
@@ -219,5 +233,38 @@ public class BlockRegistry {
             .sound(SoundType.WOOD)
             .lightLevel(state -> 0)
             .strength(2.0f, 3.0f)  // 硬度参数（可选）
+    ));
+
+    // 铝矿物相关方块
+    public static final DeferredBlock<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .sound(SoundType.STONE)
+            .lightLevel(state -> 0)
+            .strength(3.0f, 3.0f)  // 与铁矿石相同硬度
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+    ));
+
+    public static final DeferredBlock<Block> DEEPSLATE_ALUMINUM_ORE = BLOCKS.register("deepslate_aluminum_ore", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.DEEPSLATE)
+            .sound(SoundType.DEEPSLATE)
+            .lightLevel(state -> 0)
+            .strength(4.5f, 3.0f)  // 与深层铁矿石相同硬度
+            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+    ));
+
+    public static final DeferredBlock<Block> RAW_ALUMINUM_BLOCK = BLOCKS.register("raw_aluminum_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_GRAY)
+            .sound(SoundType.METAL)
+            .lightLevel(state -> 0)
+            .strength(5.0f, 6.0f)  // 与粗铁块相同硬度
+            .requiresCorrectToolForDrops()
+    ));
+
+    public static final DeferredBlock<Block> ALUMINUM_BLOCK = BLOCKS.register("aluminum_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_GRAY)
+            .sound(SoundType.METAL)
+            .lightLevel(state -> 0)
+            .strength(5.0f, 6.0f)  // 与铁块相同硬度
+            .requiresCorrectToolForDrops()
     ));
 }
