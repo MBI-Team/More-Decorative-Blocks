@@ -69,7 +69,7 @@ public class VersionCheckErrorScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         // 渲染半透明背景
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
 
@@ -109,7 +109,7 @@ public class VersionCheckErrorScreen extends Screen {
 
     @Override
     public boolean shouldCloseOnEsc() {
-        return true;
+        return super.shouldCloseOnEsc();
     }
 
     /**

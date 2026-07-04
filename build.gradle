@@ -102,9 +102,14 @@ def static getCurrentDate() {
 def mod_id = project.mod_id
 def mod_group_id = project.mod_group_id
 def mod_name = project.mod_name
-def mod_version = project.mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
+// 根据版本号类型决定版本格式
+def base_mod_version = project.mod_version
+def mod_version = (base_mod_version.contains("release") || base_mod_version.contains("stable")) ?
+        base_mod_version :
+        base_mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate() + generateRandomHash2()
 def minecraft_version = project.minecraft_version
 def neo_version = project.neo_version
+
 
 // Parchment 映射配置（通过 gradle.properties 自动应用）
 // 无需在此处显式配置，neoforged 插件会自动读取 neogradle.subsystems.parchment.* 属性

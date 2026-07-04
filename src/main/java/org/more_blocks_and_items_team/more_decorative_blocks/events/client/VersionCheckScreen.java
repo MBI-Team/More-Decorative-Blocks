@@ -85,7 +85,7 @@ public class VersionCheckScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);
     }
@@ -99,7 +99,7 @@ public class VersionCheckScreen extends Screen {
 
     @Override
     public boolean shouldCloseOnEsc() {
-        return true;
+        return super.shouldCloseOnEsc();
     }
 
     /**
