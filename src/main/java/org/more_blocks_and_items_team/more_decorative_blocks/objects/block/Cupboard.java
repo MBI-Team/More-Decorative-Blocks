@@ -5,7 +5,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,6 +24,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.more_blocks_and_items_team.more_decorative_blocks.Config;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkBlock;
 
 import static net.minecraft.core.Direction.*;
@@ -75,16 +79,19 @@ public class Cupboard extends Block {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public @NotNull BlockState rotate(BlockState state, Rotation rot) {
         return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.setValue(FACING, mirror.mirror(state.getValue(FACING)));
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
         return RenderShape.MODEL;
     }
@@ -102,5 +109,56 @@ public class Cupboard extends Block {
             return Block.box(0, 0, -16, 16, 28, 16);
         }
         return getShape(state, level, pos, context);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public float getDestroyProgress(@NotNull BlockState state, @NotNull Player player, @NotNull BlockGetter blockGetter, @NotNull BlockPos pos) {
+        float baseProgress = super.getDestroyProgress(state, player, blockGetter, pos);
+
+        // 获取玩家手中的物品
+        ItemStack itemStack = player.getMainHandItem();
+
+        // 如果手中没有物品，返回基础进度（徒手挖掘）
+        if (itemStack.isEmpty()) {
+            return baseProgress;
+        }
+
+        // 检查物品是否是 DiggerItem（工具类物品），并获取其等级
+        Tier tier = null;
+        if (itemStack.getItem() instanceof DiggerItem diggerItem) {
+            tier = diggerItem.getTier();
+        }
+
+        // 如果不是工具类物品，返回基础进度
+        if (tier == null) {
+            return baseProgress;
+        }
+
+        // 根据工具等级应用不同的系数
+        double coefficient = getCoefficientForTier(tier);
+
+        // 系数越大，挖掘越慢（进度越小）
+        return (float) (baseProgress / coefficient);
+    }
+
+    /**
+     * 根据工具等级获取对应的系数
+     *
+     * @param tier 工具等级
+     * @return 挖掘系数
+     */
+    private double getCoefficientForTier(Tier tier) {
+        return switch (tier) {
+            case Tiers.WOOD -> Config.mdbBlockWoodMiningCoefficient;
+            case Tiers.STONE -> Config.mdbBlockStoneMiningCoefficient;
+            case Tiers.GOLD -> Config.mdbBlockGoldMiningCoefficient;
+            case Tiers.IRON -> Config.mdbBlockIronMiningCoefficient;
+            case Tiers.DIAMOND -> Config.mdbBlockDiamondMiningCoefficient;
+            case Tiers.NETHERITE -> Config.mdbBlockNetheriteMiningCoefficient;
+            case null, default ->
+                // 其他工具（如金镐、下界合金等）使用默认系数 1.0
+                    1.0;
+        };
     }
 }

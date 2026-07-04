@@ -21,7 +21,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 8)
-            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .isRedstoneConductor((state, level, pos) -> true)
@@ -31,7 +31,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
-            .strength(1.0f,0.5f)  // 硬度参数（可选）
+            .strength(0.5f, 0.5f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .dynamicShape()
     ));
@@ -40,7 +40,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
-            .strength(1.0f,0.5f)  // 硬度参数（可选）
+            .strength(0.5f, 0.5f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
             .dynamicShape()
     ));
@@ -76,28 +76,28 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.METAL)
             .lightLevel(state -> 1)
-            .strength(2f, 2f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
     ));
 
     public static final DeferredBlock<Block> OAK_WOOD_CUPBOARD = BLOCKS.register("oak_wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 1)
-            .strength(1f, 1f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
     ));
 
     public static final DeferredBlock<Block> ACACIA_WOOD_CUPBOARD = BLOCKS.register("acacia_wood_cupboard", () -> new Cupboard(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 1)
-            .strength(1f, 1f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
     ));
 
     public static final DeferredBlock<Block> CLOSESTOOL = BLOCKS.register("closestool", () -> new RightClinkAndRedstoneBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)
-            .strength(1.5f, 1f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
 
@@ -105,7 +105,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
-            .strength(3f, 10f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
             .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
     ));
@@ -114,7 +114,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
-            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -122,7 +122,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
-            .strength(1.5f, 3.0f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -137,7 +137,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
-            .strength(2.0f, 6.0f)  // 硬度参数（可选）
+            .strength(1.5f, 3f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -169,7 +169,7 @@ public class BlockRegistry {
             .mapColor(MapColor.METAL)
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
-            .strength(5.0f, 6.0f)  // 硬度参数（可选）
+            .strength(2.0f, 6.0f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -177,7 +177,7 @@ public class BlockRegistry {
             .mapColor(MapColor.METAL)
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
-            .strength(5.0f, 6.0f)  // 硬度参数（可选）
+            .strength(1.5f, 6.0f)  // 硬度参数（可选）
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -210,14 +210,14 @@ public class BlockRegistry {
             .mapColor(MapColor.WOOD)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 0)
-            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+            .strength(1f, 3.0f)  // 硬度参数（可选）
     ));
 
     public static final DeferredBlock<Block> LIGHT_WOOD_TILE = BLOCKS.register("light_wood_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.WOOD)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 0)
-            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+            .strength(1f, 3.0f)  // 硬度参数（可选）
     ));
 
     // 深色木地板和地砖
@@ -225,14 +225,14 @@ public class BlockRegistry {
             .mapColor(MapColor.WOOD)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 0)
-            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+            .strength(1f, 3.0f)  // 硬度参数（可选）
     ));
 
     public static final DeferredBlock<Block> DARK_WOOD_TILE = BLOCKS.register("dark_wood_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.WOOD)
             .sound(SoundType.WOOD)
             .lightLevel(state -> 0)
-            .strength(2.0f, 3.0f)  // 硬度参数（可选）
+            .strength(1f, 3.0f)  // 硬度参数（可选）
     ));
 
     // 铝矿物相关方块
@@ -240,7 +240,7 @@ public class BlockRegistry {
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
-            .strength(3.0f, 3.0f)  // 与铁矿石相同硬度
+            .strength(1.5f, 3.0f)  // 与铁矿石相同硬度
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -248,7 +248,7 @@ public class BlockRegistry {
             .mapColor(MapColor.DEEPSLATE)
             .sound(SoundType.DEEPSLATE)
             .lightLevel(state -> 0)
-            .strength(4.5f, 3.0f)  // 与深层铁矿石相同硬度
+            .strength(2f, 3.0f)  // 与深层铁矿石相同硬度
             .requiresCorrectToolForDrops()  // 需要正确工具掉落
     ));
 
@@ -256,7 +256,7 @@ public class BlockRegistry {
             .mapColor(MapColor.COLOR_LIGHT_GRAY)
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
-            .strength(5.0f, 6.0f)  // 与粗铁块相同硬度
+            .strength(1.5f, 6.0f)  // 与粗铁块相同硬度
             .requiresCorrectToolForDrops()
     ));
 
@@ -264,7 +264,7 @@ public class BlockRegistry {
             .mapColor(MapColor.COLOR_LIGHT_GRAY)
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
-            .strength(5.0f, 6.0f)  // 与铁块相同硬度
+            .strength(1.5f, 6.0f)  // 与铁块相同硬度
             .requiresCorrectToolForDrops()
     ));
 }
