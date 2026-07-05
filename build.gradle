@@ -261,6 +261,59 @@ publishing {
     }
 }
 
+// 检查版本是否已存在的任务
+tasks.register('checkVersionExists') {
+    doLast {
+        def githubUsername = System.getenv("USERNAME")
+        def githubToken = System.getenv("TOKEN")
+
+        if (!githubUsername || !githubToken) {
+            logger.warn("GitHub credentials not found. Skipping version check.")
+            ext.versionExists = false
+            return
+        }
+
+        // 构建 Maven 元数据 URL
+        def metadataUrl = "https://maven.pkg.github.com/MBI-Team/More-Decorative-Blocks/${mod_group_id.replace('.', '/')}/${mod_id}/${mod_version}/maven-metadata.xml"
+
+        try {
+            def url = new URI(metadataUrl).toURL()
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection()
+            connection.setRequestProperty("Authorization", "Basic " + "${githubUsername}:${githubToken}".bytes.encodeBase64().toString())
+            connection.setRequestMethod("HEAD")
+            connection.setConnectTimeout(5000)
+            connection.setReadTimeout(5000)
+
+            def responseCode = connection.getResponseCode()
+
+            if (responseCode == 200) {
+                logger.lifecycle("⚠️  Version ${mod_version} already exists on GitHub Packages!")
+                logger.lifecycle("Skipping publish to avoid duplicate version.")
+                ext.versionExists = true
+            } else {
+                logger.lifecycle("✅ Version ${mod_version} does not exist on GitHub Packages. Proceeding with publish.")
+                ext.versionExists = false
+            }
+        } catch (Exception e) {
+            logger.warn("Failed to check version existence: ${e.message}")
+            logger.warn("Proceeding with publish anyway.")
+            ext.versionExists = false
+        }
+    }
+}
+
+// 修改 publish 任务,先检查版本是否存在
+tasks.named('publish').configure {
+    dependsOn 'checkVersionExists'
+
+    doFirst {
+        def checkTask = tasks.named('checkVersionExists').get()
+        if (checkTask.ext.has('versionExists') && checkTask.ext.versionExists) {
+            throw new GradleException("Publish aborted: Version ${mod_version} already exists on GitHub Packages.")
+        }
+    }
+}
+
 // Apply network configuration initialization script
 apply from: 'init-network.gradle'
 
