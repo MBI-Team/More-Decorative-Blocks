@@ -1,6 +1,7 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -24,16 +25,18 @@ import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.TooltipRegistry;
 import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionCheckUtils;
+import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.mod_version;
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MODID)
 public class More_decorative_blocks {
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -102,34 +105,39 @@ public class More_decorative_blocks {
                 String latestVersion = VersionCheckUtils.getLatestVersion();
                 LOGGER.info("Current version: {}, The latest version in Github: {}", mod_version, latestVersion);
 
-                if (!mod_version.contains(latestVersion)) {
-                    if (mod_version.charAt(0) < latestVersion.charAt(0)) {
-                        LOGGER.warn("There is a new version available: {}!", latestVersion);
-                        LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
-                    } else if (mod_version.charAt(0) == latestVersion.charAt(0)) {
-                        if (mod_version.charAt(2) < latestVersion.charAt(2)) {
-                            LOGGER.warn("There is a new version available: {}!", latestVersion);
-                            LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
-                        } else if (mod_version.charAt(2) == latestVersion.charAt(2)) {
-                            if (mod_version.charAt(4) < latestVersion.charAt(4)) {
-                                LOGGER.warn("There is a new version available: {}!", latestVersion);
-                                LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
-                            } else {
-                                LOGGER.info("You are using the latest version.");
-                            }
-                        } else {
-                            LOGGER.info("You are using the latest version.");
-                        }
-                    } else {
-                        LOGGER.info("You are using the test version.(or build by yourself?)");
-                    }
-                } else {
+                final boolean isLatestVersion = isIsLatestVersion(latestVersion);
+
+                if (isLatestVersion) {
                     LOGGER.info("You are using the latest version.");
+                } else {
+                    LOGGER.warn("There is a new version available: {}!", latestVersion);
+                    LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
                 }
             } catch (IOException e) {
                 LOGGER.warn("Failed to check for updates: {}", e.getMessage());
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
             }
         }).start();
+    }
+
+    private static boolean isIsLatestVersion(String latestVersion) {
+        boolean isLatestVersion;
+
+        if (mod_version.charAt(0) < latestVersion.charAt(0)) {
+            isLatestVersion = false;
+        } else if (mod_version.charAt(0) == latestVersion.charAt(0)) {
+            if (mod_version.charAt(2) < latestVersion.charAt(2)) {
+                isLatestVersion = false;
+            } else if (mod_version.charAt(2) == latestVersion.charAt(2)) {
+                isLatestVersion = mod_version.charAt(4) >= latestVersion.charAt(4);
+            } else {
+                isLatestVersion = true;
+            }
+        } else {
+            isLatestVersion = true;
+        }
+        return isLatestVersion;
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

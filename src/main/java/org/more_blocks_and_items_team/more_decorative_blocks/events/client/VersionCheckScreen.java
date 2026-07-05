@@ -41,10 +41,10 @@ public class VersionCheckScreen extends Screen {
         // 版本信息
         Component currentVersionText = Component.translatable(
                 "screen.more_decorative_blocks.version_check.current_version",
-                versionResult.getCurrentVersion());
+                versionResult.currentVersion());
         Component latestVersionText = Component.translatable(
                 "screen.more_decorative_blocks.version_check.latest_version",
-                versionResult.getLatestVersion());
+                versionResult.latestVersion());
 
         rowHelper.addChild(new LabelWidget(currentVersionText, this.font, 0xCCCCCC), 1);
         rowHelper.addChild(new LabelWidget(latestVersionText, this.font, 0xCCCCCC), 1);
@@ -68,7 +68,7 @@ public class VersionCheckScreen extends Screen {
                 Component.translatable("screen.more_decorative_blocks.version_check.update_button"),
                 button -> {
                     // 打开浏览器跳转到更新页面
-                    Util.getPlatform().openUri(versionResult.getUpdateUrl());
+                    Util.getPlatform().openUri(versionResult.updateUrl());
                     onClose();
                 }).build(), 1);
 

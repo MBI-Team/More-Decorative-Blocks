@@ -35,11 +35,9 @@ public class commandExecutes {
         );
 
         // 在客户端主线程中显示界面
-        Minecraft.getInstance().execute(() -> {
-            Minecraft.getInstance().setScreen(
-                    new VersionCheckScreen(testResult, Minecraft.getInstance().screen)
-            );
-        });
+        Minecraft.getInstance().execute(() -> Minecraft.getInstance().setScreen(
+                new VersionCheckScreen(testResult, Minecraft.getInstance().screen)
+        ));
 
         context.getSource().sendSuccess(() -> Component.literal("强制显示更新界面"), false);
         return 1;
@@ -50,11 +48,9 @@ public class commandExecutes {
      */
     public static int testErrorUICMD(CommandContext<CommandSourceStack> context) {
         // 直接显示错误界面
-        Minecraft.getInstance().execute(() -> {
-            Minecraft.getInstance().setScreen(
-                    new VersionCheckErrorScreen(Minecraft.getInstance().screen)
-            );
-        });
+        Minecraft.getInstance().execute(() -> Minecraft.getInstance().setScreen(
+                new VersionCheckErrorScreen(Minecraft.getInstance().screen)
+        ));
 
         context.getSource().sendSuccess(() -> Component.literal("显示版本检查错误界面"), false);
         return 1;

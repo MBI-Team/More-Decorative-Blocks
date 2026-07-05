@@ -1,13 +1,22 @@
 package org.more_blocks_and_items_team.more_decorative_blocks.utils;
 
+import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.concurrent.CompletableFuture;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +28,8 @@ import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModI
  * 版本检查工具类，整合了版本检查、结果处理和网络请求功能
  */
 public class VersionCheckUtils {
-    private static final Logger LOGGER = LoggerFactory.getLogger(VersionCheckUtils.class);
+    public static final Logger LOGGER = LogUtils.getLogger();
+
     private static final Pattern VERSION_PATTERN = Pattern.compile("\"tag_name\"\\s*:\\s*\"v?([^\"]+)\"");
 
     // 检查状态
@@ -29,10 +39,16 @@ public class VersionCheckUtils {
     /**
      * 从GitHub获取最新版本号
      */
-    public static String getLatestVersion() throws IOException {
+    public static String getLatestVersion() throws IOException, URISyntaxException {
         LOGGER.info("[VersionCheck] Fetching latest version from GitHub...");
-        URL url = new URL(GITHUB_API_URL);
+        URL url = new URI(GITHUB_API_URL).toURL();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        // 如果是 HTTPS 连接，配置 SSL
+        if (connection instanceof HttpsURLConnection) {
+            configureSSL((HttpsURLConnection) connection);
+        }
+        
         connection.setRequestMethod("GET");
         connection.setRequestProperty("User-Agent", "More-Decorative-Blocks-Version-Checker");
         connection.setConnectTimeout(5000);
@@ -53,8 +69,44 @@ public class VersionCheckUtils {
             } else {
                 throw new IOException("Could not parse version from GitHub response");
             }
+        } catch (javax.net.ssl.SSLException e) {
+            LOGGER.warn("[VersionCheck] SSL certificate error: {}. Skipping version check.", e.getMessage());
+            throw new IOException("SSL certificate verification failed. This is likely a network environment issue.", e);
         } finally {
             connection.disconnect();
+        }
+    }
+
+    /**
+     * 配置 SSL 连接以处理证书问题
+     */
+    private static void configureSSL(HttpsURLConnection connection) {
+        try {
+            // 创建一个信任所有证书的 TrustManager（仅用于版本检查）
+            TrustManager[] trustAllCerts = new TrustManager[]{
+                    new X509TrustManager() {
+                        public X509Certificate[] getAcceptedIssuers() {
+                            return new X509Certificate[0];
+                        }
+
+                        public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                        }
+
+                        public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                        }
+                    }
+            };
+
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            connection.setSSLSocketFactory(sc.getSocketFactory());
+
+            // 禁用主机名验证（仅用于版本检查）
+            connection.setHostnameVerifier((hostname, session) -> true);
+
+            LOGGER.debug("[VersionCheck] SSL configuration applied for version check");
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
+            LOGGER.warn("[VersionCheck] Failed to configure SSL: {}", e.getMessage());
         }
     }
 
@@ -102,20 +154,13 @@ public class VersionCheckUtils {
     }
 
     private static int getPreReleasePriority(String preRelease) {
-        switch (preRelease) {
-            case "release":
-            case "stable":
-            case "final":
-                return 5;
-            case "rc":
-                return 4;
-            case "beta":
-                return 3;
-            case "alpha":
-                return 2;
-            default:
-                return 1;
-        }
+        return switch (preRelease) {
+            case "release", "stable", "final" -> 5;
+            case "rc" -> 4;
+            case "beta" -> 3;
+            case "alpha" -> 2;
+            default -> 1;
+        };
     }
 
     /**
@@ -145,6 +190,8 @@ public class VersionCheckUtils {
             } catch (IOException e) {
                 LOGGER.warn("[VersionCheck] Failed to check for updates: {}", e.getMessage());
                 return new VersionCheckResult(false, mod_version, "unknown", "");
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
             }
         });
     }
@@ -189,33 +236,7 @@ public class VersionCheckUtils {
     /**
      * 版本检查结果类
      */
-    public static class VersionCheckResult {
-        private final boolean isNewVersionAvailable;
-        private final String currentVersion;
-        private final String latestVersion;
-        private final String updateUrl;
-
-        public VersionCheckResult(boolean isNewVersionAvailable, String currentVersion, String latestVersion, String updateUrl) {
-            this.isNewVersionAvailable = isNewVersionAvailable;
-            this.currentVersion = currentVersion;
-            this.latestVersion = latestVersion;
-            this.updateUrl = updateUrl;
-        }
-
-        public boolean isNewVersionAvailable() {
-            return isNewVersionAvailable;
-        }
-
-        public String getCurrentVersion() {
-            return currentVersion;
-        }
-
-        public String getLatestVersion() {
-            return latestVersion;
-        }
-
-        public String getUpdateUrl() {
-            return updateUrl;
-        }
+    public record VersionCheckResult(boolean isNewVersionAvailable, String currentVersion, String latestVersion,
+                                     String updateUrl) {
     }
 }

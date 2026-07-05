@@ -27,28 +27,16 @@ public class WaterBook extends RightClinkBlock {
         Direction facing = state.getValue(FACING);
         if (state.getValue(OPEN)) {
             // Open book - rotate collision box based on facing
-            switch (facing) {
-                case NORTH:
-                case SOUTH:
-                    return Block.box(0, 6.83765f, 1, 17, 8.83765f, 15);
-                case EAST:
-                case WEST:
-                    return Block.box(1, 6.83765f, 0, 15, 8.83765f, 17);
-                default:
-                    return Block.box(0, 6.83765f, 1, 17, 8.83765f, 15);
-            }
+            return switch (facing) {
+                case EAST, WEST -> Block.box(1, 6.83765f, 0, 15, 8.83765f, 17);
+                default -> Block.box(0, 6.83765f, 1, 17, 8.83765f, 15);
+            };
         } else {
             // Closed book - rotate collision box based on facing
-            switch (facing) {
-                case NORTH:
-                case SOUTH:
-                    return Block.box(7, 5.74605f, 1, 9, 14.74605f, 15);
-                case EAST:
-                case WEST:
-                    return Block.box(1, 5.74605f, 7, 15, 14.74605f, 9);
-                default:
-                    return Block.box(7, 5.74605f, 1, 9, 14.74605f, 15);
-            }
+            return switch (facing) {
+                case EAST, WEST -> Block.box(1, 5.74605f, 7, 15, 14.74605f, 9);
+                default -> Block.box(7, 5.74605f, 1, 9, 14.74605f, 15);
+            };
         }
     }
 }

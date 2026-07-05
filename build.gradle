@@ -323,7 +323,7 @@ tasks.register('createGitHubRelease') {
 
     doLast {
         // 检查是否为 release 或 stable 版本
-        if (!base_mod_version.contains("release") && !base_mod_version.contains("stable")) {
+        if (!base_mod_version.contains("release") && !base_mod_version.contains("stable") && !base_mod_version.contains("final")) {
             logger.lifecycle("ℹ️  Current version '${base_mod_version}' is not a release/stable version. Skipping GitHub Release creation.")
             return
         }

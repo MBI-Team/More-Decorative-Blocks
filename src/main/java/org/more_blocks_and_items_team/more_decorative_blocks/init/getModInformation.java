@@ -1,17 +1,21 @@
 package org.more_blocks_and_items_team.more_decorative_blocks.init;
 
+import com.mojang.logging.LogUtils;
 import org.more_blocks_and_items_team.more_decorative_blocks.More_decorative_blocks;
+import org.slf4j.Logger;
 
 import java.util.Properties;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
-
 public class getModInformation {
+    public static final Logger LOGGER = LogUtils.getLogger();
+
     public static final String MODID = "more_decorative_blocks";
 
     public static String GITHUB_API_URL = getGAU();
 
     public static String mod_version = loadVersion();
+
+    @SuppressWarnings("unused")
     public static String licence = getLicence();
 
     private static String loadVersion() {

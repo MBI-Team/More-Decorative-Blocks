@@ -1,5 +1,6 @@
 package org.more_blocks_and_items_team.more_decorative_blocks.events.client;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.neoforged.api.distmarker.Dist;
@@ -9,12 +10,13 @@ import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.Config;
 import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionCheckUtils;
+import org.slf4j.Logger;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 @EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
 public class ClientVersionCheckHandler {
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     @SubscribeEvent
     public static void onClientLoggedIn(ClientPlayerNetworkEvent.LoggingIn event) {
@@ -39,9 +41,7 @@ public class ClientVersionCheckHandler {
                     VersionCheckUtils.getLastCheckResult().isNewVersionAvailable()) {
 
                 LOGGER.info("[VersionCheck] Showing update screen on title screen");
-                Minecraft.getInstance().execute(() -> {
-                    showVersionCheckScreen();
-                });
+                Minecraft.getInstance().execute(ClientVersionCheckHandler::showVersionCheckScreen);
             }
         }
     }
@@ -101,6 +101,7 @@ public class ClientVersionCheckHandler {
     /**
      * 获取上次检查结果
      */
+    @SuppressWarnings("unused")
     public static VersionCheckUtils.VersionCheckResult getLastCheckResult() {
         return VersionCheckUtils.getLastCheckResult();
     }

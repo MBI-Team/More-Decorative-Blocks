@@ -60,9 +60,7 @@ public class ConfigScreen extends Screen {
         layout.addToContents(grid);
 
         // 添加按钮
-        layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, (button) -> {
-            this.onDone();
-        }).build());
+        layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, (button) -> this.onDone()).build());
 
         layout.visitWidgets(this::addRenderableWidget);
         layout.arrangeElements();

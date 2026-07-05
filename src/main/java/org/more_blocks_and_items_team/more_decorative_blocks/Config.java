@@ -1,15 +1,17 @@
 package org.more_blocks_and_items_team.more_decorative_blocks;
 
+import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import org.slf4j.Logger;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
-import static org.more_blocks_and_items_team.more_decorative_blocks.utils.LOGGER.LOGGER;
 
 @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Config {
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 

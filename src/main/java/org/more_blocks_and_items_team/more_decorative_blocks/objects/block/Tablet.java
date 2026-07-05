@@ -23,13 +23,12 @@ public class Tablet extends RightClinkBlock {
 
     @Override
     public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level,
-                                               @NotNull BlockPos pos, @NotNull CollisionContext context) {
+                                                 @NotNull BlockPos pos, @NotNull CollisionContext context) {
         Direction facing = state.getValue(FACING);
         // Tablet collision box depends on open/closed state and facing direction
         if (!state.getValue(OPEN)) {
             return switch (facing) {
-                case DOWN -> null;
-                case UP -> null;
+                case DOWN, UP -> Block.box(0, 0, 0, 0, 0, 0);
                 case NORTH -> Block.box(0, 0, 0, 16, 2, 14);
                 case SOUTH -> Block.box(0, 0, 2, 16, 2, 16);
                 case EAST -> Block.box(0, 0, 0, 14, 2, 16);
@@ -37,8 +36,7 @@ public class Tablet extends RightClinkBlock {
             };
         } else {
             return switch (facing) {
-                case DOWN -> null;
-                case UP -> null;
+                case DOWN, UP -> Block.box(0, 0, 0, 0, 0, 0);
                 case NORTH -> Block.box(0, 0, 0, 16, 1, 14);
                 case SOUTH -> Block.box(0, 0, 2, 16, 1, 16);
                 case EAST -> Block.box(2, 0, 0, 16, 1, 16);
