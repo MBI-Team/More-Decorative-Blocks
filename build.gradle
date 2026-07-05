@@ -1,3 +1,6 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 import java.text.SimpleDateFormat
 
 plugins {
@@ -311,6 +314,128 @@ tasks.named('publish').configure {
         if (checkTask.ext.has('versionExists') && checkTask.ext.versionExists) {
             throw new GradleException("Publish aborted: Version ${mod_version} already exists on GitHub Packages.")
         }
+    }
+}
+
+// 为 release 版本创建 GitHub Release 的任务
+tasks.register('createGitHubRelease') {
+    dependsOn 'publish'
+
+    doLast {
+        // 检查是否为 release 或 stable 版本
+        if (!base_mod_version.contains("release") && !base_mod_version.contains("stable")) {
+            logger.lifecycle("ℹ️  Current version '${base_mod_version}' is not a release/stable version. Skipping GitHub Release creation.")
+            return
+        }
+
+        def githubToken = System.getenv("TOKEN")
+        if (!githubToken) {
+            logger.warn("GitHub TOKEN not found. Skipping GitHub Release creation.")
+            return
+        }
+
+        def jarFile = jar.archiveFile.get().asFile
+        if (!jarFile.exists()) {
+            throw new GradleException("JAR file not found: ${jarFile.absolutePath}")
+        }
+
+        logger.lifecycle("🚀 Creating GitHub Release for version ${mod_version}...")
+
+        // 构建 API URL
+        def apiUrl = "https://api.github.com/repos/MBI-Team/More-Decorative-Blocks/releases"
+
+        // 构建请求体
+        def requestBody = [
+                tag_name  : mod_version,
+                name      : mod_version,
+                body      : "",
+                draft     : false,
+                prerelease: false
+        ]
+
+        try {
+            // 创建 Release
+            def url = new URI(apiUrl).toURL()
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection()
+            connection.setRequestMethod("POST")
+            connection.setDoOutput(true)
+            connection.setRequestProperty("Authorization", "Bearer ${githubToken}")
+            connection.setRequestProperty("Content-Type", "application/json")
+            connection.setRequestProperty("Accept", "application/vnd.github.v3+json")
+
+            def jsonBody = JsonOutput.toJson(requestBody)
+            connection.outputStream.withWriter { writer ->
+                writer.write(jsonBody)
+            }
+
+            def responseCode = connection.getResponseCode()
+            def responseBody = connection.inputStream.text
+
+            if (responseCode == 201 || responseCode == 422) {
+                // 201 = Created, 422 = Release already exists
+                if (responseCode == 422) {
+                    logger.warn("⚠️  Release ${mod_version} already exists. Uploading asset to existing release.")
+                    // 获取已存在的 release ID
+                    def getReleaseUrl = "https://api.github.com/repos/MBI-Team/More-Decorative-Blocks/releases/tags/${mod_version}"
+                    def getUrl = new URI(getReleaseUrl).toURL()
+                    HttpURLConnection getConnection = (HttpURLConnection) getUrl.openConnection()
+                    getConnection.setRequestMethod("GET")
+                    getConnection.setRequestProperty("Authorization", "Bearer ${githubToken}")
+                    getConnection.setRequestProperty("Accept", "application/vnd.github.v3+json")
+
+                    def getResponse = new JsonSlurper().parseText(getConnection.inputStream.text)
+                    def releaseId = getResponse.id
+
+                    // 上传文件到已存在的 release
+                    uploadAssetToRelease(releaseId, jarFile, githubToken)
+                } else {
+                    logger.lifecycle("✅ GitHub Release ${mod_version} created successfully!")
+                    // 解析响应获取 release ID
+                    def jsonResponse = new JsonSlurper().parseText(responseBody)
+                    def releaseId = jsonResponse.id
+
+                    // 上传 JAR 文件
+                    uploadAssetToRelease(releaseId, jarFile, githubToken)
+                }
+            } else {
+                logger.error("❌ Failed to create GitHub Release. Response code: ${responseCode}")
+                logger.error("Response: ${connection.errorStream?.text ?: responseBody}")
+            }
+        } catch (Exception e) {
+            logger.error("Failed to create GitHub Release: ${e.message}")
+            e.printStackTrace()
+        }
+    }
+}
+
+// 辅助方法：上传文件到 GitHub Release
+def uploadAssetToRelease(releaseId, File assetFile, String githubToken) {
+    def uploadUrl = "https://uploads.github.com/repos/MBI-Team/More-Decorative-Blocks/releases/${releaseId}/assets?name=${assetFile.name}"
+
+    try {
+        def url = new URI(uploadUrl).toURL()
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection()
+        connection.setRequestMethod("POST")
+        connection.setDoOutput(true)
+        connection.setRequestProperty("Authorization", "Bearer ${githubToken}")
+        connection.setRequestProperty("Content-Type", "application/java-archive")
+        connection.setRequestProperty("Accept", "application/vnd.github.v3+json")
+
+        // 读取文件并上传
+        def fileBytes = assetFile.bytes
+        connection.outputStream.write(fileBytes)
+        connection.outputStream.flush()
+
+        def responseCode = connection.getResponseCode()
+        if (responseCode == 201) {
+            logger.lifecycle("✅ Asset ${assetFile.name} uploaded successfully to GitHub Release!")
+        } else {
+            logger.error("❌ Failed to upload asset. Response code: ${responseCode}")
+            logger.error("Response: ${connection.errorStream?.text}")
+        }
+    } catch (Exception e) {
+        logger.error("Failed to upload asset: ${e.message}")
+        e.printStackTrace()
     }
 }
 
