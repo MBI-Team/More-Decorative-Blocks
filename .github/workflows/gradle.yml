@@ -9,11 +9,13 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "NeoForge1.21" ]
+    branches:
+      - NeoForge1.21
   pull_request:
-    branches: [ "NeoForge1.21" ]
+    branches:
+      - NeoForge1.21
   schedule:
-    - cron: "0 0 * * 0-6"
+    - cron: 0 16 * * 0-6
 
 jobs:
   build:
