@@ -3,6 +3,10 @@ pluginManagement {
         mavenLocal()
         gradlePluginPortal()
         // 添加阿里云镜像源以提高在中国大陆的下载速度
+        maven { name "neoforgedReleases"
+            url "https://neoforged.forgecdn.net/releases" }
+        maven { url = 'https://mirrors.qlu.edu.cn/bmclapi' }
+        maven { url = 'https://github.com/neoforged/neoforge/releases' }
         maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
         maven { url = 'https://maven.neoforged.net/releases' }
         maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
@@ -24,6 +28,10 @@ gradle.settingsEvaluated { settings ->
         repositories {
             mavenLocal()
             gradlePluginPortal()
+            maven { name "neoforgedReleases"
+                url "https://neoforged.forgecdn.net/releases" }
+            maven { url = 'https://mirrors.qlu.edu.cn/bmclapi' }
+            maven { url = 'https://github.com/neoforged/neoforge/releases' }
             maven { url = 'https://maven.neoforged.net/releases' }
             maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
             maven { url = 'https://maven.aliyun.com/repository/google' }

@@ -120,6 +120,16 @@ def neo_version = project.neo_version
 // 添加仓库配置以解决依赖下载问题
 repositories {
     // 添加更多镜像源以增加成功率
+    maven {
+        name "neoforgedReleases"
+        url "https://neoforged.forgecdn.net/releases"
+    }
+    maven {
+        url = 'https://mirrors.qlu.edu.cn/bmclapi'
+    }
+    maven {
+        url = 'https://github.com/neoforged/neoforge/releases'
+    }
     maven { 
         url = 'https://maven.minecraftforge.net/'
     }
