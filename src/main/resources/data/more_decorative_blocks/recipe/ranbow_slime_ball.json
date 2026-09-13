@@ -1,0 +1,21 @@
+{
+	"type" : "minecraft:crafting_shapeless" ,
+	"ingredients" : [
+		{
+			"item" : "minecraft:slime_ball"
+		} ,
+		{
+			"item" : "minecraft:red_dye"
+		} ,
+		{
+			"item" : "minecraft:yellow_dye"
+		} ,
+		{
+			"item" : "minecraft:blue_dye"
+		}
+	] ,
+	"result" : {
+		"count" : 4 ,
+		"id" : "more_decorative_blocks:ranbow_slime_ball"
+	}
+}

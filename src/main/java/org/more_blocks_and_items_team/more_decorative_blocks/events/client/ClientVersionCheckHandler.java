@@ -2,7 +2,6 @@ package org.more_blocks_and_items_team.more_decorative_blocks.events.client;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.TitleScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -29,20 +28,16 @@ public class ClientVersionCheckHandler {
 
     @SubscribeEvent
     public static void onScreenOpened(ScreenEvent.Opening event) {
-        // 当主菜单打开时显示版本检查界面
-        LOGGER.info("[VersionCheck] Screen opening: {}", event.getScreen().getClass().getSimpleName());
-        if (event.getScreen() instanceof TitleScreen) {
-            LOGGER.info("[VersionCheck] Title screen opened, checked: {}, has result: {}",
-                    VersionCheckUtils.hasCheckedVersion(),
-                    VersionCheckUtils.getLastCheckResult() != null);
+        LOGGER.info("[VersionCheck] Title screen opened, checked: {}, has result: {}",
+                VersionCheckUtils.hasCheckedVersion(),
+                VersionCheckUtils.getLastCheckResult() != null);
 
-            if (VersionCheckUtils.hasCheckedVersion() &&
-                    VersionCheckUtils.getLastCheckResult() != null &&
-                    VersionCheckUtils.getLastCheckResult().isNewVersionAvailable()) {
+        if (VersionCheckUtils.hasCheckedVersion() &&
+                VersionCheckUtils.getLastCheckResult() != null &&
+                VersionCheckUtils.getLastCheckResult().isNewVersionAvailable()) {
 
-                LOGGER.info("[VersionCheck] Showing update screen on title screen");
-                Minecraft.getInstance().execute(ClientVersionCheckHandler::showVersionCheckScreen);
-            }
+            LOGGER.info("[VersionCheck] Showing update screen on title screen");
+            Minecraft.getInstance().execute(ClientVersionCheckHandler::showVersionCheckScreen);
         }
     }
 
@@ -86,6 +81,7 @@ public class ClientVersionCheckHandler {
     /**
      * 重置检查状态（用于调试或重新检查）
      */
+    @SuppressWarnings("unused")
     public static void resetCheckStatus() {
         VersionCheckUtils.resetCheckStatus();
     }

@@ -133,8 +133,8 @@ repositories {
     maven { 
         url = 'https://maven.minecraftforge.net/'
     }
-    maven { 
-        url = 'https://maven.neoforged.net/releases' 
+    maven {
+        url = 'https://maven.neoforged.net/releases'
     }
     // 使用阿里云镜像源以提高在中国大陆的下载速度
     maven { 
@@ -180,7 +180,7 @@ test {
 processResources {
     duplicatesStrategy = DuplicatesStrategy.WARN
 
-    var replaceProperties = [
+    def replaceProperties = [
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,

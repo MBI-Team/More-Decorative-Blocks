@@ -99,4 +99,6 @@ public class ItemRegistry {
 
     public static final DeferredItem<Item> RAW_ALUMINUM = ITEMS.registerSimpleItem("raw_aluminum", new Item.Properties());
     public static final DeferredItem<Item> ALUMINUM_INGOT = ITEMS.registerSimpleItem("aluminum_ingot", new Item.Properties());
+
+    public static final DeferredItem<Item> RANBOW_SLIME_BALL = ITEMS.registerSimpleItem("ranbow_slime_ball", new Item.Properties());
 }
