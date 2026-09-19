@@ -30,14 +30,14 @@ java {
 def getGitCommitHash() {
     try {
         def stdout = new ByteArrayOutputStream()
-        providers.exec {
+        project.exec {
             commandLine 'git', 'rev-parse', '--short', 'HEAD'
             standardOutput = stdout
         }
-        return stdout.toString().trim()
+        def hash = stdout.toString().trim()
+        return hash.isEmpty() ? generateRandomHash() : hash
     } catch (Exception e) {
-        println("Git Failed,please check git" + e)
-        // 如果 Git 不可用或者发生错误，返回随机哈希作为备选方案
+        println "Git operation failed: ${e.message}"
         return generateRandomHash()
     }
 }
