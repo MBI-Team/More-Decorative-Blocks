@@ -43,7 +43,14 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "Schedule Nightly"
+            ./gradlew clean build --info -Pmod_version_type=nightly
+          else
+            echo "Fast Build"
+            ./gradlew build -x test
+          fi
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
