@@ -90,7 +90,7 @@ def mod_group_id = project.mod_group_id
 def mod_name = project.mod_name
 // 根据版本号类型决定版本格式
 def mod_version_type = project.findProperty('mod_version_type')
-def base_mod_version = project.mod_version + mod_version_type
+def base_mod_version = project.mod_version + "-" + mod_version_type
 def mod_version = base_mod_version + "-" + getGitCommitHash() + "+" + getCurrentDate()
 def minecraft_version = project.minecraft_version
 def neo_version = project.neo_version
