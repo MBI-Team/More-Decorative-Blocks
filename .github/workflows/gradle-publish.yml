@@ -23,7 +23,7 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
@@ -49,6 +49,15 @@ jobs:
     # the publishing section of your build.gradle
       - name: Publish to GitHub Packages
         run: ./gradlew publish
+        env:
+          USERNAME: ${{ github.actor }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Create GitHub Release and upload JAR asset (only for release/stable/final versions)
+      # Requires 'contents: write' permission to create releases
+      - name: Create GitHub Release
+        if: success()
+        run: ./gradlew createGitHubRelease
         env:
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
