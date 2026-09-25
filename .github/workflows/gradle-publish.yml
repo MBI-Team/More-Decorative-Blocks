@@ -71,7 +71,14 @@ jobs:
       # Requires 'contents: write' permission to create releases
       - name: Create GitHub Release
         if: success()
-        run: ./gradlew createGitHubRelease
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "Schedule Nightly"
+            ./gradlew createGithubRelease -Pmod_version_type=nightly
+          else
+            echo "Fast Build"
+            ./gradlew createGithubRelease
+          fi
         env:
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
