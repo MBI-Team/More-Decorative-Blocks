@@ -11,7 +11,6 @@ import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject
 
 @EventBusSubscriber(modid = "more_decorative_blocks", bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RenderTypeEvents {
-
     /**
      * Helper to set the ChunkRenderTypeSet for Blocks
      *
@@ -24,6 +23,7 @@ public class RenderTypeEvents {
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.OAK_WOOD_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.ACACIA_WOOD_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.IRON_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
+            net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.RAINBOW_SLIME_BLOCK.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
         });
     }
 }

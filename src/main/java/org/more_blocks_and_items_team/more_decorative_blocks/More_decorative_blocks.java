@@ -20,10 +20,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ClientVersionCheckHandler;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.common.commandExecutes;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.CreativeModeTabRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry;
-import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.TooltipRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionCheckUtils;
 import org.slf4j.Logger;
 
@@ -64,6 +61,8 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Registering items...");
         ItemRegistry.ITEMS.register(modEventBus);
         Thread.sleep(5000);
+        LOGGER.info("[Mod Init]Registering entities...");
+        EntityRegistry.ENTITY_TYPES.register(modEventBus);
         LOGGER.info("[Mod Init]Registering creative mode tabs...");
         CreativeModeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         LOGGER.info("[Mod Init]Registering tooltips...");

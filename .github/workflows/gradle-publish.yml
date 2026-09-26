@@ -46,7 +46,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             echo "Schedule Nightly"
-            ./gradlew clean build -Pmod_version_type=nightlyo
+            ./gradlew clean build -Pmod_version_type=nightly
           else
             echo "Fast Build"
             ./gradlew build
@@ -54,23 +54,8 @@ jobs:
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-      - name: Publish to GitHub Packages
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            echo "Schedule Nightly"
-            ./gradlew publish -Pmod_version_type=nightly
-          else
-            echo "Fast Build"
-            ./gradlew publish
-          fi
-        env:
-          USERNAME: ${{ github.actor }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Create GitHub Release and upload JAR asset (only for release/stable/final versions)
-      # Requires 'contents: write' permission to create releases
-      - name: Create GitHub Release
-        if: success()
+      - name: Publish
+        if: github.event_name != 'pull_request'
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             echo "Schedule Nightly"

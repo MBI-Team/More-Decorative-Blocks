@@ -2,6 +2,6 @@
 	"credit" : "Made by MBITeam" ,
 	"parent" : "minecraft:item/generated" ,
 	"textures" : {
-		"layer0" : "more_decorative_blocks:item/ranbow_slime_ball"
+		"layer0" : "more_decorative_blocks:item/rainbow_slime_ball"
 	}
 }

@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.item.GlassCup;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.item.RainbowSlimeBall;
 
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModInformation.MODID;
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry.*;
@@ -78,11 +79,9 @@ public class ItemRegistry {
 
     public static final DeferredItem<BlockItem> CHIPPED_WHITE_TILE_ITEM = ITEMS.registerSimpleBlockItem("chipped_white_tile", CHIPPED_WHITE_TILE);
 
-    // 浅色木地板和地砖物品
     public static final DeferredItem<BlockItem> LIGHT_WOOD_PLANK_ITEM = ITEMS.registerSimpleBlockItem("light_wood_plank", LIGHT_WOOD_PLANK);
     public static final DeferredItem<BlockItem> LIGHT_WOOD_TILE_ITEM = ITEMS.registerSimpleBlockItem("light_wood_tile", LIGHT_WOOD_TILE);
 
-    // 深色木地板和地砖物品
     public static final DeferredItem<BlockItem> DARK_WOOD_PLANK_ITEM = ITEMS.registerSimpleBlockItem("dark_wood_plank", DARK_WOOD_PLANK);
     public static final DeferredItem<BlockItem> DARK_WOOD_TILE_ITEM = ITEMS.registerSimpleBlockItem("dark_wood_tile", DARK_WOOD_TILE);
 
@@ -91,7 +90,6 @@ public class ItemRegistry {
             .stacksTo(64)
     );
 
-    // 铝矿物相关物品
     public static final DeferredItem<BlockItem> ALUMINUM_ORE_ITEM = ITEMS.registerSimpleBlockItem("aluminum_ore", ALUMINUM_ORE);
     public static final DeferredItem<BlockItem> DEEPSLATE_ALUMINUM_ORE_ITEM = ITEMS.registerSimpleBlockItem("deepslate_aluminum_ore", DEEPSLATE_ALUMINUM_ORE);
     public static final DeferredItem<BlockItem> RAW_ALUMINUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("raw_aluminum_block", RAW_ALUMINUM_BLOCK);
@@ -100,5 +98,11 @@ public class ItemRegistry {
     public static final DeferredItem<Item> RAW_ALUMINUM = ITEMS.registerSimpleItem("raw_aluminum", new Item.Properties());
     public static final DeferredItem<Item> ALUMINUM_INGOT = ITEMS.registerSimpleItem("aluminum_ingot", new Item.Properties());
 
-    public static final DeferredItem<Item> RANBOW_SLIME_BALL = ITEMS.registerSimpleItem("ranbow_slime_ball", new Item.Properties());
+    public static final DeferredItem<Item> RAINBOW_SLIME_BALL = ITEMS.registerItem("rainbow_slime_ball",
+            RainbowSlimeBall::new,
+            new RainbowSlimeBall.Properties()
+                    .setNoRepair()
+                    .stacksTo(64));
+
+    public static final DeferredItem<BlockItem> RAINBOW_SLIME_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("rainbow_slime_block", RAINBOW_SLIME_BLOCK);
 }

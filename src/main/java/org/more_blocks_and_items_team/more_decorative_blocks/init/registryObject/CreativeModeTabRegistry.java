@@ -67,6 +67,7 @@ public class CreativeModeTabRegistry {
         output.accept(RAW_ALUMINUM_BLOCK_ITEM.get());
         output.accept(ALUMINUM_INGOT.get());
         output.accept(ALUMINUM_BLOCK_ITEM.get());
-        output.accept(RANBOW_SLIME_BALL.get());
+        output.accept(RAINBOW_SLIME_BALL.get());
+        output.accept(RAINBOW_SLIME_BLOCK_ITEM.get());
     }).build());
 }

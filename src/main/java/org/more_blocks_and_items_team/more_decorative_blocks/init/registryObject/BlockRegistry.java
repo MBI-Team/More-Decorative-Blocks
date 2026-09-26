@@ -267,4 +267,14 @@ public class BlockRegistry {
             .strength(1.5f, 6.0f)  // 与铁块相同硬度
             .requiresCorrectToolForDrops()
     ));
+
+    // 彩虹史莱姆覆盖方块:类似幽匿脉络，贴附在周围方块的六个面上
+    public static final DeferredBlock<Block> RAINBOW_SLIME_BLOCK = BLOCKS.register("rainbow_slime_block", () -> new RainbowSlimeBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_PURPLE)
+            .sound(SoundType.SLIME_BLOCK)
+            .lightLevel(state -> 2)
+            .strength(0.5f, 0.5f)  // 与幽匿脉络相近的硬度
+            .noOcclusion()          // 类似脉络:不遮挡
+            .dynamicShape()         // 形状随贴附的面变化
+    ));
 }
