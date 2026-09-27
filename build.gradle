@@ -331,13 +331,25 @@ tasks.register('createGitHubRelease') {
         def apiUrl = "https://api.github.com/repos/MBI-Team/More-Decorative-Blocks/releases"
 
         // 构建请求体
-        def requestBody = [
+        def requestBody
+
+        if (!mod_version_type.equals("release") && !mod_version_type.equals("stable") && !mod_version_type.equals("nightly")) {
+            requestBody = [
                 tag_name  : mod_version,
                 name      : mod_version,
                 body      : "",
                 draft     : false,
                 prerelease: false
-        ]
+           ]   
+        } else {
+            requestBody = [
+                tag_name  : mod_version,
+                name      : mod_version,
+                body      : "",
+                draft     : false,
+                prerelease: true
+           ]
+        }
 
         try {
             // 创建 Release
