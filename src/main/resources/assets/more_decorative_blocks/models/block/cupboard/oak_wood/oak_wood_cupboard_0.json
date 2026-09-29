@@ -8,7 +8,7 @@
   ],
 	"textures": {
 		"1": "more_decorative_blocks:block/cupboard/oak_wood_body",
-      "2": "more_decorative_blocks:block/cupboard/oak_wood_top"
+		"2" : "more_decorative_blocks:block/cupboard/oak_wood_top"
 	},
 	"elements": [
 		{

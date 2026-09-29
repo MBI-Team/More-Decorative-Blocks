@@ -1,5 +1,6 @@
 package org.more_blocks_and_items_team.more_decorative_blocks.objects.entity;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -19,7 +20,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.RainbowSlimeBlock;
+import org.slf4j.Logger;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -31,6 +34,8 @@ import java.util.Random;
  * 铺设一个 {@link RainbowSlimeBlock}（普通方块，不再像幽匿脉络）。
  */
 public class RainbowSlimeBallEntity extends Snowball {
+
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     private static final Random RNG = new Random();
 
@@ -49,13 +54,17 @@ public class RainbowSlimeBallEntity extends Snowball {
      */
     @Override
     protected void onHitEntity(@NotNull EntityHitResult result) {
-        if (!this.level().isClientSide()) {
-            // 在被命中的实体位置生成击中粒子
-            if (this.level() instanceof ServerLevel serverLevel) {
-                Vec3 loc = result.getEntity().position().add(0.0D, result.getEntity().getBbHeight() / 2.0D, 0.0D);
-                spawnColoredHitParticles(serverLevel, loc);
+        try (Level level = this.level()) {
+            if (!level.isClientSide()) {
+                // 在被命中的实体位置生成击中粒子
+                if (level instanceof ServerLevel serverLevel) {
+                    Vec3 loc = result.getEntity().position().add(0.0D, result.getEntity().getBbHeight() / 2.0D, 0.0D);
+                    spawnColoredHitParticles(serverLevel, loc);
+                }
+                this.discard();
             }
-            this.discard();
+        } catch (IOException e) {
+            LOGGER.warn(e.getMessage());
         }
     }
 
@@ -132,8 +141,12 @@ public class RainbowSlimeBallEntity extends Snowball {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().isClientSide()) {
-            return;
+        try (Level level = this.level()) {
+            if (!level.isClientSide()) {
+                return;
+            }
+        } catch (IOException e) {
+            LOGGER.warn(e.getMessage());
         }
         Level level = this.level();
         // 在客户端生成飞行粒子（彩色粘液粒子）
@@ -184,10 +197,15 @@ public class RainbowSlimeBallEntity extends Snowball {
     }
 
     /**
-     * 不再生成物品掉落。
+     * 返回对应的物品
+     * 创建默认的 {@link net.minecraft.world.item.ItemStack} 数据。
+     * <p>
+     * 必须返回一个非 null 的物品，否则在 1.21+ 中会抛出 NPE。
+     * 注意：我们仍然不会真正掉落这个物品，因为 {@link #onHitBlock(BlockHitResult)}
+     * 和 {@link #onHitEntity(EntityHitResult)} 都直接调用了 {@link #discard()}。
      */
     @Override
     protected @NotNull Item getDefaultItem() {
-        return null;
+        return org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.RAINBOW_SLIME_BALL.get();
     }
 }
