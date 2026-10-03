@@ -75,7 +75,7 @@ flowchart TD
 
 ## 2. 配置改造
 
-### 2.1 [`gradle.properties`](gradle.properties:1) — 增加版本矩阵
+### 2.1 [`gradle.properties`](/gradle.properties) — 增加版本矩阵
 
 在文件末尾追加：
 
@@ -95,7 +95,7 @@ mc_version_key=mc1.21.1
 
 并保留现有 `minecraft_version=1.21.1` / `neo_version=21.1.115` 作为单一版本构建时的回退值。
 
-### 2.2 [`build.gradle`](build.gradle:1) — 完整重构
+### 2.2 [`build.gradle`](/build.gradle) — 完整重构
 
 主要改造点：
 
@@ -120,7 +120,7 @@ mc_version_key=mc1.21.1
 ```groovy
 def activeVersionKey = project.findProperty('mc_version') ?: project.mc_version_key
 def activeRaw = project.findProperty("versions.${activeVersionKey}")
-if (!activeRaw) throw new GradleException("Unknown mc_version key: ${activeVersionKey}")
+if (!activeRaw) throw new GradleException("Unknown mc_version key: ${activeVersionKey}") as Throwable
 
 def (mcVer, nfVer, nfRange, parchMc) = activeRaw.split(':')
 def mcShort = mcVer.replace('.', '')        // 1.21.1 -> 1211 ; 但显示用 mcVer 原样
@@ -134,10 +134,10 @@ jar { archiveClassifier = "mc${activeVersionKey.replace('mc','')}-nf${nfShort}" 
 
 ### 2.3 模板变量
 
-[`src/main/templates/META-INF/neoforge.mods.toml`](src/main/templates/META-INF/neoforge.mods.toml:1) 无需改动。
+[`src/main/templates/META-INF/neoforge.mods.toml`](/src/main/templates/META-INF/neoforge.mods.toml:1) 无需改动。
 `${minecraft_version}` / `${neo_version}` / `${neo_version_range}` 占位符由 `processResources` 在每次构建时 根据激活版本动态展开。
 
-### 2.4 [`src/versions/`](src/versions/) 源码集
+### 2.4 [`src/versions/`](/src/versions/) 源码集
 
 ```
 src/versions/
@@ -167,11 +167,11 @@ sourceSets {
 
 ### 3.1 现状回顾
 
-- [`.github/workflows/gradle-publish.yml`](.github/workflows/gradle-publish.yml:1)：单分支（NeoForge1.21）
+- [`.github/workflows/gradle-publish.yml`](/.github/workflows/gradle-publish.yml)：单分支（NeoForge1.21）
   push/PR/schedule → 构建 → 发布到 Packages + 创建 Release。
-- [`.github/workflows/gradle.yml`](.github/workflows/gradle.yml:1)：CI 构建（无需改动）。
+- [`.github/workflows/gradle.yml`](/.github/workflows/gradle.yml)：CI 构建（无需改动）。
 
-### 3.2 新版 [`gradle-publish.yml`](.github/workflows/gradle-publish.yml:1)
+### 3.2 新版 [`gradle-publish.yml`](/.github/workflows/gradle-publish.yml)
 
 - 触发分支改为 `main`（单一开发分支）。
 - 使用 GitHub Actions `strategy.matrix` 并行构建三个版本。
@@ -208,26 +208,26 @@ flowchart LR
         P2[mc1.21.1 - 1.5.0-dev-a1b2c3d+MC1.21.1NF21.1]
         P3[mc1.21.4 - 1.5.0-dev-a1b2c3d+MC1.21.4NF21.4]
     end
-    BuildMatrix --> R1 + R2 + R3
-    BuildMatrix --> P1 + P2 + P3
+    BuildMatrix --> R1&nbsp+&nbspR2&nbsp+&nbspR3
+    BuildMatrix --> P1&nbsp+&nbspP2&nbsp+&nbspP3
 ```
 
 ---
 
 ## 4. 实施步骤（按 todo 顺序）
 
-| #  | 步骤                                                                                                                                                                   | 输出文件                       | 状态 |
-|----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|------|
-| 1  | 已完成上下文收集                                                                                                                                                       | —                              | ✅   |
-| 2  | 已完成架构设计                                                                                                                                                         | —                              | ✅   |
-| 3  | 在 [`gradle.properties`](gradle.properties:1) 添加 `versions.*` 与 `mc_version_key`                                                                                    | 修改 `gradle.properties`       | ⏳   |
-| 4  | 重构 [`build.gradle`](build.gradle:1)（版本解析 + source set + jar classifier + 多版本 publish + 改造 `createGitHubRelease`）                                          | 重写 `build.gradle`            | ⏳   |
-| 5  | 调整 [`processResources`](build.gradle:162) 中变量替换逻辑（每次构建使用激活版本）                                                                                     | `build.gradle` 内联            | ⏳   |
-| 6  | 创建 [`src/versions/mc1.21/`](src/versions/mc1.21/) / [`mc1.21.1/`](src/versions/mc1.21.1/) / [`mc1.21.4/`](src/versions/mc1.21.4/) 骨架目录与占位 `package-info.java` | 新建 3 个 `package-info.java`  | ⏳   |
-| 7  | 重写 [`.github/workflows/gradle-publish.yml`](.github/workflows/gradle-publish.yml:1)（main 分支 + 矩阵 + Release 资产上传）                                           | 修改 `gradle-publish.yml`      | ⏳   |
-| 8  | 新建 [`.github/workflows/release.yml`](.github/workflows/release.yml:1)（`release: published` 触发，3 版本 JAR 上传 + 推送 Packages）                                  | 新建 `release.yml`             | ⏳   |
-| 9  | 验证：本地 `./gradlew build -Pmc_version=mc1.21` / `mc1.21.1` / `mc1.21.4` 均能成功                                                                                    | 验证记录                       | ⏳   |
-| 10 | 编写本计划文档并提交                                                                                                                                                   | `plans/multi-version-build.md` | ⏳   |
+| #  | 步骤                                                                                                                                                                      | 输出文件                       | 状态 |
+|----|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|------|
+| 1  | 已完成上下文收集                                                                                                                                                          | —                              | ✅   |
+| 2  | 已完成架构设计                                                                                                                                                            | —                              | ✅   |
+| 3  | 在 [`gradle.properties`](/gradle.properties) 添加 `versions.*` 与 `mc_version_key`                                                                                        | 修改 `gradle.properties`       | ⏳   |
+| 4  | 重构 [`build.gradle`](/build.gradle)（版本解析 + source set + jar classifier + 多版本 publish + 改造 `createGitHubRelease`）                                              | 重写 `build.gradle`            | ⏳   |
+| 5  | 调整 [`processResources`](/build.gradle) 中变量替换逻辑（每次构建使用激活版本）                                                                                           | `build.gradle` 内联            | ⏳   |
+| 6  | 创建 [`src/versions/mc1.21/`](/src/versions/mc1.21/) / [`mc1.21.1/`](/src/versions/mc1.21.1/) / [`mc1.21.4/`](/src/versions/mc1.21.4/) 骨架目录与占位 `package-info.java` | 新建 3 个 `package-info.java`  | ⏳   |
+| 7  | 重写 [`.github/workflows/gradle-publish.yml`](/.github/workflows/gradle-publish.yml)（main 分支 + 矩阵 + Release 资产上传）                                               | 修改 `gradle-publish.yml`      | ⏳   |
+| 8  | 新建 [`.github/workflows/release.yml`](/.github/workflows/release.yml)（`release: published` 触发，3 版本 JAR 上传 + 推送 Packages）                                      | 新建 `release.yml`             | ⏳   |
+| 9  | 验证：本地 `./gradlew build -Pmc_version=mc1.21` / `mc1.21.1` / `mc1.21.4` 均能成功                                                                                       | 验证记录                       | ⏳   |
+| 10 | 编写本计划文档并提交                                                                                                                                                      | `plans/multi-version-build.md` | ⏳   |
 
 ---
 

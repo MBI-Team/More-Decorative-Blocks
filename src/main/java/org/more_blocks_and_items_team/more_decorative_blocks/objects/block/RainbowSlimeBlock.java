@@ -64,11 +64,10 @@ public class RainbowSlimeBlock extends MultifaceBlock {
      * 必须通过具体的 {@link Block} 实例调用。
      *
      * @param state     源方块状态
-     * @param self      实际的 Block 实例（用于获取面属性映射）
      * @param direction 需要打开（贴附）的方向
      * @return 修改后的方块状态
      */
-    public static BlockState attachFace(BlockState state, Block self, Direction direction) {
+    public static BlockState attachFace(BlockState state, Direction direction) {
         BooleanProperty property = getFaceProperty(direction);
         return state.setValue(property, Boolean.TRUE);
     }

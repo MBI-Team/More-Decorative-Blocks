@@ -103,7 +103,6 @@ public class RainbowSlimeBallEntity extends Snowball {
         // 注意：getFaceProperty 是实例方法，需要传入 Block 实例。
         BlockState state = RainbowSlimeBlock.attachFace(
                 coverBlock.defaultBlockState(),
-                coverBlock,
                 hitSide
         );
 
