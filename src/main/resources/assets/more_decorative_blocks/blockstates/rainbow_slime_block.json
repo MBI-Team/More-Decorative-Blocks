@@ -1,49 +1,56 @@
 {
-	"variants" : {
-		"face=floor,facing=north" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block"
+	"multipart" : [
+		{
+			"when" : {
+				"up" : "true"
+			} ,
+			"apply" : {
+				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"x" : 180
+			}
 		} ,
-		"face=floor,facing=south" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 180
+		{
+			"when" : {
+				"down" : "true"
+			} ,
+			"apply" : {
+				"model" : "more_decorative_blocks:block/rainbow_slime_block"
+			}
 		} ,
-		"face=floor,facing=east" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 90
+		{
+			"when" : {
+				"north" : "true"
+			} ,
+			"apply" : {
+				"model" : "more_decorative_blocks:block/rainbow_slime_block"
+			}
 		} ,
-		"face=floor,facing=west" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 270
+		{
+			"when" : {
+				"south" : "true"
+			} ,
+			"apply" : {
+				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"y" : 180
+			}
 		} ,
-		"face=ceiling,facing=north" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block"
+		{
+			"when" : {
+				"east" : "true"
+			} ,
+			"apply" : {
+				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"y" : 90
+			}
 		} ,
-		"face=ceiling,facing=south" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 180
-		} ,
-		"face=ceiling,facing=east" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 90
-		} ,
-		"face=ceiling,facing=west" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 270
-		} ,
-		"face=wall,facing=north" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block"
-		} ,
-		"face=wall,facing=south" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 180
-		} ,
-		"face=wall,facing=east" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 90
-		} ,
-		"face=wall,facing=west" : {
-			"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-			"y" : 270
+		{
+			"when" : {
+				"west" : "true"
+			} ,
+			"apply" : {
+				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"y" : 270
+			}
 		}
-	}
+	]
 }
