@@ -16,7 +16,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.RainbowSlimeBlock;
+import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry;
+import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.RainbowSlimeVein;
 
 import java.util.Random;
 
@@ -26,7 +27,7 @@ import java.util.Random;
  * 行为参考雪球（投掷轨迹、击中实体的判定），
  * 击中实体不造成任何伤害或击退；
  * 落地时不会生成物品掉落，而是在被击中方块对应的一个面上
- * 铺设一个 {@link RainbowSlimeBlock}（继承自幽匿脉络 MultifaceBlock）。
+ * 铺设一个 {@link RainbowSlimeVein}（继承自幽匿脉络 MultifaceBlock）。
  * <p>
  * 性能说明：
  * <ul>
@@ -73,8 +74,23 @@ public class RainbowSlimeBallEntity extends Snowball {
 
     /**
      * 落地处理：不会生成物品掉落，而是在被击中方块的被击中那一面
-     * 上铺设一个 {@link RainbowSlimeBlock}。
+     * 上铺设一个 {@link RainbowSlimeVein}。
      * 击中粒子同样在客户端本地生成。
+     * <p>
+     * 关键点：
+     * <ul>
+     *   <li>{@code hitSide} 是 hitPos 方块朝向玩家的一面（例如从上方击中 hitPos
+     *       的顶面时 {@code hitSide == UP}）。</li>
+     *   <li>{@code placePos = hitPos.relative(hitSide)} 处于 hitPos 的 hitSide 方向，
+     *       因此 slime 要贴在 hitPos 上，其自身需要打开的面是 {@code hitSide.getOpposite()}
+     *       ——即 slime 朝向 hitPos 的那一面。</li>
+     *   <li>{@link net.minecraft.world.level.block.MultifaceBlock#getFaceProperty(Direction)}
+     *       的语义是：{@code direction} 表示 slime 自身朝向 {@code direction} 邻居方块的那一面。</li>
+     * </ul>
+     * <p>
+     * 多次投掷累加：当 {@code placePos} 处已经有一个 slime 方块时，
+     * 会直接在现有 state 上"打开"新方向的属性，使得单个 slime 方块可以贴满多个面。
+     * 这避免了"多次投掷只能在空气中创建新方块"造成的限制。
      */
     @Override
     protected void onHitBlock(@NotNull BlockHitResult result) {
@@ -90,35 +106,49 @@ public class RainbowSlimeBallEntity extends Snowball {
         Direction hitSide = result.getDirection();
         BlockPos placePos = hitPos.relative(hitSide);
 
-        // 如果放置位置不是空气，则直接消失，不强行替换
-        if (!level.getBlockState(placePos).isAir()) {
+        BlockState existing = level.getBlockState(placePos);
+        var coverBlock = BlockRegistry.RAINBOW_SLIME_VEIN.get();
+        boolean isExistingRainbowSlime = existing.is(coverBlock);
+
+        // 放置位置既不是空气、也不是已存在的 slime 方块，则直接消失（不覆盖其他方块）
+        if (!existing.isAir() && !isExistingRainbowSlime) {
             this.discard();
             return;
         }
 
-        var coverBlock = org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry.RAINBOW_SLIME_BLOCK.get();
+        // 关键修复：方向必须是 hitSide.getOpposite()。
+        // hitSide 是 hitPos 方块朝向玩家的一面；placePos = hitPos.relative(hitSide)
+        // 处于 hitPos 的 hitSide 方向邻居位置。
+        // MultifaceBlock 的面属性语义：direction 表示 slime 自身朝向 direction 邻居方块的面，
+        // 因此要让 slime 贴到 hitPos，需要打开的面是 hitSide 的反向。
+        Direction attachDirection = hitSide.getOpposite();
 
-        // 彩虹史莱姆方块是 MultifaceBlock，通过 RainbowSlimeBlock 的
-        // 静态辅助方法生成一个"被击中面已贴附"的 BlockState。
-        // 注意：getFaceProperty 是实例方法，需要传入 Block 实例。
-        BlockState state = RainbowSlimeBlock.attachFace(
-                coverBlock.defaultBlockState(),
-                hitSide
-        );
-
-        if (!state.canSurvive(level, placePos)) {
+        // 使用 slime 自身实现的 isSupportedFace 校验：要求 attachDirection 方向的邻居
+        // 是一个实体（非空气/可替换）方块。这样六个方向都能放置，且能正常渲染。
+        // 同时避免 MultifaceBlock.canSurvive 默认只能校验自身某一面存在支撑的
+        // 行为，避免刚放置时返回 false 导致实体被丢弃而方块未生成。
+        if (!RainbowSlimeVein.isSupportedFace(level, placePos, attachDirection)) {
             this.discard();
             return;
         }
 
-        level.setBlock(placePos, state, 3);
+        // 如果目标位置已经存在 slime，则在现有 state 上累加新方向的面属性；
+        // 否则从 defaultBlockState 出发创建一个新的 slime state。
+        BlockState baseState = isExistingRainbowSlime ? existing : coverBlock.defaultBlockState();
+        BlockState newState = RainbowSlimeVein.attachFace(baseState, attachDirection);
+
+        level.setBlock(placePos, newState, 3);
 
         // 播放黏液击中音效
         level.playSound(null, placePos.getX() + 0.5D, placePos.getY() + 0.5D, placePos.getZ() + 0.5D,
                 SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 0.8F, 1.0F);
 
+        // 主体 slime 放置完成后，不再生成自定义蔓延实体；
+        // 后续的随机蔓延由原版 MultifaceBlock 通过 .randomTicks() 自动驱动，
+        // 与幽匿脉络的蔓延逻辑一致。
         this.discard();
     }
+
 
     /**
      * 每 tick 调用一次，用于生成飞行过程中的粒子效果。

@@ -23,7 +23,7 @@ public class RenderTypeEvents {
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.OAK_WOOD_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.ACACIA_WOOD_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
             net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.IRON_CUPBOARD.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
-            net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.RAINBOW_SLIME_BLOCK.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
+            net.minecraft.client.renderer.ItemBlockRenderTypes.setRenderLayer(BlockRegistry.RAINBOW_SLIME_VEIN.get(), ChunkRenderTypeSet.of(RenderType.cutout()));
         });
     }
 }

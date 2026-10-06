@@ -27,14 +27,14 @@ java {
 // Note: SSL settings are now configured in gradle.properties to avoid hardcoding system properties
 // This allows for more flexible configuration depending on the network environment
 
+// 使用 providers.exec 替代已弃用的 project.exec,
+// 避免阻塞 Gradle daemon,且与现代 Gradle / IDEA 解析更兼容
 def getGitCommitHash() {
     try {
-        def stdout = new ByteArrayOutputStream()
-        project.exec {
+        def result = providers.exec {
             commandLine 'git', 'rev-parse', '--short', 'HEAD'
-            standardOutput = stdout
         }
-        def hash = stdout.toString().trim()
+        def hash = result.standardOutput.asText.get().trim()
         return hash.isEmpty() ? generateRandomHash() : hash
     } catch (Exception e) {
         println "Git operation failed: ${e.message}"
@@ -159,10 +159,12 @@ test {
 }
 
 // 处理资源文件
+// 使用 inputs.properties + expand 标准模式替换原来的 filesMatching + expand,
+// 避免 IntelliJ IDEA 在解析嵌套 MatchingCopyAction 的 filtering 属性时报
+// "Cannot resolve resource filtering of MatchingCopyAction" 错误。
+// 这样配置后,Gradle 会将属性作为任务输入正确暴露给 IDEA 的 Gradle 集成插件。
 processResources {
-    duplicatesStrategy = DuplicatesStrategy.WARN
-
-    def replaceProperties = [
+    inputs.properties([
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
@@ -175,17 +177,23 @@ processResources {
             mod_authors            : mod_authors,
             mod_description: mod_description,
             github_api_url : github_api_url,
-    ]
-    inputs.properties replaceProperties
+    ])
 
     filesMatching(['META-INF/neoforge.mods.toml', 'GradleInit.properties']) {
-        expand replaceProperties
-    }
-
-    // 复制其他资源文件
-    from('src/generated/resources') {
-        include 'assets/**'
-        include 'data/**'
+        expand(
+                minecraft_version: minecraft_version,
+                minecraft_version_range: minecraft_version_range,
+                neo_version: neo_version,
+                neo_version_range: neo_version_range,
+                loader_version_range: loader_version_range,
+                mod_id: mod_id,
+                mod_name: mod_name,
+                mod_license: mod_license,
+                mod_version: mod_version,
+                mod_authors: mod_authors,
+                mod_description: mod_description,
+                github_api_url: github_api_url,
+        )
     }
 }
 
@@ -197,13 +205,11 @@ idea {
     }
 }
 
-jar {
+// 显式声明 jar 任务,避免与 neogradle 自动注入的 jar 任务发生配置冲突
+// 使用标准的 sourceSets.main.output 而非 from(processResources),
+// 防止 IntelliJ IDEA 在解析 Copy 任务的 filtering 属性时触发 MatchingCopyAction 错误
+tasks.named('jar', Jar) {
     duplicatesStrategy = DuplicatesStrategy.WARN
-
-    // 包含处理后的资源文件
-    from(processResources) {
-        include '**/*'
-    }
 
     manifest {
         attributes([
@@ -221,16 +227,29 @@ jar {
 }
 
 // 确保测试可以访问主类路径
+// neogradle 插件会通过其内置约定自动注入 src/main/resources 等常规目录。
+// 不要重复声明 src/main/resources,否则 processResources 会报 "is a duplicate" 错误,
+// 同时触发 IDEA 的 MatchingCopyAction 资源过滤解析异常。
+// 但 src/main/templates 是 neogradle 插件加载 pack.mcmeta / mods.toml 元数据的特殊目录,
+// 不会被默认加入资源源集,需要在这里显式追加才能让 pack.mcmeta 被打包到最终的 mod jar 中。
 sourceSets {
     main {
         resources {
-            srcDirs = ['src/main/resources', 'src/generated/resources', 'src/main/templates']
+            srcDir 'src/main/templates'
         }
     }
     test {
         compileClasspath += sourceSets.main.output
         runtimeClasspath += sourceSets.main.output
     }
+}
+
+afterEvaluate {
+    println "=== SOURCE SET INSPECTION ==="
+    sourceSets.main.resources.each { println "RESOURCE_SRC: ${it.absolutePath}" }
+    println "=== processResources inputs ==="
+    println "  srcDirs: ${processResources.inputs.sourceFiles.files.collect { it.name }.unique()}"
+    println "=== END ==="
 }
 
 // 配置发布到 GitHub Packages
@@ -333,7 +352,7 @@ tasks.register('createGitHubRelease') {
         // 构建请求体
         def requestBody
 
-        if (!mod_version_type.equals("release") && !mod_version_type.equals("stable") && !mod_version_type.equals("nightly")) {
+        if (mod_version_type != "release" && mod_version_type != "stable" && mod_version_type != "nightly") {
             requestBody = [
                 tag_name  : mod_version,
                 name      : mod_version,

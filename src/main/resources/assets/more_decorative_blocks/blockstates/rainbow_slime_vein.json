@@ -5,8 +5,8 @@
 				"up" : "true"
 			} ,
 			"apply" : {
-				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
-				"x" : 180
+				"model" : "more_decorative_blocks:block/rainbow_slime_vein" ,
+				"x" : 270
 			}
 		} ,
 		{
@@ -14,7 +14,8 @@
 				"down" : "true"
 			} ,
 			"apply" : {
-				"model" : "more_decorative_blocks:block/rainbow_slime_block"
+				"model" : "more_decorative_blocks:block/rainbow_slime_vein" ,
+				"x" : 90
 			}
 		} ,
 		{
@@ -22,7 +23,7 @@
 				"north" : "true"
 			} ,
 			"apply" : {
-				"model" : "more_decorative_blocks:block/rainbow_slime_block"
+				"model" : "more_decorative_blocks:block/rainbow_slime_vein"
 			}
 		} ,
 		{
@@ -30,7 +31,7 @@
 				"south" : "true"
 			} ,
 			"apply" : {
-				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"model" : "more_decorative_blocks:block/rainbow_slime_vein" ,
 				"y" : 180
 			}
 		} ,
@@ -39,7 +40,7 @@
 				"east" : "true"
 			} ,
 			"apply" : {
-				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"model" : "more_decorative_blocks:block/rainbow_slime_vein" ,
 				"y" : 90
 			}
 		} ,
@@ -48,7 +49,7 @@
 				"west" : "true"
 			} ,
 			"apply" : {
-				"model" : "more_decorative_blocks:block/rainbow_slime_block" ,
+				"model" : "more_decorative_blocks:block/rainbow_slime_vein" ,
 				"y" : 270
 			}
 		}

@@ -28,7 +28,7 @@ public class ClientVersionCheckHandler {
 
     @SubscribeEvent
     public static void onScreenOpened(ScreenEvent.Opening event) {
-        LOGGER.info("[VersionCheck] Title screen opened, checked: {}, has result: {}",
+        LOGGER.debug("[VersionCheck] Title screen opened, checked: {}, has result: {}",
                 VersionCheckUtils.hasCheckedVersion(),
                 VersionCheckUtils.getLastCheckResult() != null);
 
@@ -36,7 +36,7 @@ public class ClientVersionCheckHandler {
                 VersionCheckUtils.getLastCheckResult() != null &&
                 VersionCheckUtils.getLastCheckResult().isNewVersionAvailable()) {
 
-            LOGGER.info("[VersionCheck] Showing update screen on title screen");
+            LOGGER.debug("[VersionCheck] Showing update screen on title screen");
             Minecraft.getInstance().execute(ClientVersionCheckHandler::showVersionCheckScreen);
         }
     }

@@ -1,7 +1,9 @@
 // SSL Connection Test Task
 // This task helps verify SSL connectivity and certificate validation
 
-task testSSLConnection {
+// 使用新式 tasks.register 声明,避免在 IDEA 导入阶段实例化任务,
+// 防止 MatchingCopyAction 在 IDEA 项目同步时触发资源过滤解析失败
+tasks.register('testSSLConnection') {
     doLast {
         println "Testing SSL connection to common repositories..."
 

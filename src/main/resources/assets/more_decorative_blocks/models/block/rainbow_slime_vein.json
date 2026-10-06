@@ -1,8 +1,8 @@
 {
 	"ambientocclusion" : false ,
 	"textures" : {
-		"particle" : "more_decorative_blocks:block/rainbow_slime_block" ,
-		"rainbow" : "more_decorative_blocks:block/rainbow_slime_block"
+		"particle" : "more_decorative_blocks:block/rainbow_slime_vein" ,
+		"rainbow" : "more_decorative_blocks:block/rainbow_slime_vein"
 	} ,
 	"elements" : [
 		{

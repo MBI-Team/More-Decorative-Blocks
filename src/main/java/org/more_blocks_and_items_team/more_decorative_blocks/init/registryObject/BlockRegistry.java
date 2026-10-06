@@ -22,8 +22,8 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 8)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
             .isRedstoneConductor((state, level, pos) -> true)
     ));
 
@@ -32,7 +32,7 @@ public class BlockRegistry {
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
             .strength(0.5f, 0.5f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
             .dynamicShape()
     ));
 
@@ -41,7 +41,7 @@ public class BlockRegistry {
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 8)
             .strength(0.5f, 0.5f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
             .dynamicShape()
     ));
 
@@ -50,8 +50,8 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
     ));
 
     public static final DeferredBlock<Block> TABLET = BLOCKS.register("tablet", () -> new Tablet(BlockBehaviour.Properties.of()
@@ -59,7 +59,7 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 10)
             .strength(0.1f, 0.1f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
             .dynamicShape()
     ));
 
@@ -68,7 +68,7 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 7)
             .strength(1f, 1f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
             .dynamicShape()
     ));
 
@@ -98,7 +98,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 1)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
     ));
 
     public static final DeferredBlock<Block> ASPHALT_ROAD = BLOCKS.register("asphalt_road", () -> new Block(BlockBehaviour.Properties.of()
@@ -106,8 +106,8 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
-            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题）
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
+            .noOcclusion()  // 关闭面剔除（谨慎使用，可能导致透视问题�?
     ));
 
     public static final DeferredBlock<Block> LIMESTONE = BLOCKS.register("limestone", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -115,7 +115,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> SHALE = BLOCKS.register("shale", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -123,7 +123,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> GRAVEL = BLOCKS.register("gravel", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -138,7 +138,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> LIGHT_BLUE_TILE = BLOCKS.register("light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -146,7 +146,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> CRACKED_LIGHT_BLUE_TILE = BLOCKS.register("cracked_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -154,7 +154,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> CHIPPED_LIGHT_BLUE_TILE = BLOCKS.register("chipped_light_blue_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -162,7 +162,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> STEEL_PLATE_RIVETED = BLOCKS.register("steel_plate_riveted", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -170,7 +170,7 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
             .strength(2.0f, 6.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -178,7 +178,7 @@ public class BlockRegistry {
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
             .strength(1.5f, 6.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> WHITE_TILE = BLOCKS.register("white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -186,7 +186,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> CRACKED_WHITE_TILE = BLOCKS.register("cracked_white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -194,7 +194,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> CHIPPED_WHITE_TILE = BLOCKS.register("chipped_white_tile", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -202,7 +202,7 @@ public class BlockRegistry {
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 硬度参数（可选）
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     // 浅色木地板和地砖
@@ -235,13 +235,13 @@ public class BlockRegistry {
             .strength(1f, 3.0f)  // 硬度参数（可选）
     ));
 
-    // 铝矿物相关方块
+    // 铝矿物相关方�?
     public static final DeferredBlock<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore", () -> new NormalBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
             .sound(SoundType.STONE)
             .lightLevel(state -> 0)
             .strength(1.5f, 3.0f)  // 与铁矿石相同硬度
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> DEEPSLATE_ALUMINUM_ORE = BLOCKS.register("deepslate_aluminum_ore", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -249,7 +249,7 @@ public class BlockRegistry {
             .sound(SoundType.DEEPSLATE)
             .lightLevel(state -> 0)
             .strength(2f, 3.0f)  // 与深层铁矿石相同硬度
-            .requiresCorrectToolForDrops()  // 需要正确工具掉落
+            .requiresCorrectToolForDrops()  // 需要正确工具掉�?
     ));
 
     public static final DeferredBlock<Block> RAW_ALUMINUM_BLOCK = BLOCKS.register("raw_aluminum_block", () -> new NormalBlock(BlockBehaviour.Properties.of()
@@ -264,19 +264,21 @@ public class BlockRegistry {
             .mapColor(MapColor.COLOR_LIGHT_GRAY)
             .sound(SoundType.METAL)
             .lightLevel(state -> 0)
-            .strength(1.5f, 6.0f)  // 与铁块相同硬度
+            .strength(1.5f, 6.0f)  // 与铁块相同硬�?
             .requiresCorrectToolForDrops()
     ));
 
-    // 彩虹史莱姆覆盖方块:继承 MultifaceBlock，可自动向相邻空气蔓延
-    public static final DeferredBlock<Block> RAINBOW_SLIME_BLOCK = BLOCKS.register("rainbow_slime_block", () -> new RainbowSlimeBlock(BlockBehaviour.Properties.of()
+    // 彩虹史莱姆覆盖方�?继承 MultifaceBlock，可自动向相邻空气蔓�?
+    public static final DeferredBlock<Block> RAINBOW_SLIME_VEIN = BLOCKS.register("rainbow_slime_vein", () -> new RainbowSlimeVein(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_PURPLE)
             .sound(SoundType.SLIME_BLOCK)
             .lightLevel(state -> 2)
             .strength(0.5f, 0.5f)  // 与幽匿脉络相近的硬度
-            .noOcclusion()          // 类似脉络:不遮挡
-            .dynamicShape()         // 形状随贴附的面变化
-            .randomTicks()          // 让 MultifaceBlock 的 randomTick 能跑蔓延逻辑
-            .pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY) // 活塞推动会掉落
+            .noOcclusion()          // 类似脉络:不遮�?
+            .dynamicShape()         // 形状随贴附的面变�?
+
+            .randomTicks()          // randomTick 蔓延（幽匿脉络一致）
+
+            .pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY) // 活塞推动会掉�?
     ));
 }

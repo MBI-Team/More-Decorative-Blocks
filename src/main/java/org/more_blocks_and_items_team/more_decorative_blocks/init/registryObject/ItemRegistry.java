@@ -104,5 +104,5 @@ public class ItemRegistry {
                     .setNoRepair()
                     .stacksTo(64));
 
-    public static final DeferredItem<BlockItem> RAINBOW_SLIME_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("rainbow_slime_block", RAINBOW_SLIME_BLOCK);
+    public static final DeferredItem<BlockItem> RAINBOW_SLIME_VEIN_ITEM = ITEMS.registerSimpleBlockItem("rainbow_slime_vein", RAINBOW_SLIME_VEIN);
 }
