@@ -61,14 +61,12 @@ public class RightClinkBlock extends Block {
 
     @Override
     protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
+        // 原实现使用了 level.setBlock(pos, newState, 1, 2)：
+        // 1 表示只更新邻居、不通知客户端，2 其实是 recursionLeft 参数。
+        // 结果就是服务端状态变了、客户端画面不变（右键看起来“没反应”）。
+        // 这里改用 UPDATE_ALL，客户端会同步刷新模型。
         if (!level.isClientSide) {
-            if (state.getValue(OPEN)) {
-                BlockState newState = state.setValue(OPEN, false);
-                level.setBlock(pos, newState, 1, 2);
-            } else {
-                BlockState newState = state.setValue(OPEN, true);
-                level.setBlock(pos, newState, 1, 2);
-            }
+            level.setBlock(pos, state.cycle(OPEN), Block.UPDATE_ALL);
         }
         return ItemInteractionResult.SUCCESS;
     }

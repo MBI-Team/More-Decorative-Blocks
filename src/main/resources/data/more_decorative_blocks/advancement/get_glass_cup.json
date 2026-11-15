@@ -16,13 +16,13 @@
 	} ,
 	"parent" : "more_decorative_blocks:root" ,
 	"criteria" : {
-		"getGlass" : {
+		"glass_cup" : {
 			"trigger" : "minecraft:inventory_changed" ,
 			"conditions" : {
 				"items" : [
 					{
 						"items" : [
-							"minecraft:glass"
+							"more_decorative_blocks:glass_cup"
 						]
 					}
 				]

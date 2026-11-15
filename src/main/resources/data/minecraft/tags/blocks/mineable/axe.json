@@ -1,0 +1,11 @@
+{
+	"replace" : false ,
+	"values" : [
+		"more_decorative_blocks:oak_wood_cupboard" ,
+		"more_decorative_blocks:acacia_wood_cupboard" ,
+		"more_decorative_blocks:light_wood_plank" ,
+		"more_decorative_blocks:light_wood_tile" ,
+		"more_decorative_blocks:dark_wood_plank" ,
+		"more_decorative_blocks:dark_wood_tile"
+	]
+}

@@ -25,17 +25,39 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.more_blocks_and_items_team.more_decorative_blocks.Config;
-import org.more_blocks_and_items_team.more_decorative_blocks.objects.block.basic.RightClinkBlock;
 
-import static net.minecraft.core.Direction.*;
+import java.util.EnumMap;
+import java.util.Map;
+
 import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.ItemRegistry.GLASS_CUP;
 
 /**
- * Extends from {@link RightClinkBlock} and it extends {@link Block}
+ * 橱柜方块：可以往里面放玻璃杯（最多 4 个），
+ * 潜行 + 空手右键可以把玻璃杯取回来。
  */
 public class Cupboard extends Block {
-    public static final IntegerProperty GLASS_CUP_NUM = IntegerProperty.create("gcn", 0, 4);
+    /**
+     * 橱柜最多能放多少个玻璃杯。
+     */
+    public static final int MAX_GLASS_CUPS = 4;
+
+    /**
+     * 橱柜内玻璃杯数量（0-4），对应不同模型。
+     */
+    public static final IntegerProperty GLASS_CUP_NUM = IntegerProperty.create("gcn", 0, MAX_GLASS_CUPS);
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
+
+    private static final Map<Direction, VoxelShape> SHAPES = new EnumMap<>(Direction.class);
+    private static final VoxelShape FALLBACK = Block.box(0, 0, 0, 16, 28, 16);
+
+    static {
+        // 橱柜模型比一格更宽（向一侧延伸 16 像素），碰撞箱与模型保持一致
+        SHAPES.put(Direction.NORTH, Block.box(-16, 0, 0, 16, 28, 16));
+        SHAPES.put(Direction.SOUTH, Block.box(0, 0, 0, 32, 28, 16));
+        SHAPES.put(Direction.WEST, Block.box(0, 0, 0, 16, 28, 32));
+        SHAPES.put(Direction.EAST, Block.box(0, 0, -16, 16, 28, 16));
+    }
+
     public Cupboard(Properties prop) {
         super(prop);
         this.registerDefaultState(
@@ -56,25 +78,38 @@ public class Cupboard extends Block {
     }
 
     @Override
-    protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
-        // 检查物品是否是玻璃杯
+    protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, @NotNull Level level,
+                                                       @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand,
+                                                       @NotNull BlockHitResult hit) {
+        int current = state.getValue(GLASS_CUP_NUM);
+
+        // 放入玻璃杯
         if (itemStack.getItem() == GLASS_CUP.get()) {
-            int current = state.getValue(GLASS_CUP_NUM);
-            // 检查是否达到上限
-            if (current < 4) {
+            if (current < MAX_GLASS_CUPS) {
                 if (!level.isClientSide) {
-                    // 更新方块状态
-                    BlockState newState = state.setValue(GLASS_CUP_NUM, current + 1);
-                    level.setBlock(pos, newState, Block.UPDATE_ALL);
-                    // 如果不是创造模式，减少物品数量
+                    level.setBlock(pos, state.setValue(GLASS_CUP_NUM, current + 1), Block.UPDATE_ALL);
                     if (!player.isCreative()) {
                         itemStack.shrink(1);
                     }
                 }
-                // 返回成功
                 return ItemInteractionResult.SUCCESS;
             }
+            // 已经装满，交给默认逻辑（避免吞掉物品）
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
+
+        // 潜行 + 空手取出玻璃杯（原实现只能放不能取，杯子会被永久锁死在方块里）
+        if (itemStack.isEmpty() && player.isShiftKeyDown() && current > 0) {
+            if (!level.isClientSide) {
+                level.setBlock(pos, state.setValue(GLASS_CUP_NUM, current - 1), Block.UPDATE_ALL);
+                ItemStack cup = new ItemStack(GLASS_CUP.get());
+                if (!player.getInventory().add(cup)) {
+                    player.drop(cup, false);
+                }
+            }
+            return ItemInteractionResult.SUCCESS;
+        }
+
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
@@ -99,15 +134,12 @@ public class Cupboard extends Block {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
                                         @NotNull BlockPos pos, @NotNull CollisionContext context) {
-        if (state.getValue(FACING) == SOUTH) {
-            return Block.box(0, 0, 0, 32, 28, 16);
-        } else if (state.getValue(FACING) == WEST) {
-            return Block.box(0, 0, 0, 16, 28, 32);
-        } else if (state.getValue(FACING) == NORTH) {
-            return Block.box(-16, 0, 0, 16, 28, 16);
-        } else if (state.getValue(FACING) == EAST) {
-            return Block.box(0, 0, -16, 16, 28, 16);
-        }
+        return SHAPES.getOrDefault(state.getValue(FACING), FALLBACK);
+    }
+
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level,
+                                                 @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return getShape(state, level, pos, context);
     }
 

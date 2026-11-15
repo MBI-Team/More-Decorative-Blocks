@@ -75,14 +75,10 @@ public class RightClinkAndRedstoneBlock extends Block {
 
     @Override
     protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack itemStack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
+        // 修正 setBlock 参数：原来写成 (pos, newState, 1, 2)，
+        // 1 只更新邻居不通知客户端（右键无视觉反馈），2 是 recursionLeft 而不是 flag。
         if (!level.isClientSide) {
-            if (state.getValue(OPEN)) {
-                BlockState newState = state.setValue(OPEN, false);
-                level.setBlock(pos, newState, 1, 2);
-            } else {
-                BlockState newState = state.setValue(OPEN, true);
-                level.setBlock(pos, newState, 1, 2);
-            }
+            level.setBlock(pos, state.cycle(OPEN), Block.UPDATE_ALL);
         }
         return ItemInteractionResult.SUCCESS;
     }

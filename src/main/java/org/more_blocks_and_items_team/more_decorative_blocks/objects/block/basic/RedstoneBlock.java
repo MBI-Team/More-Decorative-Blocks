@@ -26,13 +26,12 @@ public class RedstoneBlock extends Block {
 
     public RedstoneBlock(Properties prop) {
         super(prop);
+        // 一次注册完整默认状态；原实现连续调用两次 registerDefaultState，
+        // 后一次会覆盖前一次，FACING 的默认值依赖 any() 的隐式默认值，容易踩坑。
         this.registerDefaultState(
-                this.stateDefinition.any().setValue(FACING,
-                        Direction.NORTH));
-        this.registerDefaultState(
-                this.stateDefinition.any().setValue(POWERED,
-                        false));
-
+                this.stateDefinition.any()
+                        .setValue(FACING, Direction.NORTH)
+                        .setValue(POWERED, false));
     }
 
     @Override

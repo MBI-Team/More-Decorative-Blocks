@@ -34,6 +34,7 @@ public class TooltipRegistry {
         RegistryBlockItemTooltip(event, AC_ITEM, "air_conditioner");
         RegistryBlockItemTooltip(event, IRON_CUPBOARD_ITEM, "iron_cupboard");
         RegistryBlockItemTooltip(event, OAK_WOOD_CUPBOARD_ITEM, "oak_wood_cupboard");
+        RegistryBlockItemTooltip(event, ACACIA_WOOD_CUPBOARD_ITEM, "acacia_wood_cupboard");
         RegistryBlockItemTooltip(event, CLOSESTOOL_ITEM, "closestool");
         RegistryItemTooltip(event, GLASS_CUP, "glass_cup");
         RegistryItemTooltip(event, STOOL, "stool");

@@ -1,17 +1,16 @@
 package org.more_blocks_and_items_team.more_decorative_blocks.objects.item;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry.IRON_CUPBOARD;
-import static org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.BlockRegistry.OAK_WOOD_CUPBOARD;
-
+/**
+ * 玻璃杯。
+ * <p>
+ * 放入橱柜的逻辑由 {@code Cupboard#useItemOn} 负责（方块交互先于物品的 {@code useOn} 被调用），
+ * 因此这里不需要、也不应该拦截交互。
+ */
 public class GlassCup extends Item {
 
     public GlassCup(Properties prop) {
@@ -19,20 +18,12 @@ public class GlassCup extends Item {
     }
 
     @Override
-    public @NotNull InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos clickedPos = context.getClickedPos();
-        BlockState clickedState = level.getBlockState(clickedPos);
-        Block clickedBlock = clickedState.getBlock();
-
-        // 只处理碗柜
-        if (clickedBlock == IRON_CUPBOARD.get() || clickedBlock == OAK_WOOD_CUPBOARD.get()) {
-            // 返回PASS，让方块的交互方法处理
-            return InteractionResult.PASS;
-        }
-
-        // 对于其他方块，我们返回SUCCESS，表示物品已经处理（什么也不做）
-        return InteractionResult.SUCCESS;
+    public @NotNull InteractionResult useOn(@NotNull UseOnContext context) {
+        // 玻璃杯不是 BlockItem，无法放置成方块。
+        // 这里必须返回 PASS：原实现在非橱柜方块上返回 SUCCESS，
+        // 会“吞掉”这次右键（例如无法继续用其他逻辑处理该方块），
+        // 而且只列举了铁橱柜与橡木橱柜，漏掉了金合欢橱柜。
+        return InteractionResult.PASS;
     }
 }
 

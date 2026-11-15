@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -123,10 +124,9 @@ public class RainbowSlimeBallEntity extends Snowball {
         // 因此要让 slime 贴到 hitPos，需要打开的面是 hitSide 的反向。
         Direction attachDirection = hitSide.getOpposite();
 
-        // 使用 slime 自身实现的 isSupportedFace 校验：要求 attachDirection 方向的邻居
-        // 是一个实体（非空气/可替换）方块。这样六个方向都能放置，且能正常渲染。
-        // 同时避免 MultifaceBlock.canSurvive 默认只能校验自身某一面存在支撑的
-        // 行为，避免刚放置时返回 false 导致实体被丢弃而方块未生成。
+        // 使用 slime 自身实现的 isSupportedFace 校验：判定标准与方块自身的
+        // updateShape / canSurvive 完全一致（父类 MultifaceBlock#canAttachTo），
+        // 避免“放下后下一次邻居更新就被移除”的问题。
         if (!RainbowSlimeVein.isSupportedFace(level, placePos, attachDirection)) {
             this.discard();
             return;
@@ -137,7 +137,7 @@ public class RainbowSlimeBallEntity extends Snowball {
         BlockState baseState = isExistingRainbowSlime ? existing : coverBlock.defaultBlockState();
         BlockState newState = RainbowSlimeVein.attachFace(baseState, attachDirection);
 
-        level.setBlock(placePos, newState, 3);
+        level.setBlock(placePos, newState, Block.UPDATE_ALL);
 
         // 播放黏液击中音效
         level.playSound(null, placePos.getX() + 0.5D, placePos.getY() + 0.5D, placePos.getZ() + 0.5D,

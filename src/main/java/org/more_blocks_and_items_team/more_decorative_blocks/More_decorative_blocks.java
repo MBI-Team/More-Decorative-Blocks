@@ -4,24 +4,24 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ClientVersionCheckHandler;
+import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ClientCommands;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.client.ConfigScreen;
 import org.more_blocks_and_items_team.more_decorative_blocks.events.common.commandExecutes;
 import org.more_blocks_and_items_team.more_decorative_blocks.init.registryObject.*;
 import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionCheckUtils;
+import org.more_blocks_and_items_team.more_decorative_blocks.utils.VersionComparator;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -35,32 +35,29 @@ import static org.more_blocks_and_items_team.more_decorative_blocks.init.getModI
 public class More_decorative_blocks {
     public static final Logger LOGGER = LogUtils.getLogger();
 
-
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) throws InterruptedException {
+    public More_decorative_blocks(IEventBus modEventBus, ModContainer modContainer) {
         LOGGER.info("[Mod Init]Starting init {}...", MODID);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
 
         // Register our mod's ModConfigSpec
         LOGGER.info("[Mod Init]Load configs...");
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        // Register config screen
-        LOGGER.info("[Mod Init]Load config screen");
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, lastScreen) ->
-                new ConfigScreen(lastScreen, Config.SPEC));
+        // 配置界面是纯客户端功能，在专用服务器上不能触碰 IConfigScreenFactory / ConfigScreen，
+        // 否则会抛出 NoClassDefFoundError 导致服务端无法启动。
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            LOGGER.info("[Mod Init]Load config screen");
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, lastScreen) ->
+                    new ConfigScreen(lastScreen, Config.SPEC));
+        }
 
         LOGGER.info("[Mod Init]Registering blocks...");
         BlockRegistry.BLOCKS.register(modEventBus);
-        Thread.sleep(5000);
         LOGGER.info("[Mod Init]Registering items...");
         ItemRegistry.ITEMS.register(modEventBus);
-        Thread.sleep(5000);
         LOGGER.info("[Mod Init]Registering entities...");
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
         LOGGER.info("[Mod Init]Registering creative mode tabs...");
@@ -68,9 +65,8 @@ public class More_decorative_blocks {
         LOGGER.info("[Mod Init]Registering tooltips...");
         NeoForge.EVENT_BUS.register(TooltipRegistry.class);
 
-        // Register client event handler
-        LOGGER.info("[Mod Init]Registering client version check handler...");
-        NeoForge.EVENT_BUS.register(ClientVersionCheckHandler.class);
+        // ClientVersionCheckHandler 已经通过 @EventBusSubscriber(modid = MODID, value = Dist.CLIENT) 自动注册，
+        // 这里重复注册会让登录事件被处理两次（重复弹窗），因此不再手动注册。
 
         // Register command event
         NeoForge.EVENT_BUS.register(this);
@@ -98,57 +94,43 @@ public class More_decorative_blocks {
         }
     }
 
+    /**
+     * 在后台线程检查 GitHub 上的最新版本，仅打印日志（界面提示由 {@code ClientVersionCheckHandler} 负责）。
+     * <p>
+     * 该方法不会再向调用线程抛出异常：原实现里 {@link URISyntaxException} 被包装成 RuntimeException
+     * 直接抛在无名线程中，会打印一大段未捕获异常堆栈。
+     */
     public static void checkVersion() {
-        new Thread(() -> {
+        if (!Config.enableVersionChecker) {
+            LOGGER.info("[VersionCheck]Version checker is disabled in config, skipping.");
+            return;
+        }
+
+        Thread thread = new Thread(() -> {
             try {
                 String latestVersion = VersionCheckUtils.getLatestVersion();
                 LOGGER.info("Current version: {}, The latest version in Github: {}", mod_version, latestVersion);
 
-                final boolean isLatestVersion = isIsLatestVersion(latestVersion);
-
-                if (isLatestVersion) {
-                    LOGGER.info("You are using the latest version.");
-                } else {
+                if (VersionComparator.isNewer(mod_version, latestVersion)) {
                     LOGGER.warn("There is a new version available: {}!", latestVersion);
                     LOGGER.warn("Please update from GitHub: https://github.com/MBI-Team/More-Decorative-Blocks/releases");
+                } else {
+                    LOGGER.info("You are using the latest version.");
                 }
-            } catch (IOException e) {
+            } catch (IOException | URISyntaxException e) {
                 LOGGER.warn("Failed to check for updates: {}", e.getMessage());
-            } catch (URISyntaxException e) {
-                throw new RuntimeException(e);
+            } catch (RuntimeException e) {
+                LOGGER.warn("Unexpected error while checking for updates: {}", e.getMessage());
             }
-        }).start();
-    }
-
-    private static boolean isIsLatestVersion(String latestVersion) {
-        boolean isLatestVersion;
-
-        if (mod_version.charAt(0) < latestVersion.charAt(0)) {
-            isLatestVersion = false;
-        } else if (mod_version.charAt(0) == latestVersion.charAt(0)) {
-            if (mod_version.charAt(2) < latestVersion.charAt(2)) {
-                isLatestVersion = false;
-            } else if (mod_version.charAt(2) == latestVersion.charAt(2)) {
-                isLatestVersion = mod_version.charAt(4) >= latestVersion.charAt(4);
-            } else {
-                isLatestVersion = true;
-            }
-        } else {
-            isLatestVersion = true;
-        }
-        return isLatestVersion;
+        }, "MDB-VersionCheck");
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
         LOGGER.info("[Mod Init]Common setup completed");
         startOutput();
-        checkVersion();
-    }
-
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        // 版本检查由客户端登录时触发（ClientVersionCheckHandler），这里不再重复请求 GitHub。
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -156,12 +138,6 @@ public class More_decorative_blocks {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         startOutput();
-        checkVersion();
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onPlayerInteract(PlayerInteractEvent.RightClickBlock event) {
     }
 
     // Register commands
@@ -175,27 +151,10 @@ public class More_decorative_blocks {
                 .executes(commandExecutes::MDBVersionCMD)
         );
 
-        // 测试版本检查命令
-        dispatcher.register(Commands.literal("testversioncheck")
-                .requires(source -> source.hasPermission(2))
-                .executes(context -> {
-                    // 重置检查状态以便测试
-                    org.more_blocks_and_items_team.more_decorative_blocks.events.client.ClientVersionCheckHandler.resetCheckStatus();
-                    context.getSource().sendSuccess(() -> Component.literal("版本检查状态已重置，将在下次登录时检查版本"), false);
-                    return 1;
-                })
-        );
-
-        // 测试更新界面命令
-        dispatcher.register(Commands.literal("testversionui")
-                .requires(source -> source.hasPermission(2))
-                .executes(commandExecutes::testVersionUICMD)
-        );
-
-        // 测试错误界面命令
-        dispatcher.register(Commands.literal("testerrorui")
-                .requires(source -> source.hasPermission(2))
-                .executes(commandExecutes::testErrorUICMD)
-        );
+        // 调试用的界面命令只能在客户端注册：它们会直接操作 Minecraft 客户端实例，
+        // 在专用服务器上引用这些类会直接崩溃。
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            ClientCommands.register(dispatcher);
+        }
     }
 }

@@ -101,6 +101,10 @@ def neo_version = project.neo_version
 
 // 添加仓库配置以解决依赖下载问题
 repositories {
+    // Maven Central 放在第一位：NeoForm 运行时会用到 fastcsv / opencsv / commons-* 等工具依赖，
+    // 这些依赖在 Maven Central 上一定存在；如果先命中 neoforged 镜像再下载失败，
+    // Gradle 不会自动回退到下一个仓库，会直接导致构建失败。
+    mavenCentral()
     // 添加更多镜像源以增加成功率
     maven {
         name "neoforgedReleases"
@@ -132,8 +136,19 @@ repositories {
     maven { 
         url = 'https://repo.huaweicloud.com/repository/maven/' 
     }
-    mavenCentral()
     mavenLocal()
+}
+
+// NeoGradle 会自动往 project.repositories 里注册一个名为 "NeoForm Maven" 的仓库
+// （https://maven.neoforged.net/releases），并且它排在第一位。
+// 该域名在部分网络环境（如只放行 CDN 的校园网/公司网）下不可达，
+// 而 Gradle 遇到 5xx/连接失败时不会回退到下一个仓库，会直接让整个构建失败
+// （典型表现：Could not download fastcsv / opencsv / commons-* 等 NeoForm 工具依赖）。
+// 这里统一重定向到官方 CDN 镜像，内容与 maven.neoforged.net 一致。
+repositories.withType(MavenArtifactRepository).configureEach { repo ->
+    if (repo.url.toString().contains("maven.neoforged.net")) {
+        repo.setUrl("https://neoforged.forgecdn.net/releases/")
+    }
 }
 
 // 配置 Minecraft 和 NeoForge
@@ -244,13 +259,8 @@ sourceSets {
     }
 }
 
-afterEvaluate {
-    println "=== SOURCE SET INSPECTION ==="
-    sourceSets.main.resources.each { println "RESOURCE_SRC: ${it.absolutePath}" }
-    println "=== processResources inputs ==="
-    println "  srcDirs: ${processResources.inputs.sourceFiles.files.collect { it.name }.unique()}"
-    println "=== END ==="
-}
+// 说明：这里曾有一段 afterEvaluate 调试打印（逐个输出 resources 源集与 processResources 输入），
+// 会在每次构建时刷屏，且与功能无关，已移除。
 
 // 配置发布到 GitHub Packages
 publishing {
@@ -350,25 +360,17 @@ tasks.register('createGitHubRelease') {
         def apiUrl = "https://api.github.com/repos/MBI-Team/More-Decorative-Blocks/releases"
 
         // 构建请求体
-        def requestBody
-
-        if (mod_version_type != "release" && mod_version_type != "stable" && mod_version_type != "nightly") {
-            requestBody = [
+        // 只有 release / stable 才算正式版；alpha、beta、rc、nightly 等一律标记为预发布。
+        // （原实现把判断写反了：正式版被标成 pre-release，测试版反而不标记。）
+        def isStable = (mod_version_type == "release" || mod_version_type == "stable")
+        def requestBody = [
                 tag_name  : mod_version,
                 name      : mod_version,
                 body      : "",
                 draft     : false,
-                prerelease: false
-           ]   
-        } else {
-            requestBody = [
-                tag_name  : mod_version,
-                name      : mod_version,
-                body      : "",
-                draft     : false,
-                prerelease: true
-           ]
-        }
+                prerelease: !isStable
+        ]
+        logger.lifecycle("GitHub Release: version=${mod_version}, type=${mod_version_type}, prerelease=${!isStable}")
 
         try {
             // 创建 Release

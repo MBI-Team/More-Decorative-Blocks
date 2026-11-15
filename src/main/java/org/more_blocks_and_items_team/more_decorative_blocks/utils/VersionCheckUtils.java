@@ -111,56 +111,14 @@ public class VersionCheckUtils {
     }
 
     /**
-     * 比较版本号
+     * 比较版本号，判断远端版本是否比当前版本新。
+     * <p>
+     * 具体规则见 {@link VersionComparator}：支持
+     * {@code 1.5.0-alpha-a96478c+20261004} 这类带预发布标识 / 构建元数据的版本号，
+     * 不会再因为 {@code alpha} 无法解析成数字而静默返回“没有新版本”。
      */
     public static boolean compareVersions(String currentVersion, String latestVersion) {
-        if (currentVersion.equals(latestVersion)) {
-            return false;
-        }
-
-        try {
-            String[] currentParts = currentVersion.split("[.-]");
-            String[] latestParts = latestVersion.split("[.-]");
-
-            int maxLength = Math.max(currentParts.length, latestParts.length);
-
-            for (int i = 0; i < maxLength; i++) {
-                int currentNum = i < currentParts.length ? Integer.parseInt(currentParts[i]) : 0;
-                int latestNum = i < latestParts.length ? Integer.parseInt(latestParts[i]) : 0;
-
-                if (latestNum > currentNum) {
-                    return true;
-                } else if (latestNum < currentNum) {
-                    return false;
-                }
-            }
-
-            // 如果数字部分相同，检查预发布标识
-            if (currentParts.length > 3 && latestParts.length > 3) {
-                String currentPre = currentParts[3].toLowerCase();
-                String latestPre = latestParts[3].toLowerCase();
-
-                int currentPriority = getPreReleasePriority(currentPre);
-                int latestPriority = getPreReleasePriority(latestPre);
-
-                return latestPriority > currentPriority;
-            }
-
-            return false;
-        } catch (Exception e) {
-            LOGGER.warn("[VersionCheck] Error comparing versions: {}", e.getMessage());
-            return false;
-        }
-    }
-
-    private static int getPreReleasePriority(String preRelease) {
-        return switch (preRelease) {
-            case "release", "stable", "final" -> 5;
-            case "rc" -> 4;
-            case "beta" -> 3;
-            case "alpha" -> 2;
-            default -> 1;
-        };
+        return VersionComparator.isNewer(currentVersion, latestVersion);
     }
 
     /**

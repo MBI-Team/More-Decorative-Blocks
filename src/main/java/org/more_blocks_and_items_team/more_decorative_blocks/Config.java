@@ -38,62 +38,65 @@ public class Config {
 
     static {
         ENABLE_VERSION_CHECKER = BUILDER
-                .comment("config.more_decorative_blocks.enable_version_checker.comment")
+                .comment("Whether the mod should check for a newer release on GitHub (client side).")
                 .define("enableVersionChecker", true);
 
         HEIGHT_OF_SEAT_STONE = BUILDER
-                .comment("config.more_decorative_blocks.height_of_seat_stone.comment")
+                .comment("Height (in pixels, 1/16 block units) of the Seat Stone block. Range: 16 - 32.")
                 .defineInRange("heightOfSeatStone", 24, 16, 32);
 
         // MDB Block 挖掘时间系数配置（系数越大，挖掘越慢）
         MDB_BLOCK_WOOD_MINING_COEFFICIENT = BUILDER
-                .comment("config.more_decorative_blocks.mdb_block_wood_mining_coefficient.comment",
-                        "Higher values mean slower mining with wooden tools.")
+                .comment("Mining speed coefficient for wooden tools. Higher values mean slower mining.")
                 .defineInRange("mdbBlockWoodMiningCoefficient", 2.0, 0.1, 10.0);
 
         MDB_BLOCK_STONE_MINING_COEFFICIENT = BUILDER
-                .comment("config.more_decorative_blocks.mdb_block_stone_mining_coefficient.comment",
-                        "Higher values mean slower mining with stone tools.")
+                .comment("Mining speed coefficient for stone tools. Higher values mean slower mining.")
                 .defineInRange("mdbBlockStoneMiningCoefficient", 1.5, 0.1, 10.0);
 
         MDB_BLOCK_GOLD_MINING_COEFFICIENT = BUILDER
-                .comment("config.more_decorative_blocks.mdb_block_gold_mining_coefficient.comment",
-                        "Higher values mean slower mining with gold tools. ")
+                .comment("Mining speed coefficient for golden tools. Higher values mean slower mining.")
                 .defineInRange("mdbBlockGoldMiningCoefficient", 1.0, 0.1, 10.0);
 
 
         MDB_BLOCK_IRON_MINING_COEFFICIENT = BUILDER
-                .comment("config.more_decorative_blocks.mdb_block_iron_mining_coefficient.comment",
-                        "Higher values mean slower mining with iron tools.")
+                .comment("Mining speed coefficient for iron tools. Higher values mean slower mining.")
                 .defineInRange("mdbBlockIronMiningCoefficient", 1.0, 0.1, 10.0);
 
         MDB_BLOCK_DIAMOND_MINING_COEFFICIENT = BUILDER
-                .comment("config.more_decorative_blocks.mdb_block_diamond_mining_coefficient.comment",
-                        "Higher values mean slower mining with diamond tools.")
+                .comment("Mining speed coefficient for diamond tools. Higher values mean slower mining.")
                 .defineInRange("mdbBlockDiamondMiningCoefficient", 0.8, 0.1, 10.0);
 
         MDB_BLOCK_NETHERITE_MINING_COEFFICIENT = BUILDER
-                .comment("config.more_decorative_blocks.mdb_block_netherite_mining_coefficient.comment",
-                        "Higher values mean slower mining with netherite tools.")
+                .comment("Mining speed coefficient for netherite tools. Higher values mean slower mining.")
                 .defineInRange("mdbBlockNetheriteMiningCoefficient", 0.6, 0.1, 10.0);
 
         // 确保在所有配置项定义后再构建SPEC
         SPEC = BUILDER.build();
     }
 
+    /**
+     * 把配置值同步到静态字段。
+     * <p>
+     * 加载 / 重载 / 配置界面保存后都调用这一份逻辑，避免出现“重载后某个字段没有更新”的漏项
+     * （原实现里重载分支漏掉了 {@code mdbBlockGoldMiningCoefficient}）。
+     */
+    public static void syncValues() {
+        enableVersionChecker = ENABLE_VERSION_CHECKER.get();
+        heightOfSeatStone = HEIGHT_OF_SEAT_STONE.get();
+        mdbBlockWoodMiningCoefficient = MDB_BLOCK_WOOD_MINING_COEFFICIENT.get();
+        mdbBlockStoneMiningCoefficient = MDB_BLOCK_STONE_MINING_COEFFICIENT.get();
+        mdbBlockGoldMiningCoefficient = MDB_BLOCK_GOLD_MINING_COEFFICIENT.get();
+        mdbBlockIronMiningCoefficient = MDB_BLOCK_IRON_MINING_COEFFICIENT.get();
+        mdbBlockDiamondMiningCoefficient = MDB_BLOCK_DIAMOND_MINING_COEFFICIENT.get();
+        mdbBlockNetheriteMiningCoefficient = MDB_BLOCK_NETHERITE_MINING_COEFFICIENT.get();
+    }
 
     // 当配置加载调用此方法
     @SubscribeEvent
     public static void onLoad(ModConfigEvent.Loading event) {
         if (event.getConfig().getModId().equals(MODID)) {
-            enableVersionChecker = ENABLE_VERSION_CHECKER.get();
-            heightOfSeatStone = HEIGHT_OF_SEAT_STONE.get();
-            mdbBlockWoodMiningCoefficient = MDB_BLOCK_WOOD_MINING_COEFFICIENT.get();
-            mdbBlockStoneMiningCoefficient = MDB_BLOCK_STONE_MINING_COEFFICIENT.get();
-            mdbBlockGoldMiningCoefficient = MDB_BLOCK_GOLD_MINING_COEFFICIENT.get();
-            mdbBlockIronMiningCoefficient = MDB_BLOCK_IRON_MINING_COEFFICIENT.get();
-            mdbBlockDiamondMiningCoefficient = MDB_BLOCK_DIAMOND_MINING_COEFFICIENT.get();
-            mdbBlockNetheriteMiningCoefficient = MDB_BLOCK_NETHERITE_MINING_COEFFICIENT.get();
+            syncValues();
             LOGGER.info("[Init]Config load!: enableVersionChecker={}, heightOfSeatStone={}", enableVersionChecker, heightOfSeatStone);
             LOGGER.info("[Init]MDB Block mining coefficients: wood={}, stone={}, gold={}, iron={}, diamond={}, netherite={}",
                     mdbBlockWoodMiningCoefficient, mdbBlockStoneMiningCoefficient, mdbBlockGoldMiningCoefficient, mdbBlockIronMiningCoefficient,
@@ -104,13 +107,7 @@ public class Config {
     @SubscribeEvent
     public static void onReload(ModConfigEvent.Reloading event) {
         if (event.getConfig().getModId().equals(MODID)) {
-            enableVersionChecker = ENABLE_VERSION_CHECKER.get();
-            heightOfSeatStone = HEIGHT_OF_SEAT_STONE.get();
-            mdbBlockWoodMiningCoefficient = MDB_BLOCK_WOOD_MINING_COEFFICIENT.get();
-            mdbBlockStoneMiningCoefficient = MDB_BLOCK_STONE_MINING_COEFFICIENT.get();
-            mdbBlockIronMiningCoefficient = MDB_BLOCK_IRON_MINING_COEFFICIENT.get();
-            mdbBlockDiamondMiningCoefficient = MDB_BLOCK_DIAMOND_MINING_COEFFICIENT.get();
-            mdbBlockNetheriteMiningCoefficient = MDB_BLOCK_NETHERITE_MINING_COEFFICIENT.get();
+            syncValues();
             LOGGER.info("[Init]Config reload!: enableVersionChecker={}, heightOfSeatStone={}", enableVersionChecker, heightOfSeatStone);
             LOGGER.info("[Init]MDB Block mining coefficients reloaded: wood={}, stone={}, gold={}, iron={}, diamond={}, netherite={}",
                     mdbBlockWoodMiningCoefficient, mdbBlockStoneMiningCoefficient, mdbBlockGoldMiningCoefficient, mdbBlockIronMiningCoefficient,
