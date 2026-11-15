@@ -32,8 +32,8 @@
 	"block.more_decorative_blocks.dark_wood_tile" : "Dark Wood Tile" ,
 	"block.more_decorative_blocks.aluminum_ore" : "Aluminum Ore" ,
 	"block.more_decorative_blocks.deepslate_aluminum_ore" : "Deepslate Aluminum Ore" ,
-	"block.more_decorative_blocks.raw_aluminum_block" : "Block of Raw Aluminum" ,
-	"block.more_decorative_blocks.aluminum_block" : "Block of Aluminum" ,
+	"block.more_decorative_blocks.raw_aluminum_block" : "Raw Aluminum Block" ,
+	"block.more_decorative_blocks.aluminum_block" : "Aluminum Block" ,
 	"block.more_decorative_blocks.rainbow_slime_vein" : "Rainbow Slime Vein" ,
 
   "item.more_decorative_blocks.iron_stick": "Iron Stick",
